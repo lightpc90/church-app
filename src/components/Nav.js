@@ -48,7 +48,7 @@ const Nav = () => {
 
         {/* Login and toggle menu */}
         <div className="flex justify-center md:text-xl items-center">
-          <Link href="/Login">
+          <Link href="/login">
             <button className="py-1 px-3 md:px-6  m-2 bg-slate-700 text-white hover:text-slate-900 hover:bg-slate-400 shadow-lg rounded-3xl">
               Login
             </button>
