@@ -5,6 +5,10 @@ import Map from "@/components/Map";
 import YoutubeLive from "@/components/YoutubeLive";
 
 
+export const metadata = {
+  title: "Home",
+  description: "RCCG Beautiful Gate, Lakowe website homepage ",
+};
 
 export default function Home() {
   return (

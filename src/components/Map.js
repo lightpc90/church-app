@@ -4,7 +4,7 @@ import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const Map = () => {
-  const map_api = process.env.API_KEY;
+  const map_api = process.env.NEXT_PUBLIC_API_KEY;
 
   const location = { lat: 6.47169, lng: 3.72878 };
   const mapStyles = {

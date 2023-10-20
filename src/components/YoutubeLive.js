@@ -6,9 +6,8 @@ import fetchYoutubeLive from "../utilities/fetchYoutubeLive";
 const YoutubeLive = () => {
   const [liveVideoId, setLiveVideoId] = useState(null);
 
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   const channelId = "UC-AkcMjz8P7Q_yQC6iS_S2A";
-  console.log("api key loaded from env file: ", apiKey);
   useEffect(() => {
     const getLiveVideo = async () => {
       const videoId = await fetchYoutubeLive(apiKey, channelId);
@@ -22,7 +21,6 @@ const YoutubeLive = () => {
 
   return (
     <div className="w-[100%] h-[100%] flex flex-col justify-center">
-      <h3 className="self-center py-2">Youtube</h3>
       {liveVideoId ? (
         <iframe
           width="100%"
