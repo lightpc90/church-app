@@ -2,7 +2,7 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <div>Youth Forum</div>
+    <div className='mt-[80px]'>Youth Forum</div>
   )
 }
 

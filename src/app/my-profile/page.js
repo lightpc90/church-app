@@ -1,9 +1,7 @@
 import React from 'react'
 
 const Page = () => {
-  return (
-    <div>My profile</div>
-  )
+  return <div className="mt-[80px]">My profile</div>;
 }
 
 export default Page

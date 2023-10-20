@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Page = () => {
-  return (
-    <h2>Blog Page</h2>
-  )
+    return (
+      <div className='mt-[80px]'>
+        <h2>Blog Page</h2>
+      </div>
+    );
 }
 
 export default Page
