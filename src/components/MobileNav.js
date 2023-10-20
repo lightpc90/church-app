@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link';
 
 import { AiTwotoneHome } from 'react-icons/ai'
 import { ImProfile } from 'react-icons/im'
@@ -8,32 +9,94 @@ import { RiEmpathizeFill } from 'react-icons/ri'
 import {BsRocketTakeoffFill} from 'react-icons/bs'
 
 
-const MobileNav = () => {
+const MobileNav = ({openedMenu, setOpenedMenu}) => {
   return (
     <div className="fixed top-[80px] left-0 flex flex-col bg-slate-950 text-white px-5 pt-5 w-screen min-h-screen z-50 overflow-auto">
       <ul className="divide-y">
-        <li className="flex gap-2 pt-5">
-          <span>
-            <AiTwotoneHome />
-          </span>
-          Home
+        <li>
+          <Link
+            className="flex gap-2 pt-5"
+            href="/"
+            onClick={() => setOpenedMenu(false)}
+          >
+            <span>
+              <AiTwotoneHome />
+            </span>
+            Home
+          </Link>
         </li>
-        <li className="flex gap-2 pt-5">
-          <span>
-            <ImProfile />
-          </span>
-          My Profile
+        <li>
+          <Link
+            className="flex gap-2 pt-5"
+            href="/my-profile"
+            onClick={() => setOpenedMenu(false)}
+          >
+            <span>
+              <ImProfile />
+            </span>
+            My Profile
+          </Link>
         </li>
-        <li className="flex gap-2 pt-5">
-          <span>
-            <MdRoundaboutRight />
-          </span>
-          About Us
+        <li>
+          <Link
+            className="flex gap-2 pt-5"
+            href="/about-us"
+            onClick={() => setOpenedMenu(false)}
+          >
+            <span>
+              <MdRoundaboutRight />
+            </span>
+            About Us
+          </Link>
         </li>
-        <li className="flex gap-2 pt-5"><span><MdEventRepeat/></span>Events</li>
-        <li className="flex gap-2 pt-5"><span><FaBlogger/></span>Blog</li>
-        <li className="flex gap-2 pt-5"><span><RiEmpathizeFill/></span>Counselling</li>
-        <li className="flex gap-2 pt-5"><span><BsRocketTakeoffFill/></span>Youth Forum</li>
+        <li>
+          <Link
+            className="flex gap-2 pt-5"
+            href="/events"
+            onClick={() => setOpenedMenu(false)}
+          >
+            <span>
+              <MdEventRepeat />
+            </span>
+            Events
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="flex gap-2 pt-5"
+            href="/blog"
+            onClick={() => setOpenedMenu(false)}
+          >
+            <span>
+              <FaBlogger />
+            </span>
+            Blog
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="flex gap-2 pt-5"
+            href="/counselling"
+            onClick={() => setOpenedMenu(false)}
+          >
+            <span>
+              <RiEmpathizeFill />
+            </span>
+            Counselling
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="flex gap-2 pt-5"
+            href="/youth-forum"
+            onClick={() => setOpenedMenu(false)}
+          >
+            <span>
+              <BsRocketTakeoffFill />
+            </span>
+            Youth Forum
+          </Link>
+        </li>
       </ul>
     </div>
   );

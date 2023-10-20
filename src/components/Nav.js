@@ -70,7 +70,7 @@ const Nav = () => {
         </div>
       </div>
       {/* mobile menu here */}
-      {openedMenu && <MobileNav />}
+          {openedMenu && <MobileNav openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />}
     </div>
   );
 };

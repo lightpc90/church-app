@@ -8,7 +8,7 @@ import YoutubeLive from "@/components/YoutubeLive";
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <section>
         {/* THE HEADER CONTAINER */}
         <div
@@ -168,6 +168,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </Layout>
+    </>
   );
 }

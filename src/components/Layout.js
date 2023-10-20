@@ -11,9 +11,11 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
         <title>RCCG Beautiful Gate</title>
       </Head>
-      <Nav />
-      {children}
-      <Footer />
+      <div className="flex flex-col min-h-screen justify-between">
+        <Nav />
+        {children}
+        <Footer />
+      </div>
     </div>
   );
 };
