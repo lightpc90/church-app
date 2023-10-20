@@ -9,7 +9,7 @@ const RegisterForm = () => {
 
   return (
     <div>
-      <form className="flex flex-col gap-3 mx-4 p-5 my-5">
+      <form className="flex flex-col gap-3 mx-4 p-5 my-5 md:w-[400px]">
         <input
           className="px-2 py-1 rounded-md"
           id="email"
