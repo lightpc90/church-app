@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const fetchYoutubeLive = async (apiKey, channelId) => {
-  console.log("api key: ", apiKey);
   try {
     const response = await axios.get(
       `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&type=video&order=date`

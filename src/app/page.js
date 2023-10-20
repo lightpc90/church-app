@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Carousel from "@/components/carousel";
 import Map from "@/components/Map";
 import YoutubeLive from "@/components/YoutubeLive";
+import SocialMedia from "@/components/SocialMedia";
 
 
 export const metadata = {
@@ -102,6 +103,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Social media icons section */}
+        <div id="socialMedia" className="mt-[50px]"><SocialMedia/></div>
 
         {/* WATCH US LIVE CONTAINER*/}
         <div className="w-screen gap-10 md:gap-10 flex flex-wrap justify-center my-9 md:my-[160px]">

@@ -26,15 +26,17 @@ const YoutubeLive = () => {
           width="100%"
           height="100%"
           src={`https://www.youtube.com/embed/${liveVideoId}`}
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title="YouTube Live Video"
         ></iframe>
       ) : (
-        <p className="self-center py-2">
-          No live video available at the moment.
-        </p>
+        <div className="flex flex-col items-center justify-center">
+          <h3>Youtube</h3>
+          <p >
+            No live video available at the moment.
+          </p>
+        </div>
       )}
     </div>
   );

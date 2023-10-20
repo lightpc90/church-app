@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
+import SocialMedia from './SocialMedia';
 
 import { AiTwotoneHome } from 'react-icons/ai'
 import { ImProfile } from 'react-icons/im'
@@ -11,7 +12,7 @@ import {BsRocketTakeoffFill} from 'react-icons/bs'
 
 const MobileNav = ({openedMenu, setOpenedMenu}) => {
   return (
-    <div className="fixed top-[80px] left-0 flex flex-col bg-slate-950 text-white px-5 pt-5 w-screen min-h-screen z-50 overflow-auto">
+    <div className="fixed top-[80px] left-0 flex flex-col justify-between bg-slate-950 text-white px-5 pt-5 w-screen min-h-screen z-50 overflow-auto">
       <ul className="divide-y">
         <li>
           <Link
@@ -98,6 +99,9 @@ const MobileNav = ({openedMenu, setOpenedMenu}) => {
           </Link>
         </li>
       </ul>
+      <div className='text-white'>
+        <SocialMedia />
+      </div>
     </div>
   );
 }
