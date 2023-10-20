@@ -7,10 +7,17 @@ const RegisterForm = () => {
         email: '', password: '', confirmPass: ''
     })
 
+    const handleSubmit = () => {
+        // send form data to backend for validation and registration
+    }
+
   return (
     <div>
-      <form className="flex flex-col gap-3 mx-4 p-5 my-5 md:w-[400px]">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 p-5 my-5 md:w-[400px]">
         <input
+          onChange={(e) => {
+            setFormData({ ...formData, email: e.target.value });
+          }}
           className="px-2 py-1 rounded-md"
           id="email"
           type="email"
@@ -18,6 +25,9 @@ const RegisterForm = () => {
           placeholder="Email"
         />
         <input
+          onChange={(e) => {
+            setFormData({ ...formData, password: e.target.value });
+          }}
           className="px-2 py-1 rounded-md"
           id="password"
           type="password"
@@ -25,13 +35,18 @@ const RegisterForm = () => {
           placeholder="Password"
         />
         <input
+          onChange={(e) => {
+            setFormData({ ...formData, confirmPass: e.target.value });
+          }}
           className="px-2 py-1 rounded-md"
           id="confirmpassword"
           type="password"
           value={formData.confirmPass}
           placeholder="Confirm password"
         />
-        <submit className='flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white'>Submit</submit>
+        <submit className="flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white">
+          Submit
+        </submit>
       </form>
     </div>
   );
