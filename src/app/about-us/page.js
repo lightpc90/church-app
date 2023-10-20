@@ -2,7 +2,7 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <div className='mt-[80px]'>About Us Page</div>
+    <div className='mt-[80px] min-h-[400px]'>About Us Page</div>
   )
 }
 
