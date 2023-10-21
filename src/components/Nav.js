@@ -49,7 +49,7 @@ const Nav = () => {
         </div>
 
         {/* Login and toggle menu */}
-        <div className="flex justify-center md:text-xl items-center">
+        <div className="flex justify-center md:text-xl items-center mr-4">
           <Link href="/login">
             <button
               onClick={() => setOpenedMenu(false)}
