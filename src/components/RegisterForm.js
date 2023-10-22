@@ -14,7 +14,6 @@ const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("from submit button: ",formData)
         // send form data to backend for validation and registration
     }
 
@@ -27,7 +26,6 @@ const RegisterForm = () => {
         <input
           onChange={(e) => {
             setFormData({ ...formData, email: e.target.value });
-            console.log(formData);
           }}
           className="px-2 py-1 rounded-md"
           id="email"
@@ -38,7 +36,6 @@ const RegisterForm = () => {
         <input
           onChange={(e) => {
             setFormData({ ...formData, phone: e.target.value });
-            console.log(formData);
           }}
           className="px-2 py-1 rounded-md"
           id="phone"
@@ -50,7 +47,6 @@ const RegisterForm = () => {
         <input
           onChange={(e) => {
             setFormData({ ...formData, firstName: e.target.value });
-            console.log(formData);
           }}
           className="px-2 py-1 rounded-md"
           id="firstName"
@@ -62,7 +58,6 @@ const RegisterForm = () => {
         <input
           onChange={(e) => {
             setFormData({ ...formData, lastName: e.target.value });
-            console.log(formData);
           }}
           className="px-2 py-1 rounded-md"
           id="lastName"
@@ -74,7 +69,6 @@ const RegisterForm = () => {
         <input
           onChange={(e) => {
             setFormData({ ...formData, password: e.target.value });
-            console.log(formData)
           }}
           className="px-2 py-1 rounded-md"
           id="password"
@@ -85,7 +79,6 @@ const RegisterForm = () => {
         <input
           onChange={(e) => {
             setFormData({ ...formData, confirmPass: e.target.value });
-            console.log(formData);
           }}
           className="px-2 py-1 rounded-md"
           id="confirmpassword"
