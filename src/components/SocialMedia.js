@@ -9,16 +9,16 @@ const SocialMedia = () => {
   return (
     <div className='flex flex-col gap-3 justify-center'>
       <p>Connect With Us on Our Social Media</p>
-      <div className="flex gap-5 md:gap-14 items-center justify-center">
-        <h4 className="shadow-md md:text-6xl">
+      <div className="flex gap-10 md:gap-14 items-center justify-center">
+        <h2 className="shadow-md md:text-6xl">
           <FaInstagramSquare />
-        </h4>
-        <h4 className="shadow-md md:text-6xl">
+        </h2>
+        <h2 className="shadow-md md:text-6xl">
           <TfiYoutube />
-        </h4>
-        <h4 className="shadow-md md:text-6xl">
+        </h2>
+        <h2 className="shadow-md md:text-6xl">
           <ImFacebook2 />
-        </h4>
+        </h2>
       </div>
     </div>
   );

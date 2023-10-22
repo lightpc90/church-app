@@ -60,7 +60,7 @@ export default function Home() {
           </h1>
           {/* Sunday service container */}
           <div
-            className="flex flex-col py-10 h-96 md:h-[500px] md:w-5/12 w-full p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
+            className="flex flex-col py-10 h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/sunday_worship.jpg')" }}
           >
             <h1 className="text-2xl font-bold font-mono">
@@ -77,7 +77,7 @@ export default function Home() {
           </div>
 
           <div
-            className="h-96 md:h-[500px] md:w-5/12 w-full border-r-1-2 p-5  text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
+            className="h-80 md:h-[500px] md:w-5/12 w-10/12 border-r-1-2 p-5  text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/word.jpg')" }}
           >
             <h1 className="text-2xl font-bold font-mono">
@@ -90,7 +90,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="h-96 md:h-[500px] md:w-5/12 w-full p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
+            className="h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/man_praying.jpg')" }}
           >
             <h1 className="text-2xl font-bold font-mono">
@@ -127,7 +127,7 @@ export default function Home() {
             Special Programmes
           </h3>
           <div
-            className="h-96 md:h-[500px] md:w-5/12 w-full p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
+            className="h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/youth_sunday.jpg')" }}
           >
             <div className="flex flex-col gap-5 md:p-10 font-mono">
@@ -136,7 +136,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="h-96 md:h-[500px] md:w-5/12 w-full border-r-1-2 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
+            className="h-80 md:h-[500px] md:w-5/12 w-10/12 border-r-1-2 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/good_morning_holy_spirit1.jpg')" }}
           >
             <div className="flex flex-col gap-5 md:p-10 font-mono">
@@ -145,7 +145,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="h-96 md:h-[500px] md:w-5/12 w-full p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
+            className="h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/holy_communion_bg.jpg')" }}
           >
             <div className="flex flex-col gap-5 md:p-10 font-mono">
