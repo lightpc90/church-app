@@ -13,7 +13,7 @@ import {FaUserTag} from 'react-icons/fa'
 
 const MobileNav = ({openedMenu, setOpenedMenu}) => {
   return (
-    <div className="fixed top-[80px] left-0 flex flex-col justify-between bg-slate-950 text-white px-5 pt-5 w-screen min-h-screen z-50 overflow-auto">
+    <div className="fixed top-[80px] left-0 flex flex-col justify-between bg-slate-950 text-white px-5 pt-5 w-screen h-screen z-50 overflow-auto">
       <div>
         <ul className="divide-y">
           <li>
