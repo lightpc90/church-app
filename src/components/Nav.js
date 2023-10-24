@@ -34,13 +34,13 @@ const Nav = () => {
               <Link href="/">Home</Link>
             </li>
             <li className=" hover:font-medium">
-              <Link href="/About">About</Link>
+              <Link href="/about-us">About</Link>
             </li>
             <li className=" hover:font-medium">
-              <Link href="/Testimonies">Testimonies</Link>
+              <Link href="/testimonies">Testimonies</Link>
             </li>
             <li className=" hover:font-medium">
-              <Link href="/Events">Events</Link>
+              <Link href="/events">Events</Link>
             </li>
             <li className=" hover:font-medium">
               <Link href="/workers/attendance">Workers Attendance</Link>
