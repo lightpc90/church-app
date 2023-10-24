@@ -35,7 +35,7 @@ const Searchworkers = () => {
         <input
           type="text"
           placeholder="Search for a worker by name"
-          className="mb-2 py-1 px-2 rounded-md w-[300px] border-2 border-[#04042b]"
+          className="mb-2 py-1 px-2 rounded-md w-[300px] border-2 border-[#04042b] text-black"
         />
       </section>
       {/* section to display the search result */}
