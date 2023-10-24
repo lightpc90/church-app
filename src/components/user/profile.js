@@ -27,7 +27,7 @@ const Profile = () => {
           
       <section className="my-2">
         <h6>Your Contents</h6>
-        <p>Blogs and Stories you have posted</p>
+        <p>Blogs and Stories you have posted show here</p>
       </section>
     </div>
   );
