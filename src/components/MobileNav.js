@@ -5,7 +5,7 @@ import SocialMedia from './SocialMedia';
 import { AiTwotoneHome } from 'react-icons/ai'
 import { ImProfile } from 'react-icons/im'
 import { MdEventRepeat, MdRoundaboutRight } from "react-icons/md";
-import { FaBlogger } from 'react-icons/fa'
+import { IoIosBookmarks } from "react-icons/io";
 import { RiEmpathizeFill } from 'react-icons/ri'
 import {BsRocketTakeoffFill} from 'react-icons/bs'
 
@@ -65,13 +65,13 @@ const MobileNav = ({openedMenu, setOpenedMenu}) => {
         <li>
           <Link
             className="flex gap-2 pt-5"
-            href="/blog"
+            href="/workers/attendance"
             onClick={() => setOpenedMenu(false)}
           >
             <span>
-              <FaBlogger />
+              <IoIosBookmarks />
             </span>
-            Blog
+            Workers Attendance
           </Link>
         </li>
         <li>
@@ -99,7 +99,7 @@ const MobileNav = ({openedMenu, setOpenedMenu}) => {
           </Link>
         </li>
       </ul>
-      <div className='text-white'>
+      <div className="text-white">
         <SocialMedia />
       </div>
     </div>

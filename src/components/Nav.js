@@ -22,7 +22,7 @@ const Nav = () => {
               <li className="w-[65px] md:w-[80px]">
                 <Image src={logo} alt="rccg logo" />
               </li>
-              <li>Beautiful Gate, Lakowe</li>
+              <li className="md:text-[17px]">Beautiful Gate, Lakowe</li>
             </ul>
           </Link>
         </div>
@@ -43,7 +43,7 @@ const Nav = () => {
               <Link href="/Events">Events</Link>
             </li>
             <li className=" hover:font-medium">
-              <Link href="/Stories">Stories</Link>
+              <Link href="/workers/attendance">Workers Attendance</Link>
             </li>
           </ul>
         </div>

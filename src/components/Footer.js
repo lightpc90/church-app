@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -18,25 +19,54 @@ const Footer = () => {
           {/* links at the left */}
           <div>
             <ul className="flex flex-col gap-2 md:gap-8">
-              <li>Media</li>
-              <li>Upcoming</li>
-              <li>Watch Us Live</li>
-              <li>Sermons</li>
-              <li>Youtube</li>
-              <li>Facebook</li>
+              <li>
+                <Link href='/'>Gallery</Link>
+              </li>
+              <li>
+                <Link href='/'>Upcoming Events</Link>
+              </li>
+              <li>
+                <Link href='/'>Watch Us Live</Link>
+              </li>
+              <li>
+                <Link href='/'>Sermons</Link>
+              </li>
+              <li>
+                <Link href='/'>Youtube</Link>
+              </li>
+              <li>
+                <Link href='/'>Facebook</Link>
+              </li>
+              <li>
+                <Link href='/'>Instagram</Link>
+              </li>
             </ul>
           </div>
 
           {/* links at the right  */}
           <div>
             <ul className="flex flex-col gap-2 md:gap-8">
-              <li>Home</li>
-              <li>Contact</li>
-              <li>About</li>
-              <li>Testimonies</li>
-              <li>Blog</li>
-              <li>Devotions</li>
-              <li>Events</li>
+              <li>
+                <Link href='/'>Home</Link>
+              </li>
+              <li>
+                <Link href='/'>Contact</Link>
+              </li>
+              <li>
+                <Link href='/'>About</Link>
+              </li>
+              <li>
+                <Link href='/'>Testimonies</Link>
+              </li>
+              <li>
+                <Link href='/'>Blog</Link>
+              </li>
+              <li>
+                <Link href='/'>Devotions</Link>
+              </li>
+              <li>
+                <Link href='/'>Prayer Request</Link>
+              </li>
             </ul>
           </div>
         </div>
