@@ -13,6 +13,7 @@ const Page = () => {
     return (
       <div className="mt-[80px] mx-[20px] md:mx-[70px]">
         <h4>Admin Dashboard</h4>
+        <h6 className="text-[#666674]">Church Database Management</h6>
 
         {/* profile section card*/}
         <section className="bg-[#060633] px-10 rounded-xl shadow-xl text-white">
