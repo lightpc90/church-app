@@ -27,6 +27,7 @@ const UpdateSlider = () => {
             </button>
         </section>
       {/* section to display the search result */}
+      <p>Slider Images</p>
       <section className="flex flex-col mb-2 h-[200px] justify-center items-center overflow-auto border-2 rounded-xl border-[#04042b] w-full">
         Existing Images show here
       </section>

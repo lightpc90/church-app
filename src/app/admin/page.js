@@ -3,6 +3,8 @@ import Searchworkers from "@/components/admin/Searchworkers"
 import RegisterForm from "@/components/RegisterForm";
 import UpdateSlider from "@/components/admin/updateSlider";
 import AltarCallFormOrFirstTimer from "@/components/AltarCallFormOrFirstTimer";
+import UpdateGallery from "@/components/admin/UpdateGallery";
+import UpdateEvents from "@/components/admin/UpdateEvents";
 
 const Page = () => {
     return (
@@ -39,10 +41,16 @@ const Page = () => {
         </section>
 
         {/* Manage website contents */}
-        <section className="flex flex-col justify-center items-center my-2">
+        <section className="flex flex-col justify-center gap-2 items-center my-2">
           <h6>Website Contents Management</h6>
           <div className="bg-[#172554] p-5 rounded-xl shadow-xl w-full">
             <UpdateSlider />
+          </div>
+          <div className="bg-[#172554] p-5 rounded-xl shadow-xl w-full">
+            <UpdateGallery/>
+          </div>
+          <div className="bg-[#172554] p-5 rounded-xl shadow-xl w-full">
+            <UpdateEvents/>
           </div>
         </section>
       </div>

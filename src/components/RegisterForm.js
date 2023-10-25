@@ -18,10 +18,10 @@ const RegisterForm = () => {
     }
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center text-white">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-3 mx-4 pt-5 md:w-[400px]"
+        className="flex flex-col gap-3 mx-4 w-full pt-5 md:w-[400px]"
       >
         <input
           onChange={(e) => {
@@ -86,7 +86,10 @@ const RegisterForm = () => {
           value={formData.confirmPass}
           placeholder="Confirm password"
         />
-        <button type='submit' className="flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white">
+        <button
+          type="submit"
+          className="flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white"
+        >
           Register
         </button>
       </form>
