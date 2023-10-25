@@ -87,7 +87,7 @@ const RegisterForm = () => {
           placeholder="Confirm password"
         />
         <button type='submit' className="flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white">
-          Submit
+          Register
         </button>
       </form>
     </div>

@@ -69,7 +69,7 @@ const LoginForm = () => {
         />
         <p className="text-[blue]">Forgot Password?</p>
         <submit className="flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white">
-          Submit
+          Login
         </submit>
       </form>
     </div>
