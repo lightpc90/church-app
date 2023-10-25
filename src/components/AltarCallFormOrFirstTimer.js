@@ -1,13 +1,17 @@
-import React from 'react'
+'use client'
+
+import { useState } from 'react'
 
 const AltarCallFormOrFirstTimer = () => {
   const [isAltarCall, setIsAltarCall] = useState(false)
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
-        phone: '',
+      phone: '',
+        redeemMember: '',
         email: '',
-        address: ''
+      address: '',
+        gender: '',
     })
 
     const handleSubmit = (e) => {
@@ -15,15 +19,15 @@ const AltarCallFormOrFirstTimer = () => {
       e.preventDefault()
     }
   return (
-    <div>
-      <div className="flex justify-around">
-        <p onClick={() => setIsAltarCall(false)}>First Timer Form</p>
-        <p onClick={() => setIsAltarCall(true)}>Altar Call Form</p>
+    <div className="flex flex-col justify-center items-center text-white">
+      <div className="flex gap-10 my-5">
+        <p onClick={() => setIsAltarCall(false)}>First Timer Form?</p>
+        <p onClick={() => setIsAltarCall(true)}>Altar Call Form?</p>
       </div>
       {isAltarCall ? <h6>Altar Call Form</h6> : <h6>First Timer Form</h6>}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-3 mx-4 pt-5 md:w-[400px]"
+        className="flex flex-col gap-3 mx-4 pt-5 w-full md:w-[400px] text-black"
       >
         <input
           onChange={(e) => {
@@ -59,17 +63,17 @@ const AltarCallFormOrFirstTimer = () => {
           required
         />
         {!isAltarCall && (
-          <input
+          <select
+            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400"
+            value={formData.redeemMember}
             onChange={(e) => {
-              setFormData({ ...formData, phone: e.target.value });
+              setFormData({ ...formData, redeemMember: e.target.value });
             }}
-            className="px-2 py-1 rounded-md"
-            id="phone"
-            type="number"
-            value={formData.phone}
-            placeholder="Phone Number"
-            required
-          />
+          >
+            <option value="">Are You a Redeem Member?</option>
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+          </select>
         )}
         <input
           onChange={(e) => {
@@ -91,6 +95,17 @@ const AltarCallFormOrFirstTimer = () => {
           value={formData.address}
           placeholder="Residential Address"
         />
+        <select
+          className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400"
+          value={formData.gender}
+          onChange={(e) => {
+            setFormData({ ...formData, gender: e.target.value });
+          }}
+        >
+          <option value="">Gender</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
 
         <button
           type="submit"
