@@ -8,6 +8,7 @@ const UpdateEvents = () => {
         eventImage: null,
         eventName: '',
         eventDescription: '',
+        eventRegLink: '',
         eventDate: ''
     })
 
@@ -39,6 +40,7 @@ const UpdateEvents = () => {
           type="text"
           value={formData.eventName}
           placeholder="Event Name"
+          required
         />
         <input
           onChange={(e) => {
@@ -51,11 +53,26 @@ const UpdateEvents = () => {
           placeholder="Event Description"
         />
         <input
+          onChange={(e) => {
+            setFormData({ ...formData, eventRegLink: e.target.value });
+          }}
+          className="px-2 py-1 rounded-md text-black"
+          id="eventRegLink"
+          type="text"
+          value={formData.eventRegLink}
+          placeholder="Event Registration Link"
+        />
+        <div className="flex gap-2">
+          <p>Choose Event Date</p>
+          <input
             type="date"
             value={formData.eventDate}
-            onChange={(e)=>{setFormData({...formData, eventDate: e.target.value})}}
-          className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
-        />
+            onChange={(e) => {
+              setFormData({ ...formData, eventDate: e.target.value });
+            }}
+            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
+          />
+        </div>
 
         <button
           className="bg-[blue] py-1 rounded-xl shadow-xl"

@@ -5,6 +5,9 @@ import UpdateSlider from "@/components/admin/updateSlider";
 import AltarCallFormOrFirstTimer from "@/components/AltarCallFormOrFirstTimer";
 import UpdateGallery from "@/components/admin/UpdateGallery";
 import UpdateEvents from "@/components/admin/UpdateEvents";
+import ViewAttendance from "@/components/admin/ViewAttendance";
+import ViewPrayerReqest from "@/components/admin/ViewPrayerReqest";
+import ViewTestimonies from "@/components/admin/ViewTestimonies";
 
 const Page = () => {
     return (
@@ -47,11 +50,25 @@ const Page = () => {
             <UpdateSlider />
           </div>
           <div className="bg-[#172554] p-5 rounded-xl shadow-xl w-full">
-            <UpdateGallery/>
+            <UpdateGallery />
           </div>
           <div className="bg-[#172554] p-5 rounded-xl shadow-xl w-full">
-            <UpdateEvents/>
+            <UpdateEvents />
           </div>
+        </section>
+        {/* Testimonies and prayer request views section */}
+        <section className="flex flex-col justify-center gap-2 items-center my-2">
+          <h6>Testimonies and Prayer Requests</h6>
+          <div className="bg-[#172554] p-5 rounded-xl shadow-xl w-full">
+            <ViewTestimonies />
+          </div>
+          <div className="bg-[#172554] p-5 rounded-xl shadow-xl w-full">
+            <ViewPrayerReqest />
+          </div>
+        </section>
+        {/* Attendance view section */}
+        <section className="flex flex-col justify-center gap-2 items-center my-2">
+          <ViewAttendance/>
         </section>
       </div>
     );
