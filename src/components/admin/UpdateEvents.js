@@ -5,11 +5,13 @@ import { useState } from "react";
 const UpdateEvents = () => {
   
     const [formData, setFormData] = useState({
-        eventImage: null,
-        eventName: '',
-        eventDescription: '',
-        eventRegLink: '',
-        eventDate: ''
+      eventImage: null,
+      eventName: '',
+      eventDescription: '',
+      eventRegLink: '',
+      eventDate: new Date(),
+      eventTime: new Date().getTime()
+        
     })
 
   const handleSubmit = () => {
@@ -69,6 +71,17 @@ const UpdateEvents = () => {
             value={formData.eventDate}
             onChange={(e) => {
               setFormData({ ...formData, eventDate: e.target.value });
+            }}
+            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
+          />
+        </div>
+        <div className="flex gap-2">
+          <p>Choose Event Time</p>
+          <input
+            type="time"
+            value={formData.eventTime}
+            onChange={(e) => {
+              setFormData({ ...formData, eventTime: e.target.value });
             }}
             className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
           />
