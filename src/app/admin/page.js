@@ -21,7 +21,7 @@ const Page = () => {
           <Profile />
         </section>
 
-        <div className="w-full md:absolute md:top-0 md:left-[210px] md:h-screen md:w-10/12 md:overflow-auto  bg-[#f0f9ff] px-3 md:px-10 rounded-xl md:rounded-none shadow-xl flex flex-wrap justify-between">
+        <div className="w-full md:absolute md:top-0 md:left-[210px] md:h-screen md:w-[90%] md:overflow-auto py-4  bg-[#f0f9ff] px-3 md:px-10 rounded-xl md:rounded-none shadow-xl flex flex-wrap justify-between">
           <div className="hidden md:flex flex-col w-screen">
             <h4>Admin Dashboard</h4>
             <h6 className="text-[#666674]">Church Database Management</h6>
