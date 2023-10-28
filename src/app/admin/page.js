@@ -11,8 +11,8 @@ import ViewTestimonies from "@/components/admin/ViewTestimonies";
 
 const Page = () => {
     return (
-      <div className="my-[100px] md:mt-[80px] md:mb-[940px] md:mx-[20px] relative flex flex-wrap justify-between gap-2 ">
-        <div className=" md:hidden w-screen p-2">
+      <div className="my-[100px] md:mt-[80px] md:mb-[940px] relative flex flex-wrap justify-between gap-2 w-full">
+        <div className=" md:hidden w-full p-2">
           <h4>Admin Dashboard</h4>
           <h6 className="text-[#666674]">Church Database Management</h6>
         </div>
@@ -21,7 +21,7 @@ const Page = () => {
           <Profile />
         </section>
 
-        <div className="w-full md:absolute md:top-0 md:left-[210px] md:h-screen md:w-[90%] md:overflow-auto py-4  bg-[#f0f9ff] px-3 md:px-10 rounded-xl md:rounded-none shadow-xl flex flex-wrap justify-between">
+        <div className="w-full md:absolute md:top-0 md:left-[210px] md:h-screen md:w-[88%] md:overflow-auto py-4  bg-[#f0f9ff] px-3 md:px-10 rounded-xl md:rounded-none shadow-xl flex flex-wrap justify-between">
           <div className="hidden md:flex flex-col w-screen">
             <h4>Admin Dashboard</h4>
             <h6 className="text-[#666674]">Church Database Management</h6>
@@ -38,7 +38,7 @@ const Page = () => {
 
             {/* Register a User */}
             <section className="flex flex-col grow justify-center items-center bg-[#e0f2fe] p-2 md:p-5 rounded-md border-2 w-full md:max-w-[40%]">
-              <h6>Register a User</h6>
+              <h6>Register User</h6>
               <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl w-full">
                 <RegisterForm />
               </div>
