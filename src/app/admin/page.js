@@ -11,7 +11,7 @@ import ViewTestimonies from "@/components/admin/ViewTestimonies";
 
 const Page = () => {
     return (
-      <div className="my-[100px] md:mt-[80px] md:mb-[940px] relative flex flex-wrap justify-between gap-2 w-screen">
+      <div className="my-[100px] md:mt-[80px] md:mb-[940px] md:relative flex flex-wrap justify-between gap-2 w-screen">
         <div className=" md:hidden w-full p-2">
           <h4>Admin Dashboard</h4>
           <h6 className="text-[#666674]">Church Database Management</h6>
