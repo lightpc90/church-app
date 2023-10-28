@@ -20,14 +20,14 @@ const UpdateGallery = () => {
       <section className="flex flex-col gap-2 w-full">
         <input type="file" onChange={handleFileInputChange} />
         <button
-          className="bg-[blue] py-1 rounded-xl shadow-xl"
+          className="bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#a5b4fc] hover:to-[#172554] py-1 rounded-xl shadow-xl"
           onClick={handleUpload}
         >
           Upload
         </button>
       </section>
-          {/* section to display the search result */}
-          <p>Gallery Images</p>
+      {/* section to display the search result */}
+      <p>Gallery Images</p>
       <section className="flex flex-col mb-2 h-[200px] justify-center items-center overflow-auto border-2 rounded-xl border-[#04042b] w-full">
         Gallery Images show here
       </section>

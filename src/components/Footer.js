@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
       <div
         className={
-          "flex flex-col justify-between min-h-[660px] md:min-h-[1200px] py-10 px-5 bg-slate-900 text-white font-sans text-xl content-center"
+          "flex flex-col justify-between h-[660px] md:h-[1200px] overflow-auto py-10 px-5 bg-slate-900 text-white font-sans text-xl content-center"
         }
       >
         <div>

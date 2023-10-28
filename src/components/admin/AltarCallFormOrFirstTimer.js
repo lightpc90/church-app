@@ -109,7 +109,7 @@ const AltarCallFormOrFirstTimer = () => {
 
         <button
           type="submit"
-          className="flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white"
+          className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#a5b4fc] hover:to-[#172554] text-white"
         >
           Submit
         </button>
