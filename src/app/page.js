@@ -25,7 +25,7 @@ export default function Home() {
         {/* <div className=" min-h-unit-24 p-8 m-5 "></div> */}
 
         {/* CHURCH SERVICES SECTION */}
-        <div className="flex flex-wrap justify-center content-center items-center gap-3 md:gap-10 my-9">
+        <div className="flex flex-wrap justify-center content-center items-center gap-3 lg:gap-10 my-9">
           <div>
             <h6 className="w-screen text-center text-[#808081]">
               Fellowship With Us
@@ -90,12 +90,12 @@ export default function Home() {
               Watch Us Live
             </h1>
           </div>
-          <div className=" h-80 md:h-[500px] md:w-5/12 w-full text-white  bg-slate-900">
+          <div className=" h-80 md:h-[500px] md:w-11/12 lg:w-5/12 w-full text-white  bg-slate-900">
             <YoutubeLive />
           </div>
-          <div className="flex justify-center items-center h-80 md:h-[500px] md:w-5/12 w-full text-white bg-slate-900">
+          {/* <div className="flex justify-center items-center h-80 md:h-[500px] md:w-5/12 w-full text-white bg-slate-900">
             <h3>Facebook Live Video</h3>
-          </div>
+          </div> */}
         </div>
 
         {/* SPECIAL PROGRAMMES */}
@@ -158,7 +158,7 @@ export default function Home() {
               Get Direction
             </h4>
           </div>
-          <div className="h-[500px] w-full md:w-6/12 bg-slate-900 py-3 my-5">
+          <div className="h-[500px] w-full md:w-11/12 lg:w-6/12 bg-slate-900 py-3 my-5">
             <Map />
           </div>
         </div>
