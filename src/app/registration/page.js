@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 import RegisterForm from '@/components/RegisterForm';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: "Registration",
@@ -10,16 +11,21 @@ export const metadata = {
 
 const Page = () => {
   return (
-    <div className="flex flex-col justify-center items-center mt-[80px] min-h-[400px]">
-      <h4>Registration Page</h4>
-      <RegisterForm />
-      <p>
-        Already Registered?{" "}
-        <span>
-          <Link className='font-bold' href='/login'>Login</Link>
-        </span>
-      </p>
-    </div>
+    <>
+      <div className="flex flex-col justify-center items-center mt-[80px] min-h-[400px]">
+        <h4>Registration Page</h4>
+        <RegisterForm />
+        <p>
+          Already Registered?{" "}
+          <span>
+            <Link className="font-bold" href="/login">
+              Login
+            </Link>
+          </span>
+        </p>
+      </div>
+      <Footer/>
+    </>
   );
 }
 

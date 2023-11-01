@@ -1,6 +1,6 @@
 /* FadingBackground.module.css */
 .fadingBackground {
-  animation: fadeInOut 4s ease-in-out infinite; /* Duration: 5 seconds, Ease in and out timing function */
+  animation: fadeInOut 5s ease-in-out infinite; /* Duration: 5 seconds, Ease in and out timing function */
 }
 
 

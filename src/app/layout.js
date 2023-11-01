@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Beautiful Gate App',
-  description: 'Website and Data Management System',
+  description: 'Church Website and Data Management System',
 }
 
 export default function RootLayout({ children }) {

@@ -41,7 +41,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-[90px] md:h-[300px] md:my-56">
+    <div className="flex flex-col justify-center items-center w-screen h-[90px] md:h-[300px] my-16 lg:my-56">
       {images.map((image, index) => (
         <motion.img
           key={index}

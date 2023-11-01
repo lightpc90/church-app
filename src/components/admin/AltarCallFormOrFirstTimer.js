@@ -21,8 +21,8 @@ const AltarCallFormOrFirstTimer = () => {
   return (
     <div className="flex flex-col justify-center items-center text-white">
       <div className="flex gap-10 my-5">
-        <p onClick={() => setIsAltarCall(false)}>First Timer Form?</p>
-        <p onClick={() => setIsAltarCall(true)}>Altar Call Form?</p>
+        <p onClick={() => setIsAltarCall(false)}>First Timer Form</p>
+        <p onClick={() => setIsAltarCall(true)}>Altar Call Form</p>
       </div>
       {isAltarCall ? <h6>Altar Call Form</h6> : <h6>First Timer Form</h6>}
       <form

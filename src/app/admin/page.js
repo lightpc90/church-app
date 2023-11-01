@@ -1,3 +1,5 @@
+'use client'
+
 import Profile from "@/components/user/profile"
 import Searchworkers from "@/components/admin/Searchworkers"
 import RegisterForm from "@/components/RegisterForm";
@@ -8,84 +10,174 @@ import UpdateEvents from "@/components/admin/UpdateEvents";
 import ViewAttendance from "@/components/admin/ViewAttendance";
 import ViewPrayerReqest from "@/components/admin/ViewPrayerReqest";
 import ViewTestimonies from "@/components/admin/ViewTestimonies";
+import Sidebar from "@/components/admin/Sidebar";
+
+import { useState } from "react";
 
 const Page = () => {
+  const [profile, setProfile] = useState(true)
+  const [attendance, setAttendance] = useState(false)
+  const [regUser, setRegUser] = useState(false)
+  const [stat, setStat] = useState(false)
+  const [contentMgt, setContentMgt] = useState(false)
+  const [prayerReq, setPrayerReq] = useState(false)
+  const [testimony, setTestimony] = useState(false)
+
+  const handleProfileClick = () => {
+    setAttendance(false)
+    setRegUser(false)
+    setStat(false)
+    setContentMgt(false)
+    setPrayerReq(false)
+    setTestimony(false)
+    setProfile(true)
+  }
+  const handleStatsClick = () => {
+    setProfile(false)
+    setAttendance(false)
+    setRegUser(false) 
+    setContentMgt(false)
+    setPrayerReq(false)
+    setTestimony(false)
+    setStat(true)
+  }
+  const handleAttendanceClick = () => {
+    setProfile(false)
+    setStat(false)
+    setRegUser(false)
+    setContentMgt(false)
+    setPrayerReq(false)
+    setTestimony(false)
+    setAttendance(true)
+  }
+  const handleRegUsersClick = () => {
+    setProfile(false)
+    setStat(false)
+    setAttendance(false)
+    setContentMgt(false)
+    setPrayerReq(false)
+    setTestimony(false)
+    setRegUser(true)
+  }
+  const handleContentMgtClick = () => {
+    setProfile(false)
+    setStat(false)
+    setAttendance(false)
+    setRegUser(false)
+    setPrayerReq(false)
+    setTestimony(false)
+    setContentMgt(true)
+  }
+  const handlePrayerReqClick = () => {
+    setProfile(false)
+    setStat(false)  
+    setAttendance(false)
+    setRegUser(false)
+    setContentMgt(false)
+    setTestimony(false)
+    setPrayerReq(true)
+  }
+  const handleTestimonyClick = () => {
+    setProfile(false)
+    setStat(false)
+    setAttendance(false)
+    setRegUser(false)
+    setContentMgt(false)
+    setPrayerReq(false)
+    setTestimony(true)
+  }
+  
     return (
-      <div className="my-[100px] md:mt-[80px] md:mb-[940px] md:relative flex flex-wrap justify-between gap-2 w-screen">
-        <div className=" md:hidden w-full p-2">
-          <h4>Admin Dashboard</h4>
-          <h6 className="text-[#666674]">Church Database Management</h6>
-        </div>
-        {/* profile section card*/}
-        <section className="w-full md:absolute md:top-0 md:left-0 md:h-screen md:overflow-auto  bg-[#060633] px-10 rounded-xl md:rounded-none md:w-[200px] shadow-xl text-white">
-          <Profile />
-        </section>
-
-        <div className="w-full md:absolute md:top-0 md:left-[210px] md:h-screen md:w-[88%] md:overflow-auto py-4  bg-[#f0f9ff] px-3 md:px-10 rounded-xl md:rounded-none shadow-xl flex flex-wrap justify-between">
-          <div className="hidden md:flex flex-col w-screen">
-            <h4>Admin Dashboard</h4>
-            <h6 className="text-[#666674]">Church Database Management</h6>
+      <div className="mt-[80px]">
+        <Sidebar
+          handleProfileClick={handleProfileClick}
+          handleStatsClick={handleStatsClick}
+          handleAttendanceClick={handleAttendanceClick}
+          handleRegUsersClick={handleRegUsersClick}
+          handleContentMgtClick={handleContentMgtClick}
+          handlePrayerReqClick={handlePrayerReqClick}
+          handleTestimonyClick={handleTestimonyClick}
+          profile={profile}
+          stat={stat}
+          attendance={attendance}
+          regUser={regUser}
+          contentMgt={contentMgt}
+          prayerReq={prayerReq}
+          testimony={testimony}
+        />
+        <section className="p-2 ml-16 lg:ml-20 min-h-screen">
+          <div className="flex justify-between">
+            <p className="font-bold lg:text-2xl">Admin Dashboard</p>
+            <p className="font-medium md:text-xl">Welcome, Fola</p>
           </div>
-
-          <div className="flex flex-wrap justify-between w-full">
-            {/* search workers */}
-            <section className="flex flex-col grow justify-center items-center bg-[#e0f2fe] p-2 md:p-5 rounded-md border-2 w-full md:max-w-[60%]">
-              <h6>Manage Users</h6>
-              <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] my-2 p-2 md:p-5 rounded-xl shadow-xl text-white w-full">
-                <Searchworkers />
-              </div>
-            </section>
-
-            {/* Register a User */}
-            <section className="flex flex-col grow justify-center items-center bg-[#e0f2fe] p-2 md:p-5 rounded-md border-2 w-full md:max-w-[40%]">
-              <h6>Register User</h6>
-              <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl w-full">
-                <RegisterForm />
-              </div>
-            </section>
-          </div>
-
-          <div className="flex flex-wrap justify-between w-full gap-2">
-            {/* Register Altar Call or First Timer */}
-            <section className="flex flex-wrap grow justify-center gap-5 items-center my-2 bg-[#e0f2fe] p-2 md:p-5 rounded-md border-2">
-              <div className="flex flex-col items-center">
-                <h6>Follow Up Management</h6>
-                <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl w-full">
+          {/* Dashboard components */}
+          <div className="flex flex-wrap justify-center items-center">
+            {/* Profile Board */}
+            {profile && (
+              <>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                  <Profile />
+                </div>
+              </>
+            )}
+            {/* User Management and attendance */}
+            {attendance && (
+              <>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                  <Searchworkers />
+                </div>
+              </>
+            )}
+            {/* Register User */}
+            {regUser && (
+              <>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                  <RegisterForm />
+                </div>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <AltarCallFormOrFirstTimer />
                 </div>
-              </div>
-            </section>
-            {/* Testimonies and prayer request views section */}
-            <section className="flex flex-wrap grow justify-center gap-2 items-center my-2 bg-[#e0f2fe] p-2 md:p-5 rounded-md border-2">
-              <h6>Testimonies and Prayer Requests</h6>
-              <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl w-full">
-                <ViewTestimonies />
-              </div>
-              <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl w-full">
-                <ViewPrayerReqest />
-              </div>
-            </section>
+              </>
+            )}
+            {/* Statistic view */}
+            {stat && (
+              <>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                  <ViewAttendance />
+                </div>
+              </>
+            )}
+            {/* wewb content management */}
+            {contentMgt && (
+              <section className="flex flex-wrap justify-center items-center w-full">
+                <div className="bg-[#bae6fd] w-full md:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
+                  <UpdateSlider />
+                </div>
+                <div className="bg-[#bae6fd] w-full md:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
+                  <UpdateGallery />
+                </div>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 lg:m-20">
+                  <UpdateEvents />
+                </div>
+              </section>
+            )}
+            {/* Prayer requests list view */}
+            {prayerReq && (
+              <>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                  <ViewPrayerReqest />
+                </div>
+              </>
+            )}
+            {testimony && (
+              <>
+                <div className="bg-[#bae6fd] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                  <ViewTestimonies />
+                </div>
+              </>
+            )}
           </div>
-
-          {/* Manage website contents */}
-          <section className="flex flex-wrap justify-between gap-2 items-center my-2 bg-[#e0f2fe] p-2 md:p-5 rounded-md border-2 w-full">
-            <h6 className="w-full">Website Contents Management</h6>
-            <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl grow w-full md:max-w-[73%]">
-              <UpdateSlider />
-            </div>
-            <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl grow-2 w-full md:max-w-[25%]">
-              <UpdateGallery />
-            </div>
-            <div className="bg-gradient-to-tr from-[#7dd3fc] via-[#f0abfc] to-[#0c4a6e] p-2 md:p-5 rounded-xl shadow-xl w-full">
-              <UpdateEvents />
-            </div>
-          </section>
-
-          {/* Attendance view section */}
-          <section className="my-2 w-full">
-            <ViewAttendance />
-          </section>
-        </div>
+        </section>
       </div>
     );
 }
