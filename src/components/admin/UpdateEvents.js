@@ -22,10 +22,10 @@ const UpdateEvents = () => {
   return (
     <div className="flex flex-wrap gap-4 justify-between items-center text-white">
       <h6 className="w-full text-center">Update/Add Events</h6>
-      <div>
-        <section className="flex flex-col gap-2 w-[80%]">
+      
+        <div className="flex flex-col gap-2 w-64">
           <p>Event Flier</p>
-          <form className="flex flex-col justify-center gap-2 w-[100%] ">
+          <form className="flex flex-col gap-2">
             <input
               type="file"
               onChange={(e) =>
@@ -66,7 +66,7 @@ const UpdateEvents = () => {
               value={formData.eventRegLink}
               placeholder="Event Registration Link"
             />
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <p>Choose Event Date</p>
               <input
                 type="date"
@@ -74,10 +74,10 @@ const UpdateEvents = () => {
                 onChange={(e) => {
                   setFormData({ ...formData, eventDate: e.target.value });
                 }}
-                className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
+                className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <p>Choose Event Time</p>
               <input
                 type="time"
@@ -85,19 +85,19 @@ const UpdateEvents = () => {
                 onChange={(e) => {
                   setFormData({ ...formData, eventTime: e.target.value });
                 }}
-                className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
+                className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
               />
             </div>
           </form>
 
           <button
-            className="bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#a5b4fc] hover:to-[#172554] py-1 rounded-xl shadow-xl w-full"
+            className="bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#a5b4fc] hover:to-[#172554] py-1 rounded-xl shadow-xl"
             onClick={handleSubmit}
           >
             Publish Event
           </button>
-        </section>
-      </div>
+        </div>
+      
 
       {/* section to display the search result */}
       <div className="flex flex-col grow">

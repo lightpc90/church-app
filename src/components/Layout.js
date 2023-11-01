@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <div className="flex flex-col min-h-screen justify-between">
         <Nav />
         {children}
-        <Footer />
+        
       </div>
     </div>
   );

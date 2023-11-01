@@ -15,7 +15,7 @@ const UpdateSlider = () => {
     }
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center  text-white w-full">
+    <div className="flex flex-col gap-4 justify-center items-center  text-white ">
       <h6>Update Slider Images Here</h6>
       <section className="flex flex-col gap-2 w-full">
         <input type="file" onChange={handleFileInputChange} />

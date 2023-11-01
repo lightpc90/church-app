@@ -6,6 +6,7 @@ import YoutubeLive from "@/components/YoutubeLive";
 import SocialMedia from "@/components/SocialMedia";
 import Link from "next/link";
 import Header from "@/components/header/Header";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Home",
@@ -163,6 +164,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: "About Us",
@@ -8,8 +9,11 @@ export const metadata = {
 
 const Page = () => {
   return (
-    <div className='mt-[80px] min-h-[400px]'>About Us Page</div>
-  )
+    <>
+      <div className="mt-[80px] min-h-[400px]">About Us Page</div>
+      <Footer/>
+    </>
+  );
 }
 
 export default Page
