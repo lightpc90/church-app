@@ -106,9 +106,15 @@ const Page = () => {
           testimony={testimony}
         />
         <section className="p-2 ml-16 lg:ml-20 min-h-screen">
-          <div className="flex justify-between">
-            <p className="font-bold lg:text-2xl">Admin Dashboard</p>
-            <p className="font-medium md:text-xl">Welcome, Fola</p>
+
+          <div className="flex flex-col justify-between">
+            <p className="font-medium md:text-xl text-end">Hi, Fola</p>
+            <div>
+              <p className="font-bold lg:text-2xl">Admin Dashboard</p>
+              <p className="font-bold text-gray-500">
+                Church Database Management
+              </p>
+            </div>
           </div>
           {/* Dashboard components */}
           <div className="flex flex-wrap justify-center items-center">
@@ -146,21 +152,21 @@ const Page = () => {
             {/* Statistic view */}
             {stat && (
               <>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 md:w-8/12 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <ViewAttendance />
                 </div>
               </>
             )}
             {/* wewb content management */}
             {contentMgt && (
-              <section className="flex flex-wrap justify-center items-center gap-3 w-full">
+              <section className="flex flex-wrap justify-center items-center gap-2 w-full">
                 <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
                   <UpdateSlider />
                 </div>
                 <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
                   <UpdateGallery />
                 </div>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-8/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
                   <UpdateEvents />
                 </div>
               </section>
@@ -168,14 +174,14 @@ const Page = () => {
             {/* Prayer requests list view */}
             {prayerReq && (
               <>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-8/12 p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <ViewPrayerReqest />
                 </div>
               </>
             )}
             {testimony && (
               <>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-8/12 p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <ViewTestimonies />
                 </div>
               </>
