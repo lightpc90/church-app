@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Profile = () => {
   return (
-    <div className="flex flex-col min-h-[200px] my-5">
+    <div className="flex flex-col min-h-[200px] my-5 text-white">
       {/* Profile avatar */}
       <div
         className="flex justify-center items-center h-[110px] w-[110px] rounded-full overflow-hidden bg-[#070749] my-5"

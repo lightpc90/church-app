@@ -28,7 +28,9 @@ const Sidebar = ({
       {/* profile */}
       <div
         onClick={handleProfileClick}
-        className="flex justify-center items-center h-12 w-12 lg:h-16 lg:w-16 rounded-full overflow-hidden bg-gray-100 my-5"
+        className={`flex justify-center cursor-pointer hover:ring-2 hover:ring-purple-700 ${
+          profile && "ring-2 ring-purple-700 shadow-md"
+        } items-center h-10 w-10 lg:h-12 lg:w-12 rounded-full overflow-hidden bg-gray-100 my-5`}
       >
         <Image
           src="/avatar.png"
@@ -41,46 +43,76 @@ const Sidebar = ({
       {/*Mark attendance and Manage User */}
       <div
         onClick={handleAttendanceClick}
-        className=" flex bg-gray-200 rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center"
+        className={`flex bg-gray-200 cursor-pointer hover:ring-2 hover:ring-purple-700 ${
+          attendance && "ring-2 ring-purple-700 shadow-md"
+        } rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center`}
       >
-        <GiNotebook size={30} className="text-blue-800" />
+        <GiNotebook
+          size={30}
+          className={`text-gray-500 ${attendance && "text-purple-700"}`}
+        />
       </div>
       {/* Register User and add follow up */}
       <div
         onClick={handleRegUsersClick}
-        className="flex bg-gray-200 rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center"
+        className={`flex bg-gray-200 cursor-pointer hover:ring-2 hover:ring-purple-700 ${
+          regUser && "ring-2 ring-purple-700 shadow-md"
+        } rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center`}
       >
-        <AiOutlineUsergroupAdd size={30} className="text-blue-800" />
+        <AiOutlineUsergroupAdd
+          size={30}
+          className={`text-gray-500 ${regUser && "text-purple-700"}`}
+        />
       </div>
 
       {/* Attendance Statistics view */}
       <div
         onClick={handleStatsClick}
-        className="flex bg-gray-200 rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center"
+        className={`flex bg-gray-200 cursor-pointer hover:ring-2 hover:ring-purple-700 ${
+          stat && "ring-2 ring-purple-700 shadow-md"
+        } rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center`}
       >
-        <IoIosStats size={30} className="text-blue-800" />
+        <IoIosStats
+          size={30}
+          className={`text-gray-500 ${stat && "text-purple-700"}`}
+        />
       </div>
 
       {/* Web content management */}
       <div
         onClick={handleContentMgtClick}
-        className="flex bg-gray-200 rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center"
+        className={`flex bg-gray-200 cursor-pointer hover:ring-2 hover:ring-purple-700 ${
+          contentMgt && "ring-2 ring-purple-700 shadow-md"
+        } rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center`}
       >
-        <MdOutlineManageHistory size={30} className="text-blue-800" />
+        <MdOutlineManageHistory
+          size={30}
+          className={`text-gray-500 ${contentMgt && "text-purple-700"}`}
+        />
       </div>
       {/* Prayer Request View */}
       <div
         onClick={handlePrayerReqClick}
-        className="flex bg-gray-200 rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center"
+        className={`flex bg-gray-200 cursor-pointer hover:ring-2 hover:ring-purple-700 ${
+          prayerReq && "ring-2 ring-purple-700 shadow-md"
+        } rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center`}
       >
-        <FaPray size={30} className="text-blue-800" />
+        <FaPray
+          size={30}
+          className={`text-gray-500 ${prayerReq && "text-purple-700"}`}
+        />
       </div>
       {/* Testimonies view */}
       <div
         onClick={handleTestimonyClick}
-        className="flex bg-gray-200 rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center"
+        className={`flex bg-gray-200 cursor-pointer hover:ring-2 hover:ring-purple-700 ${
+          testimony && "ring-2 ring-purple-700 shadow-md"
+        } rounded-lg h-10 w-10 lg:h-12 lg:w-12 justify-center items-center`}
       >
-        <GiGiftOfKnowledge size={30} className="text-blue-800" />
+        <GiGiftOfKnowledge
+          size={30}
+          className={`text-gray-500 ${testimony && "text-purple-700"}`}
+        />
       </div>
     </div>
   );
