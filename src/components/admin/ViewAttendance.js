@@ -9,38 +9,38 @@ const ViewAttendance = () => {
   })
   return (
     <div>
-      <section className="flex flex-wrap mb-2 border-2 rounded-xl p-2 md:p-5 w-full">
+      <section className="flex flex-wrap mb-2 text-white border-2 rounded-xl p-2 md:p-5 w-full">
         {/* Attendance Stat Summary */}
         <h5 className="w-full">Attendance Stat</h5>
         <p className="text-[#94a3b8]">{date}</p>
 
         <div className="flex flex-wrap justify-between items-center gap-3 w-full">
           {/* Total data */}
-          <div className="flex justify-between items-center w-full md:w-[30%] bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#8b5cf6] hover:to-[#172554] rounded-xl p-2 shadow-md">
+          <div className="flex justify-between items-center w-full md:w-[30%] bg-gradient-to-tr from-[#082f49] to-[#1e40af] hover:from-[#8b5cf6] hover:to-[#172554] rounded-md p-2 shadow-md">
             <div>
-              <h3 className="text-white">500</h3>
+              <h3>500</h3>
               <p className="text-[#94a3b8]">Total</p>
             </div>
-            <div className="text-white bg-[#0f766e] p-2 rounded-xl">+10%</div>
+            <div className="bg-[#0f766e] p-2 rounded-xl">+10%</div>
           </div>
 
           {/* Male data */}
-          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#8b5cf6] hover:to-[#172554] rounded-xl p-2 shadow-md">
+          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#082f49] to-[#1e40af] hover:from-[#8b5cf6] hover:to-[#172554] rounded-md p-2 shadow-md">
             <div>
-              <h3 className="text-white">210</h3>
+              <h3>210</h3>
               <p className="text-[#94a3b8]">Male</p>
             </div>
-            <div className="text-white bg-[#0f766e] p-2 rounded-xl">+8%</div>
+            <div className=" bg-[#0f766e] p-2 rounded-xl">+8%</div>
           </div>
 
           {/* Female Data */}
-          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#8b5cf6] hover:to-[#172554] rounded-xl p-2 shadow-md">
+          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#082f49] to-[#1e40af] hover:from-[#8b5cf6] hover:to-[#172554] rounded-md p-2 shadow-md">
             <div>
-              <h3 className="text-white">290</h3>
+              <h3>290</h3>
               <p className="text-[#94a3b8]">Female</p>
             </div>
             {/* change data */}
-            <div className="text-white bg-[#f43f5e] p-2 rounded-xl">-4%</div>
+            <div className=" bg-[#f43f5e] p-2 rounded-xl">-4%</div>
           </div>
         </div>
 
@@ -49,7 +49,7 @@ const ViewAttendance = () => {
           <div className="my-3">
             <h6>Stat By Department</h6>
             <select
-              className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400"
+              className="block w-full text-black p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400"
               value={formData.dept}
               onChange={(e) => {
                 setFormData({ ...formData, dept: e.target.value });
@@ -72,15 +72,8 @@ const ViewAttendance = () => {
             </span>
           </h4>
         </div>
-        {/* Last 3 sundays */}
-        <div className="my-3 w-full">
-          <h6>Last 3 Sundays</h6>
-          <div className="flex flex-wrap justify-between">
-            <div>3rd sunday</div>
-            <div>2nd Sunday</div>
-            <div>Last Sunday</div>
-          </div>
-        </div>
+
+        {/* Last 3 sundays Chart*/}
       </section>
     </div>
   );

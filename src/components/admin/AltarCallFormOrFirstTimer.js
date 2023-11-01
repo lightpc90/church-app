@@ -21,8 +21,18 @@ const AltarCallFormOrFirstTimer = () => {
   return (
     <div className="flex flex-col justify-center items-center text-white">
       <div className="flex gap-10 my-5">
-        <p onClick={() => setIsAltarCall(false)}>First Timer Form</p>
-        <p onClick={() => setIsAltarCall(true)}>Altar Call Form</p>
+        <p
+          className="bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
+          onClick={() => setIsAltarCall(false)}
+        >
+          First Timer Form
+        </p>
+        <p
+          className="bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
+          onClick={() => setIsAltarCall(true)}
+        >
+          Altar Call Form
+        </p>
       </div>
       {isAltarCall ? <h6>Altar Call Form</h6> : <h6>First Timer Form</h6>}
       <form
@@ -109,7 +119,7 @@ const AltarCallFormOrFirstTimer = () => {
 
         <button
           type="submit"
-          className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#a5b4fc] hover:to-[#172554] text-white"
+          className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#1e1b4b] to-[#3b0764] hover:from-[#a5b4fc] hover:to-[#172554] text-white"
         >
           Submit
         </button>
