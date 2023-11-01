@@ -115,7 +115,7 @@ const Page = () => {
             {/* Profile Board */}
             {profile && (
               <>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-8/12 p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <Profile />
                 </div>
               </>
@@ -123,7 +123,7 @@ const Page = () => {
             {/* User Management and attendance */}
             {attendance && (
               <>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-8/12 p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <Searchworkers />
                 </div>
               </>
@@ -131,11 +131,11 @@ const Page = () => {
             {/* Register User */}
             {regUser && (
               <>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-8/12 p-3 md:py-10 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <h4 className="text-white text-center">User Registration</h4>
                   <RegisterForm />
                 </div>
-                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full p-3 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#172554] to-[#3b0764] w-full md:w-8/12 p-3 md:py-10 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <h4 className="text-white text-center">
                     Follow Up Forms - First Timer and Altar Call
                   </h4>
