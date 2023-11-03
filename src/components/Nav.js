@@ -37,7 +37,7 @@ const Nav = () => {
               <Link href="/about-us">About</Link>
             </li>
             <li className=" hover:font-medium">
-              <Link href="/testimonies">Testimonies</Link>
+              <Link href="/testimonies">Contact</Link>
             </li>
             <li className=" hover:font-medium">
               <Link href="/events">Events</Link>

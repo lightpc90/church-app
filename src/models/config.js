@@ -1,0 +1,1 @@
+export const uri = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@firstcluster.uk8xcau.mongodb.net/?retryWrites=true&w=majority`

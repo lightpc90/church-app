@@ -23,9 +23,10 @@ const LoginForm = () => {
         <p>
           Login with{" "}
           <span>
-            <button className="text-[blue]"
+            <button
+              className="text-[blue]"
               onClick={(e) => {
-                e.preventDefault()
+                e.preventDefault();
                 setUseEmail(!useEmail);
               }}
             >
@@ -38,7 +39,7 @@ const LoginForm = () => {
             onChange={(e) => {
               setFormData({ ...formData, email: e.target.value });
             }}
-            className="px-2 py-1 rounded-md"
+            className="p-2 rounded-md shadow-md"
             id="email"
             type="email"
             value={formData.email}
@@ -50,7 +51,7 @@ const LoginForm = () => {
             onChange={(e) => {
               setFormData({ ...formData, phone: e.target.value });
             }}
-            className="px-2 py-1 rounded-md"
+            className="p-2 rounded-md shadow-md"
             id="phone"
             type="number"
             value={formData.phone}
@@ -61,14 +62,14 @@ const LoginForm = () => {
           onChange={(e) => {
             setFormData({ ...formData, password: e.target.value });
           }}
-          className="px-2 py-1 rounded-md"
+          className="p-2 rounded-md shadow-md"
           id="password"
           type="password"
           value={formData.password}
           placeholder="Password"
         />
         <p className="text-[blue]">Forgot Password?</p>
-        <submit className="flex py-1 px-2 justify-center rounded-xl bg-slate-950 text-white">
+        <submit className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#1e1b4b] to-[#3b0764] hover:from-[#a5b4fc] hover:to-[#172554] text-white">
           Login
         </submit>
       </form>

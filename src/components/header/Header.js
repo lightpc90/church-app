@@ -27,9 +27,10 @@ const Header = () => {
         >
           <Image
             src={`${backgroundImages[currentIndex]}`}
+            alt={`header_image_${currentIndex}`}
             fill
-            objectFit="cover"
-            className={` bg-center mix-blend-overlay ${styles.fadinBackground}`}
+            
+            className={` bg-center mix-blend-overlay object-cover duration-[3s] ease-in-out ${styles.fadinBackground}`}
           />
           {/* WELCOME TO BEAUTIFUL GATE */}
           <div className=" flex flex-col gap-2 lg:gap-8 mix-blend-lighten ">

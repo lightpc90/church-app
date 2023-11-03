@@ -22,13 +22,13 @@ const AltarCallFormOrFirstTimer = () => {
     <div className="flex flex-col justify-center items-center text-white">
       <div className="flex gap-10 my-5">
         <p
-          className="bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
+          className="font-bold bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
           onClick={() => setIsAltarCall(false)}
         >
           First Timer Form
         </p>
         <p
-          className="bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
+          className="font-bold bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
           onClick={() => setIsAltarCall(true)}
         >
           Altar Call Form
@@ -43,7 +43,7 @@ const AltarCallFormOrFirstTimer = () => {
           onChange={(e) => {
             setFormData({ ...formData, firstName: e.target.value });
           }}
-          className="px-2 py-1 rounded-md"
+          className="p-2 rounded-md shadow-md"
           id="firstName"
           type="text"
           value={formData.firstName}
@@ -54,7 +54,7 @@ const AltarCallFormOrFirstTimer = () => {
           onChange={(e) => {
             setFormData({ ...formData, lastName: e.target.value });
           }}
-          className="px-2 py-1 rounded-md"
+          className="p-2 rounded-md shadow-md"
           id="lastName"
           type="text"
           value={formData.lastName}
@@ -65,7 +65,7 @@ const AltarCallFormOrFirstTimer = () => {
           onChange={(e) => {
             setFormData({ ...formData, phone: e.target.value });
           }}
-          className="px-2 py-1 rounded-md"
+          className="p-2 rounded-md shadow-md"
           id="phone"
           type="number"
           value={formData.phone}
@@ -89,7 +89,7 @@ const AltarCallFormOrFirstTimer = () => {
           onChange={(e) => {
             setFormData({ ...formData, email: e.target.value });
           }}
-          className="px-2 py-1 rounded-md"
+          className="p-2 rounded-md shadow-md"
           id="email"
           type="email"
           value={formData.email}
@@ -99,7 +99,7 @@ const AltarCallFormOrFirstTimer = () => {
           onChange={(e) => {
             setFormData({ ...formData, address: e.target.value });
           }}
-          className="px-2 py-1 rounded-md"
+          className="p-2 rounded-md shadow-md"
           id="address"
           type="text"
           value={formData.address}
