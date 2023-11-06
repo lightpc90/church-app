@@ -17,7 +17,7 @@ const Page = () => {
         <h6 className="text-center text-[#808081]">
           Have questions or want to connect with us?
         </h6>
-        <h3>Contact Us</h3>
+        <h4>Contact Us</h4>
         <div className="px-5 my-5  lg:px-[600px]">
           <h6>We're here to help!</h6>
           <p>Feel free to reach out through the following options:</p>
