@@ -143,7 +143,7 @@ export default function Home() {
           <h3 className="py-5 w-screen text-center font-medium">Contact Us</h3>
           <div className="flex flex-col gap-3 px-5">
             <p className="font-medium">
-              By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe Express-Way Lakowe
+              1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe Express-Way Lakowe
             </p>
             <p className="font-medium">
               234(0)812 3456 789, 234(0)812 6543 789
