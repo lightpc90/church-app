@@ -13,13 +13,12 @@ const PrayerRequestForm = () => {
     <div className="flex flex-col justify-center items-center bg-[#d9d9e6] px-5 py-10 shadow-md rounded-md mt-5">
       <p className="text-center font-semibold">Prayer Request Form</p>
       <div className="flex flex-col gap-3 mx-4 w-full pt-5 md:w-[400px]">
-        <input
-          className="p-2 rounded-md shadow-md"
+        <textarea
+          className="p-2 rounded-md shadow-md h-40"
           value={formData.prayerRequest}
           onChange={(e) => {
             setFormData({ ...formData, prayerRequest: e.target.value });
           }}
-          type="textarea"
           name="testimony"
           placeholder="Share Your Prayer Request"
           required

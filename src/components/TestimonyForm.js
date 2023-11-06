@@ -35,13 +35,12 @@ const TestimonyForm = () => {
           placeholder="Last Name"
           required
         />
-        <input
-          className="p-2 rounded-md shadow-md"
+        <textarea
+          className="p-2 rounded-md shadow-md h-40"
           value={formData.testimony}
           onChange={(e) => {
             setFormData({ ...formData, testimony: e.target.value });
           }}
-          type="textarea"
           name="testimony"
           placeholder="Share Your Testimony"
           required
