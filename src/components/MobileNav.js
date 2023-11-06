@@ -79,13 +79,13 @@ const MobileNav = ({openedMenu, setOpenedMenu}) => {
           <li>
             <Link
               className="flex gap-2 pt-5"
-              href="/counselling"
+              href="/contact-us"
               onClick={() => setOpenedMenu(false)}
             >
               <span>
                 <RiEmpathizeFill />
               </span>
-              Counselling
+              Contact Us
             </Link>
           </li>
           <li>

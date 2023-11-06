@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Avatar from '@/components/avatar';
 
 export const aboutUsWelcome = () => {
     return (
@@ -22,15 +21,22 @@ export const aboutUsWelcome = () => {
       </>
     );};
 
-export const churchAddress = () => {
+export const ChurchAddress = () => {
     return (
-      <div className=''>
-        <p className="font-medium">
+      <div className="">
+        <p>
+          <span className="font-medium">Address:</span>
           1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
           Express-Way Lakowe
         </p>
-        <p className="font-medium">234(0)812 3456 789, 234(0)812 6543 789</p>
-        <p className="font-medium">rccgbeautifulgate@gmail.com</p>
+        <p>
+          <span className="font-medium">Phone:</span>
+          234(0)812 3456 789, 234(0)812 6543 789
+        </p>
+
+        <p>
+          <span className='font-medium'>Email:</span>rccgbeautifulgate@gmail.com
+        </p>
       </div>
     );
     }

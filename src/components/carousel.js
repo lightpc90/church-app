@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const images = [
-  "digging-deep.png",
-  "Faith-clinic.png",
-  "augPix/IMG_1618.JPG",
-  "augPix/IMG_1666.JPG",
-  "augPix/IMG_1642.JPG",
+  "/digging-deep.png",
+  "/Faith-clinic.png",
+  "/augPix/IMG_1618.JPG",
+  "/augPix/IMG_1666.JPG",
+  "/augPix/IMG_1642.JPG",
 ];
 
 const positions = ["center", "left1", "left", "right", "right1"];
