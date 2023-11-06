@@ -12,8 +12,9 @@ export const metadata = {
 
 const Page = () => {
   return (
-    <div>
-      <div className="mt-[80px] min-h-[400px] p-5 flex flex-col justify-center items-center">
+    <div className="mt-[80px] min-h-[400px]">
+      {/* Header Image coming here */}
+      <div className="p-5 flex flex-col justify-center items-center">
         <h6 className="text-center text-[#808081]">
           Have questions or want to connect with us?
         </h6>
