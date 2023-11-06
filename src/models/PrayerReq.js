@@ -15,6 +15,6 @@ const prayerReqSchema = new mongoose.Schema({
     }
 })
 
-const PrayerReq = mongoose.model.PrayerReq || mongoose.model('PrayerReq', prayerReqSchema)
+const PrayerReq = mongoose.models.PrayerReq || mongoose.model('PrayerReq', prayerReqSchema)
 
 export default PrayerReq

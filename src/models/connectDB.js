@@ -4,7 +4,6 @@ import { uri } from './config'
 const MONGODB_URI = uri
 if (!MONGODB_URI) {
     console.log("mongodb uri not provided")
-    return
 }
 
 const connectDB = async () => {

@@ -37,6 +37,6 @@ const followUpSchema = ({
     }
 })
 
-const FollowUp = mongoose.model.FollowUp || mongoose.model('FollowUp', followUpSchema)
+const FollowUp = mongoose.models.FollowUp || mongoose.model('FollowUp', followUpSchema)
 
 export default FollowUp

@@ -19,6 +19,6 @@ const testimonySchema = new mongoose.Schema({
     }
 })
 
-const Testimony = mongoose.model.Testimony || mongoose.model("Testimony", testimonySchema)
+const Testimony = mongoose.models.Testimony || mongoose.model("Testimony", testimonySchema)
 
 export default Testimony
