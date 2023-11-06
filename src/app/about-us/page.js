@@ -1,6 +1,6 @@
 import React from 'react'
 import Footer from '@/components/Footer';
-import { aboutUsWelcome, churchAddress } from '@/data';
+import { aboutUsWelcome, ChurchAddress } from '@/data';
 import Image from 'next/image';
 import RenderPastors from '@/components/renderPastors';
 
@@ -12,7 +12,6 @@ export const metadata = {
 
 const Page = () => {
   const welcome = aboutUsWelcome()
-  const _churchAddress = churchAddress()
 
   return (
     <>
@@ -27,7 +26,9 @@ const Page = () => {
         <div>
           <p className="md:px-[700px]">{welcome}</p>
           <h6 className="text-center mt-5">Our Address</h6>
-          <p className="md:px-[700px]">{_churchAddress}</p>
+          <p className="md:px-[700px]">
+            <ChurchAddress/>
+          </p>
           <h6 className="text-center mt-5 py-2">Meet Our Pastors</h6>
           <div className="flex flex-wrap justify-center ">
            <RenderPastors/>
