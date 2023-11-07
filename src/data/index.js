@@ -6,7 +6,7 @@ export const aboutUsWelcome = () => {
       <>
         <p className="py-1">
           <sapn className="font-semibold">RCCG Beautiful Gate Lakowe,</sapn> we
-          are a branch of Redeem Christian Church of God, under Lagos Province
+          are a branch of Redeemed Christian Church of God, under Lagos Province
           20, Zone 5, located at Lakowe. We&#39;re a diverse and welcoming
           community devoted to faith, fellowship, and love.
         </p>

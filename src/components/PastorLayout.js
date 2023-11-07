@@ -11,7 +11,7 @@ export const PastorLayout = ({ dp, name, social }) => {
       </div>
 
       <p>{name}</p>
-      <p>{social}</p>
+      <p className='text-sm'>{social}</p>
     </div>
   );
 };
