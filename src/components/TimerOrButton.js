@@ -1,41 +1,43 @@
-'use client'
-import countdownTimer from "@/utilities/countdownTimer";
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import countdownTimer from "@/utilities/countdownTimer";
+import getNextSunday from "@/utilities/getNextSunday";
 
 const TimerOrButton = () => {
-   
-    const [timeRemaining, setTimeRemaining] = useState(
-      countdownTimer()
-    );
-    
-    useEffect(() => {
-      const timer = setInterval(() => {
-        const remaining = countdownTimer();
-        setTimeRemaining(remaining);
+  const [timeRemaining, setTimeRemaining] = useState(
+    countdownTimer(getNextSunday())
+  );
 
-        if (remaining.total <= 0) {
-          clearInterval(timer);
-        }
-      }, 1000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const remaining = countdownTimer(getNextSunday());
+      setTimeRemaining(remaining);
 
-      return () => {
+      if (remaining.total <= 0) {
         clearInterval(timer);
-      };
-    }, []);
-  
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
   const formatTime = (time) => {
-    return time.toString().padStart(2, '0');
+    return time.toString().padStart(2, "0");
   };
-  
-   const renderCountdown = () => {
+
+  const renderCountdown = () => {
     if (timeRemaining.total > 0) {
       return (
         <>
           <div className="flex flex-col justify-center items-center my-10">
-            <p className="my-10 text-[#3838ce]">Check back to mark your attendance</p>
+            <p className="my-10 text-[#3838ce]">
+              Check back to mark your attendance
+            </p>
             <div>
-              <p className="font-bold text-[#0e0e33] text-xl md:text-2xl">
+              <p className="font-bold text-[#0e0e33] text-xl md:text-3xl">
                 {`${formatTime(timeRemaining.days)}d ${formatTime(
                   timeRemaining.hours
                 )}h ${formatTime(timeRemaining.minutes)}m ${formatTime(
@@ -47,7 +49,10 @@ const TimerOrButton = () => {
           </div>
         </>
       );
-    } else {
+    } else if (
+      timeRemaining.total <= 0 &&
+      timeRemaining.total < getNextSunday().setHours(12, 0, 0, 0)  //attendance page should be left active till 12pm on sunday
+    ) {
       return (
         <>
           <p>Workers Attendance!</p>
@@ -55,11 +60,9 @@ const TimerOrButton = () => {
         </>
       );
     }
-  }
-  
+  };
+
   return <>{renderCountdown()}</>;
+};
 
-
-}
-
-export default TimerOrButton
+export default TimerOrButton;
