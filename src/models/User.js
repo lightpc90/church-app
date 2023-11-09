@@ -3,24 +3,20 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   firstname: {
     type: String,
-    required: true,
   },
   lastname: {
     type: String,
-    required: true,
   },
   phone: {
     type: Number,
     unique: true,
-    required: true,
   },
   email: {
     type: String,
     unique: true,
   },
-  hashedPassword: {
+  hashedPwd: {
     type: String,
-    required: true,
   },
   username: {
     type: String,
@@ -38,12 +34,15 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    required: true,
   },
   verified: {
     type: Boolean,
     default: false,
   },
+  role: {
+    type: String,
+    default: "user"
+  }
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
