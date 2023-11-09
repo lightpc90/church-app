@@ -17,7 +17,7 @@ export default async function  (req, res) {
           message: 'Password does does not match!'
         })
       }
-    console.log(`email: ${email}, pwd: ${pwd}, role: ${role}, phone: ${phone}`);
+    console.log(`email: ${email}, pwd: ${pwd}, phone: ${phone}`);
 
       // check if either email or phone is provided with password
     if (!((email || phone) && pwd))
