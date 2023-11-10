@@ -25,12 +25,11 @@ const userSchema = new mongoose.Schema({
   birthdayMonth: {
     type: String,
   },
-  birthdayDay: {
+  birthDay: {
     type: Number,
   },
   dept: {
     type: String,
-    required: true,
   },
   gender: {
     type: String,
@@ -41,8 +40,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "user"
-  }
+    default: "user",
+  },
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
