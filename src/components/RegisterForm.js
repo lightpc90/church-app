@@ -88,7 +88,7 @@ const RegisterForm = () => {
               setFormData({ ...formData, email: e.target.value });
               console.log(formData);
             }}
-            className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
+            className="p-2 rounded-md shadow-md border-2 border-slate-400"
             id="email"
             type="email"
             value={formData.email}
@@ -102,7 +102,7 @@ const RegisterForm = () => {
               setFormData({ ...formData, phone: e.target.value });
               console.log(formData);
             }}
-            className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
+            className="p-2 rounded-md shadow-md border-2 border-slate-400"
             id="phone"
             type="number"
             value={formData.phone}
@@ -115,7 +115,7 @@ const RegisterForm = () => {
             setFormData({ ...formData, pwd: e.target.value });
             console.log(formData);
           }}
-          className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
+          className="p-2 rounded-md shadow-md border-2 border-slate-400"
           id="password"
           type="password"
           value={formData.pwd}
@@ -127,7 +127,7 @@ const RegisterForm = () => {
             setFormData({ ...formData, confirmPwd: e.target.value });
             console.log(formData);
           }}
-          className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
+          className="p-2 rounded-md shadow-md border-2 border-slate-400"
           id="confirmPwd"
           type="password"
           value={formData.confirmPwd}
