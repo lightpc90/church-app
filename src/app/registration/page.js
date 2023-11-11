@@ -19,7 +19,7 @@ const Page = () => {
           <Link className='font-semibold text-[blue]' href="/login" passHref={true}>
             Login here
           </Link>{" "}
-          if you're a registered member
+          if you&#39;re a registered member
         </span>
         <p className="px-3 mt-5 font-semibold">
           You can choose to register with either email or phone number
