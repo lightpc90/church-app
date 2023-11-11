@@ -25,7 +25,7 @@ const RegisterForm = () => {
     e.preventDefault();
     setLoading(true)
     console.log(formData);
-    const res = await fetch(`/api/Register`, {
+    const res = await fetch(`api/Register`, {
       method: "POST",
       headers: {'Content-Type': "application/json",},
       body: JSON.stringify(formData),
