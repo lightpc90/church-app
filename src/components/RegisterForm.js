@@ -53,15 +53,19 @@ const RegisterForm = () => {
 
   return (
     <div>
-      {message && (
-        <p className="bg-[#172554] p-1 mt-5 rounded-sm flex justify-center items-center w-full text-white">
-          {message}
-        </p>
-      )}
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-3 mx-4 p-5 my-5 md:w-[400px]"
       >
+        <p className="font-semibold text-center mb-5 text-lg">
+          Registration Form
+        </p>
+        {/* paragraph to display return message/error from registeration api */}
+        {message && (
+          <p className="bg-[#172554] p-1 mt-5 rounded-sm flex justify-center items-center w-full text-white">
+            {message}
+          </p>
+        )}
         <p>
           Register with{" "}
           <span>

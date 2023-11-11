@@ -22,6 +22,7 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
         className="flex flex-col gap-3 mx-4 p-5 my-5 md:w-[400px]"
       >
+        <p className="font-semibold text-center mb-5 text-lg">Login Form</p>
         <p>
           Login with{" "}
           <span>

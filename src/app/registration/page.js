@@ -27,7 +27,7 @@ const Page = () => {
         <div className="bg-white p-5 my-5 rounded-md shadow-md ring-2 ring-slate-500">
           <RegisterForm />
         </div>
-        <p>
+        <p className='mb-5'>
           Already Registered?{" "}
           <span>
             <Link className="font-bold" href="/login">
