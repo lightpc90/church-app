@@ -14,7 +14,19 @@ const Page = () => {
     <>
       <div className="flex flex-col justify-center items-center mt-[80px] min-h-[400px]">
         <h4>Registration Page</h4>
-        <RegisterForm />
+
+        <span>
+          <Link className='font-semibold text-[blue]' href="/login" passHref={true}>
+            Login here
+          </Link>{" "}
+          if you're a registered member
+        </span>
+        <p className="px-3 mt-5 font-semibold">
+          You can choose to register with either email or phone number
+        </p>
+        <div className="bg-white p-5 my-5 rounded-md shadow-md ring-2 ring-slate-500">
+          <RegisterForm />
+        </div>
         <p>
           Already Registered?{" "}
           <span>
@@ -24,7 +36,7 @@ const Page = () => {
           </span>
         </p>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

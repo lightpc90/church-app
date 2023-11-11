@@ -14,7 +14,11 @@ const Page = () => {
     <>
       <div className="flex flex-col justify-center items-center mt-[80px] min-h-[400px]">
         <h4>Login Page</h4>
-        <LoginForm />
+        <p className='p-3'>Please enter your email/phone and password to login to the app.</p>
+        <div className="bg-white p-5 my-5 rounded-md shadow-md ring-2 ring-slate-500">
+          <LoginForm />
+        </div>
+
         <p>
           Not a Registered member?{" "}
           <span>
@@ -24,7 +28,7 @@ const Page = () => {
           </span>
         </p>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

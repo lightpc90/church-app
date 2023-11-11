@@ -53,7 +53,11 @@ const RegisterForm = () => {
 
   return (
     <div>
-      {message && <p className="bg-[#172554] p-1 mt-5 rounded-sm flex justify-center items-center w-full text-white">{message}</p>}
+      {message && (
+        <p className="bg-[#172554] p-1 mt-5 rounded-sm flex justify-center items-center w-full text-white">
+          {message}
+        </p>
+      )}
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-3 mx-4 p-5 my-5 md:w-[400px]"
@@ -76,11 +80,11 @@ const RegisterForm = () => {
         {useEmail && (
           <input
             onChange={(e) => {
-              setMessage()
+              setMessage();
               setFormData({ ...formData, email: e.target.value });
               console.log(formData);
             }}
-            className="p-2 rounded-md shadow-md"
+            className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
             id="email"
             type="email"
             value={formData.email}
@@ -90,11 +94,11 @@ const RegisterForm = () => {
         {!useEmail && (
           <input
             onChange={(e) => {
-              setMessage()
+              setMessage();
               setFormData({ ...formData, phone: e.target.value });
               console.log(formData);
             }}
-            className="p-2 rounded-md shadow-md"
+            className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
             id="phone"
             type="number"
             value={formData.phone}
@@ -103,11 +107,11 @@ const RegisterForm = () => {
         )}
         <input
           onChange={(e) => {
-            setMessage()
+            setMessage();
             setFormData({ ...formData, pwd: e.target.value });
             console.log(formData);
           }}
-          className="p-2 rounded-md shadow-md"
+          className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
           id="password"
           type="password"
           value={formData.pwd}
@@ -115,11 +119,11 @@ const RegisterForm = () => {
         />
         <input
           onChange={(e) => {
-            setMessage()
+            setMessage();
             setFormData({ ...formData, confirmPwd: e.target.value });
             console.log(formData);
           }}
-          className="p-2 rounded-md shadow-md"
+          className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
           id="confirmPwd"
           type="password"
           value={formData.confirmPwd}

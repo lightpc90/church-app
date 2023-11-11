@@ -30,7 +30,7 @@ const LoginForm = () => {
               onClick={(e) => {
                 e.preventDefault();
                 setUseEmail(!useEmail);
-                setFormData({...formData, phone:'', email: ''})
+                setFormData({ ...formData, phone: "", email: "" });
               }}
             >
               {useEmail ? <p>Phone Number</p> : <p>Email</p>}
@@ -43,7 +43,7 @@ const LoginForm = () => {
               setFormData({ ...formData, email: e.target.value });
               console.log(formData);
             }}
-            className="p-2 rounded-md shadow-md"
+            className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
             id="email"
             type="email"
             value={formData.email}
@@ -56,7 +56,7 @@ const LoginForm = () => {
               setFormData({ ...formData, phone: e.target.value });
               console.log(formData);
             }}
-            className="p-2 rounded-md shadow-md"
+            className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
             id="phone"
             type="number"
             value={formData.phone}
@@ -68,14 +68,17 @@ const LoginForm = () => {
             setFormData({ ...formData, pwd: e.target.value });
             console.log(formData);
           }}
-          className="p-2 rounded-md shadow-md"
+          className="p-2 rounded-md shadow-md ring-1 ring-gray-400"
           id="password"
           type="password"
           value={formData.pwd}
           placeholder="Password"
         />
         <p className="text-[blue]">Forgot Password?</p>
-        <button type='submit' className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#1e1b4b] to-[#3b0764] hover:from-[#a5b4fc] hover:to-[#172554] text-white">
+        <button
+          type="submit"
+          className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#1e1b4b] to-[#3b0764] hover:from-[#a5b4fc] hover:to-[#172554] text-white"
+        >
           Login
         </button>
       </form>
