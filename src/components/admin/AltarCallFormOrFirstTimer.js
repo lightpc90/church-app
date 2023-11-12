@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
 const AltarCallFormOrFirstTimer = () => {
-  const [isAltarCall, setIsAltarCall] = useState(false)
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-      phone: '',
-        redeemMember: '',
-        email: '',
-      address: '',
-        gender: '',
-    })
+  const [isAltarCall, setIsAltarCall] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    redeemMember: "",
+    email: "",
+    address: "",
+    gender: "",
+  });
 
-    const handleSubmit = (e) => {
-      // submit form data to the server here...
-      e.preventDefault()
-    }
+  const handleSubmit = (e) => {
+    // submit form data to the server here...
+    e.preventDefault();
+  };
   return (
     <div className="flex flex-col justify-center items-center text-white">
       <div className="flex gap-10 my-5">
@@ -25,13 +25,13 @@ const AltarCallFormOrFirstTimer = () => {
           className="font-bold bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
           onClick={() => setIsAltarCall(false)}
         >
-          First Timer Form
+          First-Timer Form
         </p>
         <p
           className="font-bold bg-gray-300 p-2 hover:bg-gray-100 rounded-md text-[#172554] cursor-pointer"
           onClick={() => setIsAltarCall(true)}
         >
-          Altar Call Form
+          Altar-Call Form
         </p>
       </div>
       {isAltarCall ? <h6>Altar Call Form</h6> : <h6>First Timer Form</h6>}
@@ -126,6 +126,6 @@ const AltarCallFormOrFirstTimer = () => {
       </form>
     </div>
   );
-}
+};
 
-export default AltarCallFormOrFirstTimer
+export default AltarCallFormOrFirstTimer;

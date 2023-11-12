@@ -16,7 +16,7 @@ const ViewAttendance = () => {
 
         <div className="flex flex-wrap justify-between items-center gap-3 w-full">
           {/* Total data */}
-          <div className="flex justify-between items-center w-full md:w-[30%] bg-gradient-to-tr from-[#082f49] to-[#1e40af] hover:from-[#8b5cf6] hover:to-[#172554] rounded-md p-2 shadow-md">
+          <div className="flex justify-between items-center w-full md:w-[30%] bg-gradient-to-tr from-[#3f4346] to-[#d2d5df] hover:from-[#8b5cf6] hover:to-[#32343a] rounded-md p-2 shadow-md">
             <div>
               <h3>500</h3>
               <p className="text-[#94a3b8]">Total</p>
@@ -25,7 +25,7 @@ const ViewAttendance = () => {
           </div>
 
           {/* Male data */}
-          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#082f49] to-[#1e40af] hover:from-[#8b5cf6] hover:to-[#172554] rounded-md p-2 shadow-md">
+          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#3f4346] to-[#d2d5df] hover:from-[#8b5cf6] hover:to-[#32343a]  rounded-md p-2 shadow-md">
             <div>
               <h3>210</h3>
               <p className="text-[#94a3b8]">Male</p>
@@ -34,7 +34,7 @@ const ViewAttendance = () => {
           </div>
 
           {/* Female Data */}
-          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#082f49] to-[#1e40af] hover:from-[#8b5cf6] hover:to-[#172554] rounded-md p-2 shadow-md">
+          <div className="flex justify-between items-center w-full md:w-[30%]  bg-gradient-to-tr from-[#3f4346] to-[#d2d5df] hover:from-[#8b5cf6] hover:to-[#32343a]  rounded-md p-2 shadow-md">
             <div>
               <h3>290</h3>
               <p className="text-[#94a3b8]">Female</p>

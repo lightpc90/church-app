@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
       <div
         className={
-          "flex flex-col justify-between h-[660px] md:h-[1200px] overflow-auto py-10 px-5 bg-slate-900 text-white font-sans text-xl content-center"
+          "flex flex-col justify-between h-[660px] md:h-[1000px] overflow-auto py-10 px-5 bg-slate-900 text-white font-sans text-xl content-center"
         }
       >
         <div>
@@ -19,17 +19,14 @@ const Footer = () => {
           {/* links at the left */}
           <div>
             <ul className="flex flex-col gap-2 md:gap-8">
-              <li>
+              {/* <li>
                 <Link href='/'>Gallery</Link>
+              </li> */}
+              <li>
+                <Link href='/events'>Events</Link>
               </li>
               <li>
-                <Link href='/'>Upcoming Events</Link>
-              </li>
-              <li>
-                <Link href='/'>Watch Us Live</Link>
-              </li>
-              <li>
-                <Link href='/'>Sermons</Link>
+                <Link href='/#live'>Watch Us Live</Link>
               </li>
               <li>
                 <Link href='/'>Youtube</Link>
@@ -50,22 +47,19 @@ const Footer = () => {
                 <Link href='/'>Home</Link>
               </li>
               <li>
-                <Link href='/'>Contact</Link>
+                <Link href='/contact-us'>Contact</Link>
               </li>
               <li>
-                <Link href='/'>About</Link>
+                <Link href='/about-us'>About</Link>
               </li>
               <li>
-                <Link href='/'>Testimonies</Link>
+                <Link href='/contact-us/#testimony'>Testimony</Link>
               </li>
               <li>
-                <Link href='/'>Blog</Link>
+                <Link href='/youth-forum'>Youth Forum</Link>
               </li>
               <li>
-                <Link href='/'>Devotions</Link>
-              </li>
-              <li>
-                <Link href='/'>Prayer Request</Link>
+                <Link href='/contact-us/#prayer-request'>Prayer Request</Link>
               </li>
             </ul>
           </div>

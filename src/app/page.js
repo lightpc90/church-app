@@ -82,7 +82,7 @@ export default function Home() {
         </div>
 
         {/* WATCH US LIVE CONTAINER*/}
-        <div className="w-screen gap-10 md:gap-10 flex flex-wrap justify-center my-9 md:my-[160px]">
+        <div id="live" className="w-screen gap-10 md:gap-10 flex flex-wrap justify-center my-9 md:my-[160px]">
           <div className="w-screen">
             <h6 className="w-full text-center text-[#808081]">
               Follow Our Service Online

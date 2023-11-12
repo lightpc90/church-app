@@ -30,7 +30,7 @@ const Page = () => {
           </p>
         </div>
         <div className="mt-10 flex flex-wrap gap-5 justify-center">
-          <div>
+          <div id='testimony'>
             <h6 className="text-[#808081] text-center">
               You have a Testimony you want to share with us?
             </h6>
@@ -38,7 +38,7 @@ const Page = () => {
             <TestimonyForm />
           </div>
 
-          <div>
+          <div id='prayer-request'> 
             <h6 className="text-[#808081] text-center">
               You have a Prayer Request you want us to pray with you?
             </h6>
