@@ -8,12 +8,8 @@ const prayerReqSchema = new mongoose.Schema({
     read: {
         type: Boolean,
         default: false,
-    },
-    date: {
-        type: Date,
-        default: Date.now(),
     }
-})
+}, {timestamp: true})
 
 const PrayerReq = mongoose.models.PrayerReq || mongoose.model('PrayerReq', prayerReqSchema)
 

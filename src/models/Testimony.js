@@ -9,15 +9,11 @@ const testimonySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    date: {
-        type: Date,
-        default: Date.now(),
-    },
     read: {
         type: Boolean,
         default: false,      
     }
-})
+}, {timestamp: true})
 
 const Testimony = mongoose.models.Testimony || mongoose.model("Testimony", testimonySchema)
 

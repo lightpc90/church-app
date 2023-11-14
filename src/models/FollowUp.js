@@ -30,12 +30,8 @@ const followUpSchema = ({
     formType: {
         type: String,
         enum: ['firstTimer', 'altartCall']
-    },
-    dateTime: {
-        type: Date,
-        default: Date.now(),
     }
-})
+}, {timestamp: true})
 
 const FollowUp = mongoose.models.FollowUp || mongoose.model('FollowUp', followUpSchema)
 

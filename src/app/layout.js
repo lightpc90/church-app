@@ -2,7 +2,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Layout from '@/components/Layout'
 import NextAuthProvider from '../auth-provider'
-import GlobalState from '../context'
+import GlobalState from '../context/globalState'
+import ToasterContext from '@/context/toasterContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
       <NextAuthProvider>
         <GlobalState>
           <body className={inter.className}>
-            <Layout>{children}</Layout>
+            <Layout>
+              <ToasterContext />
+              {children}</Layout>
           </body>
         </GlobalState>
       </NextAuthProvider>

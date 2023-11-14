@@ -1,3 +1,4 @@
+import { Timestamp } from "mongodb";
 import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
@@ -10,7 +11,7 @@ const eventSchema = new mongoose.Schema({
     regLink: {
         type: String, required: false
     }
-})
+}, {timestamps: true})
 
 const Event = mongoose.models.Event || mongoose.model("Event", eventSchema)
 

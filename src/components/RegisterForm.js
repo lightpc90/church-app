@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 const RegisterForm = () => {
   const initialFormData = {
@@ -35,14 +36,14 @@ const RegisterForm = () => {
       console.log("failed")
       setFormData(initialFormData)
       setLoading(false)
-      setMessage(data.error)
+      toast.error(data.error)
       console.log(data.error)
     }
     else if (data.success) {
+      toast.success(data.message);
       console.log("success")
       router.push("/login");
       setLoading(false)
-      setMessage(data.message)
       setFormData(initialFormData)
       console.log(data.message)
     }  

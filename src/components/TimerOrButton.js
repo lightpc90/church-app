@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import countdownTimer from "@/utilities/countdownTimer";
 import getNextSunday from "@/utilities/getNextSunday";
+import LocationRestrictedPage from "./LocationRestrictedPage";
 
 const TimerOrButton = () => {
   const [timeRemaining, setTimeRemaining] = useState(
@@ -54,10 +55,7 @@ const TimerOrButton = () => {
       timeRemaining.total < getNextSunday().setHours(12, 0, 0, 0)  //attendance page should be left active till 12pm on sunday
     ) {
       return (
-        <>
-          <p>Workers Attendance!</p>
-          <button>Register</button>
-        </>
+       <LocationRestrictedPage />
       );
     }
   };
