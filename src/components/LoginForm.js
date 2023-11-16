@@ -11,7 +11,7 @@ const LoginForm = () => {
   const { data: session, status } = useSession()
   console.log('session: ', session)
   console.log(status)
-  if (session?.user) return <div>You are already logged in</div>;
+  // if (session?.user) return <div>You are already logged in</div>;
   const [useEmail, setUseEmail] = useState(false);
   const [formData, setFormData] = useState(formInitialValue);
   const [loading, setLoading] = useState(false)
