@@ -21,7 +21,7 @@ const Page = () => {
         <h4>Contact Us</h4>
         <div className="px-5 my-5  lg:px-[600px]">
           <h6>We&#39;re here to help!</h6>
-          <p>Feel free to reach out through the following options:</p>
+          <p className='mb-10'>Feel free to reach out through the following options:</p>
           <ChurchAddress />
           <p className="mt-5">
             Our friendly team is available to assist you with any inquiries,

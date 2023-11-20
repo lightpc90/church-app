@@ -1,11 +1,12 @@
 "use client";
 
-import { signIn } from "next-auth/react";
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter()
   const formInitialValue = { email: "", phone: "", pwd: "" };
 
   // const { data: session, status } = useSession()
@@ -20,20 +21,20 @@ const LoginForm = () => {
     e.preventDefault();
     setLoading(true)
     console.log(formData);
-    signIn("credentials", { ...formData, redirect: false })
-      .then((callback) => {
-        if (callback?.error) {
-          toast.error(callback.error);
-          console.log('callback return error')
-        }
-        else if (callback?.ok && !callback?.error) {
-          toast.success("Logged in successfully")
-          console.log("callback return success")
-        }
-      })
-      .catch(() => {
-        toast.error("Something went wrong");
-      });
+    const res = await fetch('api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({...formData, phone: "0" + formData.phone.toString()})
+    })
+    const jsonData = await res.json()
+    console.log("data from json: ",jsonData)
+    if (!jsonData?.success) { toast.error(jsonData.error) }
+    if (jsonData?.success) {
+      toast.success(jsonData.message)
+      router.push("/");
+    }
     setFormData(formInitialValue)
     setLoading(false)
     
@@ -107,10 +108,10 @@ const LoginForm = () => {
         </button>
       </form>
 
-      <div className='bg-gray-300 p-3'>
+      {/* <div className='bg-gray-300 p-3'>
         <p className="bg-gray-300 text-center text-sm">or</p>
-        <button onClick={signIn('google')} className="bg-slate-950 text-white py-1 px-2 w-full my-2">Sign in With Google</button>
-      </div>
+        <button onClick={()=>signIn('google')} className="bg-slate-950 text-white py-1 px-2 w-full my-2">Sign in With Google</button>
+      </div> */}
     </div>
   );
 };

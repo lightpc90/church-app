@@ -15,7 +15,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <NextAuthProvider>
         <GlobalState>
           <body className={inter.className}>
             <Layout>
@@ -23,7 +22,6 @@ export default function RootLayout({ children }) {
               {children}</Layout>
           </body>
         </GlobalState>
-      </NextAuthProvider>
     </html>
   );
 }

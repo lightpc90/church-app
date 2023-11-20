@@ -1,4 +1,4 @@
-import connectDB from "../../../models/connectDB";
+import connectDB from "../../../../models/connectDB";
 const bcrypt = require("bcrypt");
 import User from "@/models/User";
 import { NextResponse } from "next/server";
@@ -25,7 +25,7 @@ export async function POST(req) {
       return NextResponse.json(
         {
           success: false,
-          error: "Phone or Email and Password are required",
+          error: "Phone/Email and Password are required",
         },
         { status: 400 }
       );
@@ -37,7 +37,8 @@ export async function POST(req) {
 
     // if the user registered using email
     if (email) {
-      existingUser = await User.findOne({ email });
+      const _email = email.toLowerCase(); 
+      existingUser = await User.findOne({ email: _email });
       if (existingUser) {
         return NextResponse.json(
           {
@@ -52,8 +53,9 @@ export async function POST(req) {
       const hashedPwd = await bcrypt.hash(pwd, 10);
 
       console.log("registering a user into the database...");
-      // Insert the new user into the database
-      const newUser = await User.create({ email, hashedPwd });
+
+      // Insert the new user into the database ---- USING EMAIL
+      const newUser = await User.create({ email: _email, hashedPwd });
       if (!newUser) {
         return NextResponse.json(
           {
@@ -74,9 +76,9 @@ export async function POST(req) {
       );
     }
 
-    // if the user registered using phone
+    // if the user registered USING PHONE
     else if (phone) {
-      existingUser = await User.findOne({ phone: parseInt(phone) });
+      existingUser = await User.findOne({ phone });
 
       if (existingUser) {
         return NextResponse.json(
@@ -92,7 +94,7 @@ export async function POST(req) {
       const hashedPwd = await bcrypt.hash(pwd, 10);
 
       // Insert the new user into the database
-      const newUser = await User.create({ phone: parseInt(phone), hashedPwd });
+      const newUser = await User.create({ phone, hashedPwd });
       if (!newUser) {
         return NextResponse.json(
           {

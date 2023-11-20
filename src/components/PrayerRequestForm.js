@@ -39,7 +39,7 @@ const PrayerRequestForm = () => {
           className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#1e1b4b] to-[#3b0764] hover:from-[#a5b4fc] hover:to-[#172554] text-white shadow-md"
           type="submit"
         >
-          Submit
+          Send Prayer Request
         </button>
       </div>
     </div>

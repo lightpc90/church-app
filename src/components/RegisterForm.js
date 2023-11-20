@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
 const RegisterForm = () => {
@@ -14,21 +14,22 @@ const RegisterForm = () => {
   }
 
   const router = useRouter()
-  const { status } = useSession();
-  console.log(status);
+  // const { status } = useSession();
   const [message, setMessage] = useState()
   const [loading, setLoading] = useState(false)
   const [useEmail, setUseEmail] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
+  const [buttonDisable, setButtonDisable] = useState(false)
 
   const handleSubmit = async (e) => {
     //   send form data to backend for authentication
     e.preventDefault();
+    setButtonDisable(true)
     setLoading(true)
     console.log(formData);
-    const res = await fetch(`api/Register`, {
+    const res = await fetch(`api/auth/Register`, {
       method: "POST",
-      headers: {'Content-Type': "application/json",},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
     const data = await res.json();
@@ -46,7 +47,8 @@ const RegisterForm = () => {
       setLoading(false)
       setFormData(initialFormData)
       console.log(data.message)
-    }  
+    } 
+    setButtonDisable(false);
   };
   
 
@@ -135,6 +137,7 @@ const RegisterForm = () => {
           placeholder="Confirm Password"
         />
         <button
+          disabled = {buttonDisable}
           type="submit"
           className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#1e1b4b] to-[#3b0764] hover:from-[#a5b4fc] hover:to-[#172554] text-white"
         >
