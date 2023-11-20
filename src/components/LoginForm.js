@@ -15,28 +15,37 @@ const LoginForm = () => {
   const [useEmail, setUseEmail] = useState(false);
   const [formData, setFormData] = useState(formInitialValue);
   const [loading, setLoading] = useState(false)
+  const [buttonDisable, setButtonDisable] = useState(false)
 
   const handleSubmit = async (e) => {
-    //   send form data to backend for authentication
-    e.preventDefault();
-    setLoading(true)
-    console.log(formData);
-    const res = await fetch('api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({...formData, phone: "0" + formData.phone.toString()})
-    })
-    const jsonData = await res.json()
-    console.log("data from json: ",jsonData)
-    if (!jsonData?.success) { toast.error(jsonData.error) }
-    if (jsonData?.success) {
-      toast.success(jsonData.message)
-      router.push("/");
-    }
-    setFormData(formInitialValue)
-    setLoading(false)
+    try{
+      //   send form data to backend for authentication
+      e.preventDefault();
+      setButtonDisable(true);
+      setLoading(true);
+      console.log(formData);
+      const res = await fetch("api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      console.log('res: ', res)
+      const jsonData = await res.json();
+      console.log("data from json: ", jsonData);
+      if (!jsonData?.success) {
+        toast.error(jsonData.error);
+      }
+      if (jsonData?.success) {
+        toast.success(jsonData.message);
+        router.push("/");
+      }
+      setFormData(formInitialValue);
+      setLoading(false);
+      setButtonDisable(false);
+    }catch(e){console.error(e)}
+    
     
   };
 
@@ -101,6 +110,7 @@ const LoginForm = () => {
         />
         <p className="text-[blue]">Forgot Password?</p>
         <button
+          disabled = {buttonDisable}
           type="submit"
           className="flex py-1 px-2 justify-center rounded-xl bg-gradient-to-tr from-[#1e1b4b] to-[#3b0764] hover:from-[#a5b4fc] hover:to-[#172554] text-white"
         >
