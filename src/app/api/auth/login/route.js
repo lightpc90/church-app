@@ -58,7 +58,7 @@ export async function POST(req) {
     console.log("user data passed to accesstoken: ", userData)
 
     //create JWT
-    const accessToken = jwt.sign(userData, process.env?.ACCESS_TOKEN_SECRET, {
+    const accessToken = jwt.sign(userData, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: "356d",
     });
 
@@ -75,6 +75,6 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (e) {
-    console.error("error from server: ",e);
+    console.error(e);
   }
 }
