@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -6,11 +6,17 @@ import Image from "next/image";
 import logo from "../../public/rccg_logo_trans.png";
 import MobileNav from "./MobileNav";
 
-import { FaDoorOpen, FaDoorClosed } from "react-icons/fa";
+import { useAuth } from "@/context/globalState";
+import verifyToken from "@/middlewares/verifyToken";
 
+import { FaDoorOpen, FaDoorClosed } from "react-icons/fa";
+import Avatar from "./avatar";
 
 const Nav = () => {
-    const [openedMenu, setOpenedMenu] = useState(false)
+  const { accessToken } = useAuth();
+  const avatar = Avatar("")
+
+  const [openedMenu, setOpenedMenu] = useState(false);
 
   return (
     <div>
@@ -50,14 +56,20 @@ const Nav = () => {
 
         {/* Login and toggle menu */}
         <div className="flex justify-center md:text-xl items-center mr-4">
-          <Link href="/login">
-            <button
-              onClick={() => setOpenedMenu(false)}
-              className="py-1 px-3 md:px-6  m-2 bg-slate-700 text-white hover:text-slate-900 hover:bg-slate-400 shadow-lg rounded-3xl"
-            >
-              Login
-            </button>
-          </Link>
+          {/* Render user avatar if logged in, but login button if not */}
+          {accessToken && verifyToken(accessToken) ? (
+            <div className="pr-3">{ avatar}</div>
+          ) : (
+            <Link href="/login">
+              <button
+                onClick={() => setOpenedMenu(false)}
+                className="py-1 px-3 md:px-6  m-2 bg-slate-700 text-white hover:text-slate-900 hover:bg-slate-400 shadow-lg rounded-3xl"
+              >
+                Login
+              </button>
+            </Link>
+          )}
+
           <button
             onClick={() => setOpenedMenu(!openedMenu)}
             className="md:hidden"

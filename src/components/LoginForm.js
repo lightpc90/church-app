@@ -4,8 +4,10 @@ import React, { useState } from "react";
 // import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/globalState";
 
 const LoginForm = () => {
+  const {setCurrentUser, signIn} = useAuth()
   const router = useRouter()
   const formInitialValue = { email: "", phone: "", pwd: "" };
 
@@ -38,6 +40,10 @@ const LoginForm = () => {
         toast.error(jsonData.error);
       }
       if (jsonData?.success) {
+        // store user data and access token in global state
+        signIn(jsonData.accessToken)
+        setCurrentUser({ ...jsonData.user })
+        
         toast.success(jsonData.message);
         router.push("/");
       }

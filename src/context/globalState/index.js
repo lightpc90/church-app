@@ -1,13 +1,35 @@
-'use client'
+"use client";
 
-import { createContext, useState } from "react";
+import jwt from 'jsonwebtoken'
+import { createContext, useContext, useState } from "react";
 
-export const GlobalContext = createContext(null);
+export const AuthContext = createContext(null);
 
-export default function GlobalState({ children }) {
+export function useAuth() {
+  return useContext(AuthContext)
+}
+
+export default function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState(null)
+  const [accessToken, setAccessToken] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("accessToken") : null
+  );
   const [users, setUsers] = useState(null);
 
+  const signIn = (token) => {
+    localStorage.setItem('accessToken', token)
+    setAccessToken(token)
+  }
+
+  const signOut = () => {
+    localStorage.removeItem('accessToken')
+    setAccessToken(null)
+  }
+
   return (
-    <GlobalContext.Provider value={{users, setUsers}}>{children}</GlobalContext.Provider>
+    <AuthContext.Provider value={{ accessToken, users, setUsers, currentUser, setCurrentUser, signIn, signOut }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
+
