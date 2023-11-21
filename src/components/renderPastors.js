@@ -13,7 +13,7 @@ const RenderPastors = () => {
     },
   ];
   return (
-    <div className="flex flex-wrap justify-center gap-2 md:gap-20">
+    <div className="flex flex-wrap justify-center gap-2 p-3 bg-sky-200 rounded-md">
       {pastors.map((eachPastor, index) => (
         <PastorLayout
           key={index}
