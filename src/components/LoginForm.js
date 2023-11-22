@@ -7,13 +7,12 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/globalState";
 
 const LoginForm = () => {
-  const {setCurrentUser, signIn} = useAuth()
+  const {currentUser, setCurrentUser, signIn} = useAuth()
   const router = useRouter()
   const formInitialValue = { email: "", phone: "", pwd: "" };
 
-  // const { data: session, status } = useSession()
-  // console.log('session: ', session)
-  // console.log(status)
+  if (currentUser) { router.push("/") }
+  
   const [useEmail, setUseEmail] = useState(false);
   const [formData, setFormData] = useState(formInitialValue);
   const [loading, setLoading] = useState(false)

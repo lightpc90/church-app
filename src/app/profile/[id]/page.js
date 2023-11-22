@@ -10,7 +10,12 @@ const Page = () => {
  
   return (
     <>
-      <div className="mt-[80px] min-h-[400px]">My profile</div>;
+      <div className="flex flex-col justify-center">
+        <div>User Avatar</div>
+        <div>Hi, Gideon</div>
+        <div>Hi, Gideon</div>
+        <div></div>
+      </div>;
     </>
   );
 }
