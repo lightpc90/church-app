@@ -32,6 +32,9 @@ const userSchema = new mongoose.Schema(
     gender: {
       type: String,
     },
+    residentialAddress: {
+      type: String,
+    },
     verified: {
       type: Boolean,
       default: false,
