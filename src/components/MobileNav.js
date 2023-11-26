@@ -8,10 +8,15 @@ import { MdEventRepeat, MdRoundaboutRight } from "react-icons/md";
 import { IoIosBookmarks } from "react-icons/io";
 import { RiEmpathizeFill } from 'react-icons/ri'
 import { BsRocketTakeoffFill } from 'react-icons/bs'
-import {FaUserTag} from 'react-icons/fa'
+import { FaUserTag } from 'react-icons/fa'
+
+import { useAuth } from '@/context/globalState';
+import verifyToken from '@/middlewares/verifyToken';
 
 
-const MobileNav = ({openedMenu, setOpenedMenu}) => {
+const MobileNav = ({ openedMenu, setOpenedMenu }) => {
+  const { currentUserId, accessToken } = useAuth()
+  
   return (
     <div className="fixed top-[80px] left-0 flex flex-col justify-between bg-slate-950 text-white px-5 pt-5 w-screen h-screen z-50 overflow-auto">
       <div>
@@ -29,16 +34,18 @@ const MobileNav = ({openedMenu, setOpenedMenu}) => {
             </Link>
           </li>
           <li>
-            <Link
-              className="flex gap-2 pt-5"
-              href="/my-profile"
-              onClick={() => setOpenedMenu(false)}
-            >
-              <span>
-                <ImProfile />
-              </span>
-              My Profile
-            </Link>
+            {accessToken && verifyToken(accessToken) && (
+              <Link
+                className="flex gap-2 pt-5"
+                href={`/profile/${currentUserId}`}
+                onClick={() => setOpenedMenu(false)}
+              >
+                <span>
+                  <ImProfile />
+                </span>
+                My Profile
+              </Link>
+            )}
           </li>
           <li>
             <Link

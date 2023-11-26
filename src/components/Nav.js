@@ -13,7 +13,7 @@ import { FaDoorOpen, FaDoorClosed } from "react-icons/fa";
 import Avatar from "./avatar";
 
 const Nav = () => {
-  const { accessToken } = useAuth();
+  const { accessToken, currentUserId } = useAuth();
   const avatar = Avatar("")
 
   const [openedMenu, setOpenedMenu] = useState(false);
@@ -58,7 +58,7 @@ const Nav = () => {
         <div className="flex justify-center md:text-xl items-center mr-4">
           {/* Render user avatar if logged in, but login button if not */}
           {accessToken && verifyToken(accessToken) ? (
-            <div className="pr-3">{ avatar}</div>
+            <Link href={`profile/${currentUserId}`} className="pr-3">{ avatar}</Link>
           ) : (
             <Link href="/login">
               <button

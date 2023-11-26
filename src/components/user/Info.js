@@ -2,30 +2,30 @@ import React from "react";
 import { useAuth } from "@/context/globalState";
 
 const Info = () => {
-  const { currentUser } = useAuth();
+  const { currentUserId, signOut } = useAuth();
   let firstname, lastname, gender, phone, email, dept, DoB, username, residentialAddress;
 
-  currentUser?.firstname
-    ? (firstname = currentUser.firstname)
+  currentUserId?.firstname
+    ? (firstname = currentUserId.firstname)
     : (firstname = "Not Set");
   
-    currentUser?.gender
-      ? (gender = currentUser.gender)
+    currentUserId?.gender
+      ? (gender = currentUserId.gender)
       : (gender = "Not Set");
 
-  currentUser?.lastname
-    ? (lastname = currentUser.lastname)
+  currentUserId?.lastname
+    ? (lastname = currentUserId.lastname)
     : (lastname = "Not Set");
 
-  currentUser?.phone ? (phone = currentUser.phone) : (phone = "Not Set");
+  currentUserId?.phone ? (phone = currentUserId.phone) : (phone = "Not Set");
 
-  currentUser?.email ? (email = currentUser.firstname) : (email = "Not Set");
+  currentUserId?.email ? (email = currentUserId.firstname) : (email = "Not Set");
 
-  currentUser?.dept ? (dept = currentUser.dept) : (dept = "Not Set");
+  currentUserId?.dept ? (dept = currentUserId.dept) : (dept = "Not Set");
   
-  currentUser?.DoB ? (DoB = currentUser.DoB) : (DoB = "Not Set");
-  currentUser?.username ? (username = currentUser.username) : (username = "Not Set");
-  currentUser?.residentialAddress ? (residentialAddress = currentUser.residentialAddress) : (residentialAddress = "Not Set");
+  currentUserId?.DoB ? (DoB = currentUserId.DoB) : (DoB = "Not Set");
+  currentUserId?.username ? (username = currentUserId.username) : (username = "Not Set");
+  currentUserId?.residentialAddress ? (residentialAddress = currentUserId.residentialAddress) : (residentialAddress = "Not Set");
     
   return (
     <div className="flex flex-wrap md:gap-3">

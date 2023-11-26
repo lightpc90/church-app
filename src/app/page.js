@@ -7,6 +7,8 @@ import SocialMedia from "@/components/SocialMedia";
 import Link from "next/link";
 import Header from "@/components/header/Header";
 import Footer from "@/components/Footer";
+import SpecialServices from "@/components/SpecialServices";
+import WeeklyServices from "@/components/WeeklyServices";
 
 export const metadata = {
   title: "Home",
@@ -14,6 +16,9 @@ export const metadata = {
 };
 
 export default function Home() {
+  const specialServices = SpecialServices();
+  const weeklyServices = WeeklyServices();
+
   return (
     <>
       <Header />
@@ -26,55 +31,7 @@ export default function Home() {
         {/* <div className=" min-h-unit-24 p-8 m-5 "></div> */}
 
         {/* CHURCH SERVICES SECTION */}
-        <div className="flex flex-wrap justify-center content-center items-center gap-3 lg:gap-10 my-9">
-          <div>
-            <h6 className="w-screen text-center text-[#808081]">
-              Fellowship With Us
-            </h6>
-            <h1 className="w-screen text-center text-2xl font-bold">
-              Our Weekly Services
-            </h1>
-          </div>
-
-          {/* Sunday service container */}
-          <div
-            className="flex flex-col py-10 h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/sunday_worship.jpg')" }}
-          >
-            <h1 className="text-2xl font-bold font-mono">SUNDAY SERVICE</h1>
-            <div className="flex flex-col font-bold">
-              <h1 className="text-xl font-mono">
-                1st Service: <span className="text-[yellow]">7:45am</span>
-              </h1>
-              <h1 className="text-xl font-mono">
-                2nd Service: <span className="text-[yellow]">9:45am</span>
-              </h1>
-            </div>
-          </div>
-
-          <div
-            className="h-80 md:h-[500px] md:w-5/12 w-10/12 border-r-1-2 p-5  text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/word.jpg')" }}
-          >
-            <h1 className="text-2xl font-bold font-mono">DIGGING DEEP</h1>
-            <div className="flex flex-col font-bold md:gap-6">
-              <h1 className="text-xl font-mono">
-                Every Tuesday: <span className="text-[yellow]">6pm</span>
-              </h1>
-            </div>
-          </div>
-          <div
-            className="h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/man_praying.jpg')" }}
-          >
-            <h1 className="text-2xl font-bold font-mono">FAITH CLINIC</h1>
-            <div className="flex flex-col font-bold md:gap-6">
-              <h1 className="text-xl font-mono">
-                Every Thursday: <span className="text-[yellow]">6pm</span>
-              </h1>
-            </div>
-          </div>
-        </div>
+        <div>{weeklyServices}</div>
 
         {/* Social media icons section */}
         <div id="socialMedia" className="mt-[50px]">
@@ -82,7 +39,10 @@ export default function Home() {
         </div>
 
         {/* WATCH US LIVE CONTAINER*/}
-        <div id="live" className="w-screen gap-10 md:gap-10 flex flex-wrap justify-center my-9 md:my-[160px]">
+        <div
+          id="live"
+          className="w-screen gap-10 md:gap-10 flex flex-wrap justify-center my-9 md:my-[160px]"
+        >
           <div className="w-screen">
             <h6 className="w-full text-center text-[#808081]">
               Follow Our Service Online
@@ -109,33 +69,7 @@ export default function Home() {
               Join Us
             </h3>
           </div>
-          <div
-            className="h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/youth_sunday.jpg')" }}
-          >
-            <div className="flex flex-col gap-5 md:p-10 font-mono">
-              <h3>YOUTH SUNDAY EVERY 3RD SUNDAY OF THE MONTH</h3>
-              <h4>SECOND SERVICE</h4>
-            </div>
-          </div>
-          <div
-            className="h-80 md:h-[500px] md:w-5/12 w-10/12 border-r-1-2 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/good_morning_holy_spirit1.jpg')" }}
-          >
-            <div className="flex flex-col gap-5 md:p-10 font-mono">
-              <h3>GOOD MORNIG HOLY SPIRIT EVERY 1ST DAY OF THE MONTH</h3>
-              <h4>6AM</h4>
-            </div>
-          </div>
-          <div
-            className="h-80 md:h-[500px] md:w-5/12 w-10/12 p-5 text-white text-center overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/holy_communion_bg.jpg')" }}
-          >
-            <div className="flex flex-col gap-5 md:p-10 font-mono">
-              <h3>HOLY COMMUNION SERVICE EVERY 1ST SUNDAY OF THE MONTH</h3>
-              <h4>4PM</h4>
-            </div>
-          </div>
+          {specialServices}
         </div>
 
         {/* CONTACT US */}
@@ -143,7 +77,8 @@ export default function Home() {
           <h3 className="py-5 w-screen text-center font-medium">Contact Us</h3>
           <div className="flex flex-col gap-3 px-5">
             <p className="font-medium">
-              1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe Express-Way Lakowe
+              1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
+              Express-Way Lakowe
             </p>
             <p className="font-medium">
               234(0)812 3456 789, 234(0)812 6543 789

@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/globalState";
 
 const LoginForm = () => {
-  const {currentUser, setCurrentUser, signIn} = useAuth()
+  const {currentUserId, signIn, setUserData} = useAuth()
   const router = useRouter()
   const formInitialValue = { email: "", phone: "", pwd: "" };
 
-  if (currentUser) { router.push("/") }
+  if (currentUserId) { router.push("/") }
   
   const [useEmail, setUseEmail] = useState(false);
   const [formData, setFormData] = useState(formInitialValue);
@@ -40,8 +40,9 @@ const LoginForm = () => {
       }
       if (jsonData?.success) {
         // store user data and access token in global state
-        signIn(jsonData.accessToken)
-        setCurrentUser({ ...jsonData.user })
+        console.log("user data got from sign in auth", jsonData.data._doc)
+        signIn(jsonData.accessToken, jsonData.data._doc._id)
+        setUserData({ ...jsonData.data._doc })
         
         toast.success(jsonData.message);
         router.push("/");
