@@ -58,7 +58,7 @@ const Nav = () => {
         <div className="flex justify-center md:text-xl items-center mr-4">
           {/* Render user avatar if logged in, but login button if not */}
           {accessToken && verifyToken(accessToken) ? (
-            <Link href={`profile/${currentUserId}`} className="pr-3">{ avatar}</Link>
+            <Link href={`/profile/${currentUserId}`} className="pr-3">{avatar}</Link>
           ) : (
             <Link href="/login">
               <button

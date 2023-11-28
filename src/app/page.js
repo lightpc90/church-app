@@ -80,9 +80,8 @@ export default function Home() {
               1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
               Express-Way Lakowe
             </p>
-            <p className="font-medium">
-              234(0)812 3456 789, 234(0)812 6543 789
-            </p>
+            <p className="font-medium">234(0)812 3456 789</p>
+            <p className="font-medium">234(0)815 5658 657</p>
             <p className="font-medium">rccgbeautifulgate@gmail.com</p>
           </div>
 

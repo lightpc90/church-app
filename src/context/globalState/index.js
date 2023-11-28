@@ -47,18 +47,22 @@ export default function AuthProvider({ children }) {
     const user = await res.json()
 
     // IF USER DATA FETCHING FAILED
-    if (!user.success) {
+    if (!user?.success) {
+      console.log('error in context while trying to get user info', user.error)
       signOut()
       // PASS ERROR TO NOTIFICATION
       toast.error(user.eror)
     }
-    else {
+    else if(user?.success) {
+      console.log(user.message)
       setUserData(user.data._doc)
+      console.log('data info got in context:', user.data._doc)
     }
   }
 
   useEffect(() => {
     if (currentUserId && !userData) {
+      console.log("fetching user data in context...")
       userInfo()
     }
   }, [currentUserId])
