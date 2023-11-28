@@ -54,11 +54,14 @@ export async function POST(req) {
       );
     }
     // create a token for the user
-    const userData = { ...user, hashedPwd: "" };
-    console.log("user data passed to accesstoken: ", userData)
+    const _user = { ...user, hashedPwd: "" };
+    const userData = _user._doc
+    const _userData = {...userData, hashedPwd: ""}
+    console.log("user data passed to accesstoken: ", _userData)
+    console.log("user data doc info", _userData)
 
     //create JWT
-    const accessToken = jwt.sign(userData, process.env.ACCESS_TOKEN_SECRET, {
+    const accessToken = jwt.sign(_userData, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: "356d",
     });
 
@@ -70,7 +73,7 @@ export async function POST(req) {
         success: true,
         message: "Successfully logged in",
         accessToken,
-        data: userData,
+        data: _userData,
       },
       { status: 201 }
     );

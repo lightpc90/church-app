@@ -17,10 +17,9 @@ const Page = () => {
   return (
     <>
       <div className="flex flex-col mt-[80px] min-h-[400px] justify-center p-5 bg-slate-500">
-        <div className="text-right font-semibold">Hi, Gideon</div>
         <div className="flex justify-end">
           <button className="font-semibold mt-5 text-sm bg-slate-950 text-white py-1 px-2 w-4/12 md:w-2/12 lg:w-[120px]  ">
-            Update Profile
+            Edit Profile
           </button>
         </div>
         <div onClick={()=>{signOut()}} className="flex justify-end">

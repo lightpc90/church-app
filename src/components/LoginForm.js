@@ -34,7 +34,7 @@ const LoginForm = () => {
       });
       console.log('res: ', res)
       const jsonData = await res.json();
-      console.log("data from json: ", jsonData.data._doc);
+      console.log("data from json: ", jsonData.data);
       if (!jsonData?.success) {
         console.log("json Data failed...")
         setLoading(false)
@@ -45,9 +45,9 @@ const LoginForm = () => {
         console.log("json Data succeeded..");
         setLoading(false)
         // store user data and access token in global state
-        console.log("user data got from sign in auth", jsonData.data._doc)
-        signIn(jsonData.accessToken, jsonData.data._doc._id)
-        setUserData({ ...jsonData.data._doc })
+        console.log("user data got from sign in auth", jsonData.data)
+        signIn(jsonData.accessToken, jsonData.data._id)
+        setUserData({ ...jsonData.data })
         
         toast.success(jsonData.message);
         router.push("/");
