@@ -1,4 +1,4 @@
-import connectDB from "../../../../models/connectDB";
+import connectDB from "@/models/connectDB";
 const bcrypt = require("bcrypt");
 import User from "@/models/User";
 import { NextResponse } from "next/server";

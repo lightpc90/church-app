@@ -6,40 +6,33 @@ import toast from "react-hot-toast";
 import { useAuth } from "@/context/globalState";
 
 const EditModal = ({ setIsOpen }) => {
-   const { currentUserId, userData, setUserData } = useAuth();
-  const [firstname, setFirstname] = useState(userData?.firstname ? userData.firstname : '');
+  const { currentUserId, userData, setUserData } = useAuth();
+  const [firstname, setFirstname] = useState(
+    userData?.firstname ? userData.firstname : ""
+  );
   const [lastname, setLastname] = useState(
     userData?.lastname ? userData.lastname : ""
   );
-  const [email, setEmail] = useState(
-    userData?.email ? userData.email : ""
-  );
-  const [phone, setPhone] = useState(
-    userData?.phone ? userData.phone : ""
-  );
+  const [email, setEmail] = useState(userData?.email ? userData.email : "");
+  const [phone, setPhone] = useState(userData?.phone ? userData.phone : "");
   const [birthdayMonth, setBirthdayMonth] = useState(
     userData?.birthdayMonth ? userData.birthdayMonth : ""
   );
   const [birthDay, setBirthDay] = useState(
     userData?.birthDay ? userData.birthDay : ""
   );
-  const [dept, setDept] = useState(
-    userData?.dept ? userData.dept : ""
-  );
+  const [dept, setDept] = useState(userData?.dept ? userData.dept : "");
   const [houseFellowship, setHouseFellowship] = useState(
     userData?.houseFellowship ? userData.houseFellowship : ""
   );
-  const [gender, setGender] = useState(
-    userData?.gender ? userData.gender : ""
-  );
+  const [gender, setGender] = useState(userData?.gender ? userData.gender : "");
   const [residentialAddress, setResidentialAddress] = useState(
     userData?.residentialAddress ? userData.residentialAddress : ""
   );
+
   const [maxDaysInAMonth, setMaxDaysInAMonth] = useState([]);
-
   const [loading, setLoading] = useState(false);
-
- 
+  const [error, setError] = useState("");
 
   const daysInAMonth = () => {
     const _birthdayMonth = parseInt(birthdayMonth);
@@ -74,60 +67,76 @@ const EditModal = ({ setIsOpen }) => {
 
   const handleSubmit = async () => {
     setLoading(true);
+    if (phone || email) {
+      const verifyID = await fetch("/api/verifyAuthId", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ phone, email }),
+      });
+      const res = await verifyID.json();
+      if (!res.success) {
+        setError(res.error);
+        setLoading(false);
+        return;
+      }
+    }
+
     let doc = {};
     if (!firstname || !lastname || !dept || !gender) {
       toast.error(`fill all the required fields`);
-        setLoading(false);
-        console.log("fill all required fields")
+      setLoading(false);
+      console.log("fill all required fields");
       return;
     }
     if (firstname) {
-        doc["firstname"] = firstname;
-        console.log("first name added", firstname)
+      doc["firstname"] = firstname;
+      console.log("first name added", firstname);
     }
     if (lastname) {
-        doc["lastname"] = lastname;
-        console.log("last name added", lastname)
+      doc["lastname"] = lastname;
+      console.log("last name added", lastname);
     }
     if (email) {
-        doc["email"] = email;
-        console.log("email added", email)
+      doc["email"] = email;
+      console.log("email added", email);
     }
     if (phone) {
-        doc["phone"] = phone;
-        console.log("phone number added", phone)
+      doc["phone"] = phone;
+      console.log("phone number added", phone);
     }
     if (birthdayMonth || birthDay) {
       if (birthdayMonth && birthDay) {
         doc["birthDay"] = birthDay;
-          doc["birthdayMonth"] = birthdayMonth;
-          console.log("birthday month and day added ", birthdayMonth, birthDay)
+        doc["birthdayMonth"] = birthdayMonth;
+        console.log("birthday month and day added ", birthdayMonth, birthDay);
       } else {
         toast.error("please enter both month and day");
-          setLoading(false);
-          console.log("enter both month and day")
+        setLoading(false);
+        console.log("enter both month and day");
         return;
       }
     }
     if (dept) {
-        doc["dept"] = dept;
-        console.log("department added", dept)
+      doc["dept"] = dept;
+      console.log("department added", dept);
     }
-     if (gender) {
-       doc["gender"] = gender;
-       console.log("gender added", gender);
-     }
+    if (gender) {
+      doc["gender"] = gender;
+      console.log("gender added", gender);
+    }
     if (houseFellowship) {
-        doc["houseFellowship"] = houseFellowship;
-        console.log("house fellowship added", houseFellowship)
+      doc["houseFellowship"] = houseFellowship;
+      console.log("house fellowship added", houseFellowship);
     }
     if (residentialAddress) {
-        doc["residentialAddress"] = residentialAddress;
-        console.log("address added", residentialAddress)
+      doc["residentialAddress"] = residentialAddress;
+      console.log("address added", residentialAddress);
     }
     // submit update doc to my api
-      const updateDoc = { _id: currentUserId, doc };
-      console.log("updateDoc: ", updateDoc)
+    const updateDoc = { _id: currentUserId, doc };
+    console.log("updateDoc: ", updateDoc);
     const res = await fetch("/api/user/updateUser", {
       method: "POST",
       headers: {
@@ -179,24 +188,36 @@ const EditModal = ({ setIsOpen }) => {
 
         {/* Set Email */}
         {!userData?.email && (
-          <input
-            className="p-2 rounded-md shadow-md"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div className="flex flex-col">
+            <input
+              className="p-2 rounded-md shadow-md"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
+            />
+            {error && <p className="text-red-600">{error}</p>}
+          </div>
         )}
 
         {/* Set Phone Number */}
         {!userData?.phone && (
-          <input
-            className="p-2 rounded-md shadow-md"
-            type="Number"
-            placeholder="Phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
+          <div>
+            <input
+              className="p-2 rounded-md shadow-md"
+              type="Number"
+              placeholder="Phone"
+              value={phone}
+              onChange={(e) => {
+                setPhone(e.target.value);
+                setError("");
+              }}
+            />
+            {error && <p className="text-red-800">{error}</p>}
+          </div>
         )}
 
         {/* Set Birthdate Month */}

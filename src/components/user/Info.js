@@ -37,18 +37,25 @@ const Info = () => {
   return (
     <div className="flex flex-wrap md:gap-3">
       <div className="w-full md:w-4/12 lg:w-2/12">
-        <div
-          className={`inline border-2 ${
-            userData?.verified ? "border-green-800" : "border-red-800"
-          }  p-2 `}
-        >
-          {verified}
-        </div>
-        <Link href="/workers/attendance" className="inline-block mx-2">
-          <button className=" mt-5 bg-slate-800 text-white py-1 px-2">
-            Mark Attendance
-          </button>
-        </Link>
+        {userData?.firstname &&
+          userData?.lastname &&
+          userData?.dept &&
+          userData?.gender && (
+            <div
+              className={`inline border-2 ${
+                userData?.verified ? "border-green-800" : "border-red-800"
+              }  p-2 `}
+            >
+              {verified}
+            </div>
+          )}
+        {userData?.verified && (
+          <Link href="/workers/attendance" className="inline-block mx-2">
+            <button className=" mt-5 bg-slate-800 text-white py-1 px-2">
+              Mark Attendance
+            </button>
+          </Link>
+        )}
 
         <h6 className="mt-10">Primary info</h6>
         <div className="py-2">

@@ -6,7 +6,7 @@ const AvatarImage = (dp) => {
   console.log("dp from avatarImage: ", dp)
 
   return (
-    <div className="flex justify-center items-center h-[5rem] w-[5rem] md:h-[10rem] md:w-[10rem] rounded-full overflow-hidden bg-[#070749] my-5">
+    <div className="flex justify-center items-center h-[8rem] w-[8rem] md:h-[10rem] md:w-[10rem] rounded-full overflow-hidden bg-[#070749] my-5">
       <Image
         src={`${dp}` || "/avatar.png"}
         alt="dp avatar"
