@@ -37,7 +37,7 @@ export default function AuthProvider({ children }) {
   }
 
   const userInfo = async () => {
-    const res = await fetch('api/fetchAUser', {
+    const res = await fetch('/api/user/fetchAUser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -55,8 +55,8 @@ export default function AuthProvider({ children }) {
     }
     else if(user?.success) {
       console.log(user.message)
-      setUserData(user.data._doc)
-      console.log('data info got in context:', user.data._doc)
+      setUserData(user.data)
+      console.log('data info got in context:', user.data)
     }
   }
 

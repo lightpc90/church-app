@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema(
     residentialAddress: {
       type: String,
     },
+    houseFellowship: {
+      type: String,
+    },
     verified: {
       type: Boolean,
       default: false,
@@ -42,7 +45,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       default: "user",
-    }
+    },
   },
   { timestamps: true }
 );

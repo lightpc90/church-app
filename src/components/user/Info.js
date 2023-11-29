@@ -1,9 +1,12 @@
 import React from "react";
+import Link from "next/link";
 import { useAuth } from "@/context/globalState";
 
 const Info = () => {
+  const convertToMonth = { '1': 'Jan', '2': 'Feb', '3': 'Mar', '4': 'Apr', '5': 'May', '6': 'Jun', '7': 'Jul', '8': 'Aug', '9': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec' }
   const { userData, signOut } = useAuth();
-  let firstname, lastname, gender, phone, email, dept, DoB, username, residentialAddress;
+  const month_of_birthday = convertToMonth[userData?.birthdayMonth]
+  let firstname, lastname, gender, phone, verified, email, dept, DoB, username, residentialAddress;
 
   userData?.firstname
     ? (firstname = userData.firstname)
@@ -23,14 +26,31 @@ const Info = () => {
 
   userData?.dept ? (dept = userData.dept) : (dept = "Not Set");
   
-  userData?.DoB ? (DoB = userData.DoB) : (DoB = "Not Set");
+  month_of_birthday && userData?.birthDay ? (DoB = `${month_of_birthday}, ${userData.birthDay}`) : (DoB = "Not Set");
   userData?.username ? (username = userData.username) : (username = "Not Set");
   userData?.residentialAddress ? (residentialAddress = userData.residentialAddress) : (residentialAddress = "Not Set");
+
+  userData?.verified
+    ? (verified = "Verified")
+    : (verified = "Awaiting Verification");
     
   return (
     <div className="flex flex-wrap md:gap-3">
       <div className="w-full md:w-4/12 lg:w-2/12">
-        <h6 className="">Primary info</h6>
+        <div
+          className={`inline border-2 ${
+            userData?.verified ? "border-green-800" : "border-red-800"
+          }  p-2 `}
+        >
+          {verified}
+        </div>
+        <Link href="/workers/attendance" className="inline-block mx-2">
+          <button className=" mt-5 bg-slate-800 text-white py-1 px-2">
+            Mark Attendance
+          </button>
+        </Link>
+
+        <h6 className="mt-10">Primary info</h6>
         <div className="py-2">
           <p className="bg-gray-600 border-l-4 border-slate-950 p-2 text-white">
             {firstname}
