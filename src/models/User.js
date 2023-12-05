@@ -41,17 +41,12 @@ const userSchema = new mongoose.Schema(
     houseFellowship: {
       type: String,
     },
-    registeredBy: {
-      type: String,
-      default: 'self'
-    },
+
     verified: {
       type: Boolean,
       default: false,
     },
-    verifiedBy: {
-      type: String
-    },
+
     role: {
       type: String,
       default: "user",
@@ -59,6 +54,20 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+userSchema.add({
+  hod: {
+    type: Boolean,
+    default: false,
+  },
+  registeredBy: {
+    type: String,
+    default: "self",
+  },
+  verifiedBy: {
+    type: String,
+  },
+});
 
 const User = mongoose.models["User"] || mongoose.model("User", userSchema);
 

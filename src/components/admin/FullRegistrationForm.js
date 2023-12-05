@@ -134,6 +134,19 @@ const FullRegistrationForm = () => {
       console.log("New User created", newUser.data);
       setUsers([...users, newUser.data]);
       toast.success(newUser.message);
+      // RESET THE INPUT VALUES
+      setFirstname('')
+      setLastname('')
+      setPhone('')
+      setPwd('')
+      setConfirmPwd('')
+      setEmail('')
+      setBirthdayMonth('')
+      setBirthDay('')
+      setDept('')
+      setGender('')
+      setHouseFellowship('')
+      setResidentialAddress('')
     }
     setLoading(false);
   };
@@ -323,6 +336,7 @@ const FullRegistrationForm = () => {
         />
         <div className="mt-5">
           <button
+            disabled={loading}
             className="bg-green-900 w-full py-1 px-3 mx-1 text-white"
             onClick={handleSubmit}
           >
