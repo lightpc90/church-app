@@ -2,8 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/globalState";
 
+import { convertToMonth } from "../constants";
+
 const Info = () => {
-  const convertToMonth = { '1': 'Jan', '2': 'Feb', '3': 'Mar', '4': 'Apr', '5': 'May', '6': 'Jun', '7': 'Jul', '8': 'Aug', '9': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec' }
+  
   const { userData, signOut } = useAuth();
   const month_of_birthday = convertToMonth[userData?.birthdayMonth]
   let firstname, lastname, gender, phone, verified, email, dept, DoB, username, residentialAddress;
@@ -35,14 +37,14 @@ const Info = () => {
     : (verified = "Awaiting Verification");
     
   return (
-    <div className="flex flex-wrap md:gap-3">
+    <div className="flex flex-wrap w-full md:gap-3">
       <div className="w-full md:w-4/12 lg:w-2/12">
         {userData?.firstname &&
           userData?.lastname &&
           userData?.dept &&
           userData?.gender && (
             <div
-              className={`inline border-2 ${
+              className={`inline-block border-2 ${
                 userData?.verified ? "border-green-800" : "border-red-800"
               }  p-2 `}
             >

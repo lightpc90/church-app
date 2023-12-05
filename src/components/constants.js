@@ -15,13 +15,27 @@
    { name: "Dec", value: 12 },
  ];
 
+ export const convertToMonth = {
+   1: "Jan",
+   2: "Feb",
+   3: "Mar",
+   4: "Apr",
+   5: "May",
+   6: "Jun",
+   7: "Jul",
+   8: "Aug",
+   9: "Sep",
+   10: "Oct",
+   11: "Nov",
+   12: "Dec",
+ };
 
  export const depts = [
    { name: "Media and Tech", value: "Media and Tech" },
    { name: "Choir", value: "Choir" },
    { name: "Prayer", value: "Prayer" },
-   { name: "Sunday School Teacher", value: "Sunday School Teacher" },
-   { name: "Teens And Children Teacher", value: "Teens/Children Teacher" },
+   { name: "Sunday School Teacher", value: "Sunday School" },
+   { name: "Teens And Children Teacher", value: "Teens/Children Teaching" },
    { name: "Protocol", value: "Protocol" },
    { name: "Ushering", value: "Ushering" },
    { name: "Sanitation", value: "Sanitation" },

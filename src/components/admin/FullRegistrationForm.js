@@ -1,34 +1,23 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import { months, depts, houseFellowshipCenters } from "./constants";
-import toast from "react-hot-toast";
 import { useAuth } from "@/context/globalState";
+import { months, houseFellowshipCenters, depts } from "../constants";
+import toast from "react-hot-toast";
 
-const EditModal = ({ setIsOpen }) => {
-  const { currentUserId, userData, setUserData, users, setUsers } = useAuth();
-  const [firstname, setFirstname] = useState(
-    userData?.firstname ? userData.firstname : ""
-  );
-  const [lastname, setLastname] = useState(
-    userData?.lastname ? userData.lastname : ""
-  );
-  const [email, setEmail] = useState(userData?.email ? userData.email : "");
-  const [phone, setPhone] = useState(userData?.phone ? userData.phone : "");
-  const [birthdayMonth, setBirthdayMonth] = useState(
-    userData?.birthdayMonth ? userData.birthdayMonth : ""
-  );
-  const [birthDay, setBirthDay] = useState(
-    userData?.birthDay ? userData.birthDay : ""
-  );
-  const [dept, setDept] = useState(userData?.dept ? userData.dept : "");
-  const [houseFellowship, setHouseFellowship] = useState(
-    userData?.houseFellowship ? userData.houseFellowship : ""
-  );
-  const [gender, setGender] = useState(userData?.gender ? userData.gender : "");
-  const [residentialAddress, setResidentialAddress] = useState(
-    userData?.residentialAddress ? userData.residentialAddress : ""
-  );
+const FullRegistrationForm = () => {
+  const { currentUserId, userData, setUserData, setUsers, users } = useAuth();
+
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [confirmPwd, setConfirmPwd] = useState("");
+  const [birthdayMonth, setBirthdayMonth] = useState("");
+  const [birthDay, setBirthDay] = useState("");
+  const [dept, setDept] = useState("");
+  const [houseFellowship, setHouseFellowship] = useState("");
+  const [gender, setGender] = useState("");
+  const [residentialAddress, setResidentialAddress] = useState("");
 
   const [maxDaysInAMonth, setMaxDaysInAMonth] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -65,26 +54,16 @@ const EditModal = ({ setIsOpen }) => {
     setMaxDaysInAMonth(list);
   }, [birthdayMonth]);
 
+  // FORM SUBMISSION HANDLER
   const handleSubmit = async () => {
     setLoading(true);
-    if (phone || email) {
-      const verifyID = await fetch("/api/verifyAuthId", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ phone, email }),
-      });
-      const res = await verifyID.json();
-      if (!res.success) {
-        setError(res.error);
-        setLoading(false);
-        return;
-      }
-    }
 
     let doc = {};
-    if (!firstname || !lastname || !dept || !gender) {
+    if (pwd !== confirmPwd) {
+      toast.error("passwords do not match");
+      return;
+    }
+    if (!firstname || !lastname || !dept || !gender || (!phone && !email)) {
       toast.error(`fill all the required fields`);
       setLoading(false);
       console.log("fill all required fields");
@@ -105,6 +84,9 @@ const EditModal = ({ setIsOpen }) => {
     if (phone) {
       doc["phone"] = phone;
       console.log("phone number added", phone);
+    }
+    if (pwd) {
+      doc["pwd"] = pwd;
     }
     if (birthdayMonth || birthDay) {
       if (birthdayMonth && birthDay) {
@@ -134,30 +116,27 @@ const EditModal = ({ setIsOpen }) => {
       doc["residentialAddress"] = residentialAddress;
       console.log("address added", residentialAddress);
     }
-    // submit update doc to my api
-    const updateDoc = { _id: currentUserId, doc };
-    console.log("updateDoc: ", updateDoc);
-    const res = await fetch("/api/user/updateUser", {
+    doc["registeredBy"] = currentUserId;
+    // submit new user doc to the RegistrationByAdmin api
+    console.log("new user to register: ", doc);
+    const res = await fetch("/api/auth/RegistrationByAdmin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updateDoc),
+      body: JSON.stringify(doc),
     });
 
-    const modifiedDoc = await res.json();
-    if (!modifiedDoc.success) {
-      setLoading(false);
-      toast.error(modifiedDoc.error);
-    } else if (modifiedDoc.success) {
-      console.log("modified data", modifiedDoc.data);
-      setUserData(modifiedDoc.data);
-      setUsers([...users, modifiedDoc.data])
-      toast.success(modifiedDoc.message);
-      setIsOpen(false);
+    const newUser = await res.json();
+    if (!newUser.success) {
+      toast.error(newUser.error);
+    } else if (newUser.success) {
+      console.log("New User created", newUser.data);
+      setUsers([...users, newUser.data]);
+      toast.success(newUser.message);
     }
+    setLoading(false);
   };
-
   return (
     <div>
       <div className="bg-slate-800 flex flex-col gap-2 px-5 py-10 w-full md:w-[400px] justify-center">
@@ -188,40 +167,72 @@ const EditModal = ({ setIsOpen }) => {
         </div>
 
         {/* Set Email */}
-        {!userData?.email && (
-          <div className="flex flex-col">
-            <input
-              className="p-2 rounded-md shadow-md"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setError("");
-              }}
-            />
-            {error && <p className="text-red-600">{error}</p>}
-          </div>
-        )}
+        <div className="flex flex-col">
+          <label className="text-gray-500 text-sm">
+            Email or Phone is Required
+          </label>
+          <input
+            className="p-2 rounded-md shadow-md"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError("");
+            }}
+          />
+          {error && <p className="text-red-600">{error}</p>}
+        </div>
 
         {/* Set Phone Number */}
-        {!userData?.phone && (
-          <div>
-            <input
-              className="p-2 rounded-md shadow-md"
-              type="Number"
-              placeholder="Phone"
-              value={phone}
-              onChange={(e) => {
-                setPhone(e.target.value);
-                setError("");
-              }}
-            />
-            {error && <p className="text-red-800">{error}</p>}
-          </div>
-        )}
+        <div className="flex flex-col">
+          <label className="text-gray-500 text-sm">
+            Phone or Email is Required
+          </label>
+          <input
+            className="p-2 rounded-md shadow-md"
+            type="Number"
+            placeholder="Phone"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+              setError("");
+            }}
+          />
+          {error && <p className="text-red-800">{error}</p>}
+        </div>
+        {/* Set Password */}
+        <div className="flex flex-col">
+          <label className="text-gray-500 text-sm">Required</label>
+          <input
+            className="p-2 rounded-md shadow-md"
+            type="password"
+            placeholder="Password"
+            value={pwd}
+            onChange={(e) => {
+              setPwd(e.target.value);
+              // setError("");
+            }}
+          />
+          {error && <p className="text-red-800">{error}</p>}
+        </div>
 
+        {/* Set confirm password */}
+        <div className="flex flex-col">
+          <label className="text-gray-500 text-sm">Required</label>
+          <input
+            className="p-2 rounded-md shadow-md"
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPwd}
+            onChange={(e) => {
+              setConfirmPwd(e.target.value);
+              // setError("");
+            }}
+          />
+        </div>
         {/* Set Birthdate Month */}
+        <label className="text-gray-500 text-sm">Birthday Date</label>
         <select
           className="p-2 rounded-md shadow-md"
           value={birthdayMonth}
@@ -310,18 +321,12 @@ const EditModal = ({ setIsOpen }) => {
           value={residentialAddress}
           onChange={(e) => setResidentialAddress(e.target.value)}
         />
-        <div className="text-right mt-5">
+        <div className="mt-5">
           <button
-            className="bg-red-900 py-1 px-3 mx-1 text-white"
-            onClick={() => setIsOpen(false)}
-          >
-            Close
-          </button>
-          <button
-            className="bg-green-900 py-1 px-3 mx-1 text-white"
+            className="bg-green-900 w-full py-1 px-3 mx-1 text-white"
             onClick={handleSubmit}
           >
-            {loading ? "Loading..." : "Update"}
+            {loading ? "Loading..." : "Register"}
           </button>
         </div>
       </div>
@@ -329,4 +334,4 @@ const EditModal = ({ setIsOpen }) => {
   );
 };
 
-export default EditModal;
+export default FullRegistrationForm;

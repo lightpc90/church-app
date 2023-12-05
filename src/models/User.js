@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema(
     birthdayMonth: {
       type: String,
     },
+    image: {
+      type: String,
+    },
     birthDay: {
       type: Number,
     },
@@ -38,9 +41,16 @@ const userSchema = new mongoose.Schema(
     houseFellowship: {
       type: String,
     },
+    registeredBy: {
+      type: String,
+      default: 'self'
+    },
     verified: {
       type: Boolean,
       default: false,
+    },
+    verifiedBy: {
+      type: String
     },
     role: {
       type: String,

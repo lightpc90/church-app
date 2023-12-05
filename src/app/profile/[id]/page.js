@@ -1,15 +1,33 @@
 "use client";
 
-import {useState} from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import Info from "@/components/user/Info";
 import Footer from "@/components/Footer";
 import AvatarImage from "@/components/avatarImage";
 
 import { useAuth } from "@/context/globalState";
 import EditModal from "@/components/editModal";
+import verifyToken from "@/middlewares/verifyToken";
+
+
+
 
 const Page = () => {
-  const { signOut, userData } = useAuth();
+  const router = useRouter()
+
+
+  const { signOut, userData, currentUserId, accessToken } = useAuth();
+    const verify = verifyToken(accessToken);
+
+//   const getVerification = async () => {
+//    verifyToken()
+//  }
+  
+  if (!verify) {
+    router.push('/')
+  }
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,7 +67,9 @@ const Page = () => {
           </button>
         </div>
 
-        <div>{avatar}</div>
+        <div className="flex justify-center h-[9rem] w-[9rem] items-center rounded-full overflow-hidden bg-[#070749]">
+          {avatar}
+        </div>
 
         {/* Basic Info component */}
         <div>{info}</div>

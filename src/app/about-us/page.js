@@ -24,14 +24,14 @@ const Page = () => {
          */}
 
         <div>
-          <p className="bg-slate-900 rounded-md text-white p-3 lg:px-[700px]">{welcome}</p>
+          <p className="bg-slate-900 rounded-md text-white lg:mx-auto p-3 lg:px-[700px]">{welcome}</p>
           <h6 className="text-center mt-5">Our Address</h6>
           <p className="lg:px-[700px]">
             <ChurchAddress/>
           </p>
           <h6 className="text-center mt-5 py-2">Meet Our Pastors</h6>
-          <div>
-           <RenderPastors/>
+          <div className='lg:px-[700px]'>
+/home/gideon/churchapp/my-app/src/app/api/user/deleteUser           <RenderPastors/>
           </div>
         </div>
       </div>

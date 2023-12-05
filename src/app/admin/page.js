@@ -11,10 +11,15 @@ import ViewAttendance from "@/components/admin/ViewAttendance";
 import ViewPrayerReqest from "@/components/admin/ViewPrayerReqest";
 import ViewTestimonies from "@/components/admin/ViewTestimonies";
 import Sidebar from "@/components/admin/Sidebar";
+import FullRegistrationForm from "@/components/admin/FullRegistrationForm";
+
+import { useAuth } from "@/context/globalState";
 
 import { useState } from "react";
 
 const Page = () => {
+  const { userData } = useAuth()
+  
   const [profile, setProfile] = useState(true)
   const [attendance, setAttendance] = useState(false)
   const [regUser, setRegUser] = useState(false)
@@ -107,7 +112,7 @@ const Page = () => {
         />
         <section className="p-2 ml-16 lg:ml-20 min-h-screen">
           <div className="flex flex-col justify-between">
-            <p className="font-medium md:text-xl text-end">Hi, Fola</p>
+            <p className="font-medium md:text-xl text-end">{userData?.firstname && <p>{ `Hi, ${userData.firstname}`}</p>}</p>
             <div>
               <p className="font-bold lg:text-2xl">Admin Dashboard</p>
               <p className="font-bold text-gray-500">
@@ -136,11 +141,11 @@ const Page = () => {
             {/* Register User */}
             {regUser && (
               <div className="flex flex-wrap ">
-                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-4/12 p-3 md:py-10 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full flex flex-col justify-center items-center p-3 md:py-10 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <h4 className="text-white text-center">User Registration</h4>
-                  <RegisterForm />
+                  <FullRegistrationForm />
                 </div>
-                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-4/12 p-3 md:py-10 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full flex flex-col justify-center items-center p-3 md:py-10 shadow-lg rounded-md mt-5 md:m-8 lg:m-20">
                   <h4 className="text-white text-center">
                     Follow Up Forms - First Timer and Altar Call
                   </h4>
@@ -159,13 +164,13 @@ const Page = () => {
             {/* wewb content management */}
             {contentMgt && (
               <section className="flex flex-wrap justify-center items-center gap-2 w-full">
-                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-5/12 lg:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-5">
                   <UpdateSlider />
                 </div>
-                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-5/12 lg:w-4/12 p-3 shadow-lg rounded-md mt-5 lg:m-5">
                   <UpdateGallery />
                 </div>
-                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-8/12 p-3 shadow-lg rounded-md mt-5 lg:m-20">
+                <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-8/12 lg:w-/12 p-3 shadow-lg rounded-md mt-5 lg:m-5">
                   <UpdateEvents />
                 </div>
               </section>

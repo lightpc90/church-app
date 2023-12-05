@@ -1,14 +1,13 @@
-import React from 'react'
 
-const verifyToken = async (accessToken) => {
-  if (!accessToken) return false
-  console.log('accesstoken passed to the api: ', accessToken)
-const verify = await fetch("api/auth/verifyToken", {
+const verifyToken = async (token) => {
+  if (!token) return false
+  console.log('accesstoken passed to the api: ', token)
+const verify = await fetch("/api/auth/verifyToken", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
   },
-  body: JSON.stringify({ accessToken }),
+  body: JSON.stringify({ token }),
 });
 
   const res = await verify.json();
