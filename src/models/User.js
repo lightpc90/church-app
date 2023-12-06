@@ -66,7 +66,7 @@ userSchema.add({
   },
   verifiedBy: {
     type: String,
-  },
+  }
 });
 
 const User = mongoose.models["User"] || mongoose.model("User", userSchema);

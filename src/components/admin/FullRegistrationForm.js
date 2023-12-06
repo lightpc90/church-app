@@ -117,6 +117,7 @@ const FullRegistrationForm = () => {
       console.log("address added", residentialAddress);
     }
     doc["registeredBy"] = currentUserId;
+    doc["verifiedBy"] = currentUserId;
     // submit new user doc to the RegistrationByAdmin api
     console.log("new user to register: ", doc);
     const res = await fetch("/api/auth/RegistrationByAdmin", {
