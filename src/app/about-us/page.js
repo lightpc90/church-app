@@ -31,7 +31,7 @@ const Page = () => {
           </p>
           <h6 className="text-center mt-5 py-2">Meet Our Pastors</h6>
           <div className='lg:px-[700px]'>
-/home/gideon/churchapp/my-app/src/app/api/user/deleteUser           <RenderPastors/>
+         <RenderPastors/>
           </div>
         </div>
       </div>
