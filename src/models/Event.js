@@ -2,15 +2,17 @@ import { Timestamp } from "mongodb";
 import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: false },
-    dateTime: { type: Date, required: true },
-    flierUrl: {
-     type: String, required: false 
+    eventName: { type: String, required: true },
+    eventOccurrence: { type: String},
+    eventDate: { type: Date},
+    eventTime: {type: String},
+    eventImage: {
+     type: String, 
     },
-    regLink: {
-        type: String, required: false
-    }
+    eventRegLink: {
+        type: String, 
+    },
+    uploadedBy: {type: String}
 }, {timestamps: true})
 
 const Event = mongoose.models.Event || mongoose.model("Event", eventSchema)

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 export const AuthContext = createContext(null);
 
 export function useAuth() {
-  return useContext(AuthContext)
+  return useContext(AuthContext);
 }
 
 export default function AuthProvider({ children }) {
@@ -23,6 +23,8 @@ export default function AuthProvider({ children }) {
 
   const [verify, setVerify] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const [events, setEvents] = useState([]);
 
   const signIn = (token, userId) => {
     localStorage.setItem("accessToken", token);
@@ -104,6 +106,8 @@ export default function AuthProvider({ children }) {
         userData,
         setUserData,
         verify,
+        events,
+        setEvents,
         loading,
       }}
     >
@@ -111,4 +115,3 @@ export default function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-

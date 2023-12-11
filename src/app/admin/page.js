@@ -2,11 +2,10 @@
 
 import Profile from "@/components/user/profile"
 import Searchworkers from "@/components/admin/Searchworkers"
-import RegisterForm from "@/components/RegisterForm";
 import UpdateSlider from "@/components/admin/updateSlider";
 import AltarCallFormOrFirstTimer from "@/components/admin/AltarCallFormOrFirstTimer";
 import UpdateGallery from "@/components/admin/UpdateGallery";
-import UpdateEvents from "@/components/admin/UpdateEvents";
+import UploadEvent from "@/components/admin/UploadEvent";
 import ViewAttendance from "@/components/admin/ViewAttendance";
 import ViewPrayerReqest from "@/components/admin/ViewPrayerReqest";
 import ViewTestimonies from "@/components/admin/ViewTestimonies";
@@ -171,7 +170,7 @@ const Page = () => {
                   <UpdateGallery />
                 </div>
                 <div className="bg-gradient-to-tr from-[#5c5d61] to-[#dccbe9] w-full md:w-8/12 lg:w-/12 p-3 shadow-lg rounded-md mt-5 lg:m-5">
-                  <UpdateEvents />
+                  <UploadEvent />
                 </div>
               </section>
             )}

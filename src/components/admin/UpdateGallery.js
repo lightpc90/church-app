@@ -1,17 +1,61 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const UpdateGallery = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleFileInputChange = (e) => {
-    setSelectedFile(URL.createObjectURL(e.target.files[0]));
+    setSelectedFile(e.target.files[0]);
   };
 
-  const handleUpload = () => {
-    // upload logic here
+  const handleUpload = async () => {
+    setLoading(true);
+    //  I don't want this upload component to work yet.. It's only set up for not for future integration
+    // this two lines will be removed when it's time
+    toast.error("This feature not activated yet");
+    return;
+
+    // if no file selected
+    if (!selectedFile) {
+      toast.error("Please choose a file");
+      return;
+    }
+    // create an instance of FormData
+    const formData = new FormData();
+    // append the documents
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", "beautifulGatePreset");
+    console.log("formData: ", ...formData);
+    
+    // upload file to cloudinary
     console.log("Image upload button clicked");
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/gideonabbey/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      setImageUrl(data.secure_url);
+      console.log("data returned: ", data.secure_url);
+
+      // grab the secure url returned from the uploaded file and save to the DB
+      // connect to the new_gallery api
+
+
+    } else {
+      // if file failed to upload to cloudinary
+      console.log("Error: ", res.status);
+      toast.error("Image failed to upload: Try again");
+      return;
+    }
+    setLoading(false);
   };
 
   return (
@@ -23,7 +67,7 @@ const UpdateGallery = () => {
           className="bg-gradient-to-tr from-[#082f49] to-[#f9a8d4] hover:from-[#a5b4fc] hover:to-[#172554] py-1 rounded-xl shadow-xl"
           onClick={handleUpload}
         >
-          Upload
+          {loading ? "Loading..." : "Upload"}
         </button>
       </section>
       {/* section to display the search result */}
