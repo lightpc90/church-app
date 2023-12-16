@@ -62,7 +62,7 @@ const EventCardLayout = ({event}) => {
             <p>{!event.eventOccurrence && ''}</p>
           </div>
           {!event.eventOccurrence && eventTimeRemaining.total > 0 && (
-            <div className="flex gap-2 font-semibold text-xl lg:text-2xl">
+            <div className="flex gap-2 font-semibold text-xl lg:text-2xl flex-wrap">
               <div className="text-sky-800">{formatTime(eventTimeRemaining.days)}Days</div>
               <div className="text-purple-800">{formatTime(eventTimeRemaining.hours)}Hrs</div>
               <div className="text-cyan-600">{formatTime(eventTimeRemaining.minutes)}Mins</div>
