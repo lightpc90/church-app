@@ -1,6 +1,8 @@
 
 
 const countdownTimer = (targetDate) => {
+  console.log("target date: ", targetDate)
+  
   const now = new Date().getTime();
   const target = new Date(targetDate).getTime();
   const total = target - now;

@@ -13,7 +13,9 @@ const eventSchema = new mongoose.Schema({
         type: String, 
     },
     uploadedBy: {type: String}
-}, {timestamps: true})
+}, { timestamps: true })
+
+eventSchema.add({recurring: {type: Boolean}})
 
 const Event = mongoose.models.Event || mongoose.model("Event", eventSchema)
 

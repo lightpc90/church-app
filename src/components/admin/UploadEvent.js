@@ -151,16 +151,19 @@ const UploadEvent = () => {
             required
           />
           {isChecked && (
-            <input
-              onChange={(e) => {
-                setFormData({ ...formData, eventOccurrence: e.target.value });
-              }}
-              className="px-2 py-1 rounded-md text-black"
-              id="eventOccurrence"
-              type="text"
-              value={formData.eventOccurrence}
-              placeholder="Event Occurrence Description"
-            />
+            <div className="flex flex-col">
+              <input
+                onChange={(e) => {
+                  setFormData({ ...formData, eventOccurrence: e.target.value });
+                }}
+                className="px-2 py-1 rounded-md text-black"
+                id="eventOccurrence"
+                type="text"
+                value={formData.eventOccurrence}
+                placeholder="Event Occurrence Description"
+              />
+              <label className="text-sm text-gray-300">Example: Every 1st Sunday of The Month</label>
+            </div>
           )}
           <input
             onChange={(e) => {
@@ -185,19 +188,19 @@ const UploadEvent = () => {
                   className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
                 />
               </div>
-              <div className="flex flex-col">
-                <p>Choose Event Time</p>
-                <input
-                  type="time"
-                  value={formData.eventTime}
-                  onChange={(e) => {
-                    setFormData({ ...formData, eventTime: e.target.value });
-                  }}
-                  className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
-                />
-              </div>
             </div>
           )}
+          <div className="flex flex-col">
+            <p>Choose Event Time</p>
+            <input
+              type="time"
+              value={formData.eventTime}
+              onChange={(e) => {
+                setFormData({ ...formData, eventTime: e.target.value });
+              }}
+              className="p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
+            />
+          </div>
         </form>
 
         <button

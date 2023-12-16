@@ -1,6 +1,9 @@
-import React from 'react'
+// 'use client'
+
+// import {useState, useEffect} from 'react'
 import Footer from '@/components/Footer';
-import EventCardLayout from '@/components/event/EventCardLayout';
+import RecurringEvents from '@/components/event/RecurringEvents';
+import UpcomingEvents from '@/components/event/UpcomingEvents';
 
 export const metadata = {
   title: "Events",
@@ -9,18 +12,19 @@ export const metadata = {
 
 
 const Page = () => {
+
+
   return (
     <>
       <div className="mt-[80px] min-h-[400px] ">
         <section className="w-screen p-5 flex flex-col justify-center items-center ">
           <div className="w-screen mt-10">
-            <h5 className="text-center">Upcoming Events</h5>
+            <h5 className="text-center lg:text-2xl mb-2">Upcoming Events</h5>
+            <UpcomingEvents />
           </div>
           <div className="w-screen mt-10">
-            <h5 className="text-center">Recurring Events</h5>
-            <div className="flex flex-wrap justify-center w-screen">
-              <EventCardLayout />
-            </div>
+            <h5 className="text-center lg:text-2xl mb-2">Recurring Events</h5>
+            <RecurringEvents />
           </div>
           <div className="w-screen mt-10">
             <h5 className="text-center">Past Events</h5>

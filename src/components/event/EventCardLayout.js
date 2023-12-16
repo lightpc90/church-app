@@ -3,22 +3,19 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import countdownTimer from "@/utilities/countdownTimer";
+import Image from "next/image";
 
-const EventCardLayout = (cardData) => {
-    
-  const carddata = {
-    flier: "/good_morning_holy_spirit1.jpg",
-    eventName: "GOOD MORNIG HOLY SPIRIT",
-    description: "EVERY 1ST DAY OF THE MONTH",
-    date: "26/11/2023",
-    time: "4pm",
-    regLink: "",
-    recurring: true,
-  };
-    
-    const eventDate = cardData.carddata
-    const eventTime = cardData.time
-    const eventFullDate = new Date(eventDate).setHours(eventTime, 0, 0, 0)
+const EventCardLayout = ({event}) => {
+   
+  const eventDate = new Date(event.eventDate)
+  const year = eventDate.getUTCFullYear()
+  const month = eventDate.getUTCMonth()
+  const day = eventDate.getUTCDate();
+  const eventTime = event.eventTime
+  const [hours, minutes] = eventTime.split(':').map(Number)
+
+  const eventFullDate = new Date(year, month, day, hours, minutes)
+
     const [eventTimeRemaining, setEventTimeRemaining] = useState(
       countdownTimer(eventFullDate)
     );
@@ -40,22 +37,40 @@ const EventCardLayout = (cardData) => {
       return time.toString().padStart(2, "0");
     };
   
+  console.log("event time remaining", formatTime(eventTimeRemaining.total));
+
+  
   return (
-    <div
-      className="relative h-80 lg:h-[400px] md:w-5/12 lg:w-3/12 w-10/12 border-r-1-2 p-3 text-white overflow-hidden shadow-md rounded-3xl bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${cardData.flier})` }}
-    >
-      <div className="absolute left-0 bottom-0 opacity-[80%] bg-black h-40 md:h[250px] w-full items-center">
+    <div className="flex flex-col md:w-5/12 lg:w-3/12 w-10/12 shadow-md hover:shadow-2xl">
+      <div className=" h-52 lg:h-[400px] bg-slate-800 shadow-md bg-cover bg-center bg-no-repeat">
+        <Image
+          src={event.eventImage}
+          alt="event flier"
+          width={1200}
+          height={1200}
+          className="w-full h-full"
+        />
+      </div>
+      <div className=" bg-white min-h-32 md:h[200px] w-full items-center">
         <div className="flex flex-col p-3 md:p-5 font-mono justify-items-start ">
-          <h5>{cardData.eventName}</h5>
-          <p>{cardData.recurring && cardData.description}</p>
+          <p className="text-pink-500 font-bold text-xl lg:text-2xl">
+            {event.eventName}
+          </p>
+          <p className="text-md font-semibold lg:text-2xl">{event.eventOccurrence && event.eventOccurrence}</p>
           <div className="flex flex-wrap gap-2 items-center">
-            <h4>{cardData.time}</h4>
-            <p>{!cardData.recurring && cardData.date}</p>
+            <h5>{event.eventTime}</h5>
+            <p>{!event.eventOccurrence && ''}</p>
           </div>
-          {!cardData.recurring && <p>Countdown</p>}
-          {cardData.regLink && (
-            <Link href={cardData.regLink}>Register here</Link>
+          {!event.eventOccurrence && eventTimeRemaining.total > 0 && (
+            <div className="flex gap-2 font-semibold text-xl lg:text-2xl">
+              <div className="text-sky-800">{formatTime(eventTimeRemaining.days)}Days</div>
+              <div className="text-purple-800">{formatTime(eventTimeRemaining.hours)}Hrs</div>
+              <div className="text-cyan-600">{formatTime(eventTimeRemaining.minutes)}Mins</div>
+              <div className="text-pink-500">{formatTime(eventTimeRemaining.seconds)}Secs</div>
+            </div>
+          )}
+          {event.eventRegLink && (
+            <Link href={event.eventRegLink}>Register here</Link>
           )}
         </div>
       </div>
