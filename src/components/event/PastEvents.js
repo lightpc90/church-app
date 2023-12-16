@@ -10,8 +10,8 @@ const PastEvents = () => {
   );
   return (
     <div>
-      {pastEvents.map((event) => (
-        <EventCardLayout event={event} />
+      {pastEvents.map((event, i) => (
+        <EventCardLayout key={i} event={event} />
       ))}
     </div>
   );

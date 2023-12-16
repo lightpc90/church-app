@@ -30,8 +30,8 @@ const UpcomingEvents = () => {
 
   return (
     <div className="flex flex-wrap gap-4 justify-center items-center">
-      {_upcomingEvents?.map((event) => {
-        return <EventCardLayout event={event} />;
+      {_upcomingEvents?.map((event, i) => {
+        return <EventCardLayout key={i} event={event} />;
       })}
     </div>
   );
