@@ -3,14 +3,14 @@ import mongoose from "mongoose";
 const AttendanceSchema = new mongoose.Schema({
   attended: {
     type: Boolean,
-    required,
+    default: false,
   },
   userId: {
-    type: mongoose.Types.ObjectId,
-    ref: "User",
+    type: String,
   },
   byWho: {
-    type: mongoose.Types.ObjectId,
+    type: String,
+    default: "self"
   },
 }, {timestamps: true});
 

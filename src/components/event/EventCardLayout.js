@@ -53,7 +53,7 @@ const EventCardLayout = ({event}) => {
       </div>
       <div className=" bg-white min-h-32 md:h[200px] w-full items-center">
         <div className="flex flex-col p-3 md:p-5 font-mono justify-items-start ">
-          <p className="text-pink-500 font-bold text-xl lg:text-2xl">
+          <p className="text-sky-700 font-bold text-xl lg:text-2xl">
             {event.eventName}
           </p>
           <p className="text-md font-semibold lg:text-2xl">{event.eventOccurrence && event.eventOccurrence}</p>
@@ -62,11 +62,11 @@ const EventCardLayout = ({event}) => {
             <p>{!event.eventOccurrence && ''}</p>
           </div>
           {!event.eventOccurrence && eventTimeRemaining.total > 0 && (
-            <div className="flex gap-2 font-semibold text-xl lg:text-2xl flex-wrap">
-              <div className="text-sky-800">{formatTime(eventTimeRemaining.days)}Days</div>
-              <div className="text-purple-800">{formatTime(eventTimeRemaining.hours)}Hrs</div>
-              <div className="text-cyan-600">{formatTime(eventTimeRemaining.minutes)}Mins</div>
-              <div className="text-pink-500">{formatTime(eventTimeRemaining.seconds)}Secs</div>
+            <div className="flex gap-2 text-slate-600 font-semibold text-xl lg:text-2xl flex-wrap">
+              <div>{formatTime(eventTimeRemaining.days)}d</div>
+              <div>{formatTime(eventTimeRemaining.hours)}h</div>
+              <div>{formatTime(eventTimeRemaining.minutes)}m</div>
+              <div>{formatTime(eventTimeRemaining.seconds)}s</div>
             </div>
           )}
           {event.eventRegLink && (

@@ -2,6 +2,7 @@
 
 // import {useState, useEffect} from 'react'
 import Footer from '@/components/Footer';
+import PastEvents from '@/components/event/PastEvents';
 import RecurringEvents from '@/components/event/RecurringEvents';
 import UpcomingEvents from '@/components/event/UpcomingEvents';
 
@@ -28,6 +29,7 @@ const Page = () => {
           </div>
           <div className="w-screen mt-10">
             <h5 className="text-center">Past Events</h5>
+            <PastEvents />
           </div>
         </section>
       </div>

@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import { useAuth } from "@/context/globalState";
 import EventCardLayout from "./EventCardLayout";
@@ -9,8 +11,8 @@ const PastEvents = () => {
       event.eventDate && new Date(event.eventDate).getTime() < new Date().getTime()
   );
   return (
-    <div>
-      {pastEvents.map((event, i) => (
+    <div className="flex flex-wrap gap-4 justify-center items-center">
+      {pastEvents?.map((event, i) => (
         <EventCardLayout key={i} event={event} />
       ))}
     </div>

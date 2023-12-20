@@ -34,11 +34,14 @@ const TimerOrButton = () => {
       return (
         <>
           <div className="flex flex-col justify-center items-center my-10">
-            <p className="my-10 text-[#3838ce]">
-              Check back to mark your attendance
+            <p className="my-5 font-bold text-xl lg:text-2xl">
+              Workers Sunday Meeting Attendance
+            </p>
+            <p className=" text-sky-800 p-2">
+              Workers Meeting Starts 7am through 8am Every Sunday. Attendance is only opened during this time
             </p>
             <div>
-              <p className="font-bold text-[#0e0e33] text-xl md:text-3xl">
+              <p className="font-bold text-[#0e0e33] text-xl lg:text-4xl">
                 {`${formatTime(timeRemaining.days)}d ${formatTime(
                   timeRemaining.hours
                 )}h ${formatTime(timeRemaining.minutes)}m ${formatTime(
@@ -46,13 +49,13 @@ const TimerOrButton = () => {
                 )}s`}
               </p>
             </div>
-            <p>Countdown to the next Sunday Service</p>
+            <p>Countdown to the next Workers Meeting</p>
           </div>
         </>
       );
     } else if (
       timeRemaining.total <= 0 &&
-      timeRemaining.total < getNextSunday().setHours(12, 0, 0, 0)  //attendance page should be left active till 12pm on sunday
+      timeRemaining.total < getNextSunday().setHours(8, 0, 0, 0)  //attendance page should be left active till 8am on sunday
     ) {
       return (
        <LocationRestrictedPage />

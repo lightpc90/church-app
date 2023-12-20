@@ -11,7 +11,7 @@ const UploadEvent = () => {
     eventName: "",
     eventOccurrence: "",
     eventRegLink: "",
-    eventDate: new Date(),
+    eventDate: '',
     eventTime: '',
   });
   const [imageUrl, setImageUrl] = useState("");

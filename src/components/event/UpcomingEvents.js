@@ -22,8 +22,6 @@ const UpcomingEvents = () => {
        fetchEvents();
      }
    });
-  
-  const now = new Date();
 
   const _upcomingEvents = events.filter((event) => new Date(event.eventDate).getTime() > new Date().getTime() )
   

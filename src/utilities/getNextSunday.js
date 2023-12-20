@@ -21,8 +21,8 @@ export default function getNextSunday() {
   const nextSunday = new Date(currentDate);
   nextSunday.setDate(currentDate.getDate() + daysUntilNextSunday);
 
-  // Set the time to midnight (00:00:00) for accurate comparison
-  nextSunday.setHours(6, 0, 0, 0);
+  // Set the time to 7am when workers meting starts
+  nextSunday.setHours(7, 0, 0, 0);
 
   return nextSunday;
 }

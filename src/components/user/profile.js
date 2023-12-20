@@ -63,7 +63,7 @@ const Profile = () => {
         <p>{ residentialAddress}</p>
       </section>
 
-      <section className="my-2">
+      {/* <section className="my-2">
         <h6>Attendance Stat</h6>
         <p>For the past 3 months</p>
           </section>
@@ -71,7 +71,7 @@ const Profile = () => {
       <section className="my-2">
         <h6>Your Contents</h6>
         <p>Blogs and Stories you have posted show here</p>
-      </section>
+      </section> */}
     </div>
   );
 }

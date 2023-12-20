@@ -1,8 +1,18 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import AttendanceFunction from "./AttendanceFunction";
+import calculateDistance from "@/utilities/calculateDistance";
+import { useAuth } from "@/context/globalState";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const LocationRestrictedPage = () => {
+  const {accessToken}= useAuth()
+  const router = useRouter()
+  if (!accessToken) {
+    router.push('/login')
+  }
   const [userLocation, setUserLocation] = useState(null);
   const [error, setError] = useState(null);
 
@@ -24,34 +34,40 @@ const LocationRestrictedPage = () => {
   }, []);
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="flex justify-center items-center">Error: {error}</div>
+    );
   }
 
   if (!userLocation) {
-    return <div>Loading...</div>; // Loading state while fetching geolocation
+    return (
+      <div className="flex font-sembold justify-center items-center lg:text-2xl">
+        Getting Your Location...
+      </div>
+    ); // Loading state while fetching geolocation
   }
 
   // Calculate distance and check if user is within the allowed radius
-  const targetLatitude = 6.47169  
-  const targetLongitude = 3.72878; 
+  const targetLatitude = 6.47169;
+  const targetLongitude = 3.72878;
   const accessRadius = 50; // 50 meters
-  const distance = calculateDistance(userLocation.latitude, userLocation.longitude, targetLatitude, targetLongitude);
+  const distance = calculateDistance(
+    userLocation.latitude,
+    userLocation.longitude,
+    targetLatitude,
+    targetLongitude
+  );
 
   if (distance <= accessRadius) {
-    return <div>
-      <div>Workers Attendance Page</div>
+    return (
       <div>
-        <p>Name</p>
-        <input type="box" />
+        <AttendanceFunction />
       </div>
-    </div>;
+    );
   } else {
-    return <div>Sorry, you are not within the church premises</div>;
+    return <div className="flex justify-center items-center font-semibold text-xl">Sorry, you are not within the church premises</div>;
   }
 };
 
-function calculateDistance(lat1, lon1, lat2, lon2) {
-  // Haversine formula or other distance calculation methods can be used here
-}
 
 export default LocationRestrictedPage;
