@@ -8,15 +8,16 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const LocationRestrictedPage = () => {
-  const {accessToken}= useAuth()
-  const router = useRouter()
-  if (!accessToken) {
-    router.push('/login')
-  }
-  const [userLocation, setUserLocation] = useState('');
-  const [error, setError] = useState('');
+  const { accessToken } = useAuth();
+  const router = useRouter();
+  const [userLocation, setUserLocation] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    if (!accessToken) {
+      router.push("/login");
+    }
+
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -65,9 +66,12 @@ const LocationRestrictedPage = () => {
       </div>
     );
   } else {
-    return <div className="flex justify-center items-center font-semibold text-xl">Sorry, you are not within the church premises</div>;
+    return (
+      <div className="flex justify-center items-center font-semibold text-xl">
+        Sorry, you are not within the church premises
+      </div>
+    );
   }
 };
-
 
 export default LocationRestrictedPage;
