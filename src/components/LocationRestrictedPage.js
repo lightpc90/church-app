@@ -13,8 +13,8 @@ const LocationRestrictedPage = () => {
   if (!accessToken) {
     router.push('/login')
   }
-  const [userLocation, setUserLocation] = useState(null);
-  const [error, setError] = useState(null);
+  const [userLocation, setUserLocation] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if ("geolocation" in navigator) {
