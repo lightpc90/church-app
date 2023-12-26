@@ -40,7 +40,7 @@ const EventList = () => {
   return (
     <div className="flex flex-col justify-center items-center py-2">
       <div className="mb-7">
-        <div className="text-xl font-semibold">Upcoming Events</div>
+        <div className="flex justify-center items-center text-xl font-semibold">Upcoming Events</div>
         <div>
           {upcomingEvents.length > 0 ? (
             <div className="flex flex-col gap-2">
