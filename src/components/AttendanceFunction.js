@@ -60,7 +60,7 @@ const AttendanceFunction = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-2 justify-center items-center">
+    <div className="flex flex-col gap-2 p-2 justify-center items-center">
       <div className="text-xl lg:text-2xl font-bold">
         Workers Meeting Attendance
       </div>

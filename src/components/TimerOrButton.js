@@ -38,7 +38,7 @@ const TimerOrButton = () => {
               Workers Sunday Meeting Attendance
             </p>
             <p className=" text-sky-800 p-2">
-              Workers Meeting Starts 7am through 8am Every Sunday. Attendance is only opened during this time
+              Workers Meeting Starts 7am through 8am Every Sunday. Attendance is opened only during this period
             </p>
             <div>
               <p className="font-bold text-[#0e0e33] text-xl lg:text-4xl">

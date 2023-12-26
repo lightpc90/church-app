@@ -36,7 +36,7 @@ const LocationRestrictedPage = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center">Error: {error}</div>
+      <div className="flex justify-center font-semibold items-center p-2">Error: {error}</div>
     );
   }
 
@@ -67,7 +67,7 @@ const LocationRestrictedPage = () => {
     );
   } else {
     return (
-      <div className="flex justify-center items-center font-semibold text-xl">
+      <div className="flex p-2 justify-center items-center font-semibold text-xl">
         Sorry, you are not within the church premises
       </div>
     );

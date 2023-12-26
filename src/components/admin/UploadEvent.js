@@ -3,6 +3,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/context/globalState";
+import EventList from "./EventList";
 const UploadEvent = () => {
   const { currentUserId, setEvents, events } = useAuth();
   const [isChecked, setIsChecked] = useState(false);
@@ -215,8 +216,8 @@ const UploadEvent = () => {
       {/* section to display the search result */}
       <div className="flex flex-col grow">
         <p>Events List</p>
-        <section className="flex flex-col mb-2 h-[200px] justify-center items-center overflow-auto border-2 rounded-xl border-[#04042b]">
-          Existing Events show here
+        <section className="flex flex-col mb-2 min-h-[300px] max-h-[500px] justify-center items-center overflow-auto border-2 rounded-xl border-[#04042b]">
+          <EventList/>
         </section>
       </div>
     </div>
