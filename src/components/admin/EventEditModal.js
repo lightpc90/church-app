@@ -52,7 +52,7 @@ const EventEditModal = ({ event, setIsOpen }) => {
       return;
     }
 
-    const eventData = {}
+    let eventData = {}
     // if new flier is chosen
     if (flierChanged) {
       // create an instance of FormData
