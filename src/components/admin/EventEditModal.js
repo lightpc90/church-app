@@ -107,10 +107,10 @@ const EventEditModal = ({ event, setIsOpen }) => {
     );
     //  if update successful
     if (eventUpload.ok) {
-      const eventData = await eventUpload.json();
-      console.log("eventData: ", eventData);
-      setEvents([...events, eventData.data]);
-      toast.success(eventData.message);
+      const updatedData = await eventUpload.json();
+      console.log("updatedData: ", updatedData);
+      setEvents([...events, updatedData.data]);
+      toast.success(updatedData.message);
     }
     // if the event data failed to publish to the database
     else {
