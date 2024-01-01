@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import { useAuth } from "@/context/globalState";
 
-
-
 const EventEditModal = ({ event, setIsOpen }) => {
   const { events, setEvents } = useAuth();
 
   const [loading, setLoading] = useState(false);
+  const [flierChanged, setFlierChanged] = useState(false);
+
   const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
     eventImage: event.eventImage,
@@ -28,20 +28,95 @@ const EventEditModal = ({ event, setIsOpen }) => {
 
   const editEvent = async () => {
     setLoading(true);
-    const res = await fetch("/api/webContentsManagement/updateEvent", {
-      method: "POST",
-      headers: { "Content-Type": "json/application" },
-      body: JSON.stringify({ _id: event._id, doc: formData }),
-    });
-    const updatedEvent = await res.json();
-    if (!res.ok) {
-      toast.error("something went wrong! Try again");
-    } else if (!updatedEvent.success) {
-      toast.error(updatedEvent.error);
-    } else if (updatedEvent.success) {
-        setEvents([...events, updatedEvent.data])
-      toast.success(updatedEvent.message);
+    // if no file selected
+    if (!formData?.eventImage) {
+      toast.error("Please choose a file");
+      setLoading(false);
+      return;
     }
+    if (!formData?.eventName) {
+      toast.error("Please provide the event name");
+      setLoading(false);
+      return;
+    }
+    //  If it is a one time event
+    if (!isChecked && (!formData?.eventDate || !formData?.eventTime)) {
+      toast.error("Please provide event date and time");
+      setLoading(false);
+      return;
+    }
+    //  If it is a recurring event
+    if (isChecked && !formData?.eventOccurrence) {
+      toast.error("Please provide event occurrence");
+      setLoading(false);
+      return;
+    }
+
+    const eventData = {}
+    // if new flier is chosen
+    if (flierChanged) {
+      // create an instance of FormData
+      const fileFormData = new FormData();
+      // append the documents
+      fileFormData.append("file", formData.eventImage);
+      fileFormData.append("upload_preset", "beautifulGatePreset");
+      console.log("formData: ", ...fileFormData);
+
+      // upload file to cloudinary
+      console.log("Image upload button clicked");
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/gideonabbey/upload`,
+        {
+          method: "POST",
+          body: fileFormData,
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        //  setImageUrl(data.secure_url);
+        console.log("data returned: ", data.secure_url);
+
+        // grab the secure url returned from the uploaded file and save to the DB
+        eventData = {
+          ...formData,
+          eventImage: data.secure_url,
+          //  uploadedBy: currentUserId,
+        };
+      }
+      else {
+      // if file failed to upload to cloudinary
+      console.log("Error: ", res.status);
+      toast.error("Image failed to upload: Try again");
+      }
+      // if flier wasn't changed
+    } else {
+      eventData = { ...formData }
+    }
+
+      console.log("eventData before sending to api: ", eventData);
+      // connect to the new_event api
+      const eventUpload = await fetch(
+        "/api/webContentsManagement/updateEvent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ _id: event._id, doc: eventData }),
+        }
+      );
+      //  if update successful
+      if (eventUpload.ok) {
+        const eventData = await eventUpload.json();
+        console.log("eventData: ", eventData);
+        setEvents([...events, eventData.data]);
+        toast.success(eventData.message);
+      }
+      // if the event data failed to publish to the database
+      else {
+        toast.error("Error updating the event");
+      }
+    } 
     setLoading(false);
     handleClose();
   };
@@ -54,12 +129,14 @@ const EventEditModal = ({ event, setIsOpen }) => {
         <form className="flex flex-col gap-2">
           <input
             type="file"
-            onChange={(e) =>
+            value={formData.eventImage}
+            onChange={(e) => {
               setFormData({
                 ...formData,
                 eventImage: e.target.files[0],
-              })
-            }
+              });
+              setFlierChanged(true);
+            }}
           />
           <div className="flex gap-1 font-bold text-xl text-slate-400">
             <p>Mark this box if it is a recurring Event</p>
@@ -154,6 +231,5 @@ const EventEditModal = ({ event, setIsOpen }) => {
       </div>
     </div>
   );
-};
 
 export default EventEditModal;

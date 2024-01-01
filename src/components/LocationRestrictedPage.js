@@ -49,8 +49,8 @@ const LocationRestrictedPage = () => {
   }
 
   // Calculate distance and check if user is within the allowed radius
-  const targetLatitude = 6.47169;
-  const targetLongitude = 3.72878;
+  const targetLatitude = 6.4717305;
+  const targetLongitude = 3.7288197;
   const accessRadius = 50; // 50 meters
   const distance = calculateDistance(
     userLocation.latitude,
@@ -68,7 +68,7 @@ const LocationRestrictedPage = () => {
   } else {
     return (
       <div className="flex p-2 justify-center items-center font-semibold text-xl">
-        Sorry, you are not within the church premises
+        Sorry, you are not within the church premises. You're about {distance - accessRadius}m away
       </div>
     );
   }

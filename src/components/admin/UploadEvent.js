@@ -103,7 +103,7 @@ const UploadEvent = () => {
       }
       // if the event data failed to publish to the database
       else {
-        toast.error(eventData.error);
+        toast.error("Error! upload failed");
       }
     } else {
       // if file failed to upload to cloudinary
