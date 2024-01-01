@@ -32,7 +32,7 @@ const LocationRestrictedPage = () => {
     } else {
       setError("Geolocation not supported"); // Handle lack of geolocation support
     }
-  }, []);
+  }, [accessToken]);
 
   if (error) {
     return (
@@ -68,7 +68,7 @@ const LocationRestrictedPage = () => {
   } else {
     return (
       <div className="flex p-2 justify-center items-center font-semibold text-xl">
-        Sorry, you are not within the church premises. You're about {distance - accessRadius}m away
+        Sorry, you are not within the church premises. You are about {distance - accessRadius}m away
       </div>
     );
   }
