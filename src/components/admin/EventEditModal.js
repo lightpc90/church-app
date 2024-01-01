@@ -84,39 +84,38 @@ const EventEditModal = ({ event, setIsOpen }) => {
         };
       }
       else {
-      // if file failed to upload to cloudinary
-      console.log("Error: ", res.status);
-      toast.error("Image failed to upload: Try again");
+        // if file failed to upload to cloudinary
+        console.log("Error: ", res.status);
+        toast.error("Image failed to upload: Try again");
       }
       // if flier wasn't changed
     } else {
       eventData = { ...formData }
     }
 
-      console.log("eventData before sending to api: ", eventData);
-      // connect to the new_event api
-      const eventUpload = await fetch(
-        "/api/webContentsManagement/updateEvent",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ _id: event._id, doc: eventData }),
-        }
-      );
-      //  if update successful
-      if (eventUpload.ok) {
-        const eventData = await eventUpload.json();
-        console.log("eventData: ", eventData);
-        setEvents([...events, eventData.data]);
-        toast.success(eventData.message);
+    console.log("eventData before sending to api: ", eventData);
+    // connect to the new_event api
+    const eventUpload = await fetch(
+      "/api/webContentsManagement/updateEvent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ _id: event._id, doc: eventData }),
       }
-      // if the event data failed to publish to the database
-      else {
-        toast.error("Error updating the event");
-      }
-    } 
+    );
+    //  if update successful
+    if (eventUpload.ok) {
+      const eventData = await eventUpload.json();
+      console.log("eventData: ", eventData);
+      setEvents([...events, eventData.data]);
+      toast.success(eventData.message);
+    }
+    // if the event data failed to publish to the database
+    else {
+      toast.error("Error updating the event");
+    }
     setLoading(false);
     handleClose();
   };
@@ -231,5 +230,6 @@ const EventEditModal = ({ event, setIsOpen }) => {
       </div>
     </div>
   );
+}
 
 export default EventEditModal;
