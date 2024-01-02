@@ -8,7 +8,7 @@ const PastEvents = () => {
   const { events } = useAuth();
   const pastEvents = events.filter(
     (event) =>
-      event.eventDate && new Date(event.eventDate).getTime() < new Date().getTime()
+      event.eventDate && new Date(event.eventDate).setHours(parseInt(event.eventTime.split(':')[0])).getTime() < new Date().getTime()
   );
   return (
     <div className="flex flex-wrap gap-4 justify-center items-center">
