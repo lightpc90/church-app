@@ -23,7 +23,7 @@ const UpcomingEvents = () => {
      }
    });
 
-  const _upcomingEvents = events.filter((event) => (new Date(event.eventDate).setHours(parseInt(event.eventTime.split(':')[0])).getTime() > new Date().getTime()) )
+  const _upcomingEvents = events.filter((event) => (new Date(event.eventDate).setHours(parseInt(event.eventTime.split(':')[0])) > new Date().getTime()) )
   
 
   return (
