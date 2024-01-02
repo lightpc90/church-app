@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useAuth } from "@/context/globalState";
+import toast from "react-hot-toast";
 
 const EventEditModal = ({ event, setIsOpen }) => {
   const { events, setEvents } = useAuth();
@@ -128,7 +129,6 @@ const EventEditModal = ({ event, setIsOpen }) => {
         <form className="flex flex-col gap-2">
           <input
             type="file"
-            value={formData.eventImage}
             onChange={(e) => {
               setFormData({
                 ...formData,
