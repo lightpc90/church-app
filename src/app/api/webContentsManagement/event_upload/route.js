@@ -7,10 +7,10 @@ export async function POST(req) {
   try {
     await connectDB();
 
-    //   FIND THE USER INFO USING THE USER ID
+    //  CREATE A NEW EVENT ENTRY
     const newEvent = await Event.create(eventDoc);
 
-    //   WHEN NO USER INFO IS RETURN FROM THE DATABASE
+    //   WHEN NO EVENT IS RETURNED FROM THE DATABASE
     if (!newEvent) {
       console.log("Event failed to publish");
       return NextResponse.json(
@@ -21,7 +21,7 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-    //   WHEN A USER INFO IS RETURNED FROM THE DATABASE
+    //   WHEN AN EVENT INFO IS RETURNED FROM THE DATABASE
     console.log("new event added: ", newEvent);
     return NextResponse.json(
       {
