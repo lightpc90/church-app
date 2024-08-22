@@ -27,6 +27,7 @@ const Overview = () => {
       return {
         attendance: eachAttendance[deptSelected].attendance,
         name: eachAttendance[deptSelected].date,
+        dept: eachAttendance[deptSelected].dept
       };
     });
     setData(deptAttendance);
@@ -88,7 +89,7 @@ const Overview = () => {
             </div>
           </div>
           <div className="flex  justify-end items-end">
-          <BarChartUI/>
+          <BarChartUI data={data}/>
           </div>
         </div>
         <div className="flex-1 bg-white shadow-lg rounded-lg p-3 border-r-4 border-blue-800">

@@ -1,7 +1,8 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, TrendingDown } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
+import { attendanceInitData } from "../initData/initData";
 
 import {
   Card,
@@ -17,41 +18,38 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Attendance",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig;
 
-export function BarChartUI() {
+export function BarChartUI({data}) {
+    const length = data.length
+    const percentageIncrease = ((parseInt(data[length-1].attendance) - parseInt(data[length-2].attendance)) / parseInt(data[length-2].attendance)) * 100
+    const to1Decimal = percentageIncrease.toFixed(1);
   return (
     <Card className="">
       <CardHeader>
-        <CardTitle>Bar Chart - Label</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>{data[0].dept ? data[0].dept : 'General Attendance'} - Stat</CardTitle>
+        <CardDescription>
+          {data[0].name} - {data[length - 1].name}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={data}
             margin={{
               top: 20,
             }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey="name"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
@@ -61,7 +59,7 @@ export function BarChartUI() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8}>
+            <Bar dataKey="attendance" fill="var(--color-desktop)" radius={8}>
               <LabelList
                 position="top"
                 offset={12}
@@ -74,10 +72,17 @@ export function BarChartUI() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          {`Trending ${
+            parseInt(to1Decimal) < 0 ? "down" : "up"
+          } by ${to1Decimal}% this week`}{" "}
+          {parseInt(to1Decimal) < 0 ? (
+            <TrendingDown className="h-4 w-4" />
+          ) : (
+            <TrendingUp className="h-4 w-4" />
+          )}
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing attendance for the last 6 Sundays
+          Showing attendance for the last 5 Sundays
         </div>
       </CardFooter>
     </Card>
