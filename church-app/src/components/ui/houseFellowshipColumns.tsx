@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-import { TestimoniesData } from "../data/Data";
+import { HouseFellowshipCentersData } from "../data/Data";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,23 +15,31 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
 
-export const testimoniesColumns: ColumnDef<typeof TestimoniesData>[] = [
+export const houseFellowshipColumns: ColumnDef<typeof HouseFellowshipCentersData>[] = [
   // ...
   {
-    accessorKey: "name",
-    header: "Name",
+    accessorKey: "center",
+    header: "Center",
   },
   {
-    accessorKey: "subject",
+    accessorKey: "host",
     header: ({ column }) => (
       <div>
-        <DataTableColumnHeader column={column} title="Subject" />
+        <DataTableColumnHeader column={column} title="Host" />
       </div>
-    )
+    ),
   },
   {
-    accessorKey: "phone",
-    header: "Phone",
+    accessorKey: "host_phone",
+    header: "Host's Phone",
+  },
+  {
+    accessorKey: "teacher",
+    header: "Teacher",
+  },
+  {
+    accessorKey: "teacher_phone",
+    header: "Teacher's Phone",
   },
   {
     accessorKey: "address",
@@ -54,7 +62,9 @@ export const testimoniesColumns: ColumnDef<typeof TestimoniesData>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View Testimony</DropdownMenuItem>
+            <DropdownMenuItem>View Address</DropdownMenuItem>
+            <DropdownMenuItem>SMS to Host</DropdownMenuItem>
+            <DropdownMenuItem>SMS to Teacher</DropdownMenuItem>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

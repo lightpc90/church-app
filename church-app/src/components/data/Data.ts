@@ -378,6 +378,111 @@ export const TestimoniesData = [
   },
 ];
 
+export const PrayerRequestData = [
+  { _id: 1, subject: "Healing", request: "Please pray for my health and recovery from illness.", phone: "555-123-4567" },
+  { _id: 2, subject: "Guidance", request: "I need direction in making a major life decision.", phone: "555-234-5678" },
+  { _id: 3, subject: "Strength", request: "Pray for strength to overcome challenges at work.", phone: "555-345-6789" },
+  { _id: 4, subject: "Family", request: "Please pray for peace and unity in my family.", phone: "555-456-7890" },
+  { _id: 5, subject: "Provision", request: "I'm trusting God for financial provision during this tough time.", phone: "555-567-8901" },
+  { _id: 6, subject: "Protection", request: "Pray for protection over my loved ones as they travel.", phone: "555-678-9012" },
+  { _id: 7, subject: "Job Opportunity", request: "Please pray for a job opportunity to open up for me.", phone: "555-789-0123" },
+  { _id: 8, subject: "Faith", request: "Pray that my faith remains strong during this trial.", phone: "555-890-1234" },
+  { _id: 9, subject: "Peace", request: "I'm feeling anxious; please pray for God's peace in my heart.", phone: "555-901-2345" },
+  { _id: 10, subject: "Marriage", request: "Please pray for restoration and healing in my marriage.", phone: "555-012-3456" }
+];
+
+export const HouseFellowshipCentersData = [
+  {
+    _id: 1,
+    center: "Joy",
+    host: "Dcn John Doe",
+    host_phone: "555-123-4567",
+    teacher: "Sis Mary Johnson",
+    teacher_phone: "555-234-5678",
+    address: "123 Maple Street, Springfield, IL",
+  },
+  {
+    _id: 2,
+    center: "Peace",
+    host: "Mrs Jane Smith",
+    host_phone: "555-345-6789",
+    teacher: "Bro Michael Brown",
+    teacher_phone: "555-456-7890",
+    address: "456 Oak Avenue, Denver, CO",
+  },
+  {
+    _id: 3,
+    center: "Grace",
+    host: "Dcn George Wilson",
+    host_phone: "555-567-8901",
+    teacher: "Dcns Sarah Davis",
+    teacher_phone: "555-678-9012",
+    address: "789 Pine Lane, Austin, TX",
+  },
+  {
+    _id: 4,
+    center: "Hope",
+    host: "Bro Robert Taylor",
+    host_phone: "555-789-0123",
+    teacher: "Sis Linda Martinez",
+    teacher_phone: "555-890-1234",
+    address: "321 Birch Road, Metropolis, NY",
+  },
+  {
+    _id: 5,
+    center: "Faith",
+    host: "Mrs Barbara Clark",
+    host_phone: "555-901-2345",
+    teacher: "Dcn Paul Allen",
+    teacher_phone: "555-012-3456",
+    address: "654 Cedar Street, Los Angeles, CA",
+  },
+  {
+    _id: 6,
+    center: "Love",
+    host: "Dcn Steven Harris",
+    host_phone: "555-123-4567",
+    teacher: "Sis Laura White",
+    teacher_phone: "555-234-5678",
+    address: "987 Elm Avenue, Chicago, IL",
+  },
+  {
+    _id: 7,
+    center: "Mercy",
+    host: "Dcns Patricia King",
+    host_phone: "555-345-6789",
+    teacher: "Bro Kevin Hall",
+    teacher_phone: "555-456-7890",
+    address: "246 Walnut Street, New York, NY",
+  },
+  {
+    _id: 8,
+    center: "Blessing",
+    host: "Sis Fiona Robinson",
+    host_phone: "555-567-8901",
+    teacher: "Mr Brian Young",
+    teacher_phone: "555-678-9012",
+    address: "135 Maple Avenue, Nashville, TN",
+  },
+  {
+    _id: 9,
+    center: "Light",
+    host: "Bro David Walker",
+    host_phone: "555-789-0123",
+    teacher: "Mrs Michelle Green",
+    teacher_phone: "555-890-1234",
+    address: "357 Oak Street, Cambridge, MA",
+  },
+  {
+    _id: 10,
+    center: "Victory",
+    host: "Dcn Andrew Lewis",
+    host_phone: "555-901-2345",
+    teacher: "Dcns Jessica Harris",
+    teacher_phone: "555-012-3456",
+    address: "468 Pine Road, Hell's Kitchen, NY",
+  },
+];
 
 export const attendanceData: {
   [key: string]: { dept: string; attendance: string; date: string };

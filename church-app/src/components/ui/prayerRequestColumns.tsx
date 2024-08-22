@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-import { TestimoniesData } from "../data/Data";
+import { PrayerRequestData } from "../data/Data";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,29 +15,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
 
-export const testimoniesColumns: ColumnDef<typeof TestimoniesData>[] = [
-  // ...
-  {
-    accessorKey: "name",
-    header: "Name",
-  },
+export const prayerRequestColumns: ColumnDef<typeof PrayerRequestData>[] = [
+ 
   {
     accessorKey: "subject",
-    header: ({ column }) => (
-      <div>
-        <DataTableColumnHeader column={column} title="Subject" />
-      </div>
-    )
+    header: "Prayer Subject",
   },
   {
     accessorKey: "phone",
-    header: "Phone",
+    header: "Contact",
   },
-  {
-    accessorKey: "address",
-    header: "Address",
-  },
-  // ...
+
   {
     id: "actions",
     cell: ({ row }) => {
@@ -54,7 +42,8 @@ export const testimoniesColumns: ColumnDef<typeof TestimoniesData>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View Testimony</DropdownMenuItem>
+            <DropdownMenuItem>View Request</DropdownMenuItem>
+            <DropdownMenuItem>Send SMS</DropdownMenuItem>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
