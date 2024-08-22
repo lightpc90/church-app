@@ -18,6 +18,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import React from "react";
 
 const chartConfig = {
   desktop: {
@@ -26,7 +27,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function BarChartUI({data}) {
+type MyPropsType = {
+    data: typeof attendanceInitData
+}
+
+export const BarChartUI: React.FC<MyPropsType> = ({data})=> {
     const length = data.length
     const percentageIncrease = ((parseInt(data[length-1].attendance) - parseInt(data[length-2].attendance)) / parseInt(data[length-2].attendance)) * 100
     const to1Decimal = percentageIncrease.toFixed(1);
