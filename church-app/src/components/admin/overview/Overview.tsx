@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 import Card from "@/components/customeUI/Card";
 import CustomBarChart from "@/components/customeUI/BarChartRechart";
-import { deptData, attendanceData, bottomCardsData, attendanceInitData } from "@/components/data/Data";
+import { deptData, attendanceData, bottomCardsData,} from "@/components/data/Data";
+import { attendanceInitData } from "@/components/initData/initData";
+import { GeneralAttedanceData } from "@/components/data/Data";
 
 
 const Overview = () => {
   const [deptSelected, setDeptSelected] = useState("");
   
-  const [data, setData] = useState<typeof attendanceInitData>(attendanceInitData);
+  const [data, setData] = useState<typeof attendanceInitData>(GeneralAttedanceData);
 
   const handleSelectedDept = (dept: string) => {
     const filteredDept = deptData.find((eachDept) => eachDept.dept === dept);
@@ -61,14 +63,14 @@ const Overview = () => {
         ))}
       </div>
       {/* workers attendance stat */}
-      <div className="flex mt-10 w-full gap-2 ">
+      <div className="flex flex-wrap mt-10 w-full gap-2 ">
         <div className="flex flex-col flex-2 bg-white h-[430px] justify-center items-center py-5 px-3 rounded-lg shadow-lg gap-3 border-l-4 border-blue-800">
-          <div className="flex items-start w-full ">
+          <div className="flex flex-wrap items-start w-full ">
             <select
               value={deptSelected}
               onChange={(e) => setDeptSelected(e.target.value)}
             >
-              <option value="">Choose Dept</option>
+              <option value={''}>Choose Dept</option>
               {deptData.map((dept, i) => (
                 <option value={dept.dept} key={i}>
                   {dept.dept}

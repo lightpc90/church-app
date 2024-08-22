@@ -33,10 +33,10 @@ const TabLinks = ({menu}:menuT) => {
         <Link
           href={`/admin?menu=${tab.param}`}
           key={i}
-          className={`p-2 border lg:text-lg  hover:border-blue-800 w-full rounded-2xl flex justify-center ${
+          className={`p-2  lg:text-lg  transition-transform transform hover:scale-110 w-full rounded-2xl flex justify-center ${
             menu === tab.param
-              ? "bg-blue-900 shadow-lg text-white "
-              : "bg-slate-500"
+              ? "bg-blue-900 shadow-lg text-white border "
+              : "bg-blue-900 shadow-lg "
           }`}
         >
           <p>{tab.name}</p>
@@ -44,7 +44,16 @@ const TabLinks = ({menu}:menuT) => {
       ))}
 
       <div className="flex flex-col gap-2 mt-auto">
-        <Link href={`/admin?tab=settings`}>Settings</Link>
+        <Link
+          href={`/admin?menu=settings`}
+          className={`p-2 transition-transform transform hover:scale-110 rounded-2xl flex justify-center ${
+            menu === 'settings'
+              ? "bg-blue-900 shadow-lg text-white border "
+              : "bg-blue-900 shadow-lg "
+          }`}
+        >
+          Settings
+        </Link>
         <Link href={`/logout`}>Log Out</Link>
       </div>
     </div>

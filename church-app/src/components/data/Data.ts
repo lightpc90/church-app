@@ -654,6 +654,14 @@ export const attendanceData: {
   },
 ];
 
+export const GeneralAttedanceData = [
+  { name: "01/08/24", attendance: "223" },
+  { name: "07/08/24", attendance: "203" },
+  { name: "14/08/24", attendance: "213" },
+  { name: "21/08/24", attendance: "193" },
+  { name: "28/08/24", attendance: "203" },
+];
+
 export const deptData = [
   { total: "30", dept: DeptsEnum.MEDIA_AND_TECHNICAL, male: "20", female: "20" },
   { total: "58", dept: DeptsEnum.CHOIR, male: "20", female: "38" },
