@@ -6,6 +6,8 @@ import CustomBarChart from "@/components/customeUI/BarChartRechart";
 import { deptData, attendanceData, bottomCardsData,} from "@/components/data/Data";
 import { attendanceInitData } from "@/components/initData/initData";
 import { GeneralAttedanceData } from "@/components/data/Data";
+import { BarChartUI } from "@/components/customeUI/BarChart";
+import classNames from 'classnames';
 
 
 const Overview = () => {
@@ -64,7 +66,7 @@ const Overview = () => {
       </div>
       {/* workers attendance stat */}
       <div className="flex flex-wrap mt-10 w-full gap-2 ">
-        <div className="flex flex-col flex-2 bg-white h-[430px] justify-center items-center py-5 px-3 rounded-lg shadow-lg gap-3 border-l-4 border-blue-800">
+        <div className="flex flex-col flex-2 bg-white overflow-hidden justify-center items-center py-5 px-3 rounded-lg shadow-lg gap-3 border-l-4 border-blue-800">
           <div className="flex flex-wrap items-start w-full ">
             <select
               value={deptSelected}
@@ -83,12 +85,15 @@ const Overview = () => {
                   deptSelected
                 )} members`}</p>
               )}
-              <p>Attendance of Workers in each Dept in the last 5 Sundays</p>
             </div>
           </div>
-          <CustomBarChart data={data} />
+          <div className="flex  justify-end items-end">
+          <BarChartUI/>
+          </div>
         </div>
-        <div className="flex-1 bg-white shadow-lg rounded-lg"></div>
+        <div className="flex-1 bg-white shadow-lg rounded-lg p-3 border-r-4 border-blue-800">
+          <p className="text-blue-800 font-bold">Reserved For Children Stat</p>
+        </div>
       </div>
       {/* Cards for remaining links */}
       <div className="flex flex-wrap mt-5 gap-4">

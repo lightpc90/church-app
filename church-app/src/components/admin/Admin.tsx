@@ -33,7 +33,7 @@ const AdminComponent = () => {
       </div>
       {/* right pane for content */}
       <div className=" w-[85%] h-screen">
-        <div className="h-[60px] flex items-center px-5 bg-zinc-100 rounded-full">
+        <div className="h-[60px] flex items-center px-[200px] bg-zinc-100 rounded-full">
           <p className="font-bold">Admin Dashboard</p>
           <div className="ml-auto">
             <Profile />
