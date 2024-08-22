@@ -1,7 +1,7 @@
 export type WorkerType = {
-  _id: string;
+  _id: number;
   name: string;
   email: string;
   phone: string;
-  dept: string;
+  dept?: string;
 };

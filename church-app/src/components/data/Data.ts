@@ -1,19 +1,13 @@
 import { DeptsEnum } from "../enums/Enums";
 
+
 export const workersData = [
   {
-    _id: "1",
+    _id: 1,
     name: "Folahan Abbey",
     email: "gideonabbey.f@gmail.com",
     phone: "08130853142",
     dept: "Media & Technical",
-  },
-  {
-    _id: 1,
-    name: "John Doe",
-    dept: "Media and Technical",
-    phone: "123-456-7890",
-    email: "johndoe@example.com",
   },
   {
     _id: 2,
@@ -220,6 +214,169 @@ export const workersData = [
   },
 ];
 
+export const FollowUpData = [
+  {
+    _id: 1,
+    name: "Alice Cooper",
+    address: "123 Maple Street, Springfield, IL",
+    email: "alice.cooper@example.com",
+    phone: "555-123-4567",
+    group: "Altar Call",
+  },
+  {
+    _id: 2,
+    name: "Bob Marley",
+    address: "456 Oak Avenue, Denver, CO",
+    email: "bob.marley@example.com",
+    phone: "555-234-5678",
+    group: "Altar Call",
+  },
+  {
+    _id: 3,
+    name: "Charlie Brown",
+    address: "789 Pine Lane, Austin, TX",
+    email: "charlie.brown@example.com",
+    phone: "555-345-6789",
+    group: "First Timer",
+  },
+  {
+    _id: 4,
+    name: "Diana Prince",
+    address: "321 Birch Road, Metropolis, NY",
+    email: "diana.prince@example.com",
+    phone: "555-456-7890",
+    group: "New Convert",
+  },
+  {
+    _id: 5,
+    name: "Ethan Hunt",
+    address: "654 Cedar Street, Los Angeles, CA",
+    email: "ethan.hunt@example.com",
+    phone: "555-567-8901",
+    group: "Altar Call",
+  },
+  {
+    _id: 6,
+    name: "Fiona Gallagher",
+    address: "987 Elm Avenue, Chicago, IL",
+    email: "fiona.gallagher@example.com",
+    phone: "555-678-9012",
+    group: "Altar Call",
+  },
+  {
+    _id: 7,
+    name: "George Costanza",
+    address: "246 Walnut Street, New York, NY",
+    email: "george.costanza@example.com",
+    phone: "555-789-0123",
+    group: "Altar Call",
+  },
+  {
+    _id: 8,
+    name: "Hannah Montana",
+    address: "135 Maple Avenue, Nashville, TN",
+    email: "hannah.montana@example.com",
+    phone: "555-890-1234",
+    group: "New Convert",
+  },
+  {
+    _id: 9,
+    name: "Isaac Newton",
+    address: "357 Oak Street, Cambridge, MA",
+    email: "isaac.newton@example.com",
+    phone: "555-901-2345",
+    group: "First Timer",
+  },
+  {
+    _id: 10,
+    name: "Jessica Jones",
+    address: "468 Pine Road, Hell's Kitchen, NY",
+    email: "jessica.jones@example.com",
+    phone: "555-012-3456",
+    group: "Altar Call",
+  },
+  {
+    _id: 11,
+    name: "Kevin McCallister",
+    address: "579 Birch Avenue, Chicago, IL",
+    email: "kevin.mccallister@example.com",
+    phone: "555-123-4567",
+    group: "New Convert",
+  },
+];
+
+export const TestimoniesData = [
+  {
+    _id: 1,
+    name: "Alice Cooper",
+    subject: "Meeting Reminder",
+    address: "123 Maple Street, Springfield, IL",
+    phone: "555-123-4567",
+  },
+  {
+    _id: 2,
+    name: "Bob Marley",
+    subject: "Concert Tickets",
+    address: "456 Oak Avenue, Denver, CO",
+    phone: "555-234-5678",
+  },
+  {
+    _id: 3,
+    name: "Charlie Brown",
+    subject: "Project Update",
+    address: "789 Pine Lane, Austin, TX",
+    phone: "555-345-6789",
+  },
+  {
+    _id: 4,
+    name: "Diana Prince",
+    subject: "Invoice #1234",
+    address: "321 Birch Road, Metropolis, NY",
+    phone: "555-456-7890",
+  },
+  {
+    _id: 5,
+    name: "Ethan Hunt",
+    subject: "Mission Briefing",
+    address: "654 Cedar Street, Los Angeles, CA",
+    phone: "555-567-8901",
+  },
+  {
+    _id: 6,
+    name: "Fiona Gallagher",
+    subject: "Re: Family Gathering",
+    address: "987 Elm Avenue, Chicago, IL",
+    phone: "555-678-9012",
+  },
+  {
+    _id: 7,
+    name: "George Costanza",
+    subject: "Dinner Reservation",
+    address: "246 Walnut Street, New York, NY",
+    phone: "555-789-0123",
+  },
+  {
+    _id: 8,
+    name: "Hannah Montana",
+    subject: "Tour Schedule",
+    address: "135 Maple Avenue, Nashville, TN",
+    phone: "555-890-1234",
+  },
+  {
+    _id: 9,
+    name: "Isaac Newton",
+    subject: "Lecture on Gravity",
+    address: "357 Oak Street, Cambridge, MA",
+    phone: "555-901-2345",
+  },
+  {
+    _id: 10,
+    name: "Jessica Jones",
+    subject: "Security Report",
+    address: "468 Pine Road, Hell's Kitchen, NY",
+    phone: "555-012-3456",
+  },
+];
 
 
 export const attendanceData: {

@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { TabParams } from './TabLinks';
 import Profile from './Profile';
 import Workers from './workers/Workers';
-import FollowUp from './follow-up/Follow-up';
+import FollowUp from './follow-up/FollowUp';
 import Testimonies from './testimonies/Testimonies';
 import PrayerRequest from './prayer-request/Prayer-Request';
 import HouseFellowshipCenters from './house-fellowship-centers/House-Fellowship-Centers';

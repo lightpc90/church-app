@@ -1,12 +1,10 @@
 "use client";
 
-import {
-  ColumnDef,
-} from "@tanstack/react-table";
-import { MoreHorizontal, } from "lucide-react";
-import { WorkerType } from "../types/types";
+import { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
+import { FollowUpData } from "../data/Data";
 
-import  {Button}  from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,36 +15,41 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
 
-
-
-
-
-export const columns: ColumnDef<WorkerType>[] = [
+export const followUpColumns: ColumnDef<typeof FollowUpData>[] = [
   // ...
   {
     accessorKey: "name",
-    header: "Name",
+    header: ({ column }) => (
+      <div>
+        <DataTableColumnHeader column={column} title="Name" />
+      </div>
+    ),
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "address",
+    header: "Address",
   },
   {
     accessorKey: "phone",
     header: "Phone",
   },
+  // ...
   {
-    accessorKey: "dept",
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
+    accessorKey: "group",
     header: ({ column }) => (
       <div>
-        <DataTableColumnHeader column={column} title="Dept" />
+        <DataTableColumnHeader column={column} title="Group" />
       </div>
     ),
   },
-  // ...
   {
     id: "actions",
     cell: ({ row }) => {
+      const worker = row.original;
 
       return (
         <DropdownMenu>
@@ -59,8 +62,9 @@ export const columns: ColumnDef<WorkerType>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View Worker</DropdownMenuItem>
-            <DropdownMenuItem>Mark Attendance</DropdownMenuItem>
+            <DropdownMenuItem>Send SMS</DropdownMenuItem>
+            <DropdownMenuItem>Send Email</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

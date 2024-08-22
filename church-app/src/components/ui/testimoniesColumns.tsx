@@ -1,12 +1,10 @@
 "use client";
 
-import {
-  ColumnDef,
-} from "@tanstack/react-table";
-import { MoreHorizontal, } from "lucide-react";
-import { WorkerType } from "../types/types";
+import { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
+import { FollowUpData } from "../data/Data";
 
-import  {Button}  from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,36 +15,33 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
 
-
-
-
-
-export const columns: ColumnDef<WorkerType>[] = [
+export const testimoniesColumns: ColumnDef<typeof FollowUpData>[] = [
   // ...
   {
     accessorKey: "name",
     header: "Name",
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "subject",
+    header: ({ column }) => (
+      <div>
+        <DataTableColumnHeader column={column} title="Subject" />
+      </div>
+    )
   },
   {
     accessorKey: "phone",
     header: "Phone",
   },
   {
-    accessorKey: "dept",
-    header: ({ column }) => (
-      <div>
-        <DataTableColumnHeader column={column} title="Dept" />
-      </div>
-    ),
+    accessorKey: "address",
+    header: "Address",
   },
   // ...
   {
     id: "actions",
     cell: ({ row }) => {
+      const worker = row.original;
 
       return (
         <DropdownMenu>
@@ -59,8 +54,8 @@ export const columns: ColumnDef<WorkerType>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View Worker</DropdownMenuItem>
-            <DropdownMenuItem>Mark Attendance</DropdownMenuItem>
+            <DropdownMenuItem>View Testimony</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
