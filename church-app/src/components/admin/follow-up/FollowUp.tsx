@@ -9,7 +9,8 @@ import { workersData } from "@/components/data/Data";
 const FollowUp = () => {
   return (
     <div className="m-10">
-      <Button>Add a New Convert</Button>
+      <h1 className="text-2xl font-bold text-blue-800 mb-5" >Follow Up List</h1>
+      <Button>Add New</Button>
       <DataTable columns={followUpColumns} data={FollowUpData} />
     </div>
   );

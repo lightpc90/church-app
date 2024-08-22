@@ -91,7 +91,13 @@ const Overview = () => {
       {/* Cards for remaining links */}
       <div className="flex flex-wrap mt-5 gap-4">
         {bottomCardsData.map((bottomInfo, i) => (
-          <Card key={i} shadow="xl" title={bottomInfo.title} subtitle={bottomInfo.subtititle} className="ring-2 ring-blue-800">
+          <Card
+            key={i}
+            shadow="xl"
+            title={bottomInfo.title}
+            subtitle={bottomInfo.subtititle}
+            className="ring-2 ring-blue-800"
+          >
             {""}
           </Card>
         ))}
