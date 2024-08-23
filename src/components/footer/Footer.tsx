@@ -7,14 +7,16 @@ const Footer = () => {
     <div className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
       {/* Church Name*/}
       <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
-        <div className="w-[60px] h-[60px] bg-white lg:w-[120px] lg:h-[120px]
-         rounded-full flex items-center justify-center relative  ">
+        <div
+          className="w-[60px] h-[60px] bg-white lg:w-[120px] lg:h-[120px]
+         rounded-full flex items-center justify-center relative overflow-hidden"
+        >
           <Image
-            src={'/rrcg-mylogo.png'}
+            src={"/rrcg-mylogo.png"}
             alt="logo"
-            width={900}
-            height={900}
-            className="absolute object-cover"
+            width={600}
+            height={600}
+            className="absolute object-cover w-full bg-blue-800 p-0"
           />
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>

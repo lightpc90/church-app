@@ -14,7 +14,7 @@ const Navbar = () => {
         <Links/>
         <div className='flex gap-3 items-center '>
             {/*login*/}
-            <Link href={'/loginPage'} className='hidden lg:flex font-bold bg-slate-300 p-2 rounded-md'>login</Link>
+            <Link href={'/loginPage'} className='hidden lg:flex font-bold bg-blue-900 py-2 px-4 rounded-md'>login</Link>
             {/* profile picture wrapper */}
             <div className='h-[40px] w-[40px] bg-white rounded-full'></div>
         </div>
