@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../../public/rrcg-mylogo.png";
 import Image from "next/image";
+import { url } from "inspector";
 
 const Footer = () => {
   return (
@@ -8,18 +9,10 @@ const Footer = () => {
       {/* Church Name*/}
       <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
         <div
-          className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
-         rounded-full flex items-center justify-center relative overflow-hidden"
-        >
-          <Image
-            src={"/rrcg-mylogo.png"}
-            alt="logo"
-            width={600}
-            height={600}
-            priority
-            className="absolute object-cover p-0"
-          />
-        </div>
+          className="w-[60px] h-[60px] bg-white lg:w-[120px] lg:h-[120px]
+         rounded-full  bg-cover bg-center relative overflow-hidden"
+          style={{ backgroundImage: `url(${logo.src})` }}
+        ></div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
       </div>
       {/* About Us */}
