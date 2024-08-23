@@ -10,7 +10,7 @@ const NavLinks = [
 
 const Links = () => {
   return (
-    <div className='flex gap-2'>
+    <div className='hidden lg:flex gap-2'>
       {NavLinks.map((navlink, i) => (
         <Link key={i} href={navlink.link} className='hover:text-blue-700'>{navlink.name}</Link>
       ))}
