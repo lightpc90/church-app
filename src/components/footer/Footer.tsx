@@ -12,9 +12,9 @@ const Footer = () => {
           <Image
             src={'/rrcg-mylogo.png'}
             alt="logo"
-            layout="fill"
-            objectFit="cover"
-            className=""
+            width={900}
+            height={900}
+            className="absolute object-cover"
           />
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
