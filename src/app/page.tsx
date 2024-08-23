@@ -7,7 +7,7 @@ import banner5 from '../../public/randomChurchPic.jpg'
 import banner6 from '../../public/randomChurchPic2.jpg'
 import { CarouselPlugin } from "@/components/Carousel";
 import { EmblaOptionsType } from "embla-carousel";
-import classNames from 'classnames';
+
 
 const Items = [
   banner1.src,

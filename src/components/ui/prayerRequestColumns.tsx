@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-import { PrayerRequestData } from "../data/Data";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,8 +13,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
+import {  PrayerRequestType } from "../types/types";
 
-export const prayerRequestColumns: ColumnDef<typeof PrayerRequestData>[] = [
+export const prayerRequestColumns: ColumnDef<PrayerRequestType>[] = [
  
   {
     accessorKey: "subject",

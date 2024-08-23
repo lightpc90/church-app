@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import TabLinks from "./_component/TabLinks";
+import TabLinks from "@/components/admin/TabLinks";
 import AdminComponent from "@/components/admin/Admin";
 
 

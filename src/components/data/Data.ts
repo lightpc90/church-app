@@ -655,11 +655,11 @@ export const attendanceData: {
 ];
 
 export const GeneralAttedanceData = [
-  { name: "01/08/24", attendance: "223" },
-  { name: "07/08/24", attendance: "203" },
-  { name: "14/08/24", attendance: "213" },
-  { name: "21/08/24", attendance: "193" },
-  { name: "28/08/24", attendance: "203" },
+  { name: "01/08/24", attendance: "223", dept: "General Attendance"},
+  { name: "07/08/24", attendance: "203", dept: "General Attendance" },
+  { name: "14/08/24", attendance: "213", dept: "General Attendance" },
+  { name: "21/08/24", attendance: "193", dept: "General Attendance" },
+  { name: "28/08/24", attendance: "203", dept: "General Attendance" },
 ];
 
 export const deptData = [

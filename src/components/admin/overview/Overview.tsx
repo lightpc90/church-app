@@ -13,7 +13,7 @@ import classNames from 'classnames';
 const Overview = () => {
   const [deptSelected, setDeptSelected] = useState("");
   
-  const [data, setData] = useState<typeof attendanceInitData>(GeneralAttedanceData);
+  const [data, setData] = useState<typeof GeneralAttedanceData>(GeneralAttedanceData);
 
   const handleSelectedDept = (dept: string) => {
     const filteredDept = deptData.find((eachDept) => eachDept.dept === dept);

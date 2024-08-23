@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-import { FollowUpData } from "../data/Data";
+import { FollowUpType } from "../types/types";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
 
-export const followUpColumns: ColumnDef<typeof FollowUpData>[] = [
+export const followUpColumns: ColumnDef<FollowUpType>[] = [
   // ...
   {
     accessorKey: "name",

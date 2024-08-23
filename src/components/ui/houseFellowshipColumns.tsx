@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-import { HouseFellowshipCentersData } from "../data/Data";
+
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,8 +14,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
+import { HouseFellowshipType } from "../types/types";
 
-export const houseFellowshipColumns: ColumnDef<typeof HouseFellowshipCentersData>[] = [
+export const houseFellowshipColumns: ColumnDef<HouseFellowshipType>[] = [
   // ...
   {
     accessorKey: "center",

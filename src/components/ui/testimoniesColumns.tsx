@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-import { TestimoniesData } from "../data/Data";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,8 +13,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "./dataTableColumnHeader";
+import { TestimonyType } from "../types/types";
 
-export const testimoniesColumns: ColumnDef<typeof TestimoniesData>[] = [
+export const testimoniesColumns: ColumnDef<TestimonyType>[] = [
   // ...
   {
     accessorKey: "name",
