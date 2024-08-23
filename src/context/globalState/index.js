@@ -27,7 +27,7 @@ export default function AuthProvider({ children }) {
   const [events, setEvents] = useState([]);
   const [attendanceObj, setAttendanceObj] = useState({})
 
-  const signIn = (token, userId) => {
+  const signIn = (token, userId) => { 
     localStorage.setItem("accessToken", token);
     localStorage.setItem("currentUserId", userId);
     setAccessToken(token);
