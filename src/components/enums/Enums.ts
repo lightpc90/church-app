@@ -7,3 +7,13 @@ export enum DeptsEnum {
   TEACHERS = "Teachers",
   JESUS_POLIE = "Jesus Police",
 }
+
+
+export enum TabParamsEnum {
+  OVERVIEW = "overview",
+  WORKERS = "workers",
+  FOLLOW_UP = "follow-up",
+  TESTIMONIES = "testimonies",
+  PRAYER_REQUESTS = "prayer-requests",
+  HOUSE_FELLOWSHIP = "house-fellowship-centers",
+}

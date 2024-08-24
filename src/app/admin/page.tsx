@@ -6,7 +6,7 @@ import AdminComponent from "@/components/admin/Admin";
 const AdminDashboard = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
-      <div className="h-screen">
+      <div className="">
         <AdminComponent />
       </div>
     </Suspense>

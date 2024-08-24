@@ -1,4 +1,5 @@
-import { DeptsEnum } from "../enums/Enums";
+import { ReactNode } from "react";
+import { DeptsEnum, TabParamsEnum } from "../enums/Enums";
 
 export type WorkerType = {
   _id: number;
@@ -16,6 +17,12 @@ export type FollowUpType = {
     phone: string;
     group: string;
   }
+
+  export type AdminTabsType = {
+    name: string;
+    param: TabParamsEnum;
+    icon: React.JSX.Element;
+  };
 
   export type TestimonyType = {
     _id: number;

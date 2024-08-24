@@ -3,17 +3,20 @@
 import { useEffect, useState } from "react";
 import Card from "@/components/customeUI/Card";
 import CustomBarChart from "@/components/customeUI/BarChartRechart";
-import { deptData, attendanceData, bottomCardsData,} from "@/components/data/Data";
+import {
+  deptData,
+  attendanceData,
+  bottomCardsData,
+} from "@/components/data/Data";
 import { attendanceInitData } from "@/components/initData/initData";
 import { GeneralAttedanceData } from "@/components/data/Data";
 import { BarChartUI } from "@/components/customeUI/BarChart";
-import classNames from 'classnames';
-
 
 const Overview = () => {
   const [deptSelected, setDeptSelected] = useState("");
-  
-  const [data, setData] = useState<typeof GeneralAttedanceData>(GeneralAttedanceData);
+
+  const [data, setData] =
+    useState<typeof GeneralAttedanceData>(GeneralAttedanceData);
 
   const handleSelectedDept = (dept: string) => {
     const filteredDept = deptData.find((eachDept) => eachDept.dept === dept);
@@ -27,7 +30,7 @@ const Overview = () => {
       return {
         attendance: eachAttendance[deptSelected].attendance,
         name: eachAttendance[deptSelected].date,
-        dept: eachAttendance[deptSelected].dept
+        dept: eachAttendance[deptSelected].dept,
       };
     });
     setData(deptAttendance);
@@ -41,7 +44,7 @@ const Overview = () => {
   }, [deptSelected]);
 
   return (
-    <div className="mx-10">
+    <div className="px-1 lg:px-10">
       {/* Title */}
       <p className="text-2xl font-bold p-2 text-blue-800 ">Overview</p>
       {/* Cards container */}
@@ -49,21 +52,23 @@ const Overview = () => {
         <Card
           title="234"
           subtitle="Total number of Workers"
-          className="bg-zinc-300 text-blue-800 border-l-4 border-blue-800 shadow-lg"
+          className=" bg-zinc-300 text-blue-800 border-l-4 border-blue-800 shadow-lg z-10"
         >
           123Men, 104Women
         </Card>
-        {deptData.map((dept, i) => (
-          <Card
-            key={i}
-            title={dept.total}
-            subtitle={dept.dept}
-            rounded="md"
-            className="font-seminbold shadow-lg"
-          >
-            {`${dept.male}Men, ${dept.female}Women`}
-          </Card>
-        ))}
+        <div className="flex flex-wrap gap-1 lg:gap-5">
+          {deptData.map((dept, i) => (
+            <Card
+              key={i}
+              title={dept.total}
+              subtitle={dept.dept}
+              rounded="md"
+              className="text-sm lg:text-md font-seminbold shadow-lg flex-grow-1 basis-[150px] z-10 "
+            >
+              {`${dept.male}Men, ${dept.female}Women`}
+            </Card>
+          ))}
+        </div>
       </div>
       {/* workers attendance stat */}
       <div className="flex flex-wrap mt-10 w-full gap-2 ">
@@ -73,7 +78,7 @@ const Overview = () => {
               value={deptSelected}
               onChange={(e) => setDeptSelected(e.target.value)}
             >
-              <option value={''}>Choose Dept</option>
+              <option value={""}>Choose Dept</option>
               {deptData.map((dept, i) => (
                 <option value={dept.dept} key={i}>
                   {dept.dept}
@@ -89,7 +94,7 @@ const Overview = () => {
             </div>
           </div>
           <div className="flex  justify-end items-end">
-          <BarChartUI data={data}/>
+            <BarChartUI data={data} />
           </div>
         </div>
         <div className="flex-1 bg-white shadow-lg rounded-lg p-3 border-r-4 border-blue-800">

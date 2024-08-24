@@ -164,7 +164,8 @@ export default function Home() {
           </div>
 
           {/* card 5 */}
-          <div className="flex flex-col justify-evenly w-[300px] h-[310px] bg-slate-900 rounded-2xl shadow-lg p-4 text-white">
+          <div className="flex flex-col justify-evenly w-[300px] h-[310px] 
+          bg-sky-950 rounded-2xl shadow-lg p-4 text-white">
             {/* title */}
             <div className="flex gap-4 text-2xl items-center">
               {/* title icon */}
@@ -185,6 +186,12 @@ export default function Home() {
               Give Generously
             </button>
           </div>
+        </div>
+
+        {/* Our Weekly Services */}
+        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
+          <h2>Our Weekly Service</h2>
+          <div></div>
         </div>
       </div>
     </main>

@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({
         "p-4 bg-white dark:bg-gray-800",
         `rounded-${rounded}`,
         shadow !== "none" && `shadow-${shadow}`,
-        "transition-transform transform hover:scale-105",
+        "transition-transform transform hover:scale-105 -z-10",
         className
       )}
       onClick={onClick}
