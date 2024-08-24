@@ -31,10 +31,10 @@ export default function Home() {
         <CarouselPlugin slides={Items} options={OPTIONS} />
         <div className="flex items-center lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 opacity-90 w-full h-full absolute z-30">
           <div className="flex flex-col text-white gap-5 font-bold lg:w-5/12 lg:pt-[50px]">
-            <p className="lg:text-[50px]   ">
+            <h1 className="lg:text-[50px]  ">
               Experience God&apos;s Love through worship and fellowship at our Church.{" "}
-            </p>
-            <p className="lg:text-2xl">
+            </h1>
+            <p className="lg:text-2xl text-zinc-400">
               Experience a welcoming community and uplifting sermons at our
               church. All are welcome. Visit us and reach out with any question
             </p>
