@@ -67,7 +67,7 @@ export default function Home() {
         </div>
 
         {/* About Us */}
-        <div className=" flex flex-col lg:flex-warp gap-2 items-center justify-center w-full ">
+        <div className=" flex flex-wrap gap-2 items-center justify-center w-full ">
           <p className=" text-lg lg:flex-1 p-[20px] ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
             nesciunt autem explicabo laboriosam culpa, quam id rem ea aliquid
@@ -75,7 +75,9 @@ export default function Home() {
             deserunt. A place of worship, a place of love, a place of hope, a
             place of peace
           </p>
-          <div className=" lg:flex-1 bg-zinc-800 h-[500px] w-full lg:w-[400px] "></div>
+          <div className=" w-full lg:flex-1 bg-zinc-800 h-[500px] rounded-2xl ">
+            gffhfhfhf
+          </div>
         </div>
 
         {/* CTA Cards */}
