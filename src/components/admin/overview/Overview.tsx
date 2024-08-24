@@ -52,7 +52,7 @@ const Overview = () => {
         <Card
           title="234"
           subtitle="Total number of Workers"
-          className=" bg-zinc-300 text-blue-800 border-l-4 border-blue-800 shadow-lg z-10"
+          className=" bg-blue-50 text-blue-800 border-l-4 border-blue-800 shadow-lg"
         >
           123Men, 104Women
         </Card>
@@ -63,7 +63,7 @@ const Overview = () => {
               title={dept.total}
               subtitle={dept.dept}
               rounded="md"
-              className="text-sm lg:text-md font-seminbold shadow-lg flex-grow-1 basis-[150px] z-10 "
+              className="text-sm lg:text-md font-seminbold shadow-lg flex-grow-1 basis-[140px] "
             >
               {`${dept.male}Men, ${dept.female}Women`}
             </Card>
@@ -72,7 +72,7 @@ const Overview = () => {
       </div>
       {/* workers attendance stat */}
       <div className="flex flex-wrap mt-10 w-full gap-2 ">
-        <div className="flex flex-col flex-2 bg-white overflow-hidden justify-center items-center py-5 px-3 rounded-lg shadow-lg gap-3 border-l-4 border-blue-800">
+        <div className="flex flex-col flex-2 bg-blue-50 overflow-hidden justify-center items-center py-5 px-3 rounded-lg shadow-lg gap-3 border-l-4 border-blue-800">
           <div className="flex flex-wrap items-start w-full ">
             <select
               value={deptSelected}
@@ -109,7 +109,7 @@ const Overview = () => {
             shadow="xl"
             title={bottomInfo.title}
             subtitle={bottomInfo.subtititle}
-            className="ring-2 ring-blue-800"
+            className="ring-2 ring-blue-800 bg-blue-50 flex-grow-1 basis-[130px]"
           >
             {""}
           </Card>
