@@ -9,10 +9,11 @@ const Footer = () => {
       {/* Church Name*/}
       <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
         <div
-          className="w-[60px] h-[60px] bg-white lg:w-[120px] lg:h-[120px]
-         rounded-full  bg-cover bg-center relative overflow-hidden"
-          style={{ backgroundImage: `url(${logo.src})` }}
-        ></div>
+          className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
+         rounded-full bg-cover bg-center bg- relative overflow-hidden"
+        >
+          <Image src={logo.src} layout="fill" objectFit="cover" placeholder="blur" blurDataURL={logo.blurDataURL} priority alt='logo' className="absolute" />
+        </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
       </div>
       {/* About Us */}
