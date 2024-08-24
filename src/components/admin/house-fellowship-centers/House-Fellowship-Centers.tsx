@@ -6,9 +6,9 @@ import React from "react";
 
 const HouseFellowshipCenters = () => {
   return (
-    <div className="m-5">
+    <div className="lg:m-5">
       <h1 className="text-xlg lg:text-2xl mb-5 font-bold text-blue-800">House Fellowship Centers </h1>
-      <Button>Register a New House Fellowship Center</Button>
+      <Button className="text-sm lg:text-md">Register a New House Fellowship Center</Button>
       <DataTable columns={houseFellowshipColumns} data={HouseFellowshipCentersData} />
     </div>
   );

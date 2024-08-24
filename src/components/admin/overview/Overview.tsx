@@ -44,7 +44,7 @@ const Overview = () => {
   }, [deptSelected]);
 
   return (
-    <div className="px-1 lg:px-10">
+    <div className=" lg:px-10">
       {/* Title */}
       <p className="text-2xl font-bold p-2 text-blue-800 ">Overview</p>
       {/* Cards container */}

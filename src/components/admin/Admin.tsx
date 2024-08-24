@@ -41,7 +41,7 @@ const AdminComponent = () => {
             <Profile />
           </div>
         </div>
-        <div className="p-2 mt-[60px]">
+        <div className="p-2 mt-[60px] overflow-auto">
           {menu === TabParamsEnum.OVERVIEW && <Overview />}
           {menu === TabParamsEnum.WORKERS && <Workers />}
           {menu === TabParamsEnum.FOLLOW_UP && <FollowUp />}

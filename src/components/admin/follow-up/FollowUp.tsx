@@ -8,7 +8,7 @@ import { workersData } from "@/components/data/Data";
 
 const FollowUp = () => {
   return (
-    <div className="m-10">
+    <div className="lg:m-10">
       <h1 className="text-2xl font-bold text-blue-800 mb-5" >Follow Up List</h1>
       <Button>Add New</Button>
       <DataTable columns={followUpColumns} data={FollowUpData} />
