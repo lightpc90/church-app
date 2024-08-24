@@ -12,7 +12,9 @@ const Footer = () => {
           className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
          rounded-full bg-cover bg-center bg- relative overflow-hidden"
         >
-          <Image src={logo.src} layout="fill" objectFit="cover" placeholder="blur" blurDataURL={logo.blurDataURL} priority alt='logo' className="absolute" />
+          <Image src={logo.src} placeholder="blur" blurDataURL={logo.blurDataURL} 
+          width={1000} height={1000} priority alt='logo' 
+          className="absolute bg-cover object-cover" />
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
       </div>
