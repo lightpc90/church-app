@@ -1,13 +1,15 @@
 
-import React from "react";
+import React, { Suspense } from "react";
 import AdminComponent from "@/components/admin/Admin";
 
 
 const AdminDashboard = () => {
   return (
-    <div className='h-screen'>
-        <AdminComponent/>
-    </div>
+    <Suspense fallback={<p>Loading...</p>}>
+      <div className="h-screen">
+        <AdminComponent />
+      </div>
+    </Suspense>
   );
 };
 
