@@ -22,7 +22,9 @@ type PropType = {
 
 export const CarouselPlugin: React.FC<PropType> = (props) => {
   const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Fade({})]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Fade({ duration: 1500 } as EmblaOptionsType),
+  ]);
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true, })
   );
@@ -34,9 +36,10 @@ export const CarouselPlugin: React.FC<PropType> = (props) => {
         Autoplay({
           delay: 2000,
         }),
-        Fade()
+        Fade({ duration: 3000 } as EmblaOptionsType),
       ]}
-      className="p-0 m-0 flex items-center justify-center h-full object-cover"
+      className="p-0 m-0 flex items-center justify-center bg-white"
+      style={{ height: "90vh" }}
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
       ref={emblaRef}
@@ -52,7 +55,7 @@ export const CarouselPlugin: React.FC<PropType> = (props) => {
                     alt="carousel images"
                     width={800}
                     height={800}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-[100vh]"
                   />
                 </CardContent>
               </Card>
