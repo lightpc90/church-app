@@ -18,7 +18,7 @@ const AdminComponent = () => {
   const searchParams = useSearchParams();
   const menu = searchParams.get("menu");
   return (
-    <div className="flex">
+    <div className="flex h-[100vh] overflow-auto">
       {/* left navigation pane */}
       <div className="fixed top-0 left-0 z-30 h-screen bg-blue-900 lg:text-lg font-semibold text-slate-400  
       flex-2 flex flex-col items-center py-5 rounded-tr-[30px] 
@@ -41,7 +41,7 @@ const AdminComponent = () => {
             <Profile />
           </div>
         </div>
-        <div className="p-2 mt-[60px] overflow-auto">
+        <div className="p-2 mt-[60px]">
           {menu === TabParamsEnum.OVERVIEW && <Overview />}
           {menu === TabParamsEnum.WORKERS && <Workers />}
           {menu === TabParamsEnum.FOLLOW_UP && <FollowUp />}

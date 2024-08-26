@@ -44,7 +44,7 @@ const Overview = () => {
   }, [deptSelected]);
 
   return (
-    <div className=" lg:px-10">
+    <div className="lg:px-10">
       {/* Title */}
       <p className="text-2xl font-bold p-2 text-blue-800 ">Overview</p>
       {/* Cards container */}
@@ -52,7 +52,7 @@ const Overview = () => {
         <Card
           title="234"
           subtitle="Total number of Workers"
-          className=" bg-blue-50 text-blue-800 border-l-4 border-blue-800 shadow-lg"
+          className="flex-1 bg-blue-100 text-blue-800 border-l-4 border-blue-800 shadow-lg"
         >
           123Men, 104Women
         </Card>
