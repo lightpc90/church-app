@@ -12,6 +12,7 @@ import { TfiVideoClapper } from "react-icons/tfi";
 import { LiaPrayingHandsSolid } from "react-icons/lia";
 import { GrAnnounce } from "react-icons/gr";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
+import Link from "next/link";
 
 const Items = [
   banner1.src,
@@ -35,7 +36,7 @@ export default function Home() {
         <CarouselPlugin slides={Items} options={OPTIONS} />
         <div className="flex items-end p-5 lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 opacity-90 w-full h-full absolute z-30">
           <div className="flex flex-col text-white gap-1 lg:gap-5 font-bold w-10/12 lg:w-5/12 pt-[30px] lg:pt-[50px]">
-            <h1 className="text-md lg:text-[50px]  ">
+            <h1 className="text-lg lg:text-[50px]  ">
               Experience God&apos;s Love through worship and fellowship at our
               Church.{" "}
             </h1>
@@ -164,8 +165,10 @@ export default function Home() {
           </div>
 
           {/* card 5 */}
-          <div className="flex flex-col justify-evenly w-[300px] h-[310px] 
-          bg-sky-950 rounded-2xl shadow-lg p-4 text-white">
+          <div
+            className="flex flex-col justify-evenly w-[300px] h-[310px] 
+          bg-sky-950 rounded-2xl shadow-lg p-4 text-white"
+          >
             {/* title */}
             <div className="flex gap-4 text-2xl items-center">
               {/* title icon */}
@@ -190,9 +193,39 @@ export default function Home() {
 
         {/* Our Weekly Services */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-          <h2>Our Weekly Service</h2>
+          <h2>Our Weekly Services</h2>
           <div></div>
         </div>
+        {/* Our Monthy Services */}
+        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
+          <h2>Our Monthly Programs</h2>
+          <div></div>
+        </div>
+        {/* Church Groups and Ministeries */}
+        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
+          <h2>Church Natural Groups and Ministries</h2>
+          <div></div>
+        </div>
+        {/* Live */}
+          <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
+            <h2>Watch Us Live</h2>
+            <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
+          </div>
+          {/* Instagram Posts */}
+          <div className="">
+            <p>Instagram Posts</p>
+            <Link href={`/`}>View More</Link>
+            {/* Post Container */}
+      <div className="w-[100wh] ">
+
+      </div>
+          </div>
+          {/* locate us */}
+          <div className="w-[100vw] h-[300px] bg-gradient-to-bl from-blue-800 via-purple-600 to-blue-800">
+            {/* Google Map */}
+            <p>Google Map</p>
+          </div>
+         
       </div>
     </main>
   );
