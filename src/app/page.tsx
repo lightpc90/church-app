@@ -5,14 +5,19 @@ import banner3 from "../../public/pastorAndfamily.jpg";
 import banner4 from "../../public/fullChoir.jpg";
 import banner5 from "../../public/randomChurchPic.jpg";
 import banner6 from "../../public/randomChurchPic2.jpg";
-import { CarouselPlugin } from "@/components/Carousel";
+import { HomeHeaderCarousel } from "@/components/carousels/HomeHeaderCarousel";
+import { MonthlyProgramsCarousel } from "@/components/carousels/MonthlyProgramsCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { FaCross } from "react-icons/fa6";
 import { TfiVideoClapper } from "react-icons/tfi";
 import { LiaPrayingHandsSolid } from "react-icons/lia";
 import { GrAnnounce } from "react-icons/gr";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { WeeklyServiceCarousel } from "@/components/carousels/WeeklyServiceCarousel";
+
 import Link from "next/link";
+import { ChurchWelcomeParagraph } from "../components/data/Data";
+import WeeklyServices from "../components/weeklyService/WeeklyServices"
 
 const Items = [
   banner1.src,
@@ -30,26 +35,29 @@ export default function Home() {
       {/* Banner */}
       <section
         className="bg-gradient-to-tr from-purple-400 via-blue-400 
-      to-purple-800 py-10 h-[90vh] md:h-[600px] lg:h-[900px] flex items-center justify-center 
+      to-purple-800 flex items-center justify-center 
       relative overflow-hidden"
       >
-        <CarouselPlugin slides={Items} options={OPTIONS} />
-        <div className="flex items-end p-5 lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 opacity-90 w-full h-full absolute z-30">
+        <HomeHeaderCarousel slides={Items} options={OPTIONS} />
+        <div
+          className="flex items-end p-5 lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 
+        opacity-90 absolute top-0 left-0 w-[100vw] h-full z-30"
+        >
           <div className="flex flex-col text-white gap-1 lg:gap-5 font-bold w-10/12 lg:w-5/12 pt-[30px] lg:pt-[50px]">
-            <h1 className="text-lg lg:text-[50px]  ">
+            <h2 className="text-md  lg:text-[50px]  ">
               Experience God&apos;s Love through worship and fellowship at our
-              Church.{" "}
-            </h1>
+              Church.
+            </h2>
             <p className="text-sm lg:text-2xl text-zinc-400">
               Experience a welcoming community and uplifting sermons at our
               church. All are welcome. Visit us and reach out with any question
             </p>
             {/* buttons */}
-            <div className="flex flex-col lg:flex-wrap max-w-[160px] lg:w-full text-sm gap-2  lg:gap-4 mt-5">
-              <button className="bg-rose-800 flex-1 py-1 px-2 lg:py-3 lg:px-4 rounded-full">
+            <div className="flex flex-wrap max-w-[400px] gap-2  lg:gap-4 mt-5">
+              <button className="bg-rose-800 w-[150px] p-2 lg:py-3 lg:px-4 rounded-md">
                 Connect with Us
               </button>
-              <button className="border py-1 px-2 flex-1 lg:py-3  lg:px-4 rounded-full">
+              <button className="border w-[150px] p-2 lg:py-3  lg:px-4 rounded-md">
                 Learn More
               </button>
             </div>
@@ -60,28 +68,26 @@ export default function Home() {
       {/* contents */}
       <div className="flex flex-col gap-20 lg:p-[50px]">
         {/* welcome */}
-        <div className="flex flex-col gap-2 p-[20px] items-center justify-center ">
-          <h1 className="text-xl font-bold ">Welcome to RCCG Beautiful Gate</h1>
-          <p className="text-lg ">
-            A place of worship, a place of love, a place of hope, a place of
-            peace
-          </p>
-        </div>
-
-        {/* About Us */}
-        <div className=" flex flex-wrap gap-2 items-center justify-center w-full ">
-          <p className=" text-lg lg:flex-1 p-[20px] ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-            nesciunt autem explicabo laboriosam culpa, quam id rem ea aliquid
-            vel itaque minus dolores veniam ex. Rerum provident ipsa tempora
-            deserunt. A place of worship, a place of love, a place of hope, a
-            place of peace
-          </p>
-          <div className=" w-full lg:flex-1 bg-zinc-800 h-[500px] rounded-2xl "></div>
+        <div className="flex flex-col gap-4 p-[20px] items-center justify-center ">
+          <div className="text-center">
+            <h1 className="text-2xl text-center font-bold ">
+              {ChurchWelcomeParagraph.title}
+            </h1>
+            <h4 className="font-bold text-slate-400">
+              {ChurchWelcomeParagraph.description}
+            </h4>
+          </div>
+          <p className="text-justify ">{ChurchWelcomeParagraph.paragraph}</p>
+          <div className="w-full h-[300px] bg-slate-300">
+            {/* Pastor Picture coming here */}
+          </div>
         </div>
 
         {/* CTA Cards */}
         <div className="flex flex-wrap gap-4 w-full justify-center items-center">
+          <h1 className="text-2xl font-bold text-slate-800">
+            What&apos;s Next?
+          </h1>
           {/* card 1 */}
           <div className="flex flex-col justify-evenly w-[300px] h-[310px] bg-rose-800 rounded-2xl shadow-lg p-4 text-white">
             {/* title */}
@@ -192,14 +198,19 @@ export default function Home() {
         </div>
 
         {/* Our Weekly Services */}
-        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-          <h2>Our Weekly Services</h2>
-          <div></div>
+        <div>
+            <WeeklyServices />
+          </div>
         </div>
         {/* Our Monthy Services */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
           <h2>Our Monthly Programs</h2>
-          <div></div>
+          <div>
+            <MonthlyProgramsCarousel
+              slides={Items}
+              options={{ loop: true, duration: 30 }}
+            />
+          </div>
         </div>
         {/* Church Groups and Ministeries */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
@@ -207,26 +218,22 @@ export default function Home() {
           <div></div>
         </div>
         {/* Live */}
-          <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-            <h2>Watch Us Live</h2>
-            <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
-          </div>
-          {/* Instagram Posts */}
-          <div className="">
-            <p>Instagram Posts</p>
-            <Link href={`/`}>View More</Link>
-            {/* Post Container */}
-      <div className="w-[100wh] ">
-
-      </div>
-          </div>
-          {/* locate us */}
-          <div className="w-[100vw] h-[300px] bg-gradient-to-bl from-blue-800 via-purple-600 to-blue-800">
-            {/* Google Map */}
-            <p>Google Map</p>
-          </div>
-         
-      </div>
+        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
+          <h2>Watch Us Live</h2>
+          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
+        </div>
+        {/* Instagram Posts */}
+        <div className="">
+          <p>Instagram Posts</p>
+          <Link href={`/`}>View More</Link>
+          {/* Post Container */}
+          <div className="w-[100wh] h-[300px] "></div>
+        </div>
+        {/* locate us */}
+        <div className="w-[100vw] h-[300px] bg-gradient-to-bl from-blue-800 via-purple-600 to-blue-800">
+          {/* Google Map */}
+          <p>Google Map</p>
+        </div>
     </main>
   );
 }

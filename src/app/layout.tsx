@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-screen overflow-auto`}>
+      <body className={`${inter.className} min-h-screen overflow-x-hidden `}>
         <ThemeProvider>
           <ConditionalLayout>{children}</ConditionalLayout>
         </ThemeProvider>

@@ -679,3 +679,9 @@ export const bottomCardsData = [
   { title: "23", subtititle: "Total Number of House Fellowship Centers" },
 ];
 
+export const ChurchWelcomeParagraph = {
+  title: "Welcome to RCCG Beautiful Gate Parish, Lakowe",
+  description: "Lagos Province 114. ",
+  paragraph: "We are a vibrant community dedicated to the Word, worship, and prayer, united in love and committed to creating an environment where everyone feels welcome. Whether you're joining us for the first time or have been part of our family, we invite you to grow in faith, connect in fellowship, and experience the transforming power of God\'s presence."
+};
+

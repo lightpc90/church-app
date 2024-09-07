@@ -20,13 +20,13 @@ type PropType = {
 };
 
 
-export const CarouselPlugin: React.FC<PropType> = (props) => {
+export const HomeHeaderCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Fade({ duration: 1500 } as EmblaOptionsType),
+    Fade(),
   ]);
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true, })
+    Autoplay({ delay: 8000, stopOnInteraction: true, })
   );
 
   return (
@@ -34,11 +34,11 @@ export const CarouselPlugin: React.FC<PropType> = (props) => {
       // plugins={[plugin.current]}
       plugins={[
         Autoplay({
-          delay: 2000,
+          delay: 8000,
         }),
-        Fade({ duration: 3000 } as EmblaOptionsType),
+        Fade({ duration: 5000 } as EmblaOptionsType),
       ]}
-      className="p-0 m-0 flex items-center justify-center bg-white"
+      className="p-0 m-0 flex items-center justify-center bg-white overflow-hidden"
       style={{ height: "90vh" }}
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
