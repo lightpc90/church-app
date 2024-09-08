@@ -9,7 +9,7 @@ const Navbar = () => {
     <div
       className="fixed top-0 left-0 py-2 px-[20px] 
     lg:px-[100px] bg-zinc-900 opacity-80 text-white 
-     flex items-center justify-between z-30 w-full overflow-hidden"
+     flex items-center justify-between z-40 w-full overflow-hidden"
     >
       <Logo />
 

@@ -1,0 +1,43 @@
+
+
+.wrapper{
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    
+}
+
+.c_shape {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%; /* Makes it a perfect circle */
+  border: 10px solid white; /* Circle border */
+  border-top-color: transparent;
+  border-right-color: transparent; /* Hide right side to form 'C' */
+  border-bottom-color: transparent;
+  position: relative;
+}
+
+.circle {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: yellow;
+    position: absolute;
+    top: 50%;
+    left: 85px;
+    transform: translate(-50%, -50%);
+}
+
+.tail{
+    position: absolute;
+    width: 90px;
+    height: 8px;
+    background-color: white;
+    top: 50%;
+    left: -50%;
+    transform: translateY(-50%);
+}
+

@@ -17,7 +17,9 @@ import { WeeklyServiceCarousel } from "@/components/carousels/WeeklyServiceCarou
 
 import Link from "next/link";
 import { ChurchWelcomeParagraph } from "../components/data/Data";
-import WeeklyServices from "../components/weeklyService/WeeklyServices"
+import WeeklyServices from "../components/weeklyService/WeeklyServices";
+import classNames from "classnames";
+import MonthlyServices from "@/components/monthlyServices/MonthlyServices";
 
 const Items = [
   banner1.src,
@@ -31,7 +33,7 @@ const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between ">
+    <main className="flex flex-col items-center ">
       {/* Banner */}
       <section
         className="bg-gradient-to-tr from-purple-400 via-blue-400 
@@ -66,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* contents */}
-      <div className="flex flex-col gap-20 lg:p-[50px]">
+      <div className="flex flex-col lg:p-[50px]">
         {/* welcome */}
         <div className="flex flex-col gap-4 p-[20px] items-center justify-center ">
           <div className="text-center">
@@ -196,44 +198,44 @@ export default function Home() {
             </button>
           </div>
         </div>
-
-        {/* Our Weekly Services */}
-        <div>
-            <WeeklyServices />
-          </div>
-        </div>
-        {/* Our Monthy Services */}
-        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-          <h2>Our Monthly Programs</h2>
-          <div>
-            <MonthlyProgramsCarousel
-              slides={Items}
-              options={{ loop: true, duration: 30 }}
-            />
-          </div>
-        </div>
-        {/* Church Groups and Ministeries */}
-        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-          <h2>Church Natural Groups and Ministries</h2>
-          <div></div>
-        </div>
-        {/* Live */}
-        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-          <h2>Watch Us Live</h2>
-          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
-        </div>
-        {/* Instagram Posts */}
-        <div className="">
-          <p>Instagram Posts</p>
-          <Link href={`/`}>View More</Link>
-          {/* Post Container */}
-          <div className="w-[100wh] h-[300px] "></div>
-        </div>
-        {/* locate us */}
-        <div className="w-[100vw] h-[300px] bg-gradient-to-bl from-blue-800 via-purple-600 to-blue-800">
-          {/* Google Map */}
-          <p>Google Map</p>
-        </div>
+      </div>
+      {/* Our Weekly Services */}
+      <div className="w-full bg-[#B9C4D4] mt-[20px] relative overflow-hidden">
+        <WeeklyServices />
+        <div className="w-[400px] h-[400px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] left-[-50%] "></div>
+      </div>
+      {/* Our Monthy Services */}
+      <div className="bg-[#02271C] w-full relative overflow-hidden ">
+        <MonthlyServices/>
+        {/* <div>
+          <MonthlyProgramsCarousel
+            slides={Items}
+            options={{ loop: true, duration: 30 }}
+          />
+        </div> */}
+      </div>
+      {/* Church Groups and Ministeries */}
+      <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
+        <h2>Church Natural Groups and Ministries</h2>
+        <div></div>
+      </div>
+      {/* Live */}
+      <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
+        <h2>Watch Us Live</h2>
+        <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
+      </div>
+      {/* Instagram Posts */}
+      <div className="">
+        <p>Instagram Posts</p>
+        <Link href={`/`}>View More</Link>
+        {/* Post Container */}
+        <div className="w-[100wh] h-[300px] "></div>
+      </div>
+      {/* locate us */}
+      <div className="w-[100vw] h-[300px] bg-gradient-to-bl from-blue-800 via-purple-600 to-blue-800">
+        {/* Google Map */}
+        <p>Google Map</p>
+      </div>
     </main>
   );
 }
