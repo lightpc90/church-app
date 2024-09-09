@@ -206,13 +206,8 @@ export default function Home() {
       </div>
       {/* Our Monthy Services */}
       <div className="bg-[#02271C] w-full relative overflow-hidden ">
-        <MonthlyServices/>
-        {/* <div>
-          <MonthlyProgramsCarousel
-            slides={Items}
-            options={{ loop: true, duration: 30 }}
-          />
-        </div> */}
+        <div className="w-[600px] h-[600px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 "></div>
+        <MonthlyServices />
       </div>
       {/* Church Groups and Ministeries */}
       <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
