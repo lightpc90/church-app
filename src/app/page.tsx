@@ -13,13 +13,14 @@ import { TfiVideoClapper } from "react-icons/tfi";
 import { LiaPrayingHandsSolid } from "react-icons/lia";
 import { GrAnnounce } from "react-icons/gr";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
-import { WeeklyServiceCarousel } from "@/components/carousels/WeeklyServiceCarousel";
+import { BsCollectionPlayFill } from "react-icons/bs";
 
 import Link from "next/link";
 import { ChurchWelcomeParagraph } from "../components/data/Data";
 import WeeklyServices from "../components/weeklyService/WeeklyServices";
 import classNames from "classnames";
 import MonthlyServices from "@/components/monthlyServices/MonthlyServices";
+import SocialMedia from "@/components/social-media/SocialMedia";
 
 const Items = [
   banner1.src,
@@ -144,7 +145,7 @@ export default function Home() {
             </div>
             {/* content */}
             <p className="font-bold text-zinc-400">
-              Need Prayer? Submit your requests to pastor to prayer with you
+              Need Prayer? Submit your requests to pastor to pray with you
             </p>
             {/* call to action */}
             <button className="border py-2 px-4 rounded-full w-fit ">
@@ -209,27 +210,48 @@ export default function Home() {
         <div className="w-[600px] h-[600px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 "></div>
         <MonthlyServices />
       </div>
-      {/* Church Groups and Ministeries */}
-      <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-        <h2>Church Natural Groups and Ministries</h2>
-        <div></div>
+      {/* Church live and media */}
+      <div className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden ">
+        <div className="w-[400px] h-[400px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] z-0 "></div>
+        <h2 className="font-bold text-xl z-10">
+          Our Live Service and Messages
+        </h2>
+        <div className="w-full text-start pl-5 z-10">
+          <p className="text-[#A11E1E] font-bold">Follow us on:</p>
+          <SocialMedia />
+        </div>
+        {/* Watch us live */}
+        <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
+          <h2>Watch Us Live</h2>
+          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
+        </div>
+        {/* Explore media */}
+        <div className="text-[#A11E1E] font-bold pl-5 pr-10 flex gap-4 items-center z-10">
+          <span>
+            <BsCollectionPlayFill size={30} />
+          </span>
+          <span>Explore Our Video and Audio Messages</span>
+        </div>
       </div>
-      {/* Live */}
-      <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center ">
-        <h2>Watch Us Live</h2>
-        <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
-      </div>
+
       {/* Instagram Posts */}
-      <div className="">
-        <p>Instagram Posts</p>
-        <Link href={`/`}>View More</Link>
+      <div className="w-full flex flex-col py-6 gap-3 items-center bg-[#D9D9D9]">
+        <div className="w-full px-5 text-start text-[#A11E1E] font-bold text-sm ">
+          <p>Our Recent Instagram Posts</p>
+          <Link href={`/`}>View More</Link>
+        </div>
         {/* Post Container */}
-        <div className="w-[100wh] h-[300px] "></div>
+        <div className="w-[300px] h-[300px] bg-slate-800"></div>
       </div>
+
       {/* locate us */}
-      <div className="w-[100vw] h-[300px] bg-gradient-to-bl from-blue-800 via-purple-600 to-blue-800">
+      <div className="w-[100vw] h-[300px] py-6 gap-3 bg-[#FFF2F2] flex flex-col items-center font-bold">
+        <div className="text-center">
+          <p className="text-slate-400 text-sm">Visit Us</p>
+          <p>Get Direction on Map</p>
+        </div>
         {/* Google Map */}
-        <p>Google Map</p>
+        <div className="h-[300px] w-[300px] bg-slate-700 "></div>
       </div>
     </main>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../../public/rrcg-mylogo.png";
 import Image from "next/image";
 import { url } from "inspector";
+import SocialMedia from "../social-media/SocialMedia";
 
 const Footer = () => {
   return (
@@ -83,11 +84,9 @@ const Footer = () => {
       </div>
 
       {/* social media */}
-      <div className="lg:w-[30%] my-10 flex items-center gap-2 ">
-        <div className="bg-white h-[30px] w-[30px] rounded-full "></div>
-        <div className="bg-white h-[30px] w-[30px] rounded-full "></div>
-        <div className="bg-white h-[30px] w-[30px] rounded-full "></div>
-        <span className="font-bold ">rccgbglakowe</span>
+      <div className="my-10">
+
+    <SocialMedia/>
       </div>
     </div>
   );
