@@ -1,12 +1,22 @@
+import Link from 'next/link';
 import React from 'react'
+import { AiFillInstagram } from "react-icons/ai";
+import { SiFacebook } from "react-icons/si";
+import { TbBrandYoutubeFilled } from "react-icons/tb";
 
 const SocialMedia = () => {
   return (
-    <div className="lg:w-[30%] flex items-center gap-2 ">
-      <div className="bg-white h-[30px] w-[30px] rounded-full "></div>
-      <div className="bg-white h-[30px] w-[30px] rounded-full "></div>
-      <div className="bg-white h-[30px] w-[30px] rounded-full "></div>
-      <span className="font-bold ">rccgbglakowe</span>
+    <div className="lg:w-[30%] flex items-center gap-2 font-bold ">
+      <Link href={`/`} className=" ">
+        <AiFillInstagram size={30}/>
+      </Link>
+      <Link href={`/`} className=" ">
+        <SiFacebook size={30}/>
+      </Link>
+      <Link href={`/`} className="">
+        <TbBrandYoutubeFilled size={30}/>
+      </Link>
+      <span className="">rccgbglakowe</span>
     </div>
   );
 }

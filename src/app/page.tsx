@@ -14,6 +14,7 @@ import { LiaPrayingHandsSolid } from "react-icons/lia";
 import { GrAnnounce } from "react-icons/gr";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { BsCollectionPlayFill } from "react-icons/bs";
+import { TbSquareRoundedArrowRightFilled } from "react-icons/tb";
 
 import Link from "next/link";
 import { ChurchWelcomeParagraph } from "../components/data/Data";
@@ -21,6 +22,8 @@ import WeeklyServices from "../components/weeklyService/WeeklyServices";
 import classNames from "classnames";
 import MonthlyServices from "@/components/monthlyServices/MonthlyServices";
 import SocialMedia from "@/components/social-media/SocialMedia";
+import LiveStream from "@/components/livestream/LiveStream";
+import LiveProgram from "@/components/livestream/LiveProgram";
 
 const Items = [
   banner1.src,
@@ -223,14 +226,19 @@ export default function Home() {
         {/* Watch us live */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
-          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-blue-800"></div>
+          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-slate-800">
+            <LiveProgram/>
+          </div>
         </div>
         {/* Explore media */}
         <div className="text-[#A11E1E] font-bold pl-5 pr-10 flex gap-4 items-center z-10">
           <span>
             <BsCollectionPlayFill size={30} />
           </span>
-          <span>Explore Our Video and Audio Messages</span>
+          <span>
+            <p>Explore Our Video and Audio Messages</p>
+            <div className="bg-[#A11E1E] w-[25%] h-[4px]"></div>
+          </span>
         </div>
       </div>
 
@@ -238,7 +246,9 @@ export default function Home() {
       <div className="w-full flex flex-col py-6 gap-3 items-center bg-[#D9D9D9]">
         <div className="w-full px-5 text-start text-[#A11E1E] font-bold text-sm ">
           <p>Our Recent Instagram Posts</p>
-          <Link href={`/`}>View More</Link>
+          <Link href={`/`} className="flex gap-2 items-center">
+            <span>View More</span> <TbSquareRoundedArrowRightFilled />
+          </Link>
         </div>
         {/* Post Container */}
         <div className="w-[300px] h-[300px] bg-slate-800"></div>
