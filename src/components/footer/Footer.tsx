@@ -13,25 +13,31 @@ const Footer = () => {
           className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
          rounded-full bg-cover bg-center bg- relative overflow-hidden"
         >
-          <Image src={logo.src} placeholder="blur" blurDataURL={logo.blurDataURL} 
-          width={1000} height={1000} priority alt='logo' 
-          className="absolute bg-cover object-cover" />
+          <Image
+            src={logo.src}
+            placeholder="blur"
+            blurDataURL={logo.blurDataURL}
+            width={1000}
+            height={1000}
+            priority
+            alt="logo"
+            className="absolute bg-cover object-cover"
+          />
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
       </div>
       {/* About Us */}
       <div className="lg:w-[30%] mb-10">
         <h2 className="font-bold text-lg mb-3">About Us</h2>
-        <p>
-          {" "}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, totam
-          esse! Distinctio eos vero fuga commodi, magnam temporibus perferendis
-          corporis illum nam neque reprehenderit est consectetur rerum quas
-          error libero!{" "}
-        </p>
-        ipsum dolor sit amet consectetur adipisicing elit. Sint, totam esse!
-        Distinctio eos vero fuga commodi, magnam temporibus perferendis corporis
-        illum nam neque reprehenderit est
+        RCCG Beautiful Gate Lakowe, we are a branch of Redeemed Christian Church
+        of God, Lagos Province 114, Zone 5, located at Lakowe. We&apos;re a
+        diverse and welcoming community devoted to faith, fellowship, and love.
+        Our vibrant worship services, engaging programs, and outreach
+        initiatives are designed to nurture spiritual growth and foster
+        connections with God and fellow believers. With a commitment to
+        inclusivity, we embrace everyone, encouraging a deeper relationship with
+        God and a sense of belonging. Join us on this journey of faith, love,
+        and grace.
       </div>
 
       <div className="flex gap-[30px] flex-wrap">
@@ -60,13 +66,11 @@ const Footer = () => {
         <div className="lg:flex-1">
           <h2 className="font-bold text-lg mb-3">Contact Us</h2>
           <p>
-            ipsum dolor sit amet consectetur adipisicing elit. Sint, totam esse!
-            Distinctio eos vero fuga commodi, magnam temporibus perferendis
-            corporis illum nam neque reprehenderit est ipsum dolor sit amet
-            consectetur adipisicing elit. Sint, totam esse! Distinctio eos vero
-            fuga commodi, magnam temporibus perferendis corporis illum nam neque
-            reprehenderit est
+            1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
+            Express-Way Lakowe
           </p>
+          <p>Phone: 234(0)812 3456 789, 234(0)812 6543 789</p>
+          <p>Email: rccgbeautifulgate@gmail.com</p>
         </div>
 
         {/* Contact Us */}
@@ -85,8 +89,7 @@ const Footer = () => {
 
       {/* social media */}
       <div className="my-10">
-
-    <SocialMedia/>
+        <SocialMedia />
       </div>
     </div>
   );
