@@ -25,6 +25,7 @@ import SocialMedia from "@/components/social-media/SocialMedia";
 import LiveStream from "@/components/livestream/LiveStream";
 import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
+import InstagramFeed from "@/components/instagramFeed/InstagramFeed"
 
 const Items = [
   banner1.src,
@@ -228,7 +229,7 @@ export default function Home() {
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
           <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:min-h-[600px] bg-slate-800">
-            <LiveProgram/>
+            <LiveProgram />
           </div>
         </div>
         {/* Explore media */}
@@ -252,7 +253,11 @@ export default function Home() {
           </Link>
         </div>
         {/* Post Container */}
-        <div className="w-[300px] min-h-[300px] bg-slate-800"></div>
+        <div className="w-[300px] min-h-[300px] bg-slate-100">
+          <div>
+            <InstagramFeed />
+          </div>
+        </div>
       </div>
 
       {/* locate us */}
@@ -263,7 +268,7 @@ export default function Home() {
         </div>
         {/* Google Map */}
         <div className="min-h-[300px] w-[300px] bg-slate-700 ">
-          <MapComponent/>
+          <MapComponent />
         </div>
       </div>
     </main>

@@ -64,7 +64,7 @@ const MapComponent = () => {
           <div>
             <MdEmail size={25} />
           </div>
-          <p>rccgbeautifulgate@gmail.com</p>
+          <p>ctlbeautifulgate@gmail.com</p>
         </div>
       </div>
     </>
