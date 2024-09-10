@@ -9,11 +9,11 @@ const LiveStreamFallback = () => {
     const checkLiveStream = async () => {
       try {
         console.log('channel_ID', process.env.NEXT_PUBLIC_CHANNEL_ID)
-        console.log('api_key', process.env.NEXT_PUBLIC_YOUTUBE_API_KEY)
+        console.log('api_key', process.env.NEXT_PUBLIC_API_KEY)
         setLoading(true)
         // 1. Check if there is a current live stream
         const liveResponse = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&eventType=live&type=video&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&eventType=live&type=video&key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         const liveData = await liveResponse.json();
 
@@ -26,7 +26,7 @@ const LiveStreamFallback = () => {
             console.log('launching fallback')
           // 2. No live stream, get the last uploaded video
           const recentResponse = await fetch(
-            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&order=date&type=video&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&order=date&type=video&key=${process.env.NEXT_PUBLIC_API_KEY}`
           );
           const recentData = await recentResponse.json();
 
@@ -52,7 +52,7 @@ const LiveStreamFallback = () => {
       ) : videoId ? (
         <iframe
           width="100%"
-          height="100%"
+          height="500"
           className="h-[100%] w-[100%]"
           src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
           frameBorder="0"

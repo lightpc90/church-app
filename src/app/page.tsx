@@ -24,6 +24,7 @@ import MonthlyServices from "@/components/monthlyServices/MonthlyServices";
 import SocialMedia from "@/components/social-media/SocialMedia";
 import LiveStream from "@/components/livestream/LiveStream";
 import LiveProgram from "@/components/livestream/LiveProgram";
+import MapComponent from "@/components/map/GoogleMap";
 
 const Items = [
   banner1.src,
@@ -226,7 +227,7 @@ export default function Home() {
         {/* Watch us live */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
-          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[600px] bg-slate-800">
+          <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:min-h-[600px] bg-slate-800">
             <LiveProgram/>
           </div>
         </div>
@@ -251,17 +252,19 @@ export default function Home() {
           </Link>
         </div>
         {/* Post Container */}
-        <div className="w-[300px] h-[300px] bg-slate-800"></div>
+        <div className="w-[300px] min-h-[300px] bg-slate-800"></div>
       </div>
 
       {/* locate us */}
-      <div className="w-[100vw] h-[300px] py-6 gap-3 bg-[#FFF2F2] flex flex-col items-center font-bold">
+      <div className="w-[100vw] py-6 gap-3 bg-[#FFF2F2] flex flex-col items-center font-bold">
         <div className="text-center">
           <p className="text-slate-400 text-sm">Visit Us</p>
           <p>Get Direction on Map</p>
         </div>
         {/* Google Map */}
-        <div className="h-[300px] w-[300px] bg-slate-700 "></div>
+        <div className="min-h-[300px] w-[300px] bg-slate-700 ">
+          <MapComponent/>
+        </div>
       </div>
     </main>
   );
