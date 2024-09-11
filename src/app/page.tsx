@@ -273,7 +273,7 @@ export default function Home() {
           <p>Get Direction on Map</p>
         </div>
         {/* Google Map */}
-        <div className="min-h-[300px] lg:w-[60%] bg-slate-700 ">
+        <div className="min-h-[300px] lg:h-[800px] lg:w-[60%] bg-slate-700 ">
           <MapComponent />
         </div>
       </div>

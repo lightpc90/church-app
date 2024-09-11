@@ -12,13 +12,13 @@ const MapComponent = () => {
     const initMap = () => {
       if (mapRef.current && typeof window.google !== "undefined") {
         const map = new window.google.maps.Map(mapRef.current, {
-          center: { lat: 6.4732355, lng: 3.7288700 }, // Example coordinates for Lagos
-          zoom: 14,
+          center: { lat: 6.471756086450086, lng: 3.728822906746889 }, // Example coordinates for Lagos
+          zoom: 18,
         });
 
         // Add marker (optional)
         new window.google.maps.Marker({
-          position: { lat: 6.5244, lng: 3.3792 },
+          position: { lat: 6.471756086450086, lng: 3.728822906746889 },
           map,
           title: "Beautiful Gate",
         });
@@ -41,29 +41,31 @@ const MapComponent = () => {
       />
 
       {/* Map container */}
-      <div ref={mapRef} style={{ height: "500px", width: "100%" }} />
-      {/* Contact Us */}
-      <div className="flex flex-col gap-3 bg-white p-4 shadow-md font-medium text-sm">
-        <div className="flex gap-2 items-center">
-          <div>
-            <FaLocationArrow size={25} />
+      <div className="h-[100%]">
+        <div ref={mapRef} style={{ height: "80%", width: "100%" }} />
+        {/* Contact Us */}
+        <div className="flex flex-col gap-3 lg:h-[20%] bg-white p-4 shadow-md font-medium text-sm">
+          <div className="flex gap-2 items-center">
+            <div>
+              <FaLocationArrow size={25} />
+            </div>
+            <p>
+              1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
+              Express-Way Lakowe
+            </p>
           </div>
-          <p>
-            1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
-            Express-Way Lakowe
-          </p>
-        </div>
-        <div className="flex gap-2 items-center">
-          <div>
-            <FaSquarePhone size={25} />
+          <div className="flex gap-2 items-center">
+            <div>
+              <FaSquarePhone size={25} />
+            </div>
+            <p>234(0)812 3456 789, 234(0)812 6543 789</p>
           </div>
-          <p>234(0)812 3456 789, 234(0)812 6543 789</p>
-        </div>
-        <div className="flex gap-2 items-center">
-          <div>
-            <MdEmail size={25} />
+          <div className="flex gap-2 items-center">
+            <div>
+              <MdEmail size={25} />
+            </div>
+            <p>ctlbeautifulgate@gmail.com</p>
           </div>
-          <p>ctlbeautifulgate@gmail.com</p>
         </div>
       </div>
     </>
