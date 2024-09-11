@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { FaSquarePhone, FaLocationArrow } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { IoLocation } from "react-icons/io5";
 
 const MapComponent = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -13,7 +12,7 @@ const MapComponent = () => {
     const initMap = () => {
       if (mapRef.current && typeof window.google !== "undefined") {
         const map = new window.google.maps.Map(mapRef.current, {
-          center: { lat: 6.5244, lng: 3.3792 }, // Example coordinates for Lagos
+          center: { lat: 6.4732355, lng: 3.7288700 }, // Example coordinates for Lagos
           zoom: 14,
         });
 
@@ -21,7 +20,7 @@ const MapComponent = () => {
         new window.google.maps.Marker({
           position: { lat: 6.5244, lng: 3.3792 },
           map,
-          title: "Church Location",
+          title: "Beautiful Gate",
         });
       }
     };

@@ -3,6 +3,8 @@ import logo from "../../../public/rrcg-mylogo.png";
 import Image from "next/image";
 import { url } from "inspector";
 import SocialMedia from "../social-media/SocialMedia";
+import Button from "../customeUI/Button";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -43,23 +45,23 @@ const Footer = () => {
       <div className="flex gap-[30px] flex-wrap">
         {/* Vision */}
         <div className="lg:flex-1 ">
-          <h2 className="font-bold text-lg mb-3">Vision</h2>
+          <h2 className="font-bold text-lg mb-3">How Can I Be Saved?</h2>
           <p>
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, totam
-            esse! Distinctio eos vero fuga commodi, magnam temporibus
-            perferendis corporis illum nam neque reprehenderit est consectetur
-            rerum quas error libero!{" "}
+            Salvation is God&apos;s gift of grace to all who seek Him with a
+            sincere heart. If you&apos;re wondering how to be saved, the Bible
+            provides a clear path. First, acknowledge that we are all sinners in
+            need of God&apos;s mercy (Romans 3:23). Turn away from sin, and
+            repent—this means a heartfelt change of mind and direction (Acts
+            3:19). Believe in Jesus Christ as the Son of God, who died for your
+            sins and rose again to give you new life (John 3:16). Confess Him as
+            your Lord and Savior, surrendering your life to His will (Romans
+            10:9-10). Finally, trust that through His grace, you are forgiven,
+            redeemed, and welcomed into God&apos;s family. Salvation is not
+            earned by works, but received by faith in Christ alone (Ephesians
+            2:8-9). Take this step today and experience the transformative love
+            of God in your life!
           </p>
-          <p>
-            {" "}
-            ipsum dolor sit amet consectetur adipisicing elit. Sint, totam esse!
-            Distinctio eos vero fuga commodi, magnam temporibus perferendis
-            corporis illum nam neque reprehenderit est ipsum dolor sit amet
-            consectetur adipisicing elit. Sint, totam esse! Distinctio eos vero
-            fuga commodi, magnam temporibus perferendis corporis illum nam neque
-            reprehenderit est
-          </p>
+          <Link href='/' className="my-5 bg-blue-700 p-2 inline-block rounded-md hover:bg-white hover:text-blue-700">Meet Our Pastor</Link>
         </div>
 
         {/* Contact Us */}
