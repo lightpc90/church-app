@@ -29,8 +29,7 @@ const LiveStream: FC<propsType>  = ({ setFallback }) => {
     <div className="w-[100%] h-[100%]">
       {isLive && liveVideoId ? (
         <iframe
-          width="100%"
-          height="500"
+          className="w-[100%] h-[100%]"
           src={`https://www.youtube.com/embed/${liveVideoId}?autoplay=1`}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -42,7 +41,9 @@ const LiveStream: FC<propsType>  = ({ setFallback }) => {
           <p>No live stream is currently available.</p>
           {/* Next service countdown timer comes here */}
           {/* option to watch the last service comes here */}
-          <button onClick={()=>setFallback(true)} className="text-blue-300">Watch Our Last Service</button>
+          <button onClick={() => setFallback(true)} className="text-blue-300">
+            Watch Our Last Service
+          </button>
         </div>
       )}
     </div>

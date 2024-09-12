@@ -1,6 +1,5 @@
 import { DeptsEnum } from "../enums/Enums";
 
-
 export const workersData = [
   {
     _id: 1,
@@ -379,16 +378,66 @@ export const TestimoniesData = [
 ];
 
 export const PrayerRequestData = [
-  { _id: 1, subject: "Healing", request: "Please pray for my health and recovery from illness.", phone: "555-123-4567" },
-  { _id: 2, subject: "Guidance", request: "I need direction in making a major life decision.", phone: "555-234-5678" },
-  { _id: 3, subject: "Strength", request: "Pray for strength to overcome challenges at work.", phone: "555-345-6789" },
-  { _id: 4, subject: "Family", request: "Please pray for peace and unity in my family.", phone: "555-456-7890" },
-  { _id: 5, subject: "Provision", request: "I'm trusting God for financial provision during this tough time.", phone: "555-567-8901" },
-  { _id: 6, subject: "Protection", request: "Pray for protection over my loved ones as they travel.", phone: "555-678-9012" },
-  { _id: 7, subject: "Job Opportunity", request: "Please pray for a job opportunity to open up for me.", phone: "555-789-0123" },
-  { _id: 8, subject: "Faith", request: "Pray that my faith remains strong during this trial.", phone: "555-890-1234" },
-  { _id: 9, subject: "Peace", request: "I'm feeling anxious; please pray for God's peace in my heart.", phone: "555-901-2345" },
-  { _id: 10, subject: "Marriage", request: "Please pray for restoration and healing in my marriage.", phone: "555-012-3456" }
+  {
+    _id: 1,
+    subject: "Healing",
+    request: "Please pray for my health and recovery from illness.",
+    phone: "555-123-4567",
+  },
+  {
+    _id: 2,
+    subject: "Guidance",
+    request: "I need direction in making a major life decision.",
+    phone: "555-234-5678",
+  },
+  {
+    _id: 3,
+    subject: "Strength",
+    request: "Pray for strength to overcome challenges at work.",
+    phone: "555-345-6789",
+  },
+  {
+    _id: 4,
+    subject: "Family",
+    request: "Please pray for peace and unity in my family.",
+    phone: "555-456-7890",
+  },
+  {
+    _id: 5,
+    subject: "Provision",
+    request: "I'm trusting God for financial provision during this tough time.",
+    phone: "555-567-8901",
+  },
+  {
+    _id: 6,
+    subject: "Protection",
+    request: "Pray for protection over my loved ones as they travel.",
+    phone: "555-678-9012",
+  },
+  {
+    _id: 7,
+    subject: "Job Opportunity",
+    request: "Please pray for a job opportunity to open up for me.",
+    phone: "555-789-0123",
+  },
+  {
+    _id: 8,
+    subject: "Faith",
+    request: "Pray that my faith remains strong during this trial.",
+    phone: "555-890-1234",
+  },
+  {
+    _id: 9,
+    subject: "Peace",
+    request: "I'm feeling anxious; please pray for God's peace in my heart.",
+    phone: "555-901-2345",
+  },
+  {
+    _id: 10,
+    subject: "Marriage",
+    request: "Please pray for restoration and healing in my marriage.",
+    phone: "555-012-3456",
+  },
 ];
 
 export const HouseFellowshipCentersData = [
@@ -493,7 +542,11 @@ export const attendanceData: {
       attendance: "23",
       date: "28/08/24",
     },
-    [DeptsEnum.CHOIR]: { dept: DeptsEnum.CHOIR, attendance: "43", date: "28/08/24" },
+    [DeptsEnum.CHOIR]: {
+      dept: DeptsEnum.CHOIR,
+      attendance: "43",
+      date: "28/08/24",
+    },
     [DeptsEnum.JESUS_POLIE]: {
       dept: DeptsEnum.JESUS_POLIE,
       attendance: "13",
@@ -526,7 +579,11 @@ export const attendanceData: {
       attendance: "22",
       date: "21/08/24",
     },
-    [DeptsEnum.CHOIR]: { dept: DeptsEnum.CHOIR, attendance: "46", date: "21/08/24" },
+    [DeptsEnum.CHOIR]: {
+      dept: DeptsEnum.CHOIR,
+      attendance: "46",
+      date: "21/08/24",
+    },
     [DeptsEnum.JESUS_POLIE]: {
       dept: DeptsEnum.JESUS_POLIE,
       attendance: "12",
@@ -559,7 +616,11 @@ export const attendanceData: {
       attendance: "27",
       date: "14/08/24",
     },
-    [DeptsEnum.CHOIR]: { dept: DeptsEnum.CHOIR, attendance: "46", date: "14/08/24" },
+    [DeptsEnum.CHOIR]: {
+      dept: DeptsEnum.CHOIR,
+      attendance: "46",
+      date: "14/08/24",
+    },
     [DeptsEnum.JESUS_POLIE]: {
       dept: DeptsEnum.JESUS_POLIE,
       attendance: "12",
@@ -592,7 +653,11 @@ export const attendanceData: {
       attendance: "29",
       date: "07/08/24",
     },
-    [DeptsEnum.CHOIR]: { dept: DeptsEnum.CHOIR, attendance: "49", date: "07/08/24" },
+    [DeptsEnum.CHOIR]: {
+      dept: DeptsEnum.CHOIR,
+      attendance: "49",
+      date: "07/08/24",
+    },
     [DeptsEnum.JESUS_POLIE]: {
       dept: DeptsEnum.JESUS_POLIE,
       attendance: "17",
@@ -625,7 +690,11 @@ export const attendanceData: {
       attendance: "21",
       date: "01/08/24",
     },
-    [DeptsEnum.CHOIR]: { dept: DeptsEnum.CHOIR, attendance: "53", date: "01/08/24" },
+    [DeptsEnum.CHOIR]: {
+      dept: DeptsEnum.CHOIR,
+      attendance: "53",
+      date: "01/08/24",
+    },
     [DeptsEnum.JESUS_POLIE]: {
       dept: DeptsEnum.JESUS_POLIE,
       attendance: "15",
@@ -655,7 +724,7 @@ export const attendanceData: {
 ];
 
 export const GeneralAttedanceData = [
-  { name: "01/08/24", attendance: "223", dept: "General Attendance"},
+  { name: "01/08/24", attendance: "223", dept: "General Attendance" },
   { name: "07/08/24", attendance: "203", dept: "General Attendance" },
   { name: "14/08/24", attendance: "213", dept: "General Attendance" },
   { name: "21/08/24", attendance: "193", dept: "General Attendance" },
@@ -663,7 +732,12 @@ export const GeneralAttedanceData = [
 ];
 
 export const deptData = [
-  { total: "30", dept: DeptsEnum.MEDIA_AND_TECHNICAL, male: "20", female: "20" },
+  {
+    total: "30",
+    dept: DeptsEnum.MEDIA_AND_TECHNICAL,
+    male: "20",
+    female: "20",
+  },
   { total: "58", dept: DeptsEnum.CHOIR, male: "20", female: "38" },
   { total: "39", dept: DeptsEnum.USHERING, male: "19", female: "20" },
   { total: "27", dept: DeptsEnum.PROTOCOL, male: "15", female: "12" },
@@ -682,6 +756,81 @@ export const bottomCardsData = [
 export const ChurchWelcomeParagraph = {
   title: "Welcome to RCCG Beautiful Gate Parish, Lakowe",
   description: "Lagos Province 114. ",
-  paragraph: "We are a vibrant community dedicated to the Word, worship, and prayer, united in love and committed to creating an environment where everyone feels welcome. Whether you're joining us for the first time or have been part of our family, we invite you to grow in faith, connect in fellowship, and experience the transforming power of God\'s presence."
+  paragraph:
+    "We are a vibrant community dedicated to the Word, worship, and prayer, united in love and committed to creating an environment where everyone feels welcome. Whether you're joining us for the first time or have been part of our family, we invite you to grow in faith, connect in fellowship, and experience the transforming power of God's presence.",
 };
 
+export const HowCanIBeSavedData = {
+  title: `How Can I Be Saved?`,
+  body: ` Salvation is God's gift of grace to all who seek Him with a
+            sincere heart. If you're wondering how to be saved, the Bible
+            provides a clear path. First, acknowledge that we are all sinners in
+            need of God's mercy (Romans 3:23). Turn away from sin, and
+            repent—this means a heartfelt change of mind and direction (Acts
+            3:19). Believe in Jesus Christ as the Son of God, who died for your
+            sins and rose again to give you new life (John 3:16). Confess Him as
+            your Lord and Savior, surrendering your life to His will (Romans
+            10:9-10). Finally, trust that through His grace, you are forgiven,
+            redeemed, and welcomed into God&apos;s family. Salvation is not
+            earned by works, but received by faith in Christ alone (Ephesians
+            2:8-9). Take this step today and experience the transformative love
+            of God in your life!`,
+};
+
+export const AccountData = {
+  titheAndOffering: [
+    {
+      type: "Naira Account",
+      bank: "Zenith Bank",
+      accountNumber: 1012345665,
+      accountName: "RCCG ctlBg",
+    },
+    {
+      type: "Dom. Account USD",
+      bank: "Zenith Bank",
+      accountNumber: 1213367665,
+      accountName: "RCCG ctlBg",
+    },
+  ],
+  welfare: [
+    {
+      type: "Naira Account",
+      bank: "Zenith Bank",
+      accountNumber: 1012345665,
+      accountName: "RCCG ctlBg",
+    },
+  ],
+  building: [
+    {
+      type: "Naira Account",
+      bank: "Zenith Bank",
+      accountNumber: 1012345665,
+      accountName: "RCCG ctlBg",
+    },
+  ],
+  youth: [
+    {
+      type: "Naira Account",
+      bank: "Zenith Bank",
+      accountNumber: 1012345665,
+      accountName: "RCCG ctlBg",
+    },
+  ],
+  mission: [
+    {
+      type: "Naira Account",
+      bank: "Zenith Bank",
+      accountNumber: 1012345665,
+      accountName: "RCCG ctlBg",
+    },
+  ],
+};
+
+export const PrayerRequestPageIntro = {
+  headerTitle: "Let's Pray With You",
+  title: `It's what we've been called to do!`,
+  description: `Please share your prayer request`,
+  body: `Life can be overwhelming. In those moments, you need a team to be on your side, to cheer you back hope, to hold your hand and lead you to The One who always stands ready to  listen. No matter what you're facing, we'd love to pray with you!`,
+};
+
+export const TermsAndPrivacyFooter = `By using rccgbeautifulgatelakowe website, you agree to the Terms and Privacy Policy`;

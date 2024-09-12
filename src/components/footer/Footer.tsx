@@ -72,7 +72,7 @@ const Footer = () => {
             Express-Way Lakowe
           </p>
           <p>Phone: 234(0)812 3456 789, 234(0)812 6543 789</p>
-          <p>Email: rccgbeautifulgate@gmail.com</p>
+          <p>Email: ctlbeautifulgate@gmail.com</p>
         </div>
 
         {/* Contact Us */}

@@ -47,12 +47,10 @@ const LiveStreamFallback = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-[100%] h-[100%]">
       {!videoId && loading ? (<p className="text-white text-center ">Loading...</p>
       ) : videoId ? (
         <iframe
-          width="100%"
-          height="500"
           className="h-[100%] w-[100%]"
           src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
           frameBorder="0"
