@@ -834,3 +834,46 @@ export const PrayerRequestPageIntro = {
 };
 
 export const TermsAndPrivacyFooter = `By using rccgbeautifulgatelakowe website, you agree to the Terms and Privacy Policy`;
+
+
+export const NaturalGroups = [
+  {
+    name: "Elders",
+    desc: "Men and women above the age of 50",
+    link: "/",
+    action: "Join Group",
+  },
+  {
+    name: "Excellent Men",
+    desc: "The group for men in the church",
+    link: "/",
+    action: "Join Group",
+  },
+  {
+    name: "Good Women",
+    desc: "Our Good women group",
+    link: "/",
+    action: "Join Group",
+  },
+  {
+    name: "Ablaze Gen.",
+    desc: "This is the church youth group, YAYA",
+    link: "/",
+    action: "Join Group",
+  },
+];
+
+export const Ministries = [
+  {
+    name: "Teens Ministry",
+    desc: "Teenegers are to register here!",
+    link: "/",
+    action: "Register",
+  },
+  {
+    name: "Children Ministry",
+    desc: "Register your child/children here",
+    link: "/",
+    action: "Register",
+  },
+];
