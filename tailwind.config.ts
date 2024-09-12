@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      height: {
+        "screen-dynamic": "calc(var(--vh, 1vh) * 100)",
+      },
       fontFamily: {
         special: ["Oswald"],
       },
