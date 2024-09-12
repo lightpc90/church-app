@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewConvertForm = () => {
+const PrayerRequestForm = () => {
   const handleSubmit = () => {};
   return (
     <div className="flex flex-col items-center gap-3 ">
@@ -49,4 +49,4 @@ const NewConvertForm = () => {
   );
 };
 
-export default NewConvertForm;
+export default PrayerRequestForm;
