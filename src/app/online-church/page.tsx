@@ -8,7 +8,7 @@ import { HiMiniPlayCircle } from "react-icons/hi2";
 
 const page = () => {
   return (
-    <div className="bg-[#D9D9D9] flex flex-col items-center justify-center gap-5">
+    <div className="bg-[#D9D9D9] flex flex-col items-center justify-center gap-5 mb-10">
       <Header
         title="Watch us Live, Explore Our Messages"
         imageUrl={onlineChurch.src}

@@ -8,9 +8,9 @@ type AccountLayoutPropsType = {
 
 const AccountLayout: FC<AccountLayoutPropsType> = ({bankLogo, account}) => {
   return (
-    <div className="w-full p-3 flex gap-3">
-      <Image src={bankLogo} alt="" />
-      <div className="space-y-2">
+    <div className="w-full p-3 flex items-center gap-3 bg-blue-100">
+      <Image src={bankLogo} width={500} height={500} alt="" className='w-[90px] h-[90px]' />
+      <div className="">
         <h3 className="text-xl font-bold">{account.type}</h3>
         <h3 className="text-xl font-bold text-rose-800">{account.bank}</h3>
         <h3 className="text-2xl font-bold">{account.accountNumber}</h3>
