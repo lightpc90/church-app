@@ -3,6 +3,7 @@ import Header from "@/components/UILayouts/Header";
 import headerImage from "../../../public/headers/event.png";
 import { Events } from "@/components/data/Data";
 import EventLayout from "@/components/UILayouts/EventLayout";
+import EmptyEvent from "@/components/UILayouts/EmptyEvent";
 
 const Page = () => {
   const title = "Events";
@@ -21,7 +22,12 @@ const Page = () => {
       {/* past events */}
       <div className="p-5 my-5 flex flex-col gap-3 items-center">
         <h2 className="font-bold text-xl">Past Events</h2>
-        <div></div>
+        <div>
+          {/* empty event */}
+          <div>
+            <EmptyEvent text={"No Past Event"} />
+          </div>
+        </div>
       </div>
     </div>
   );
