@@ -9,7 +9,7 @@ type GroupLayoutPropsType = {
     desc: string;
     link: string;
     action: string;
-    image?: string;
+    image?: string ;
   };
 };
 
@@ -25,7 +25,7 @@ const GroupLayout: FC<GroupLayoutPropsType> = ({ group }) => {
       />
       <div className="">
         <h3 className="text-xl font-bold">{group.name}</h3>
-        <h3 className="text-rose-800">{group.desc}</h3>
+        <h3 className="text-rose-800 text-sm">{group.desc}</h3>
        <Link href={group.link} className="bg-blue-950 px-2 py-1 shadow-xl text-white rounded-md" >
        {group.action}
        </Link>

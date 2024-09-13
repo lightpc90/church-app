@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import plugin from "tailwindcss/plugin";
 
 const config = {
   darkMode: ["class"],
@@ -20,6 +21,12 @@ const config = {
     extend: {
       height: {
         "screen-dynamic": "calc(var(--vh, 1vh) * 100)",
+      },
+      textShadow: {
+        sm: "1px 1px 2px rgba(0, 0, 0, 0.25)",
+        md: "2px 2px 4px rgba(0, 0, 0, 0.25)",
+        lg: "3px 3px 6px rgba(0, 0, 0, 0.3)",
+        xl: "4px 4px 8px rgba(0, 0, 0, 0.4)",
       },
       fontFamily: {
         special: ["Oswald"],
@@ -80,7 +87,36 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".text-shadow-sm": {
+          textShadow: "1px 1px 2px rgba(0, 0, 0, 0.25)",
+        },
+        ".text-shadow-md": {
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.25)",
+        },
+        ".text-shadow-lg": {
+          textShadow: "3px 3px 6px rgba(0, 0, 0, 0.3)",
+        },
+        ".text-shadow-xl": {
+          textShadow: "4px 4px 8px rgba(0, 0, 0, 0.4)",
+        },
+        ".text-shadow-none": {
+          textShadow: "none",
+        },
+      };
+
+      addUtilities(newUtilities);
+    }),
+  ],
+
+  variants: {
+    extend: {
+      textShadow: ["responsive", "hover"], // Enables responsive and hover variants
+    },
+  },
+};
 
 export default config

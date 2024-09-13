@@ -877,3 +877,20 @@ export const Ministries = [
     action: "Register",
   },
 ];
+
+export const Events = [
+  {
+    name: "Praise to Praise",
+    location: "Church Auditorium",
+    dateAndTime: "2024-11-14T18:00",
+    regLink: "/",
+    image: "",
+  },
+  {
+    name: "Teens Conference",
+    location: "Church Auditorium",
+    dateAndTime: "2024-02-14T108:00",
+    regLink: "/",
+    image: "",
+  },
+];
