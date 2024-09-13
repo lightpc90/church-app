@@ -842,24 +842,28 @@ export const NaturalGroups = [
     desc: "Men and women above the age of 50",
     link: "/",
     action: "Join Group",
+    image: "",
   },
   {
     name: "Excellent Men",
     desc: "The group for men in the church",
     link: "/",
     action: "Join Group",
+    image: "",
   },
   {
     name: "Good Women",
     desc: "Our Good women group",
     link: "/",
     action: "Join Group",
+    image: "",
   },
   {
     name: "Ablaze Gen.",
     desc: "This is the church youth group, YAYA",
     link: "/",
     action: "Join Group",
+    image: "",
   },
 ];
 
@@ -869,12 +873,14 @@ export const Ministries = [
     desc: "Teenegers are to register here!",
     link: "/",
     action: "Register",
+    image: "",
   },
   {
     name: "Children Ministry",
     desc: "Register your child/children here",
     link: "/",
     action: "Register",
+    image: "",
   },
 ];
 

@@ -9,7 +9,7 @@ type GroupLayoutPropsType = {
     desc: string;
     link: string;
     action: string;
-    image?: string ;
+    image: string ;
   };
 };
 
