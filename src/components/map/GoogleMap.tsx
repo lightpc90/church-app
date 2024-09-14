@@ -41,8 +41,8 @@ const MapComponent = () => {
       />
 
       {/* Map container */}
-      <div className="h-[100%]">
-        <div ref={mapRef} style={{ height: "80%", width: "100%" }} />
+      <div className="flex flex-col w-full h-[100%]">
+        <div ref={mapRef} style={{ height: "80%", width: "100%" }} className="h-[80%] w-full" />
         {/* Contact Us */}
         <div className="flex flex-col gap-3 lg:h-[20%] bg-white p-4 shadow-md font-medium text-sm">
           <div className="flex gap-2 items-center">
