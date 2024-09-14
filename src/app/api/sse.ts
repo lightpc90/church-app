@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 let clients: any = [];
 
-const SSE = (req: NextApiRequest, res: NextApiResponse) => {
+const Sse = (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
@@ -26,4 +26,4 @@ export const broadcast = (message: any) => {
   });
 };
 
-export default SSE
+export default Sse

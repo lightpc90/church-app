@@ -19,7 +19,7 @@ const WeeklyServices = () => {
             alt=""
             height={500}
             width={400}
-            loading="lazy"
+            loading="eager"
             className="object-cover object-center h-full w-full"
           />
           <div
@@ -51,7 +51,7 @@ const WeeklyServices = () => {
             alt=""
             height={500}
             width={400}
-            loading="lazy"
+            loading="eager"
             className="object-cover object-center h-full w-full"
           />
           <div
@@ -74,7 +74,7 @@ const WeeklyServices = () => {
             alt=""
             height={500}
             width={400}
-            loading="lazy"
+            loading="eager"
             className="object-cover object-center h-full w-full"
           />
           <div

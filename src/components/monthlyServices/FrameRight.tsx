@@ -12,6 +12,7 @@ const FrameRight = () => {
         <Image
           src={bg}
           alt=""
+          loading="eager"
           className="object-cover object-center h-full w-full "
         />
       </div>

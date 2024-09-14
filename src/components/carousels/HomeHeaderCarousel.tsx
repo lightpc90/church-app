@@ -55,6 +55,7 @@ export const HomeHeaderCarousel: React.FC<PropType> = (props) => {
                     alt="carousel images"
                     width={800}
                     height={800}
+                    loading="eager"
                     className="object-cover w-full h-[100vh]"
                   />
                 </CardContent>

@@ -34,6 +34,8 @@ const LiveStream: FC<propsType>  = ({ setFallback }) => {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          marginHeight={0} 
+          marginWidth={0}
         ></iframe>
       ) : (
         <div className="h-[100%] flex flex-col items-center justify-center text-center py-5 text-white">

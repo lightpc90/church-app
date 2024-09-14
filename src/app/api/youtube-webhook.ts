@@ -1,5 +1,3 @@
-
-
 import { NextApiRequest, NextApiResponse } from "next";
 import { broadcast } from "./sse";
 
@@ -23,7 +21,7 @@ export default async function handler(
       // Process notification, e.g., check if it's a live event and update the app state
       console.log("Received YouTube live notification:", notification);
       // TODO: Update your state or trigger a re-fetch of live video details
-      broadcast(notification)
+      broadcast(notification);
     }
 
     res.status(204).end(); // Respond to YouTube with 204 No Content

@@ -9,7 +9,7 @@ const Frame = () => {
       <div className={styles.c_shape}></div>
       <div className={styles.tail}></div>
       <div className={styles.circle}>
-        <Image src={bg} alt=""  className="object-cover object-center h-full w-full "/>
+        <Image src={bg} alt="" loading="eager"  className="object-cover object-center h-full w-full "/>
       </div>
     </div>
   );
