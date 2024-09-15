@@ -49,11 +49,15 @@ const Navbar = () => {
       </div>
       {/* mobile links */}
       {menuOpen && (
-        <div className="bg-zinc-900  pt-[90px] fixed top-0 left-0 w-full h-full z-40">
+        <div className="bg-zinc-900  pt-[90px] fixed top-0 left-0 w-full h-full overflow-auto z-40">
           {/* links */}
           <div className="flex flex-col w-full gap-3 text-white">
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center" href={`/`}>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center"
+              href={`/`}
+              onClick={() => setMenuOpen(false)}
+            >
               <AiFillHome />
               Home
             </Link>
@@ -61,6 +65,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex items-center gap-2 "
               href={`/how-can-i-be-saved`}
+              onClick={() => setMenuOpen(false)}
             >
               <AiFillSafetyCertificate />
               How Can I Be Saved?
@@ -69,6 +74,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/online-church`}
+              onClick={() => setMenuOpen(false)}
             >
               <SiWikimediafoundation />
               Online Church
@@ -77,6 +83,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/online-giving`}
+              onClick={() => setMenuOpen(false)}
             >
               <GiGiftOfKnowledge />
               Online Giving
@@ -85,6 +92,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/prayer-request`}
+              onClick={() => setMenuOpen(false)}
             >
               <GiPrayer />
               Prayer Request
@@ -93,6 +101,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/testimony`}
+              onClick={() => setMenuOpen(false)}
             >
               <RiUserSharedFill />
               Share Testimony
@@ -101,6 +110,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/workers`}
+              onClick={() => setMenuOpen(false)}
             >
               <MdWorkspacePremium />
               Workers
@@ -109,6 +119,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/groups-and-ministries`}
+              onClick={() => setMenuOpen(false)}
             >
               <HiMiniUserGroup />
               Our Natural Groups and Ministries
@@ -117,6 +128,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/`}
+              onClick={() => setMenuOpen(false)}
             >
               <BiSolidBuildingHouse />
               House Fellowship Centers
@@ -125,6 +137,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/events`}
+              onClick={() => setMenuOpen(false)}
             >
               <BsFillCalendarEventFill />
               Events
@@ -133,6 +146,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/`}
+              onClick={() => setMenuOpen(false)}
             >
               <RiCustomerServiceFill />
               Contact
@@ -141,6 +155,7 @@ const Navbar = () => {
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
               href={`/`}
+              onClick={() => setMenuOpen(false)}
             >
               <BsFillBriefcaseFill />
               About Us
