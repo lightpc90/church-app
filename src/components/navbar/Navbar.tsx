@@ -54,68 +54,101 @@ const Navbar = () => {
           <div className="flex flex-col w-full gap-3 text-white">
             <div className="w-full h-[1px] bg-gray-400"></div>
             <Link className="font-bold pl-5 flex gap-2 items-center" href={`/`}>
-            <AiFillHome/>
+              <AiFillHome />
               Home
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex items-center gap-2 " href={`/`}>
-            <AiFillSafetyCertificate/>
+            <Link
+              className="font-bold pl-5 flex items-center gap-2 "
+              href={`/how-can-i-be-saved`}
+            >
+              <AiFillSafetyCertificate />
               How Can I Be Saved?
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <SiWikimediafoundation/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/online-church`}
+            >
+              <SiWikimediafoundation />
               Online Church
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <GiGiftOfKnowledge/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/online-giving`}
+            >
+              <GiGiftOfKnowledge />
               Online Giving
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <GiPrayer/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/prayer-request`}
+            >
+              <GiPrayer />
               Prayer Request
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <RiUserSharedFill/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/testimony`}
+            >
+              <RiUserSharedFill />
               Share Testimony
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <MdWorkspacePremium/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/workers`}
+            >
+              <MdWorkspacePremium />
               Workers
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <HiMiniUserGroup/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/groups-and-ministries`}
+            >
+              <HiMiniUserGroup />
               Our Natural Groups and Ministries
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <BiSolidBuildingHouse/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/`}
+            >
+              <BiSolidBuildingHouse />
               House Fellowship Centers
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <BsFillCalendarEventFill/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/events`}
+            >
+              <BsFillCalendarEventFill />
               Events
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <RiCustomerServiceFill/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/`}
+            >
+              <RiCustomerServiceFill />
               Contact
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
-            <BsFillBriefcaseFill/>
+            <Link
+              className="font-bold pl-5 flex gap-2 items-center "
+              href={`/`}
+            >
+              <BsFillBriefcaseFill />
               About Us
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
           </div>
           <div className="text-white text-center w-full pl-5 pt-5">
-            <SocialMedia/>
+            <SocialMedia />
           </div>
         </div>
       )}
