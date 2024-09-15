@@ -34,21 +34,58 @@ const Navbar = () => {
       </div>
       {/* mobile links */}
       {menuOpen && (
-        <div className="bg-blue-900 pl-5 pt-[90px] fixed top-0 left-0 w-full h-full z-40">
+        <div className="bg-zinc-900  pt-[90px] fixed top-0 left-0 w-full h-full z-40">
           {/* links */}
           <div className="flex flex-col w-full gap-3 text-white">
-            <Link href={`/`}>Home</Link>
-            <Link href={`/`}>How Can I Be Saved?</Link>
-            <Link href={`/`}>Online Church</Link>
-            <Link href={`/`}>Online Giving</Link>
-            <Link href={`/`}>Prayer Request</Link>
-            <Link href={`/`}>Share Testimony</Link>
-            <Link href={`/`}>Workers</Link>
-            <Link href={`/`}>Our Natural Groups and Ministries</Link>
-            <Link href={`/`}>House Fellowship Centers</Link>
-            <Link href={`/`}>Events</Link>
-            <Link href={`/`}>Contact</Link>
-            <Link href={`/`}>About Us</Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Home
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              How Can I Be Saved?
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Online Church
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Online Giving
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Prayer Request
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Share Testimony
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Workers
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Our Natural Groups and Ministries
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              House Fellowship Centers
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Events
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              Contact
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
+            <Link className="font-bold pl-5 " href={`/`}>
+              About Us
+            </Link>
+            <div className="w-full h-[1px] bg-gray-400"></div>
           </div>
         </div>
       )}
