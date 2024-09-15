@@ -15,7 +15,7 @@ const Page = () => {
       {/* gradient overlay */}
       <div className="px-5 py-10 absolute top-0 left-0 w-full h-full bg-gradient-to-t flex flex-col items-center justify-between from-slate-950 via-slate-700 opacity-90 ">
         <Link
-          href={``}
+          href={`/`}
           className="text-white flex gap-2 items-center text-left w-full"
         >
           <span>
