@@ -6,6 +6,20 @@ import Links from "./Links";
 import Link from "next/link";
 import MobileNavbar from "./MobileNavbar";
 
+import { AiFillHome } from "react-icons/ai";
+import { AiFillSafetyCertificate } from "react-icons/ai";
+import { SiWikimediafoundation } from "react-icons/si";
+import { GiGiftOfKnowledge } from "react-icons/gi";
+import { GiPrayer } from "react-icons/gi";
+import { RiUserSharedFill } from "react-icons/ri";
+import { MdWorkspacePremium } from "react-icons/md";
+import { HiMiniUserGroup } from "react-icons/hi2";
+import { BiSolidBuildingHouse } from "react-icons/bi";
+import { BsFillCalendarEventFill } from "react-icons/bs";
+import { RiCustomerServiceFill } from "react-icons/ri";
+import { BsFillBriefcaseFill } from "react-icons/bs";
+
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
@@ -38,51 +52,63 @@ const Navbar = () => {
           {/* links */}
           <div className="flex flex-col w-full gap-3 text-white">
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center" href={`/`}>
+            <AiFillHome/>
               Home
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex items-center gap-2 " href={`/`}>
+            <AiFillSafetyCertificate/>
               How Can I Be Saved?
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <SiWikimediafoundation/>
               Online Church
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <GiGiftOfKnowledge/>
               Online Giving
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <GiPrayer/>
               Prayer Request
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <RiUserSharedFill/>
               Share Testimony
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <MdWorkspacePremium/>
               Workers
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <HiMiniUserGroup/>
               Our Natural Groups and Ministries
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <BiSolidBuildingHouse/>
               House Fellowship Centers
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <BsFillCalendarEventFill/>
               Events
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <RiCustomerServiceFill/>
               Contact
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
-            <Link className="font-bold pl-5 " href={`/`}>
+            <Link className="font-bold pl-5 flex gap-2 items-center " href={`/`}>
+            <BsFillBriefcaseFill/>
               About Us
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
