@@ -34,7 +34,7 @@ const Navbar = () => {
       </div>
       {/* mobile links */}
       {menuOpen && (
-        <div className="bg-blue-900 pl-5 pt-[90px] fixed top-0 left-0 w-full h-full z-30">
+        <div className="bg-blue-900 pl-5 pt-[90px] fixed top-0 left-0 w-full h-full z-40">
           {/* links */}
           <div className="flex flex-col w-full gap-3 text-white">
             <Link href={`/`}>Home</Link>
