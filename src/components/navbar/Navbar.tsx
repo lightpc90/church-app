@@ -18,6 +18,7 @@ import { BiSolidBuildingHouse } from "react-icons/bi";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { RiCustomerServiceFill } from "react-icons/ri";
 import { BsFillBriefcaseFill } from "react-icons/bs";
+import SocialMedia from "../social-media/SocialMedia";
 
 
 const Navbar = () => {
@@ -112,6 +113,9 @@ const Navbar = () => {
               About Us
             </Link>
             <div className="w-full h-[1px] bg-gray-400"></div>
+          </div>
+          <div className="text-white text-center w-full pl-5 pt-5">
+            <SocialMedia/>
           </div>
         </div>
       )}
