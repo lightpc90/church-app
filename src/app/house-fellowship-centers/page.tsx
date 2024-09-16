@@ -17,10 +17,12 @@ const Page = () => {
     <div className="bg-[#D9D9D9]">
       <Header title="House Fellowship Centers" imageUrl={HeaderImage.src} />
       {/* content */}
-      <div className="pl-5">
+      <div className="p-5">
         {/* title */}
         <div className="py-5">
-          <h3 className="font-bold text-lg">We have our house fellowship meeting every Sunday by 5pm</h3>
+          <h3 className="font-bold text-lg">
+            We have our house fellowship meeting every Sunday by 5pm
+          </h3>
           <p className="text-rose-800">
             Join a house fellowship center closest to you. It is always a time
             of worship, teaching, and fellowship
@@ -39,13 +41,13 @@ const Page = () => {
                     <h4 className="font-bold text-rose-800">{`${center.center} Center`}</h4>
                     {/* host */}
                     <div>
-                      <label className='font-bold'>{`Host: `}</label>
+                      <label className="font-bold">{`Host: `}</label>
                       <label>{center.host}</label>||
                       <label>{center.host_phone}</label>
                     </div>
                     {/* teacher */}
                     <div>
-                      <label>Teacher</label>
+                      <label className="font-bold">{`Teacher: `}</label>
                       <label>{center.teacher}</label>||
                       <label>{center.teacher_phone}</label>
                     </div>
@@ -55,21 +57,21 @@ const Page = () => {
             </div>
             {/* Eputu Zone */}
             <div>
-              <h3>Eputu Zone</h3>
+              <h3 className="font-bold text-xl">Eputu Zone</h3>
               <div>
                 {eputuZone.map((center, i) => (
-                  <div key={i}>
+                  <div className="my-2" key={i}>
                     {/* center */}
-                    <h4>{center.center}</h4>
+                    <h4 className="font-bold text-rose-800">{`${center.center} Center`}</h4>
                     {/* host */}
                     <div>
-                      <label>Host</label>
+                      <label className="font-bold">{`Host `}</label>
                       <label>{center.host}</label>||
                       <label>{center.host_phone}</label>
                     </div>
                     {/* teacher */}
                     <div>
-                      <label>Teacher</label>
+                      <label className="font-bold">{`Teacher `}</label>
                       <label>{center.teacher}</label>||
                       <label>{center.teacher_phone}</label>
                     </div>
@@ -79,21 +81,21 @@ const Page = () => {
             </div>
             {/* Bogije */}
             <div>
-              <h3>Bogije Zone</h3>
+              <h3 className="font-bold text-xl">Bogije Zone</h3>
               <div>
                 {bogijeZone.map((center, i) => (
-                  <div key={i}>
+                  <div className="my-2" key={i}>
                     {/* center */}
-                    <h4>{center.center}</h4>
+                    <h4 className="font-bold text-rose-800">{`${center.center} Center`}</h4>
                     {/* host */}
                     <div>
-                      <label>Host</label>
+                      <label className="font-bold">{`Host `}</label>
                       <label>{center.host}</label>||
                       <label>{center.host_phone}</label>
                     </div>
                     {/* teacher */}
                     <div>
-                      <label>Teacher</label>
+                      <label className="font-bold">{`Teacher `}</label>
                       <label>{center.teacher}</label>||
                       <label>{center.teacher_phone}</label>
                     </div>
