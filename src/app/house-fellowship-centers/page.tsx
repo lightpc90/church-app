@@ -2,6 +2,7 @@ import React from "react";
 import Header from "@/components/UILayouts/Header";
 import HeaderImage from "../../../public/headers/house-fellowship.jpg";
 import { HouseFellowshipCentersData } from "@/components/data/Data";
+import { FiSearch } from "react-icons/fi";
 
 const Page = () => {
   const lakoweZone = HouseFellowshipCentersData.filter(
@@ -27,6 +28,18 @@ const Page = () => {
             Join a house fellowship center closest to you. It is always a time
             of worship, teaching, and fellowship
           </p>
+        </div>
+        {/* search bar */}
+        <div className="flex bg-[#FDF9F9] rounded-full my-5 relative overflow-hidden">
+          <input
+            type="text"
+            placeholder="Search House Fellowship Centers"
+            className="w-[90%] px-5 py-2 bg-[#FDF9F9] outline-none"
+          />
+          {/* search icon */}
+          <span className="absolute top-[50%] right-2 translate-y-[-50%] ">
+            <FiSearch size={25} />
+          </span>
         </div>
         <div>
           <p>Below is the list of house fellowship centers and contacts</p>
