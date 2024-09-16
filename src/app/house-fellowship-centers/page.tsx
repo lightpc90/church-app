@@ -42,7 +42,7 @@ const Page = () => {
           </span>
         </div>
         <div>
-          <p>Below is the list of house fellowship centers and contacts</p>
+          <p>Below is the list of house fellowship centers and their respectively contacts</p>
           {/* house fellowship centers */}
           <div className="flex flex-col gap-10 ">
             <div className="my-5">
