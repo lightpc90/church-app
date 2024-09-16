@@ -444,11 +444,12 @@ export const HouseFellowshipCentersData = [
   {
     _id: 1,
     center: "Joy",
-    host: "Dcn John Doe",
+    host: "Dcn. John Doe",
     host_phone: "555-123-4567",
     teacher: "Sis Mary Johnson",
     teacher_phone: "555-234-5678",
     address: "123 Maple Street, Springfield, IL",
+    zone: "Lakowe Zone",
   },
   {
     _id: 2,
@@ -458,6 +459,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Bro Michael Brown",
     teacher_phone: "555-456-7890",
     address: "456 Oak Avenue, Denver, CO",
+    zone: "Lakowe Zone",
   },
   {
     _id: 3,
@@ -467,6 +469,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Dcns Sarah Davis",
     teacher_phone: "555-678-9012",
     address: "789 Pine Lane, Austin, TX",
+    zone: "Lakowe Zone",
   },
   {
     _id: 4,
@@ -476,6 +479,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Sis Linda Martinez",
     teacher_phone: "555-890-1234",
     address: "321 Birch Road, Metropolis, NY",
+    zone: "Eputu Zone",
   },
   {
     _id: 5,
@@ -485,6 +489,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Dcn Paul Allen",
     teacher_phone: "555-012-3456",
     address: "654 Cedar Street, Los Angeles, CA",
+    zone: "Eputu Zone",
   },
   {
     _id: 6,
@@ -494,6 +499,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Sis Laura White",
     teacher_phone: "555-234-5678",
     address: "987 Elm Avenue, Chicago, IL",
+    zone: "Eputu Zone",
   },
   {
     _id: 7,
@@ -503,6 +509,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Bro Kevin Hall",
     teacher_phone: "555-456-7890",
     address: "246 Walnut Street, New York, NY",
+    zone: "Bogije Zone",
   },
   {
     _id: 8,
@@ -512,6 +519,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Mr Brian Young",
     teacher_phone: "555-678-9012",
     address: "135 Maple Avenue, Nashville, TN",
+    zone: "Bogije Zone",
   },
   {
     _id: 9,
@@ -521,6 +529,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Mrs Michelle Green",
     teacher_phone: "555-890-1234",
     address: "357 Oak Street, Cambridge, MA",
+    zone: "Bogije Zone",
   },
   {
     _id: 10,
@@ -530,6 +539,7 @@ export const HouseFellowshipCentersData = [
     teacher: "Dcns Jessica Harris",
     teacher_phone: "555-012-3456",
     address: "468 Pine Road, Hell's Kitchen, NY",
+    zone: "Bogije Zone",
   },
 ];
 
@@ -900,3 +910,4 @@ export const Events = [
     image: "",
   },
 ];
+
