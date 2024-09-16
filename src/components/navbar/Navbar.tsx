@@ -49,9 +49,9 @@ const Navbar = () => {
       </div>
       {/* mobile links */}
       {menuOpen && (
-        <div className="bg-zinc-900  pt-[90px] fixed top-0 left-0 w-full h-full overflow-auto z-40">
+        <div className="bg-zinc-900  pt-[90px] fixed top-0 left-0 w-full h-full z-40">
           {/* links */}
-          <div className="flex flex-col w-full gap-3 text-white">
+          <div className="flex flex-col w-full gap-3 text-white h-[80%] overflow-auto">
             <div className="w-full h-[1px] bg-gray-400"></div>
             <Link
               className="font-bold pl-5 flex gap-2 items-center"
