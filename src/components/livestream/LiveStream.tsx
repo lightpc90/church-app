@@ -1,42 +1,25 @@
-"use client";
 
-import { useEffect, useState, Dispatch, FC } from "react";
+
+import { Dispatch, FC } from "react";
 import { FaVideoSlash } from "react-icons/fa";
+import ReactPlayer from 'react-player'
+import { useYoutubeLiveStream } from "@/customHook/useYoutubeLiveStream";
 
 type propsType = {
   setFallback: Dispatch<React.SetStateAction<boolean>>;
 }
 
 const LiveStream: FC<propsType>  = ({ setFallback }) => {
-  const [isLive, setIsLive] = useState(false);
-  const [liveVideoId, setLiveVideoId] = useState<string | null>(null);
 
-  useEffect(() => {
-    const eventSource = new EventSource("/api/sse");
-
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      setIsLive(data.isLive);
-      setLiveVideoId(data.videoId);
-    };
-
-    return () => {
-      eventSource.close(); // Clean up SSE connection
-    };
-  }, []);
+  const channelId = process.env.NEXT_PUBLIC_CHANNEL_ID
+  const liveStreamUrl = useYoutubeLiveStream(channelId)
 
   return (
     <div className="w-[100%] h-[100%]">
-      {isLive && liveVideoId ? (
-        <iframe
-          className="w-[100%] h-[100%]"
-          src={`https://www.youtube.com/embed/${liveVideoId}?autoplay=1`}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          marginHeight={0} 
-          marginWidth={0}
-        ></iframe>
+      {liveStreamUrl ? (
+        <div>
+          <ReactPlayer url={liveStreamUrl} controls />
+        </div>
       ) : (
         <div className="h-[100%] flex flex-col items-center justify-center text-center py-5 text-white">
           <FaVideoSlash size={50} />
