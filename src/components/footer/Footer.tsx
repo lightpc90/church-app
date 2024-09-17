@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
+    <footer className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
       {/* Church Name*/}
       <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
         <div
@@ -93,7 +93,7 @@ const Footer = () => {
       <div className="my-10">
         <SocialMedia />
       </div>
-    </div>
+    </footer>
   );
 };
 
