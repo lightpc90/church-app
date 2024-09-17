@@ -30,19 +30,22 @@ const Page = () => {
           </p>
         </div>
         {/* search bar */}
-        <div className="flex bg-[#FDF9F9] rounded-full my-5 relative overflow-hidden">
+        <div className="flex bg-[#FDF9F9]  lg:bg-rose-800 rounded-full my-5 lg:w-[500px] sticky top-[90px] overflow-hidden">
           <input
             type="text"
             placeholder="Search House Fellowship Centers"
             className="w-[90%] px-5 py-2 bg-[#FDF9F9] outline-none"
           />
           {/* search icon */}
-          <span className="absolute top-[50%] right-2 translate-y-[-50%] ">
+          <span className="absolute top-[50%] right-2 translate-y-[-50%] lg:text-white ">
             <FiSearch size={25} />
           </span>
         </div>
         <div>
-          <p>Below is the list of house fellowship centers and their respectively contacts</p>
+          <p>
+            Below is the list of house fellowship centers and their respectively
+            contacts
+          </p>
           {/* house fellowship centers */}
           <div className="flex flex-col gap-10 ">
             <div className="my-5">

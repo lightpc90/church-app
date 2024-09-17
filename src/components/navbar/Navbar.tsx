@@ -127,7 +127,7 @@ const Navbar = () => {
             <div className="w-full h-[1px] bg-gray-400"></div>
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
-              href={`/`}
+              href={`/house-fellowship-centers`}
               onClick={() => setMenuOpen(false)}
             >
               <BiSolidBuildingHouse />
@@ -145,7 +145,7 @@ const Navbar = () => {
             <div className="w-full h-[1px] bg-gray-400"></div>
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
-              href={`/`}
+              href={`/contact-us`}
               onClick={() => setMenuOpen(false)}
             >
               <RiCustomerServiceFill />
@@ -154,7 +154,7 @@ const Navbar = () => {
             <div className="w-full h-[1px] bg-gray-400"></div>
             <Link
               className="font-bold pl-5 flex gap-2 items-center "
-              href={`/`}
+              href={`/about-us`}
               onClick={() => setMenuOpen(false)}
             >
               <BsFillBriefcaseFill />
