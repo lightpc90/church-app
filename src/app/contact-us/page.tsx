@@ -9,22 +9,24 @@ const page = () => {
     <div className="bg-[#D9D9D9]">
       <Header title="Contact Us" imageUrl={headerImage.src} />
       {/* content */}
-      <div className="px-5 my-10">
+      <div className="px-5 py-10">
         <div>
           <div>
-            <span className="text-rose-800 font-bold">RCCG Beautiful Gate</span> is home for all. We are glad to
-            have you
+            <span className="text-rose-800 font-bold">RCCG Beautiful Gate</span>{" "}
+            is home for all. We are glad to have you
           </div>
         </div>
         {/* map */}
-        <div className="text-center my-3">
+        <div className="text-center my-5">
           <p className="text-slate-400">Locate us on map</p>
           <h3 className="font-bold">Get Direction</h3>
-          <MapComponent />
+          <div className="h-[600px] lg:h-[800px] lg:w-[60%] bg-slate-700 ">
+            <MapComponent />
+          </div>
         </div>
         {/* enquiry form */}
         <div>
-          <div>
+          <div className="text-center my-3 text-rose-800">
             <h4>For Enquiry</h4>
             <h3>Kindly fill the form below</h3>
           </div>
