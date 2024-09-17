@@ -9,6 +9,14 @@ const page = () => {
     name: "Pastor Egra Akpofure (PICP)",
     image: pastorImage.src,
   }
+    const pastorDeji = {
+      name: "Pastor Deji Adeniyi (APICP)",
+      image: pastorImage.src,
+    };
+    const pastorOpasanya = {
+      name: "Pastor Oluseye Opasanya",
+      image: pastorImage.src,
+    };
   return (
     <div className='bg-[#D9D9D9]'>
       <Header title="About Us" imageUrl={headerImage.src} />
@@ -28,10 +36,12 @@ const page = () => {
         </div>
 
         {/* pastors */}
-        <div>
-          <h3 className='font-bold text-center'>Meet Our Pastors</h3>
-          <div>
+        <div className='my-10'>
+          <h3 className='font-bold text-center my-2'>Meet Our Pastors</h3>
+          <div className='flex flex-col gap-3 items-center'>
             <PastorLayout pastorData={pastorEgra}/>
+            <PastorLayout pastorData={pastorDeji}/>
+            <PastorLayout pastorData={pastorOpasanya}/>
           </div>
         </div>
       </div>
