@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./weeklyService.module.css";
+import diggingDeep from "../../../public/digging deep.jpg"
+import faithClinic from "../../../public/faith clinic.png"
 
 const WeeklyServices = () => {
   return (
@@ -47,7 +49,7 @@ const WeeklyServices = () => {
           className={`bg-slate-600 text-white w-[300px] h-[200px] z-30 relative`}
         >
           <Image
-            src={`/guitar.jpg`}
+            src={diggingDeep.src}
             alt=""
             height={500}
             width={400}
@@ -70,7 +72,7 @@ const WeeklyServices = () => {
           className={`bg-slate-600 text-white w-[300px] h-[200px] z-30 relative`}
         >
           <Image
-            src={`/guitar.jpg`}
+            src={faithClinic.src}
             alt=""
             height={500}
             width={400}
