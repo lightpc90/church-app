@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./frameRight.module.css";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import bg from "../../../public/randomChurchPic.jpg";
 
 type FramePropsType = {
-  image: string;
+  image: StaticImageData;
 };
 
 const FrameRight: React.FC<FramePropsType> = ({image}) => {
@@ -17,7 +17,6 @@ const FrameRight: React.FC<FramePropsType> = ({image}) => {
           src={image}
           alt=""
           loading="eager"
-          layout="fill"
           className="object-cover object-center h-full w-full "
         />
       </div>

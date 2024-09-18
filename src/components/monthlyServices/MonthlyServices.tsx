@@ -13,7 +13,7 @@ const MonthlyServices = () => {
       <div className="flex items-center z-10">
         {/* frame */}
         <div className="flex-1">
-          <Frame image={goodmorningholyspirit.src} />
+          <Frame image={goodmorningholyspirit} />
         </div>
         <div className="flex-1 flex flex-col gap-1 w-[140px] text-center">
           <h5 className="font-bold">Good Morning Holy Spirit</h5>
@@ -32,7 +32,7 @@ const MonthlyServices = () => {
         </div>
         {/* frame */}
         <div className="flex-1">
-          <FrameRight image={thanksgiving.src} />
+          <FrameRight image={thanksgiving} />
         </div>
       </div>
       {/* Youth sunday */}

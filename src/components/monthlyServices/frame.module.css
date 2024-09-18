@@ -25,7 +25,6 @@
     border-radius: 50%;
     overflow: hidden;
     background-color: yellow;
-    position: absolute;
     top: 50%;
     left: 85px;
     transform: translate(-50%, -50%);
