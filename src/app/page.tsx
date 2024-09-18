@@ -1,10 +1,13 @@
 import Image from "next/image";
+import churchSide from "../../public/Ch1.jpg"
+import churchFront from  "../../public/headers/Ch6.jpg"
 import banner1 from "../../public/nature.jpg";
 import banner2 from "../../public/7.jpg";
 import banner3 from "../../public/pastorAndfamily.jpg";
 import banner4 from "../../public/fullChoir.jpg";
 import banner5 from "../../public/randomChurchPic.jpg";
 import banner6 from "../../public/randomChurchPic2.jpg";
+
 import { HomeHeaderCarousel } from "@/components/carousels/HomeHeaderCarousel";
 import { MonthlyProgramsCarousel } from "@/components/carousels/MonthlyProgramsCarousel";
 import { EmblaOptionsType } from "embla-carousel";
@@ -27,7 +30,11 @@ import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
 import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
 
+import PastorImage from "../../public/pastor.png"
+
 const Items = [
+  churchSide.src,
+  churchFront.src,
   banner1.src,
   banner2.src,
   banner3.src,
@@ -91,7 +98,7 @@ export default function Home() {
 
           <div className="w-full lg:w-[30%] h-[400px] bg-slate-300">
             {/* Pastor Picture coming here */}
-            hhhhh
+            <Image src={PastorImage} alt="pastor picture" loading="eager" className='w-full h-full object-cover' />
           </div>
         </div>
 
