@@ -46,17 +46,17 @@ const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center ">
+    <main className="flex flex-col items-center w-[100vw] ">
       {/* Banner */}
       <section
         className="bg-gradient-to-tr from-purple-400 via-blue-400 
-      to-purple-800 flex items-center justify-center 
+      to-purple-800 flex items-center justify-center w-full 
       relative overflow-hidden"
       >
         <HomeHeaderCarousel slides={Items} options={OPTIONS} />
         <div
           className="flex items-end p-5 lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 
-        opacity-90 absolute top-0 left-0 w-[100vw] h-full z-30"
+        opacity-90 absolute top-0 left-0 w-full h-full z-30"
         >
           <div className="flex flex-col text-white gap-1 lg:gap-5 font-bold w-10/12 lg:w-5/12 pt-[30px]">
             <h2 className=" lg:text-[50px]  ">
@@ -242,7 +242,7 @@ export default function Home() {
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
           <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:h-[600px] bg-slate-800">
-            <LiveProgram />
+            {/* <LiveProgram /> */}
           </div>
         </div>
         {/* Explore media */}

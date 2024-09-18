@@ -1,8 +1,24 @@
-@import url('https://fonts.google.com/share?selection.family=Oswald:wght@200..700');
+@import url("https://fonts.google.com/share?selection.family=Oswald:wght@200..700");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes slight-slide {
+  0% {
+    transform: translateX(0); /* Start in place */
+  }
+  50% {
+    transform: translateX(-20%); /* Slide slightly to the left */
+  }
+  100% {
+    transform: translateX(0); /* Slide back to the original position */
+  }
+}
+
+.animate-slide {
+  animation: slight-slide 20s ease-in-out infinite; /* Adjust speed and loop */
+}
 
 @layer base {
   :root {
