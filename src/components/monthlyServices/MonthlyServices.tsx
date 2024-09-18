@@ -1,6 +1,9 @@
 import React from "react";
 import Frame from "./Frame";
 import FrameRight from "./FrameRight";
+import thanksgiving from "../../../public/thanksgiving.png"
+import goodmorningholyspirit from "../../../public/goodMorningHolySpirit.png"
+import youthSunday from "../../../public/randomChurchPic.jpg";
 
 const MonthlyServices = () => {
   return (
@@ -10,7 +13,7 @@ const MonthlyServices = () => {
       <div className="flex items-center z-10">
         {/* frame */}
         <div className="flex-1">
-          <Frame />
+          <Frame image={goodmorningholyspirit.src} />
         </div>
         <div className="flex-1 flex flex-col gap-1 w-[140px] text-center">
           <h5 className="font-bold">Good Morning Holy Spirit</h5>
@@ -29,14 +32,14 @@ const MonthlyServices = () => {
         </div>
         {/* frame */}
         <div className="flex-1">
-          <FrameRight />
+          <FrameRight image={thanksgiving.src} />
         </div>
       </div>
       {/* Youth sunday */}
       <div className="flex items-center z-10">
         {/* frame */}
         <div className="flex-1">
-          <Frame />
+          <Frame image={youthSunday.src} />
         </div>
         <div className="flex-1 flex flex-col gap-1 w-[140px] text-center ">
           <h5 className="font-bold">Youth Sunday</h5>
