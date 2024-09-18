@@ -242,7 +242,7 @@ export default function Home() {
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
           <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:h-[600px] bg-slate-800">
-            {/* <LiveProgram /> */}
+            <LiveProgram />
           </div>
         </div>
         {/* Explore media */}
@@ -268,7 +268,7 @@ export default function Home() {
         {/* Post Container */}
         <div className="w-[300px] lg:w-[60%] min-h-[300px] bg-slate-100">
           <div className="w-[100%]">
-            <InstagramFeed />
+            {/* <InstagramFeed /> */}
           </div>
         </div>
       </div>

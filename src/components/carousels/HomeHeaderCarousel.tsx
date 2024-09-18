@@ -44,25 +44,12 @@ export const HomeHeaderCarousel: React.FC<PropType> = (props) => {
     >
       <CarouselContent className="p-0 m-0 w-full h-full">
         {slides.map((item, index) => (
-          <CarouselItem key={index} className="p-0 m-0 w-full h-full ">
-            <div className=" h-full w-full bg-green-700">
-              <div className="relative w-full flex items-center justify-center h-[500px] bg-blue-800 overflow-hidden ">
-                <div className="absolute w-[130%] flex items-center justify-center inset-0 bg-rose-800">
-                  <Image
-                    src={item}
-                    alt="Sliding Image"
-                    width={500}
-                    height={500}
-                    loading="eager"
-                    className="w-full h-full object-cover object-center animate-slide bg-yellow-600"
-                  />
-                </div>
-              </div>
-              {/* <Card className="w-[100vw] h-full relative overflow-hidden bg-blue-800">
+          <CarouselItem key={index} className="p-0 m-0 w-[100%] h-full ">
+            <div className=" h-full w-[100%] bg-green-700">   
+              <Card className="w-[100vw] h-full relative overflow-hidden bg-blue-800">
                 <CardContent
-                  className="absolute inset-0 flex items-center justify-center h-full p-0
-                  w-[130%] bg-rose-800
-                "
+                  className=" flex items-center justify-center h-full p-0
+                  w-[130%] bg-rose-800"
                 >
                   <Image
                     src={item}
@@ -73,7 +60,7 @@ export const HomeHeaderCarousel: React.FC<PropType> = (props) => {
                     className="object-cover w-full h-[100vh] object-center animate-slide"
                   />
                 </CardContent>
-              </Card> */}
+              </Card>
             </div>
           </CarouselItem>
         ))}
