@@ -1,8 +1,9 @@
 import React from 'react'
+import Loading from '@/components/loading/Loading'
 
 const loading = () => {
   return (
-    <div className='flex flex-col justify-center items-center w-full'>loading...</div>
+    <Loading/>
   )
 }
 
