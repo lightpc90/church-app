@@ -8,7 +8,7 @@ type HeaderPropsType = {
 
 const Header: FC<HeaderPropsType> = ({ title, imageUrl }) => {
   return (
-    <div className="relative w-full h-[40vh">
+    <div className="relative w-full h-[40vh] lg:h-[60vh]">
       <Image
         src={imageUrl}
         height={500}
