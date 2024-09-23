@@ -14,7 +14,7 @@ const NewConvertForm = () => {
             id="fullName"
             type="text"
             placeholder="John Doe"
-            className="bg-[#FFFFFF] p-2 rounded-md w-full"
+            className="bg-[#FFFFFF] p-2 rounded-md"
           />
         </div>
         <div className="flex flex-col mb-2">
