@@ -1,6 +1,6 @@
 import Image from "next/image";
-import churchSide from "../../public/Ch1.jpg"
-import churchFront from  "../../public/headers/Ch6.jpg"
+import churchSide from "../../public/Ch1.jpg";
+import churchFront from "../../public/headers/Ch6.jpg";
 import banner1 from "../../public/nature.jpg";
 import banner2 from "../../public/7.jpg";
 import banner3 from "../../public/pastorAndfamily.jpg";
@@ -33,7 +33,7 @@ import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
 import { FaSquarePhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
-import PastorImage from "../../public/pastor.png"
+import PastorImage from "../../public/pastor.png";
 
 const Items = [
   churchSide.src,
@@ -61,7 +61,7 @@ export default function Home() {
           className="flex items-end p-5 lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 
         opacity-90 absolute top-0 left-0 w-full h-full z-30"
         >
-          <div className="flex flex-col text-white gap-1 lg:gap-5 font-bold w-10/12 lg:w-5/12 pt-[30px]  ">
+          <div className="flex flex-col text-white gap-1 lg:gap-4 font-bold w-10/12 lg:w-5/12 mt-[50px]  ">
             <h2 className=" lg:text-4xl">
               Experience God&apos;s Love through worship and fellowship at our
               Church.
@@ -82,7 +82,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="bg-slate-950 text-white opacity-90 w-[100%] px-5 py-1 flex flex-col gap-1 items-end">
+      <div className="bg-slate-950 text-white opacity-90 w-[100%] px-5 lg:px-10 py-1 flex flex-col gap-1 items-end">
         <div className="flex gap-2 items-center">
           <FaSquarePhone />
           <span>08112345678</span>
@@ -96,7 +96,8 @@ export default function Home() {
       {/* contents */}
       <div className="flex flex-col lg:p-[50px] items-center">
         {/* welcome */}
-        <div className="flex flex-wrap gap-4 w-[100vw] overflow-hidden p-[20px] items-center justify-center my-10 ">
+        <div className="flex flex-wrap gap-4 lg:gap-10 w-[100vw] overflow-hidden p-[20px] items-center justify-center my-10 ">
+          {/* paragraph */}
           <div className="w-full lg:w-[30%]">
             <div className="text-center">
               <h1 className="text-2xl text-center font-bold ">
@@ -108,8 +109,8 @@ export default function Home() {
             </div>
             <p className="text-justify ">{ChurchWelcomeParagraph.paragraph}</p>
           </div>
-
-          <div className="w-full lg:w-[30%] h-[400px] bg-slate-300">
+          {/* welcome image */}
+          <div className="w-full lg:w-[40%] rounded-md overflow-hidden shadow-md h-[400px] bg-slate-300">
             {/* Pastor Picture coming here */}
             <Image
               src={PastorImage}
@@ -121,7 +122,7 @@ export default function Home() {
         </div>
 
         {/* CTA Cards */}
-        <div className="flex flex-col gap-4 w-full lg:w-[70%] justify-center items-center">
+        <div className="flex flex-col gap-4 w-full justify-center items-center">
           <h1 className="text-2xl font-bold text-slate-800">
             What&apos;s Next?
           </h1>
@@ -142,9 +143,9 @@ export default function Home() {
                 you for eternity
               </p>
               {/* call to action */}
-              <button className="border py-2 px-4 rounded-full w-fit ">
+              <Link href={`/how-can-i-be-saved`} className="border py-2 px-4 rounded-full w-fit ">
                 Learn More
-              </button>
+              </Link>
             </div>
 
             {/* card 2 */}
@@ -155,7 +156,7 @@ export default function Home() {
                 <span>
                   <TfiVideoClapper size={70} />
                 </span>
-                <h2 className="font-bold">Watch Our Sermon & Services</h2>
+                <h2 className="font-bold">Our Online Church and Media</h2>
               </div>
               {/* content */}
               <p className="font-bold text-zinc-400">
@@ -163,9 +164,9 @@ export default function Home() {
                 archives
               </p>
               {/* call to action */}
-              <button className="border py-2 px-4 rounded-full w-fit ">
+              <Link href={`online-church`} className="border py-2 px-4 rounded-full w-fit ">
                 See Messages
-              </button>
+              </Link>
             </div>
 
             {/* card 3 */}
@@ -183,9 +184,9 @@ export default function Home() {
                 Need Prayer? Submit your requests to pastor to pray with you
               </p>
               {/* call to action */}
-              <button className="border py-2 px-4 rounded-full w-fit ">
+              <Link href={`/prayer-request`} className="border py-2 px-4 rounded-full w-fit ">
                 Request Prayer
-              </button>
+              </Link>
             </div>
 
             {/* card 4 */}
@@ -203,9 +204,9 @@ export default function Home() {
                 Share with us what the Lord has done for you
               </p>
               {/* call to action */}
-              <button className="border py-2 px-4 rounded-full w-fit ">
+              <Link href={`/testimony`} className="border py-2 px-4 rounded-full w-fit ">
                 Share Your Testimonies
-              </button>
+              </Link>
             </div>
 
             {/* card 5 */}
@@ -229,28 +230,32 @@ export default function Home() {
                 you.&quot; Luke 6:38
               </p>
               {/* call to action */}
-              <button className="border py-2 px-4 rounded-full w-fit ">
+              <Link href={`/online-giving`} className="border py-2 px-4 rounded-full w-fit ">
                 Give Generously
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-      {/* Our Weekly Services */}
-      <div className="w-full bg-[#B9C4D4] mt-[20px] relative overflow-hidden">
-        <WeeklyServices />
-        <div className="w-[400px] h-[400px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] left-[-50%] "></div>
+      {/* Services */}
+      <div className="flex flex-wrap lg:w-[70%] lg:items-center lg:justify-center">
+        {/* Our Weekly Services */}
+        <div className="w-full bg-[#B9C4D4] lg:flex-1 mt-[20px] lg:mt-[0px] lg:h-[800px] relative overflow-hidden">
+          <WeeklyServices />
+          <div className="w-[400px] h-[400px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] left-[-50%] "></div>
+        </div>
+        {/* Our Monthy Services */}
+        <div className="bg-[#02271C] w-full lg:h-[800px] lg:flex-1 relative overflow-hidden lg:mt-[200px]">
+          <div className="w-[600px] h-[600px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 "></div>
+          <MonthlyServices />
+        </div>
       </div>
-      {/* Our Monthy Services */}
-      <div className="bg-[#02271C] w-full relative overflow-hidden ">
-        <div className="w-[600px] h-[600px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 "></div>
-        <MonthlyServices />
-      </div>
+
       {/* Church live and media */}
       <div className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden ">
         <div className="w-[400px] h-[400px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] z-0 "></div>
         <h2 className="font-bold text-xl z-10">
-          Our Live Service and Messages
+          Our Live Service and Messages 
         </h2>
         <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10">
           <p className="text-[#A11E1E] font-bold">Follow us on:</p>
@@ -259,12 +264,12 @@ export default function Home() {
         {/* Watch us live */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
-          <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:h-[600px] bg-slate-800">
+          <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800">
             {/* <LiveProgram /> */}
           </div>
         </div>
         {/* Explore media */}
-        <div className="text-[#A11E1E] font-bold pl-5 pr-10 flex gap-4 items-center lg:justify-self-start z-10 lg:text-3xl">
+        <Link href={`/online-church/#media`} className="text-[#A11E1E] font-bold pl-5 pr-10 flex gap-4 items-center lg:justify-self-start z-10 lg:text-3xl">
           <span>
             <BsCollectionPlayFill size={30} />
           </span>
@@ -272,7 +277,7 @@ export default function Home() {
             <p>Explore Our Video and Audio Messages</p>
             <div className="bg-[#A11E1E] w-[25%] h-[4px]"></div>
           </span>
-        </div>
+        </Link>
       </div>
 
       {/* Instagram Posts */}

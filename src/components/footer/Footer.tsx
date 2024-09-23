@@ -38,7 +38,7 @@ const Footer = () => {
         {AboutUs.body}
       </div>
 
-      <div className="flex gap-[30px] flex-wrap">
+      <div className="flex gap-[30px] lg:gap-[60px] flex-wrap">
         {/* Vision */}
         <div className="lg:flex-1 ">
           <h2 className="font-bold text-lg mb-3">How Can I Be Saved?</h2>
@@ -58,7 +58,7 @@ const Footer = () => {
             of God in your life!
           </p>
           <Link
-            href="/"
+            href="/how-can-i-be-saved/#meet-pastor"
             className="my-5 bg-blue-700 p-2 inline-block rounded-md hover:bg-white hover:text-blue-700"
           >
             Meet Our Pastor
@@ -76,7 +76,7 @@ const Footer = () => {
           <p>Email: ctlbeautifulgate@gmail.com</p>
         </div>
 
-        {/* Contact Us */}
+        {/* Quicklinks */}
         <div className="lg:flex-1">
           <h2 className="font-bold text-lg mb-3">Quick Links</h2>
           <div className="flex flex-col">
