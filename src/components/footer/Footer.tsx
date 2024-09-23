@@ -10,7 +10,7 @@ import { QuickLinks } from "../data/Data";
 
 const Footer = () => {
   const quicklinks = QuickLinks.filter((link) => link.category === "Quicklink");
-  const workers = QuickLinks.filter((link) => link.category === "Worker");
+  const workerlinks = QuickLinks.filter((link) => link.category === "Worker");
   return (
     <footer className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
       {/* Church Name*/}
@@ -79,19 +79,24 @@ const Footer = () => {
         {/* Contact Us */}
         <div className="lg:flex-1">
           <h2 className="font-bold text-lg mb-3">Quick Links</h2>
-          <div>
+          <div className="flex flex-col">
             {quicklinks.map((link, i) => (
               <Link
                 href={link.link}
                 key={i}
-                className="my-2 hover:text
+                className="my-1 hover:text
             blue-700"
               >
                 {link.name}
               </Link>
             ))}
           </div>
-          <h2 className="font-bold text-lg mb-3">Wrokers</h2>
+          <h2 className="font-bold text-lg my-3">Workers</h2>
+          <div className="flex flex-col">
+            {workerlinks.map((workerlink, i)=>(
+              <Link key={i} href={workerlink.link}>{workerlink.name}</Link>
+            ))}
+          </div>
         </div>
       </div>
 

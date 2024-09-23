@@ -82,7 +82,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="bg-slate-950 text-white opacity-90 w-[100%] px-5 py-2 flex flex-col gap-1 items-end">
+      <div className="bg-slate-950 text-white opacity-90 w-[100%] px-5 py-1 flex flex-col gap-1 items-end">
         <div className="flex gap-2 items-center">
           <FaSquarePhone />
           <span>08112345678</span>
