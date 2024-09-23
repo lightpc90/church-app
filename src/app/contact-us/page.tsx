@@ -11,7 +11,7 @@ const page = () => {
       {/* content */}
       <div className="px-5 py-10">
         <div>
-          <div>
+          <div className="text-center">
             <span className="text-rose-800 font-bold">RCCG Beautiful Gate</span>{" "}
             is home for all. We are glad to have you
           </div>
@@ -25,12 +25,15 @@ const page = () => {
           </div>
         </div>
         {/* enquiry form */}
-        <div>
+        <div className="">
           <div className="text-center my-3 text-rose-800">
             <h4>For Enquiry</h4>
             <h3>Kindly fill the form below</h3>
           </div>
+          <div className="w-full flex justify-center">
+
           <EnquiryForm />
+          </div>
         </div>
       </div>
     </div>
