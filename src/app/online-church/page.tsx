@@ -14,14 +14,17 @@ const page = () => {
         imageUrl={onlineChurch.src}
       />
       <p className="font-bold text-2xl">Watch Us Live</p>
-      <div className="bg-slate-500 w-[80%] h-[250px]">
+      <div className="bg-slate-500 w-[80%] h-[250px] lg:h-[400px]">
         <LiveProgram />
       </div>
 
       {/* Audio and Video Messages */}
-      <div className="flex flex-col items-center justify-center bg-white w-full">
+      <div id="media" className="flex flex-col items-center justify-center bg-white w-full lg:px-[230px]">
         {/* Audio  Messages */}
-        <div className="flex flex-col items-center gap-3 mb-10 w-full">
+        <div
+          id="audio"
+          className="flex flex-col items-center gap-3 mb-10 w-full"
+        >
           <h2>Our Audio Messages</h2>
           <div className="flex bg-[#FDF9F9] rounded-full relative overflow-hidden">
             <input
@@ -59,7 +62,7 @@ const page = () => {
           </div>
         </div>
         {/*  Video Messages */}
-        <div className="flex flex-col items-center gap-3 w-full">
+        <div id="video" className="flex flex-col items-center gap-3 w-full">
           <h2>Our Video Messages</h2>
           <div className="flex bg-[#FDF9F9] rounded-full relative overflow-hidden">
             <input
@@ -73,7 +76,7 @@ const page = () => {
             </span>
           </div>
           {/* video iFrame */}
-          <div className="w-[90%] h-[250px] bg-slate-500"></div>
+          <div className="w-[90%] h-[250px] lg:h-[400px] bg-slate-500"></div>
           {/* list of Videos */}
           <div className="w-full">
             <ul className="space-y-2">
