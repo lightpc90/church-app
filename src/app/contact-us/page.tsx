@@ -18,7 +18,7 @@ const page = () => {
         </div>
         {/* map */}
         <div className=" my-5 flex flex-col w-full items-center">
-          <p className="text-slate-400">Locate us on map</p>
+          <p className="text-slate-600">Locate us on map</p>
           <h3 className="font-bold">Get Direction</h3>
           <div className="h-[600px] lg:h-[800px] lg:w-[60%] bg-slate-700 ">
             <MapComponent />

@@ -14,7 +14,7 @@ type PastorLayoutPropsType = {
 
 const PastorLayout: React.FC<PastorLayoutPropsType> = ({ pastorData }) => {
   return (
-    <div className="relative flex flex-col items-center w-full mb-[60px]">
+    <div className="relative flex flex-col items-center w-full mb-[60px] lg:w-[500px]">
       <div className="h-[180px] w-[180px] rounded-full bg-white overflow-hidden">
         <Image src={pastorData.image} alt="" width={400} height={400} loading='eager' className="h-full w-full object-cover object-center" />
       </div>
