@@ -5,8 +5,12 @@ import { url } from "inspector";
 import SocialMedia from "../social-media/SocialMedia";
 import Button from "../customeUI/Button";
 import Link from "next/link";
+import { AboutUs } from "../data/Data";
+import { QuickLinks } from "../data/Data";
 
 const Footer = () => {
+  const quicklinks = QuickLinks.filter((link) => link.category === "Quicklink");
+  const workers = QuickLinks.filter((link) => link.category === "Worker");
   return (
     <footer className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
       {/* Church Name*/}
@@ -30,16 +34,8 @@ const Footer = () => {
       </div>
       {/* About Us */}
       <div className="lg:w-[30%] mb-10">
-        <h2 className="font-bold text-lg mb-3">About Us</h2>
-        RCCG Beautiful Gate Lakowe, we are a branch of Redeemed Christian Church
-        of God, Lagos Province 114, Zone 5, located at Lakowe. We&apos;re a
-        diverse and welcoming community devoted to faith, fellowship, and love.
-        Our vibrant worship services, engaging programs, and outreach
-        initiatives are designed to nurture spiritual growth and foster
-        connections with God and fellow believers. With a commitment to
-        inclusivity, we embrace everyone, encouraging a deeper relationship with
-        God and a sense of belonging. Join us on this journey of faith, love,
-        and grace.
+        <h2 className="font-bold text-lg mb-3">{AboutUs.title}</h2>
+        {AboutUs.body}
       </div>
 
       <div className="flex gap-[30px] flex-wrap">
@@ -61,7 +57,12 @@ const Footer = () => {
             2:8-9). Take this step today and experience the transformative love
             of God in your life!
           </p>
-          <Link href='/' className="my-5 bg-blue-700 p-2 inline-block rounded-md hover:bg-white hover:text-blue-700">Meet Our Pastor</Link>
+          <Link
+            href="/"
+            className="my-5 bg-blue-700 p-2 inline-block rounded-md hover:bg-white hover:text-blue-700"
+          >
+            Meet Our Pastor
+          </Link>
         </div>
 
         {/* Contact Us */}
@@ -78,14 +79,19 @@ const Footer = () => {
         {/* Contact Us */}
         <div className="lg:flex-1">
           <h2 className="font-bold text-lg mb-3">Quick Links</h2>
-          <p>
-            ipsum dolor sit amet consectetur adipisicing elit. Sint, totam esse!
-            Distinctio eos vero fuga commodi, magnam temporibus perferendis
-            corporis illum nam neque reprehenderit est ipsum dolor sit amet
-            consectetur adipisicing elit. Sint, totam esse! Distinctio eos vero
-            fuga commodi, magnam temporibus perferendis corporis illum nam neque
-            reprehenderit est
-          </p>
+          <div>
+            {quicklinks.map((link, i) => (
+              <Link
+                href={link.link}
+                key={i}
+                className="my-2 hover:text
+            blue-700"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+          <h2 className="font-bold text-lg mb-3">Wrokers</h2>
         </div>
       </div>
 

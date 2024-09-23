@@ -45,11 +45,11 @@ export const HomeHeaderCarousel: React.FC<PropType> = (props) => {
       <CarouselContent className="p-0 m-0 w-full h-full">
         {slides.map((item, index) => (
           <CarouselItem key={index} className="p-0 m-0 w-[100%] h-full ">
-            <div className=" h-full w-[100%] bg-green-700">   
-              <Card className="w-[100vw] h-full relative overflow-hidden bg-blue-800">
+            <div className=" h-full w-[100%] ">   
+              <Card className="w-[100vw] h-full relative overflow-hidden">
                 <CardContent
                   className=" flex items-center justify-center h-full p-0
-                  w-[130%] bg-rose-800"
+                  w-[130%]"
                 >
                   <Image
                     src={item}

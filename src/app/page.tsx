@@ -30,6 +30,9 @@ import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
 import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
 
+import { FaSquarePhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+
 import PastorImage from "../../public/pastor.png"
 
 const Items = [
@@ -58,8 +61,8 @@ export default function Home() {
           className="flex items-end p-5 lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 
         opacity-90 absolute top-0 left-0 w-full h-full z-30"
         >
-          <div className="flex flex-col text-white gap-1 lg:gap-5 font-bold w-10/12 lg:w-5/12 pt-[30px]">
-            <h2 className=" lg:text-[50px]  ">
+          <div className="flex flex-col text-white gap-1 lg:gap-5 font-bold w-10/12 lg:w-5/12 pt-[30px]  ">
+            <h2 className=" lg:text-4xl">
               Experience God&apos;s Love through worship and fellowship at our
               Church.
             </h2>
@@ -79,17 +82,27 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="bg-slate-950 text-white opacity-90 w-[100%] px-5 py-2 flex flex-col gap-1 items-end">
+        <div className="flex gap-2 items-center">
+          <FaSquarePhone />
+          <span>08112345678</span>
+        </div>
+        <div className="flex gap-2 items-center">
+          <MdEmail />
+          <span>ctlbeautifulgate@gmail.com</span>
+        </div>
+      </div>
 
       {/* contents */}
       <div className="flex flex-col lg:p-[50px] items-center">
         {/* welcome */}
-        <div className="flex flex-wrap gap-4 p-[20px] items-center justify-center my-10">
+        <div className="flex flex-wrap gap-4 w-[100vw] overflow-hidden p-[20px] items-center justify-center my-10 ">
           <div className="w-full lg:w-[30%]">
             <div className="text-center">
               <h1 className="text-2xl text-center font-bold ">
                 {ChurchWelcomeParagraph.title}
               </h1>
-              <h4 className="font-bold text-slate-400">
+              <h4 className="font-bold text-slate-700">
                 {ChurchWelcomeParagraph.description}
               </h4>
             </div>
@@ -98,7 +111,12 @@ export default function Home() {
 
           <div className="w-full lg:w-[30%] h-[400px] bg-slate-300">
             {/* Pastor Picture coming here */}
-            <Image src={PastorImage} alt="pastor picture" loading="eager" className='w-full h-full object-cover' />
+            <Image
+              src={PastorImage}
+              alt="pastor picture"
+              loading="eager"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 
@@ -242,7 +260,7 @@ export default function Home() {
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
           <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:h-[600px] bg-slate-800">
-            <LiveProgram />
+            {/* <LiveProgram /> */}
           </div>
         </div>
         {/* Explore media */}
@@ -267,9 +285,7 @@ export default function Home() {
         </div>
         {/* Post Container */}
         <div className="w-[300px] lg:w-[60%] min-h-[300px] bg-slate-100">
-          <div className="w-[100%]">
-            {/* <InstagramFeed /> */}
-          </div>
+          <div className="w-[100%]">{/* <InstagramFeed /> */}</div>
         </div>
       </div>
 

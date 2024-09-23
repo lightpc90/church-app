@@ -926,3 +926,19 @@ God and a sense of belonging. Join us on this journey of faith, love,
 and grace.
 `
 }
+
+export const QuickLinks = [
+  {category: "Quicklink", name: "Home", link: "/"},
+  {category: "Quicklink", name: "Events", link: "/events"},
+  {category: "Quicklink", name: "Contact us", link: "/contact-us"},
+  {category: "Quicklink", name: "About us", link: "/about-us"},
+  {category: "Quicklink", name: "Online Church", link: "/online-church"},
+  {category: "Quicklink", name: "Online Giving", link: "/online-giving"},
+  {category: "Quicklink", name: "Prayer Request", link: "/prayer-request"},
+  {category: "Quicklink", name: "Share Testimony", link: "/testimony"},
+  {category: "Quicklink", name: "House Fellowship Centers", link: "/house-fellowship-centers"},
+  {category: "Quicklink", name: "Natural Groups and Ministries", link: "/our-natural-groups-and-ministries"},
+  {category: "Worker", name: "Create account", link: "/workers/create-account"},
+  {category: "Worker", name: "Log in to account", link: "/workers/login"},
+  {category: "Worker", name: "Mark attendance", link: "/workers/mark-attendance"},
+]
