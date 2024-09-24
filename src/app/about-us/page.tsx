@@ -38,7 +38,7 @@ const page = () => {
       <Header title="About Us" imageUrl={headerImage.src} />
       {/* about us */}
       <div className="py-10 px-5 flex flex-col items-center">
-        <div className="lg:w-[40%] mb-10">
+        <div className="lg:w-[700px] mb-10">
           <h2 className="font-bold text-lg mb-3 text-center w-full">
             {AboutUs.title}
           </h2>
@@ -46,9 +46,9 @@ const page = () => {
         </div>
 
         {/* pastors */}
-        <div className="my-10 w-full">
+        <div className="my-10 w-full flex flex-col items-center">
           <h3 className="font-bold text-center my-2 lg:my-10">Meet Our Pastors</h3>
-          <div className="flex flex-wrap gap-3 items-center justify-center">
+          <div className="flex flex-wrap gap-3 items-center justify-center lg:w-[70%]">
             {pastors.map((pastor, i) => (
               <PastorLayout key={i} pastorData={pastor} />
             ))}

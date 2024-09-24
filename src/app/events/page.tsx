@@ -11,7 +11,7 @@ const Page = () => {
     <div className="bg-[#D9D9D9] pb-10 flex flex-col items-center ">
       <Header title={title} imageUrl={headerImage.src} />
       {/* Content */}
-      <div className="w-[90%] lg:w-[50%] flex flex-col gap-5 lg:gap-[100px]">
+      <div className="w-full lg:w-[600px] flex flex-col gap-5 lg:gap-[100px]">
         <div className="p-5 my-5 flex flex-col gap-3 items-center">
           <h2 className="font-bold text-xl">Upcoming Events</h2>
           <div className="w-full flex flex-col gap-2 lg:gap-6 items-center">
