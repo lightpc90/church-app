@@ -11,6 +11,8 @@ import { QuickLinks } from "../data/Data";
 const Footer = () => {
   const quicklinks = QuickLinks.filter((link) => link.category === "Quicklink");
   const workerlinks = QuickLinks.filter((link) => link.category === "Worker");
+  const naturalGroups = QuickLinks.filter((link)=>link.category === "Natural Groups")
+  const ministries = QuickLinks.filter((link)=>link.category === "Ministries")
   return (
     <footer className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
       {/* Church Name*/}
@@ -78,7 +80,7 @@ const Footer = () => {
 
         {/* Quicklinks */}
         <div className="lg:flex-1">
-          <h2 className="font-bold text-lg mb-3">Quick Links</h2>
+          <h2 className="font-bold text-lg mb-3 text-blue-300">Quick Links</h2>
           <div className="flex flex-col">
             {quicklinks.map((link, i) => (
               <Link
@@ -91,10 +93,30 @@ const Footer = () => {
               </Link>
             ))}
           </div>
-          <h2 className="font-bold text-lg my-3">Workers</h2>
+          <h2 className="font-bold text-lg my-3 text-blue-300">
+            Natural Groups
+          </h2>
           <div className="flex flex-col">
-            {workerlinks.map((workerlink, i)=>(
-              <Link key={i} href={workerlink.link}>{workerlink.name}</Link>
+            {naturalGroups.map((group, i) => (
+              <Link key={i} href={group.link}>
+                {group.name}
+              </Link>
+            ))}
+          </div>
+          <h2 className="font-bold text-lg my-3 text-blue-300">Ministries</h2>
+          <div className="flex flex-col">
+            {ministries.map((minstry, i) => (
+              <Link key={i} href={minstry.link}>
+                {minstry.name}
+              </Link>
+            ))}
+          </div>
+          <h2 className="font-bold text-lg my-3 text-blue-300">Workers</h2>
+          <div className="flex flex-col">
+            {workerlinks.map((workerlink, i) => (
+              <Link key={i} href={workerlink.link}>
+                {workerlink.name}
+              </Link>
             ))}
           </div>
         </div>
