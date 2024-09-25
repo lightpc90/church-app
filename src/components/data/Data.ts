@@ -786,7 +786,7 @@ export const HowCanIBeSavedData = {
             sins and rose again to give you new life (John 3:16). Confess Him as
             your Lord and Savior, surrendering your life to His will (Romans
             10:9-10). Finally, trust that through His grace, you are forgiven,
-            redeemed, and welcomed into God&apos;s family. Salvation is not
+            redeemed, and welcomed into God's family. Salvation is not
             earned by works, but received by faith in Christ alone (Ephesians
             2:8-9). Take this step today and experience the transformative love
             of God in your life!`,
