@@ -1,8 +1,6 @@
-"use client"
 
 import React, { ReactElement, ReactNode } from 'react'
 import Link from 'next/link';
-import {easeOut, motion} from  "framer-motion"
 import { IconType } from 'react-icons/lib';
 
 type WhatNextCardLayoutType = {
@@ -19,10 +17,8 @@ type WhatNextCardLayoutType = {
 const WhatNextCardsLayout: React.FC<WhatNextCardLayoutType> = ({cardData}) => {
     const {icon:Icon} = cardData
   return (
-    <motion.div
-    initial={{opacity: 0, scale: 0.8}}
-    whileInView={{opacity: 1, scale: 1}}
-    transition={{duration: 0.5, delay: 0.3, ease: easeOut}}
+    <div
+  
       className={`flex flex-col justify-evenly w-[300px] h-[310px] ${cardData.bg} rounded-2xl shadow-lg p-4 text-white`}
     >
       <div className="flex gap-4 text-2xl items-center">
@@ -40,7 +36,7 @@ const WhatNextCardsLayout: React.FC<WhatNextCardLayoutType> = ({cardData}) => {
       >
         {cardData.linkname}
       </Link>
-    </motion.div>
+    </div>
   );
 }
 
