@@ -15,7 +15,7 @@ const WelcomeMessage = () => {
         <motion.div
           initial={{ x: `100%` }}
           whileInView={{ x: 0 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: easeOut }}
+          transition={{ duration: 0.7, ease: easeOut }}
           viewport={{once:true}}
           className="text-center"
         >
