@@ -14,7 +14,7 @@ const WeeklyServices = () => {
       <div className="flex flex-wrap w-full lg:w-[80%] gap-5 items-center justify-center">
         {/* sunday service */}
         <div
-          className={`bg-slate-600 text-white w-[350px] h-[500px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[96%] lg:w-[350px] h-[500px] z-30 relative`}
         >
           <Image
             src={`/guitar.jpg`}
@@ -27,7 +27,7 @@ const WeeklyServices = () => {
           <div
             className={`bg-slate-900 absolute flex flex-col justify-between top-0 left-0 w-[50%] h-full opacity-70 p-2`}
           >
-            <h3>SUN.</h3>
+            <h3>SUNDAY</h3>
             <div>
               <h4 className="text-yellow-600 font-bold text-xl">2 Services</h4>
               {/* early risers */}
@@ -72,7 +72,7 @@ const WeeklyServices = () => {
           <div
             className={`bg-slate-900 absolute flex flex-col justify-between top-0 left-0 w-[50%] h-full opacity-70 p-2`}
           >
-            <h3>TUE.</h3>
+            <h3>TUESDAY</h3>
             <div>
               <p>Digging Deep</p>
               <p className="text-slate-400 text-sm">6pm-7pm</p>
@@ -95,7 +95,7 @@ const WeeklyServices = () => {
           <div
             className={`bg-slate-900 absolute flex flex-col justify-between top-0 left-0 w-[50%] h-full opacity-70 p-2`}
           >
-            <h3>THUR.</h3>
+            <h3>THURSDAY</h3>
             <div>
               <p>Faith Clinic</p>
               <p className="text-slate-400 text-sm">6pm-7pm</p>
