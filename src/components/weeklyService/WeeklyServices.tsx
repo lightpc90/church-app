@@ -14,7 +14,7 @@ const WeeklyServices = () => {
       <div className="flex flex-wrap w-full lg:w-[80%] gap-5 items-center justify-center">
         {/* sunday service */}
         <div
-          className={`bg-slate-600 text-white w-[300px] h-[200px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[350px] h-[300px] z-30 relative`}
         >
           <Image
             src={`/guitar.jpg`}
