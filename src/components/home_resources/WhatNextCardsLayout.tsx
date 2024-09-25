@@ -20,8 +20,8 @@ const WhatNextCardsLayout: React.FC<WhatNextCardLayoutType> = ({cardData}) => {
     const {icon:Icon} = cardData
   return (
     <motion.div
-    initial={{opacity: 0}}
-    whileInView={{opacity: 1}}
+    initial={{opacity: 0, scale: 0.8}}
+    whileInView={{opacity: 1, scale: 1}}
     transition={{duration: 0.5, delay: 0.3, ease: easeOut}}
       className={`flex flex-col justify-evenly w-[300px] h-[310px] ${cardData.bg} rounded-2xl shadow-lg p-4 text-white`}
     >
