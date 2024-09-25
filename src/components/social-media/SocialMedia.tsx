@@ -16,7 +16,7 @@ const SocialMedia = () => {
       <Link href={`/`} className="">
         <TbBrandYoutubeFilled size={30}/>
       </Link>
-      <span className="">rccgbglakowe</span>
+      <span className="">rccgbgplagos</span>
     </div>
   );
 }

@@ -78,9 +78,9 @@ export default function Home() {
           </h1>
           <div className="flex flex-wrap gap-5 w-full lg:w-[1000px] items-center justify-center">
             {/* card 1 */}
-         {Cards.map((card, i)=>(
-          <WhatNextCardsLayout key={i} cardData={card} />
-         ))}
+            {Cards.map((card, i) => (
+              <WhatNextCardsLayout key={i} cardData={card} />
+            ))}
           </div>
         </div>
       </div>
@@ -104,16 +104,17 @@ export default function Home() {
         <h2 className="font-bold text-xl z-10">
           Our Live Service and Messages
         </h2>
-        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10">
-          <p className="text-[#A11E1E] font-bold">Follow us on:</p>
-          <SocialMedia />
-        </div>
+
         {/* Watch us live */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
           <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800">
             {/* <LiveProgram /> */}
           </div>
+        </div>
+        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10">
+          <p className="text-[#A11E1E] font-bold">Follow us on:</p>
+          <SocialMedia />
         </div>
         {/* Explore media */}
         <Link
