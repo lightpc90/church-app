@@ -17,7 +17,7 @@ const HomeHeaderTitle = () => {
       <motion.p
         initial={{ opacity: 0, x: -50, scale: 0.8 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.5, ease: easeOut }}
+        transition={{ duration: 0.7, delay: 0.5, ease: easeOut }}
         className="lg:text-2xl text-zinc-400"
       >
         Experience a welcoming community and uplifting sermons at our church.
