@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Cards } from "@/components/data/Data";
 
 import churchSide from "../../public/Ch1.jpg";
 import churchFront from "../../public/churchFront1.png";
@@ -21,9 +22,7 @@ import { BsCollectionPlayFill } from "react-icons/bs";
 import { TbSquareRoundedArrowRightFilled } from "react-icons/tb";
 
 import Link from "next/link";
-import { ChurchWelcomeParagraph } from "../components/data/Data";
 import WeeklyServices from "../components/weeklyService/WeeklyServices";
-import classNames from "classnames";
 import MonthlyServices from "@/components/monthlyServices/MonthlyServices";
 import SocialMedia from "@/components/social-media/SocialMedia";
 import LiveStream from "@/components/livestream/LiveStream";
@@ -33,9 +32,9 @@ import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
 
 import HomeHeaderTitle from "@/components/home_resources/HomeHeaderTitle";
 
-import PastorImage from "../../public/pastor.png";
 import PhoneAndEmail from "@/components/home_resources/PhoneAndEmail";
 import WelcomeMessage from "@/components/home_resources/WelcomeMessage";
+import WhatNextCardsLayout from "@/components/home_resources/WhatNextCardsLayout";
 
 const Items = [
   churchSide.src,
@@ -70,7 +69,7 @@ export default function Home() {
       {/* contents */}
       <div className="flex flex-col lg:p-[50px] items-center">
         {/* welcome */}
-        <WelcomeMessage/>
+        <WelcomeMessage />
 
         {/* CTA Cards */}
         <div className="flex flex-col gap-4 w-full justify-center items-center">
@@ -79,127 +78,9 @@ export default function Home() {
           </h1>
           <div className="flex flex-wrap gap-5 w-full lg:w-[1000px] items-center justify-center">
             {/* card 1 */}
-            <div className="flex flex-col justify-evenly w-[300px] h-[310px] bg-rose-800 rounded-2xl shadow-lg p-4 text-white">
-              {/* title */}
-              <div className="flex gap-4 text-2xl items-center">
-                {/* title icon */}
-                <span>
-                  <FaCross size={70} />
-                </span>
-                <h2 className="font-bold">How Can I Be Saved?</h2>
-              </div>
-              {/* content */}
-              <p className="font-bold text-zinc-400">
-                The most important question you will ever ask that will affect
-                you for eternity
-              </p>
-              {/* call to action */}
-              <Link
-                href={`/how-can-i-be-saved`}
-                className="border py-2 px-4 rounded-full w-fit "
-              >
-                Learn More
-              </Link>
-            </div>
-
-            {/* card 2 */}
-            <div className="flex flex-col justify-evenly w-[300px] h-[310px] bg-slate-900 rounded-2xl shadow-lg p-4 text-white">
-              {/* title */}
-              <div className="flex gap-4 text-2xl items-center">
-                {/* title icon */}
-                <span>
-                  <TfiVideoClapper size={70} />
-                </span>
-                <h2 className="font-bold">Our Online Church and Media</h2>
-              </div>
-              {/* content */}
-              <p className="font-bold text-zinc-400">
-                Hear God&apos;s word delivered by our pastors in our sermon
-                archives
-              </p>
-              {/* call to action */}
-              <Link
-                href={`online-church`}
-                className="border py-2 px-4 rounded-full w-fit "
-              >
-                See Messages
-              </Link>
-            </div>
-
-            {/* card 3 */}
-            <div className="flex flex-col justify-evenly w-[300px] h-[310px] bg-green-900 rounded-2xl shadow-lg p-4 text-white">
-              {/* title */}
-              <div className="flex gap-4 text-2xl items-center">
-                {/* title icon */}
-                <span>
-                  <LiaPrayingHandsSolid size={70} />
-                </span>
-                <h2 className="font-bold">Submit a Prayer Request</h2>
-              </div>
-              {/* content */}
-              <p className="font-bold text-zinc-400">
-                Need Prayer? Submit your requests to pastor to pray with you
-              </p>
-              {/* call to action */}
-              <Link
-                href={`/prayer-request`}
-                className="border py-2 px-4 rounded-full w-fit "
-              >
-                Request Prayer
-              </Link>
-            </div>
-
-            {/* card 4 */}
-            <div className="flex flex-col justify-evenly w-[300px] h-[310px] bg-purple-900 rounded-2xl shadow-lg p-4 text-white">
-              {/* title */}
-              <div className="flex gap-4 text-2xl items-center">
-                {/* title icon */}
-                <span>
-                  <GrAnnounce size={70} />
-                </span>
-                <h2 className="font-bold">Share Your Testimonies</h2>
-              </div>
-              {/* content */}
-              <p className="font-bold text-zinc-400">
-                Share with us what the Lord has done for you
-              </p>
-              {/* call to action */}
-              <Link
-                href={`/testimony`}
-                className="border py-2 px-4 rounded-full w-fit "
-              >
-                Share Your Testimonies
-              </Link>
-            </div>
-
-            {/* card 5 */}
-            <div
-              className="flex flex-col justify-evenly w-[300px] h-[310px] 
-          bg-sky-950 rounded-2xl shadow-lg p-4 text-white"
-            >
-              {/* title */}
-              <div className="flex gap-4 text-2xl items-center">
-                {/* title icon */}
-                <span>
-                  <FaMoneyBillTransfer size={70} />
-                </span>
-                <h2 className="font-bold">Giving & Partnership</h2>
-              </div>
-              {/* content */}
-              <p className="font-bold text-zinc-400 text-sm">
-                &quot;Give, and it will be given to you. A good measure, pressed
-                down, shaken together and running over, will be poured into your
-                lap. For with the measure you use, it will be measured to
-                you.&quot; Luke 6:38
-              </p>
-              {/* call to action */}
-              <Link
-                href={`/online-giving`}
-                className="border py-2 px-4 rounded-full w-fit "
-              >
-                Give Generously
-              </Link>
-            </div>
+         {Cards.map((card, i)=>(
+          <WhatNextCardsLayout key={i} cardData={card} />
+         ))}
           </div>
         </div>
       </div>

@@ -1,4 +1,9 @@
+import { FaCross, FaMoneyBillTransfer } from "react-icons/fa6";
+
 import { DeptsEnum } from "../enums/Enums";
+import { TfiVideoClapper } from "react-icons/tfi";
+import { LiaPrayingHandsSolid } from "react-icons/lia";
+import { GrAnnounce } from "react-icons/gr";
 
 export const workersData = [
   {
@@ -949,3 +954,52 @@ export const QuickLinks = [
   {category: "Worker", name: "Log in to account", link: "/workers/login"},
   {category: "Worker", name: "Mark attendance", link: "/workers/mark-attendance"},
 ]
+
+
+export const Cards = [
+  {
+    icon: FaCross,
+    title: "How Can I Be Saved?",
+    content: `The most important question you will ever ask that will affect
+                you for eternity`,
+    linkref: `/how-can-i-be-saved`,
+    linkname: `Learn More`,
+    bg: `bg-rose-800`,
+  },
+  {
+    icon: TfiVideoClapper,
+    title: `Our Online Church and Media`,
+    content: ` Hear God's word delivered by our pastors in our sermon
+                archives`,
+    linkref: `/online-church`,
+    linkname: `See Messages`,
+    bg: `bg-slate-900`,
+  },
+  {
+    icon: LiaPrayingHandsSolid,
+    title: "Submit a Prayer Request",
+    content: `Need Prayer? Submit your requests to pastor to pray with you`,
+    linkref: `/prayer-request`,
+    linkname: `Request Prayer`,
+    bg: `bg-green-900`,
+  },
+  {
+    icon: GrAnnounce,
+    title: `Share Your Testimonies`,
+    content: `Share with us what the Lord has done for you`,
+    linkref: `/testimony`,
+    linkname: `Share Your Testimonies`,
+    bg: `bg-purple-900`,
+  },
+  {
+    icon: FaMoneyBillTransfer,
+    title: "Giving & Partnership",
+    content: `"Give, and it will be given to you. A good measure, pressed
+                down, shaken together and running over, will be poured into your
+                lap. For with the measure you use, it will be measured to
+                you." Luke 6:38`,
+    linkref: `/online-giving`,
+    linkname: `Give Generously`,
+    bg: `bg-sky-950`,
+  },
+];
