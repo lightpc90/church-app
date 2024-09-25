@@ -1,6 +1,7 @@
 import Image from "next/image";
+
 import churchSide from "../../public/Ch1.jpg";
-import churchFront from "../../public/headers/Ch6.jpg";
+import churchFront from "../../public/churchFront1.png";
 import banner1 from "../../public/nature.jpg";
 import banner2 from "../../public/7.jpg";
 import banner3 from "../../public/pastorAndfamily.jpg";
@@ -30,6 +31,8 @@ import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
 import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
 
+import HomeHeaderTitle from "@/components/home_header_title/HomeHeaderTitle";
+
 import { FaSquarePhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
@@ -38,7 +41,6 @@ import PastorImage from "../../public/pastor.png";
 const Items = [
   churchSide.src,
   churchFront.src,
-  banner1.src,
   banner2.src,
   banner3.src,
   banner4.src,
@@ -61,25 +63,7 @@ export default function Home() {
           className="flex items-end p-5 lg:p-20 bg-gradient-to-t from-zinc-800 via-slate-800 
         opacity-90 absolute top-0 left-0 w-full h-full z-30"
         >
-          <div className="flex flex-col text-white gap-1 lg:gap-4 font-bold w-10/12 lg:w-5/12 mt-[50px]  ">
-            <h2 className=" lg:text-4xl">
-              Experience God&apos;s Love through worship and fellowship at our
-              Church.
-            </h2>
-            <p className="lg:text-2xl text-zinc-400">
-              Experience a welcoming community and uplifting sermons at our
-              church. All are welcome. Visit us and reach out with any question
-            </p>
-            {/* buttons */}
-            <div className="flex flex-wrap max-w-[400px] lg:max-w-[700px] gap-2  lg:gap-4 mt-5">
-              <button className="bg-rose-800 w-[150px] lg:w-fit  p-2 lg:py-3 lg:px-4 rounded-md">
-                Connect with Us
-              </button>
-              <button className="border w-[150px] lg:w-fit p-2 lg:py-3  lg:px-4 rounded-md">
-                Learn More
-              </button>
-            </div>
-          </div>
+         <HomeHeaderTitle/>
         </div>
       </section>
       <div className="bg-slate-950 text-white opacity-90 w-[100%] px-5 lg:px-10 py-1 flex flex-col gap-1 items-end">
@@ -126,7 +110,7 @@ export default function Home() {
           <h1 className="text-2xl font-bold text-slate-800">
             What&apos;s Next?
           </h1>
-          <div className="flex flex-wrap gap-5 w-full lg:w-[90%] items-center justify-center">
+          <div className="flex flex-wrap gap-5 w-full lg:w-[1000px] items-center justify-center">
             {/* card 1 */}
             <div className="flex flex-col justify-evenly w-[300px] h-[310px] bg-rose-800 rounded-2xl shadow-lg p-4 text-white">
               {/* title */}
@@ -238,11 +222,11 @@ export default function Home() {
         </div>
       </div>
       {/* Services */}
-      <div className="flex flex-wrap lg:w-[70%] lg:items-center lg:justify-center">
+      <div className="flex flex-wrap lg:items-center lg:justify-center">
         {/* Our Weekly Services */}
         <div className="w-full bg-[#B9C4D4] lg:flex-1 mt-[20px] lg:mt-[0px] lg:h-[800px] relative overflow-hidden">
           <WeeklyServices />
-          <div className="w-[400px] h-[400px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] left-[-50%] "></div>
+          <div className="w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] lg:top-[-150px] left-[-50%] lg:left-[-30%] "></div>
         </div>
         {/* Our Monthy Services */}
         <div className="bg-[#02271C] w-full lg:h-[800px] lg:flex-1 relative overflow-hidden lg:mt-[200px]">

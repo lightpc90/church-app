@@ -8,7 +8,7 @@ import youthSunday from "../../../public/randomChurchPic.jpg";
 const MonthlyServices = () => {
   return (
     <div className="text-white flex flex-col items-center justify-center gap-5 py-10 overflow-hidden z-20">
-      <h2 className="font-bold text-xl z-10">Our Monthly Programs</h2>
+      <h2 className="font-bold text-xl z-10">Our Monthly Programmes</h2>
       {/* Good morning holy spirit */}
       <div className="flex items-center z-10">
         {/* frame */}

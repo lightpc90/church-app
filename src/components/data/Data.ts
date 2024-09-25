@@ -764,10 +764,10 @@ export const bottomCardsData = [
 ];
 
 export const ChurchWelcomeParagraph = {
-  title: "Welcome to RCCG Beautiful Gate Parish, Lakowe",
+  title: "Welcome to RCCG, Beautiful Gate Parish, Lakowe, Lagos",
   description: "Lagos Province 114 Headquarters. ",
   paragraph:
-    "We are a vibrant community dedicated to the Word, worship, and prayer, united in love and committed to creating an environment where everyone feels welcome. Whether you're joining us for the first time or have been part of our family, we invite you to grow in faith, connect in fellowship, and experience the transforming power of God's presence.",
+    "We are a vibrant community dedicated to the Word, worship, and prayer. We are united in love and committed to creating an environment where everyone are welcome. Whether you're joining us for the first time or have been part of our family, we invite you to grow in faith, connect in fellowship, and experience the transforming power of God's presence.",
 };
 
 export const HowCanIBeSavedData = {
@@ -843,7 +843,7 @@ export const PrayerRequestPageIntro = {
   body: `Life can be overwhelming. In those moments, you need a team to be on your side, to cheer you back hope, to hold your hand and lead you to The One who always stands ready to  listen. No matter what you're facing, we'd love to pray with you!`,
 };
 
-export const TermsAndPrivacyFooter = `By using rccgbeautifulgatelakowe website, you agree to the Terms and Privacy Policy`;
+export const TermsAndPrivacyFooter = `By using rccgbeautifulgate website, you agree to the Terms and Privacy Policy`;
 
 
 export const NaturalGroups = [
@@ -915,10 +915,10 @@ export const Events = [
 export const AboutUs={
 title: "About Us",
 body: `
-RCCG Beautiful Gate Parish, Lakowe, we are a branch of Redeemed Christian Church
-of God, zone 5, Lagos Province 114 Headquarters, located at Lakowe. We're a
+RCCG, Beautiful Gate Parish, Lakowe. We are a parish of Redeemed Christian Church
+of God, zone 5, Lagos Province 114 Headquarters, located at Lakowe, Lagos. We're a
 diverse and welcoming community devoted to faith, fellowship, and love.
-Our vibrant worship services, engaging programs, and outreach
+Our vibrant worship services, engaging programmes, and outreach
 initiatives are designed to nurture spiritual growth and foster
 connections with God and fellow believers. With a commitment to
 inclusivity, we embrace everyone, encouraging a deeper relationship with

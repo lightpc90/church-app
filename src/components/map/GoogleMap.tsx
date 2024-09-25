@@ -50,8 +50,8 @@ const MapComponent = () => {
               <FaLocationArrow size={25} />
             </div>
             <p>
-              1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
-              Express-Way Lakowe
+              1-8 Redeemed Close, Km 34 Lekki-Epe
+              Express-Way, Lakowe, Lagos.
             </p>
           </div>
           <div className="flex gap-2 items-center">

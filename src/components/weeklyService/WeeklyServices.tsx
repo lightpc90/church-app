@@ -29,7 +29,7 @@ const WeeklyServices = () => {
           >
             <h3>SUN.</h3>
             <div>
-              <h4 className="bg-rose-800 px-2 text-center">Two Services</h4>
+              <h4 className="text-yellow-600 font-bold">Two Services</h4>
               {/* early risers */}
               <div>
                 <p>Early Risers</p>
@@ -39,7 +39,11 @@ const WeeklyServices = () => {
               <div>
                 <p>Family Service</p>
                 <p className="text-slate-400 text-sm">9:30am-11:30am</p>
-                <p></p>
+              </div>
+              {/* House Fellowship */}
+              <div>
+                <p>House Fellowship</p>
+                <p className="text-slate-400 text-sm">5:00pm-6:00pm</p>
               </div>
             </div>
           </div>
