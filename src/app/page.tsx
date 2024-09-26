@@ -9,18 +9,12 @@ import banner3 from "../../public/pastorAndfamily.jpg";
 import banner4 from "../../public/fullChoir.jpg";
 import banner5 from "../../public/randomChurchPic.jpg";
 import banner6 from "../../public/randomChurchPic2.jpg";
-
+import ElfsightInstagram from "@/components/instagramFeed/ElfsightInstagram";
 import { HomeHeaderCarousel } from "@/components/carousels/HomeHeaderCarousel";
 import { MonthlyProgramsCarousel } from "@/components/carousels/MonthlyProgramsCarousel";
 import { EmblaOptionsType } from "embla-carousel";
-import { FaCross } from "react-icons/fa6";
-import { TfiVideoClapper } from "react-icons/tfi";
-import { LiaPrayingHandsSolid } from "react-icons/lia";
-import { GrAnnounce } from "react-icons/gr";
-import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { BsCollectionPlayFill } from "react-icons/bs";
 import { TbSquareRoundedArrowRightFilled } from "react-icons/tb";
-
 import Link from "next/link";
 import WeeklyServices from "../components/weeklyService/WeeklyServices";
 import MonthlyServices from "@/components/monthlyServices/MonthlyServices";
@@ -28,7 +22,7 @@ import SocialMedia from "@/components/social-media/SocialMedia";
 import LiveStream from "@/components/livestream/LiveStream";
 import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
-import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
+
 
 import HomeHeaderTitle from "@/components/home_resources/HomeHeaderTitle";
 
@@ -85,7 +79,7 @@ export default function Home() {
         </div>
       </div>
       {/* Services */}
-      <div className="flex flex-wrap lg:items-center lg:justify-center">
+      <div className="flex flex-wrap lg:items-center lg:justify-center lg:mb-10">
         {/* Our Weekly Services */}
         <div className="w-full bg-[#B9C4D4] lg:flex-1 mt-[20px] lg:mt-[0px] lg:h-[800px] relative overflow-hidden">
           <WeeklyServices />
@@ -108,18 +102,14 @@ export default function Home() {
         {/* Watch us live */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
-          <div className="w-[90vw] min-h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800">
-            {/* <LiveProgram /> */}
+          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800 flex items-center justify-center">
+            <LiveProgram />
           </div>
-        </div>
-        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10">
-          <p className="text-[#A11E1E] font-bold">Follow us on:</p>
-          <SocialMedia />
         </div>
         {/* Explore media */}
         <Link
           href={`/online-church/#media`}
-          className="text-[#A11E1E] font-bold pl-5 pr-10 flex gap-4 items-center lg:justify-self-start z-10 lg:text-3xl"
+          className="text-[#A11E1E] lg:w-[60%] font-bold pl-5 lg:p-0 pr-10 flex gap-4 items-center z-10 lg:text-3xl"
         >
           <span>
             <BsCollectionPlayFill size={30} />
@@ -129,6 +119,11 @@ export default function Home() {
             <div className="bg-[#A11E1E] w-[25%] h-[4px]"></div>
           </span>
         </Link>
+
+        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10">
+          <p className="text-[#A11E1E] font-bold">Follow us on:</p>
+          <SocialMedia />
+        </div>
       </div>
 
       {/* Instagram Posts */}
@@ -141,7 +136,7 @@ export default function Home() {
         </div>
         {/* Post Container */}
         <div className="w-[300px] lg:w-[60%] min-h-[300px] bg-slate-100">
-          <div className="w-[100%]">{/* <InstagramFeed /> */}</div>
+          <div className="w-[100%]"><ElfsightInstagram /></div>
         </div>
       </div>
 

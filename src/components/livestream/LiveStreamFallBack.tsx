@@ -24,7 +24,7 @@ const YoutubeLive = () => {
       {liveVideoId ? (
         <iframe
           width="100%"
-          height="100%"
+          height="100vh"
           src={`https://www.youtube.com/embed/${liveVideoId}`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

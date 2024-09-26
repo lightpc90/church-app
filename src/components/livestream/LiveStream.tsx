@@ -1,38 +1,46 @@
+"use client";
 
+import React, { useEffect, useState } from "react";
+import fetchYoutubeLive from "./fetchYoutubeVid";
 
-import { Dispatch, FC } from "react";
-import { FaVideoSlash } from "react-icons/fa";
-import ReactPlayer from 'react-player'
-import { useYoutubeLiveStream } from "@/customHook/useYoutubeLiveStream";
+const YoutubeLive = () => {
+  const [liveVideoId, setLiveVideoId] = useState(null);
 
-type propsType = {
-  setFallback: Dispatch<React.SetStateAction<boolean>>;
-}
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  const channelId = "UC-AkcMjz8P7Q_yQC6iS_S2A";
+  useEffect(() => {
+    const getLiveVideo = async () => {
+      const videoId = await fetchYoutubeLive(apiKey, channelId);
+      if (videoId) {
+        setLiveVideoId(videoId);
+      }
+    };
 
-const LiveStream: FC<propsType>  = ({ setFallback }) => {
-
-  const channelId = process.env.NEXT_PUBLIC_CHANNEL_ID
-  const liveStreamUrl = useYoutubeLiveStream(channelId)
+    getLiveVideo();
+  }, [apiKey, channelId]);
 
   return (
-    <div className="w-[100%] h-[100%]">
-      {liveStreamUrl ? (
-        <div>
-          <ReactPlayer url={liveStreamUrl} controls />
-        </div>
+    <div className="w-[100%] h-[100%] flex flex-col justify-center"
+ 
+    >
+      {liveVideoId ? (
+        <iframe
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/${liveVideoId}`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="YouTube Live Video"
+          style={{height: "100%", width: "100%", margin: "0px", padding: "0px"}}
+        ></iframe>
       ) : (
-        <div className="h-[100%] flex flex-col items-center justify-center text-center py-5 text-white">
-          <FaVideoSlash size={50} />
-          <p>No live stream is currently available.</p>
-          {/* Next service countdown timer comes here */}
-          {/* option to watch the last service comes here */}
-          <button onClick={() => setFallback(true)} className="text-blue-300">
-            Watch Our Last Service
-          </button>
+        <div className="flex flex-col items-center text-white justify-center">
+          <h3>Youtube</h3>
+          <p>No live video available at the moment.</p>
         </div>
       )}
     </div>
   );
 };
 
-export default LiveStream;
+export default YoutubeLive;

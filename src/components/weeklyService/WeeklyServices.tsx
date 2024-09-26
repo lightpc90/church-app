@@ -14,7 +14,7 @@ const WeeklyServices = () => {
       <div className="flex flex-wrap w-full lg:w-[80%] gap-5 items-center justify-center">
         {/* sunday service */}
         <div
-          className={`bg-slate-600 text-white w-[96%] lg:w-[350px] h-[500px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[96%] lg:w-[600px] h-[500px] lg:h-[400px] z-30 relative`}
         >
           <Image
             src={`/guitar.jpg`}
@@ -46,7 +46,7 @@ const WeeklyServices = () => {
                 <p>Sunday School</p>
                 <p className="text-slate-400 text-sm">9:30am-10:00am</p>
                 <p className="text-yellow-600 text-sm">
-                  (except on Thanksgiving Sundays, when we have it by 8am-8:45am)
+                  (8am-8:45am on Thanksgiving Sundays)
                 </p>
               </div>
               {/* House Fellowship */}

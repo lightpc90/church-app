@@ -13,7 +13,7 @@ const WelcomeMessage = () => {
       {/* paragraph */}
       <div className="w-full lg:w-[30%]">
         <motion.div
-          initial={{ x: `100%` }}
+          initial={{ x: `-100%` }}
           whileInView={{ x: 0 }}
           transition={{ duration: 0.7, ease: easeOut }}
           viewport={{once:true}}

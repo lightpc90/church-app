@@ -12,7 +12,7 @@ const LiveProgram = () => {
       {fallback ? (
         <LiveStreamFallback />
       ) : (
-        <LiveStream setFallback={setFallback} />
+        <LiveStream />
       )}
     </div>
   );
