@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body{
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+
+  a[href="https://elfsight.com/instagram-feed-instashow/?utm_source=websites&utm_medium=clients&utm_content=instashow&utm_term=localhost&utm_campaign=free-widget"]{
+    display: none;
+    opacity: 0%;
+    visibility: hidden;
+    background-color: black;
+}
+
+.eapps-instagram-feed-data-status-container{
+  display: none; 
+}
+
 @keyframes slight-slide {
   0% {
     transform: translateX(0); /* Start in place */

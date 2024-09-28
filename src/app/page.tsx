@@ -22,6 +22,7 @@ import SocialMedia from "@/components/social-media/SocialMedia";
 import LiveStream from "@/components/livestream/LiveStream";
 import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
+import LightWidget from "@/components/instagramFeed/LightWidget"
 
 
 import HomeHeaderTitle from "@/components/home_resources/HomeHeaderTitle";
@@ -43,7 +44,7 @@ const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center w-[100vw] ">
+    <main className="flex flex-col items-center w-[100vw] overflow-x-hidden">
       {/* Banner */}
       <section
         className="bg-gradient-to-tr from-purple-400 via-blue-400 
@@ -93,7 +94,7 @@ export default function Home() {
       </div>
 
       {/* Church live and media */}
-      <div className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden ">
+      <div id="connect" className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden ">
         <div className="w-[400px] h-[400px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] z-0 "></div>
         <h2 className="font-bold text-xl z-10">
           Our Live Service and Messages
@@ -134,10 +135,13 @@ export default function Home() {
             <span>View More</span> <TbSquareRoundedArrowRightFilled />
           </Link>
         </div>
-        {/* Post Container */}
+        {/* Post Container */} 
         <div className="w-[300px] lg:w-[60%] min-h-[300px] bg-slate-100">
-          <div className="w-[100%]"><ElfsightInstagram /></div>
+          <div className="w-[100%]"><LightWidget /></div>
         </div>
+
+        {/* lightWidget */}
+        
       </div>
 
       {/* locate us */}

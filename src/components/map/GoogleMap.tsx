@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { FaSquarePhone, FaLocationArrow } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import ContactInfo from "../contactInfo/ContactInfo";
 
 const MapComponent = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -44,28 +45,8 @@ const MapComponent = () => {
       <div className="flex flex-col w-full h-[100%]">
         <div ref={mapRef} style={{ height: "80%", width: "100%" }} className="h-[80%] w-full" />
         {/* Contact Us */}
-        <div className="flex flex-col gap-3 lg:h-[20%] bg-white p-4 shadow-md font-medium text-sm">
-          <div className="flex gap-2 items-center">
-            <div>
-              <FaLocationArrow size={25} />
-            </div>
-            <p>
-              1-8 Redeemed Close, Km 34 Lekki-Epe
-              Express-Way, Lakowe, Lagos.
-            </p>
-          </div>
-          <div className="flex gap-2 items-center">
-            <div>
-              <FaSquarePhone size={25} />
-            </div>
-            <p>234(0)812 3456 789, 234(0)812 6543 789</p>
-          </div>
-          <div className="flex gap-2 items-center">
-            <div>
-              <MdEmail size={25} />
-            </div>
-            <p>ctlbeautifulgate@gmail.com</p>
-          </div>
+        <div className="p-4 bg-white shadow-md">
+        <ContactInfo />
         </div>
       </div>
     </>

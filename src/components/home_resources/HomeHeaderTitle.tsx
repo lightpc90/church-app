@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { easeOut, motion } from 'framer-motion';
+import Link from 'next/link';
 
 const HomeHeaderTitle = () => {
   return (
@@ -25,9 +26,9 @@ const HomeHeaderTitle = () => {
       </motion.p>
       {/* buttons */}
       <div className="flex flex-wrap max-w-[400px] lg:max-w-[700px] gap-2  lg:gap-4 mt-5">
-        <button className="bg-rose-800 w-[150px] lg:w-fit  p-2 lg:py-3 lg:px-4 rounded-md">
+        <Link href={`/#connect`} className="bg-rose-800 w-[150px] lg:w-fit  p-2 lg:py-3 lg:px-4 rounded-md">
           Connect with Us
-        </button>
+        </Link>
         <button className="border w-[150px] lg:w-fit p-2 lg:py-3  lg:px-4 rounded-md">
           Learn More
         </button>

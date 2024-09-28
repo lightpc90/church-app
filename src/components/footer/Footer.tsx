@@ -7,12 +7,17 @@ import Button from "../customeUI/Button";
 import Link from "next/link";
 import { AboutUs } from "../data/Data";
 import { QuickLinks } from "../data/Data";
+import ContactInfo from "../contactInfo/ContactInfo";
 
 const Footer = () => {
   const quicklinks = QuickLinks.filter((link) => link.category === "Quicklink");
   const workerlinks = QuickLinks.filter((link) => link.category === "Worker");
-  const naturalGroups = QuickLinks.filter((link)=>link.category === "Natural Groups")
-  const ministries = QuickLinks.filter((link)=>link.category === "Ministries")
+  const naturalGroups = QuickLinks.filter(
+    (link) => link.category === "Natural Groups"
+  );
+  const ministries = QuickLinks.filter(
+    (link) => link.category === "Ministries"
+  );
   return (
     <footer className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
       {/* Church Name*/}
@@ -68,14 +73,9 @@ const Footer = () => {
         </div>
 
         {/* Contact Us */}
-        <div className="lg:flex-1">
-          <h2 className="font-bold text-lg mb-3">Contact Us</h2>
-          <p>
-            1-8 Redeem Way By Slot Bus Stop, Lakowe-Adeba, Km Lekki-Epe
-            Express-Way Lakowe
-          </p>
-          <p>Phone: 234(0)812 3456 789, 234(0)812 6543 789</p>
-          <p>Email: ctlbeautifulgate@gmail.com</p>
+        <div>
+          <h3 className="font-bold py-3 text-lg">Contact</h3>
+          <ContactInfo />
         </div>
 
         {/* Quicklinks */}

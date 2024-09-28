@@ -12,7 +12,7 @@ const ElfsightInstagram = () => {
   }, []); // Ensures script runs only once after component mounts
 
   return (
-    <div>
+    <div className="relative">
       {/* Elfsight widget container */}
       <div
         className="elfsight-app-ed95e60a-d99f-4ae9-996b-ff0b33d86b3e"

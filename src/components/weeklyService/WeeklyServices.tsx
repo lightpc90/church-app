@@ -14,7 +14,7 @@ const WeeklyServices = () => {
       <div className="flex flex-wrap w-full lg:w-[80%] gap-5 items-center justify-center">
         {/* sunday service */}
         <div
-          className={`bg-slate-600 text-white w-[96%] lg:w-[600px] h-[500px] lg:h-[400px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[330px] lg:w-[600px] h-[500px] lg:h-[400px] z-30 relative`}
         >
           <Image
             src={`/guitar.jpg`}
@@ -59,7 +59,7 @@ const WeeklyServices = () => {
         </div>
         {/* Tuesday service */}
         <div
-          className={`bg-slate-600 text-white w-[300px] h-[200px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[330px] h-[200px] z-30 relative`}
         >
           <Image
             src={diggingDeep.src}
@@ -82,7 +82,7 @@ const WeeklyServices = () => {
         </div>
         {/* Thursday service */}
         <div
-          className={`bg-slate-600 text-white w-[300px] h-[200px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[330px] h-[200px] z-30 relative`}
         >
           <Image
             src={faithClinic.src}
