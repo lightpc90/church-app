@@ -59,7 +59,7 @@ const WeeklyServices = () => {
         </div>
         {/* Tuesday service */}
         <div
-          className={`bg-slate-600 text-white w-[330px] h-[200px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[330px] lg:w-[300px] h-[200px] z-30 relative`}
         >
           <Image
             src={diggingDeep.src}
@@ -82,7 +82,7 @@ const WeeklyServices = () => {
         </div>
         {/* Thursday service */}
         <div
-          className={`bg-slate-600 text-white w-[330px] h-[200px] z-30 relative`}
+          className={`bg-slate-600 text-white w-[330px] lg:w-[300px] h-[200px] z-30 relative`}
         >
           <Image
             src={faithClinic.src}

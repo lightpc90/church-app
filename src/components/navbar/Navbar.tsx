@@ -41,6 +41,7 @@ const Navbar = () => {
           >
             login
           </Link>
+          
           {/* profile picture wrapper */}
           <div className="lg:hidden">
             <MobileNavbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />

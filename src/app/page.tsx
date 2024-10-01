@@ -9,9 +9,7 @@ import banner3 from "../../public/pastorAndfamily.jpg";
 import banner4 from "../../public/fullChoir.jpg";
 import banner5 from "../../public/randomChurchPic.jpg";
 import banner6 from "../../public/randomChurchPic2.jpg";
-import ElfsightInstagram from "@/components/instagramFeed/ElfsightInstagram";
 import { HomeHeaderCarousel } from "@/components/carousels/HomeHeaderCarousel";
-import { MonthlyProgramsCarousel } from "@/components/carousels/MonthlyProgramsCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { BsCollectionPlayFill } from "react-icons/bs";
 import { TbSquareRoundedArrowRightFilled } from "react-icons/tb";
@@ -30,6 +28,7 @@ import HomeHeaderTitle from "@/components/home_resources/HomeHeaderTitle";
 import PhoneAndEmail from "@/components/home_resources/PhoneAndEmail";
 import WelcomeMessage from "@/components/home_resources/WelcomeMessage";
 import WhatNextCardsLayout from "@/components/home_resources/WhatNextCardsLayout";
+import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
 
 const Items = [
   churchSide.src,
@@ -94,7 +93,10 @@ export default function Home() {
       </div>
 
       {/* Church live and media */}
-      <div id="connect" className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden ">
+      <div
+        id="connect"
+        className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden "
+      >
         <div className="w-[400px] h-[400px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] z-0 "></div>
         <h2 className="font-bold text-xl z-10">
           Our Live Service and Messages
@@ -135,13 +137,12 @@ export default function Home() {
             <span>View More</span> <TbSquareRoundedArrowRightFilled />
           </Link>
         </div>
-        {/* Post Container */} 
-        <div className="w-[300px] lg:w-[60%] min-h-[300px] bg-slate-100">
-          <div className="w-[100%]"><LightWidget /></div>
+        {/* Post Container */}
+        <div className="w-[300px] lg:w-[60%] lg:h-[600px] bg-slate-100 m-auto">
+          <div className="h-full w-full">
+            <InstagramFeed />
+          </div>
         </div>
-
-        {/* lightWidget */}
-        
       </div>
 
       {/* locate us */}
