@@ -17,10 +17,8 @@ import Link from "next/link";
 import WeeklyServices from "../components/weeklyService/WeeklyServices";
 import MonthlyServices from "@/components/monthlyServices/MonthlyServices";
 import SocialMedia from "@/components/social-media/SocialMedia";
-import LiveStream from "@/components/livestream/LiveStream";
 import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
-import LightWidget from "@/components/instagramFeed/LightWidget"
 
 
 import HomeHeaderTitle from "@/components/home_resources/HomeHeaderTitle";
@@ -138,7 +136,7 @@ export default function Home() {
           </Link>
         </div>
         {/* Post Container */}
-        <div className="w-[300px] lg:w-[60%] lg:h-[600px] bg-slate-100 m-auto">
+        <div className="w-[340px] lg:w-[60%] lg:h-[900px] bg-slate-100 m-auto">
           <div className="h-full w-full">
             <InstagramFeed />
           </div>
@@ -152,7 +150,7 @@ export default function Home() {
           <p>Get Direction on Map</p>
         </div>
         {/* Google Map */}
-        <div className="h-[600px] lg:h-[800px] lg:w-[60%] bg-slate-700 ">
+        <div className="h-[600px] lg:h-[800px] lg:w-[60%] bg-slate-700">
           <MapComponent />
         </div>
       </div>

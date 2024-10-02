@@ -25,13 +25,13 @@ const YoutubeLive = () => {
     >
       {liveVideoId ? (
         <iframe
-          width="100%"
-          height="100%"
+          width="700"
+          height="500"
           src={`https://www.youtube.com/embed/${liveVideoId}`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title="YouTube Live Video"
-          style={{height: "100%", width: "100%", margin: "0px", padding: "0px"}}
+          style={{height: "250px", width: "350px", margin: "0px", padding: "0px"}}
         ></iframe>
       ) : (
         <div className="flex flex-col items-center text-white justify-center">

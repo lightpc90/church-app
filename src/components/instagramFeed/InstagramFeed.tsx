@@ -42,8 +42,15 @@ const InstagramFeed = async () => {
 }catch(e){
     console.error(e)
     return(
-        <div className="flex h-full items-center justify-center lg:text-xl font-bold">
+        <div className="flex flex-col w-full h-full items-center justify-center lg:text-xl font-bold p-6">
             <p>Failed to load Instagram Posts. Please try again later</p>
+<div className="grid grid-cols-3 gap-2 w-full">
+    {Array(9).fill(null).map((_, index) => (
+        <div key={index} className="w-full h-[90px] lg:h-[260px] bg-gray-600 rounded-md
+        hover:shadow-lg hover:ring ring-rose-800 cursor-pointer 
+        "></div>
+        ))}
+</div>
         </div>
     )
 }

@@ -45,7 +45,7 @@ const MapComponent = () => {
       <div className="flex flex-col w-full h-[100%]">
         <div ref={mapRef} style={{ height: "80%", width: "100%" }} className="h-[80%] w-full" />
         {/* Contact Us */}
-        <div className="p-4 bg-white shadow-md">
+        <div className="p-4 bg-white shadow-md lg:p-8">
         <ContactInfo />
         </div>
       </div>
