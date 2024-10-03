@@ -79,7 +79,9 @@ const page = () => {
             </span>
           </div>
           {/* video iFrame */}
-          <div className="w-[90%] h-[250px] lg:h-[400px] bg-slate-500"></div>
+          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800 flex items-center justify-center">
+            
+          </div>
           {/* list of Videos */}
           <div className="w-full">
             <ul className="space-y-2">
