@@ -1,38 +1,40 @@
-'use client'
+import React from "react";
+import styles from "./style.module.css";
+import logo from '../../../public/bglogo 100x100.png'
+import Image from "next/image";
 
-import { motion } from "framer-motion";
-
-const Loading = () => {
+const PageLoading = () => {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <motion.div
-        className="w-16 h-16 flex items-center justify-center relative"
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-      >
-        <motion.div
-          className="absolute w-10 h-10 bg-transparent border-4 border-indigo-600 border-solid"
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1.2, opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          style={{
-            clipPath: "polygon(50% 0%, 75% 100%, 25% 100%)", // Shape for cross
-          }}
-        />
-        <motion.div
-          className="absolute w-6 h-6 bg-indigo-600"
-          initial={{ scale: 1 }}
-          animate={{ scale: 1.5 }}
-          transition={{ repeat: Infinity, repeatType: "mirror", duration: 1 }}
-          style={{ clipPath: "polygon(50% 0%, 75% 100%, 25% 100%)" }}
-        />
-      </motion.div>
+    <div className={styles.container}>
+      <section className={styles.wrapper}>
+        <div className='absolute w-[80px] h-[80px] rounded-full bg-white overflow-hidden'>
+          <Image src={logo} alt="logo" loading="eager" className="object-cover h-full w-full" />
+        </div>
+        <div className={styles.loader}>
+          <span className={styles.one}></span>
+          <span className={styles.two}></span>
+          <span className={styles.three}></span>
+          <span className={styles.four}></span>
+          <span className={styles.five}></span>
+          <span className={styles.six}></span>
+          <span className={styles.seven}></span>
+          <span className={styles.eight}></span>
+          <span className={styles.nine}></span>
+          <span className={styles.ten}></span>
+          <span className={styles.eleven}></span>
+          <span className={styles.twelve}></span>
+          <span className={styles.thirteen}></span>
+          <span className={styles.fourteen}></span>
+          <span className={styles.fifteen}></span>
+          <span className={styles.sixteen}></span>
+          <span className={styles.seventeen}></span>
+          <span className={styles.eighteen}></span>
+          <span className={styles.nineteen}></span>
+          <span className={styles.twenty}></span>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default Loading;
+export default PageLoading;
