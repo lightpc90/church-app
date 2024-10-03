@@ -57,7 +57,7 @@ const Navbar = () => {
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
-            transition={{ duration: 0.7, ease: easeOut }}
+            transition={{ duration: 0.5, ease: easeOut }}
             className="bg-zinc-900  pt-[90px] fixed top-0 left-0 w-full h-full z-40"
           >
             {/* links */}
