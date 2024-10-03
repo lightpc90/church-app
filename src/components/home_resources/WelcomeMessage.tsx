@@ -19,10 +19,10 @@ const WelcomeMessage = () => {
           viewport={{once:true}}
           className="text-center"
         >
-          <h1 className="text-2xl text-center font-bold ">
+          <h1 className="text-2xl text-center font-bold lg:text-3xl">
             {ChurchWelcomeParagraph.title}
           </h1>
-          <h4 className="font-bold text-slate-700 mb-[50px]">
+          <h4 className="font-bold text-slate-700 mb-[50px] lg:text-2xl">
             {ChurchWelcomeParagraph.description}
           </h4>
         </motion.div>
@@ -31,7 +31,7 @@ const WelcomeMessage = () => {
           transition={{ duration: 0.5, ease: easeOut }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{once: true}}
-          className="text-justify "
+          className="text-justify lg:text-2xl"
         >
           {ChurchWelcomeParagraph.paragraph}
         </motion.p>
