@@ -1,6 +1,6 @@
 import Header from "@/components/UILayouts/Header";
 import React from "react";
-import headerImage from "../../../public/headers/Ch6.jpg";
+import headerImage from "../../../public/churchFront1.png";
 import PastorLayout from "@/components/UILayouts/PastorLayout";
 import pastorImage from "../../../public/default_dp.webp";
 import { AboutUs } from "@/components/data/Data";
