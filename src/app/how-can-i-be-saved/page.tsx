@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '@/components/UILayouts/Header'
 import { HowCanIBeSavedData } from '@/components/data/Data';
 import NewConvertForm from '@/components/UILayouts/New-convert-form';
-import headerImage from "../../../public/headers/salvation.png"
+import headerImage from "../../../public/salvation.jpg"
 
 const Page = () => {
   const title = "While we were yet sinners, Christ died for us";
