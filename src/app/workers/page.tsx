@@ -7,7 +7,7 @@ import { AiFillHome } from "react-icons/ai";
 
 const Page = () => {
   return (
-    <div className=" relative h-screen-dynamic">
+    <div className="relative" style={{height: '100dvh'}}>
       <Image
         src={bg}
         alt=""
