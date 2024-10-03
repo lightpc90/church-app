@@ -13,9 +13,9 @@ const WelcomeMessage = () => {
      
       <div className="w-full lg:w-[30%]">
         <motion.div
-          initial={{ x: `-100%` }}
-          whileInView={{ x: 0 }}
-          transition={{ duration: 0.7, ease: easeOut }}
+          initial={{ opacity: 0, scale: 0.8}}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: easeOut }}
           viewport={{once:true}}
           className="text-center"
         >
@@ -27,9 +27,9 @@ const WelcomeMessage = () => {
           </h4>
         </motion.div>
         <motion.p
-          initial={{ opacity: 0 }}
-          transition={{ delay: 0.3, duration: 0.6, ease: easeOut }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.5, ease: easeOut }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{once: true}}
           className="text-justify "
         >
@@ -38,9 +38,9 @@ const WelcomeMessage = () => {
       </div>
       {/* welcome image */}
       <motion.div
-        initial={{ opacity: 0 }}
-        transition={{ delay: 0.3, duration: 0.6, ease: easeOut }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.5, ease: easeOut }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{once: true}}
         className="w-full lg:w-[40%] rounded-md overflow-hidden shadow-md h-[400px] lg:h-[600px] bg-slate-300"
       >
