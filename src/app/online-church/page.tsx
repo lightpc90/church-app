@@ -14,12 +14,15 @@ const page = () => {
         imageUrl={onlineChurch.src}
       />
       <p className="font-bold text-2xl">Watch Us Live</p>
-      <div className="bg-slate-500 w-[80%] h-[250px] lg:h-[400px]">
+      <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800 flex items-center justify-center">
         <LiveProgram />
       </div>
 
       {/* Audio and Video Messages */}
-      <div id="media" className="flex flex-col items-center justify-center bg-white w-full lg:px-[230px]">
+      <div
+        id="media"
+        className="flex flex-col items-center justify-center bg-white w-full lg:px-[230px]"
+      >
         {/* Audio  Messages */}
         <div
           id="audio"
