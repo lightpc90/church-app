@@ -1,5 +1,7 @@
+'use client'
+
 import Link from 'next/link'
-import React from 'react'
+import {useState} from 'react'
 
 const Menu = () => {
   return (
