@@ -5,7 +5,7 @@ const NewConvertForm = () => {
   
   };
   return (
-    <div className="flex flex-col items-center gap-3 w-[80%] lg:w-[50%] justify-center ">
+    <div className="flex flex-col items-center gap-3 w-[80%] lg:w-[40%] justify-center ">
       <h1 className="font-bold text-lg text-blue-950">New Convert Form</h1>
       <div className="w-full">
         <div className="flex flex-col mb-2">

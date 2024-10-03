@@ -3,7 +3,7 @@ import React from "react";
 const TestimonyForm = () => {
   const handleSubmit = () => {};
   return (
-    <div className="flex flex-col items-center gap-3 w-[80%] lg:w-[50%] ">
+    <div className="flex flex-col items-center gap-3 w-[80%] lg:w-[40%] ">
       <h1 className="font-bold text-lg text-blue-950">Testimony Form</h1>
       <div className="w-full">
         <div className="flex flex-col mb-2">
