@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "@/components/UILayouts/Header";
-import headerImage from "../../../public/headers/Ch6.jpg";
+import headerImage from "../../../public/Ch1.jpg";
 import MapComponent from "@/components/map/GoogleMap";
 import EnquiryForm from "@/components/UILayouts/EnquiryForm";
 
