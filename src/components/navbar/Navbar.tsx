@@ -6,6 +6,8 @@ import Links from "./Links";
 import Link from "next/link";
 import MobileNavbar from "./MobileNavbar";
 
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+
 import { easeOut, motion, AnimatePresence } from "framer-motion";
 
 import { AiFillHome } from "react-icons/ai";
@@ -25,25 +27,24 @@ import SocialMedia from "../social-media/SocialMedia";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <>
+    <div>
       <div
         className="fixed top-0 left-0 py-2 px-[20px] 
       lg:px-[100px] bg-zinc-900 opacity-80 text-white 
       flex items-center justify-between z-50 w-[100vw] overflow-hidden"
       >
         <Logo />
-
         <Links />
         <div className="flex gap-3 items-center ">
-          {/*login*/}
-          <Link
-            href={"/loginPage"}
-            className="hidden lg:flex font-bold bg-blue-900 py-2 px-4 rounded-md"
-          >
-            login
-          </Link>
-
-          {/* profile picture wrapper */}
+          {/* authentication */}
+          <header>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
           <div className="lg:hidden">
             <MobileNavbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
@@ -178,7 +179,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 
