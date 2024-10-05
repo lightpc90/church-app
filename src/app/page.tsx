@@ -129,14 +129,14 @@ export default function Home() {
 
       {/* Instagram Posts */}
       <div className="w-full flex flex-col py-6 gap-3 items-center bg-[#D9D9D9]">
-        <div className="w-full lg:w-[60%] px-5 text-start text-[#A11E1E] font-bold text-sm lg:text-xl ">
-          <p>Our Recent Instagram Posts</p>
-          <Link href={`/`} className="flex gap-2 items-center">
-            <span>View More</span> <TbSquareRoundedArrowRightFilled />
-          </Link>
-        </div>
         {/* Post Container */}
-        <div className="w-[340px] lg:w-[60%] lg:h-[900px] bg-slate-100 m-auto">
+        <div className="w-[340px] lg:w-[50%] m-auto">
+          <div className="w-full lg:w-[60%] py-5 text-start text-[#A11E1E] font-bold text-sm lg:text-xl ">
+            <p>Our Recent Instagram Posts</p>
+            <Link href={`/`} className="flex gap-2 items-center">
+              <span>View More</span> <TbSquareRoundedArrowRightFilled />
+            </Link>
+          </div>
           <div className="h-full w-full">
             <InstagramFeed />
           </div>
