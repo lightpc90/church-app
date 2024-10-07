@@ -20,13 +20,15 @@ import SocialMedia from "@/components/social-media/SocialMedia";
 import LiveProgram from "@/components/livestream/LiveProgram";
 import MapComponent from "@/components/map/GoogleMap";
 
-
 import HomeHeaderTitle from "@/components/home_resources/HomeHeaderTitle";
 
 import PhoneAndEmail from "@/components/home_resources/PhoneAndEmail";
 import WelcomeMessage from "@/components/home_resources/WelcomeMessage";
 import WhatNextCardsLayout from "@/components/home_resources/WhatNextCardsLayout";
 import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
+import InstagramPost from "@/components/instagramFeed/InstagramPosts";
+
+import { PostType } from "@/components/instagramFeed/InstagramPosts";
 
 const Items = [
   churchSide.src,
@@ -39,7 +41,32 @@ const Items = [
 ];
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
-export default function Home() {
+
+
+// instagram data fetching
+async function getIGData() {
+  const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
+  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`;
+   try {
+    const res = await fetch(url);
+    console.log("res at page", res)
+    const data = await res.json();
+    console.log("data at page", data)
+
+    if (!res.ok || data?.data.length < 1) {
+      throw new Error("Failed to fetch instagram posts");
+    }
+    // filter only the 9 most recent posts
+    const posts: PostType[] = data.data.slice(0, 9);
+    console.log("instagram data fetched...", posts);
+    return posts;
+  }catch(e){
+    console.log("error at page: ", e)
+  }
+}
+
+export default async function Home() {
+  const recentPosts = await getIGData()
   return (
     <main className="flex flex-col items-center w-[100vw] overflow-x-hidden">
       {/* Banner */}
@@ -138,8 +165,9 @@ export default function Home() {
             </Link>
           </div>
           <div className="h-full w-full">
-            <InstagramFeed />
+            {/* <InstagramFeed /> */}
           </div>
+          <InstagramPost posts={recentPosts}/>
         </div>
       </div>
 
