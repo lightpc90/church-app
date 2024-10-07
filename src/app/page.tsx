@@ -50,7 +50,7 @@ async function getIGData() {
    try {
     const res = await fetch(url);
     console.log("res at page", res)
-    const text = res.text()
+    const text = await res.text()
     console.log("text error",text)
     const data = await res.json();
     console.log("data at page", data)
