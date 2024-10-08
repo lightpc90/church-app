@@ -46,11 +46,13 @@ const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 // instagram data fetching
 async function getIGData() {
   const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
+  console.log('accesss token: ', accessToken)
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`;
    try {
     const res = await fetch(url);
-    console.log("res at page", res)
-    const data = await res.json();
+   const textResponse = await res.text()
+   console.log('text response: ', textResponse)
+    const data = JSON.parse(textResponse);
     console.log("data at page", data)
 
     if (!res.ok || data?.data.length < 1) {
