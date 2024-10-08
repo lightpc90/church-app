@@ -50,9 +50,8 @@ async function getIGData() {
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`;
    try {
     const res = await fetch(url);
-   const textResponse = await res.text()
-   console.log('text response: ', textResponse)
-    const data = JSON.parse(textResponse);
+    console.log("res at page", res)
+    const data = await res.json();
     console.log("data at page", data)
 
     if (!res.ok || data?.data.length < 1) {
