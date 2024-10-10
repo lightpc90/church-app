@@ -4,6 +4,7 @@ import { DeptsEnum } from "../enums/Enums";
 import { TfiVideoClapper } from "react-icons/tfi";
 import { LiaPrayingHandsSolid } from "react-icons/lia";
 import { GrAnnounce } from "react-icons/gr";
+import pastorImage from "../../../public/default_dp.webp"
 
 export const workersData = [
   {
@@ -1001,5 +1002,19 @@ export const Cards = [
     linkref: `/online-giving`,
     linkname: `Give Generously`,
     bg: `bg-sky-950`,
+  },
+];
+
+const pastorate = [
+  { name: "Pastor Egra Akpofure (PICP)", image: pastorImage.src, rank: 1 },
+  {
+    name: "Pastor Deji Adeniyi (APICP)",
+    image: pastorImage.src,
+    rank: 2
+  },
+  {
+    name: "Pastor Oluseye Opasanya",
+    image: pastorImage.src,
+    rank: 3
   },
 ];
