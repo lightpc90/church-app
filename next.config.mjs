@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: "*.cdninstagram.com", // Allows any CDN subdomain
         pathname: "/**", // Matches all paths
       },
+      {
+        protocol: "https",
+        hostname: "*.fbcdn.net", // Facebook CDNs may also serve images
+        pathname: "/**",
+      },
     ],
   },
 };
