@@ -35,7 +35,7 @@ const InstagramFeed = async () => {
             rel="noopener noreferrer"
           >
             <Image
-              src={post.thumbnail_url}
+              src={post.thumbnail_url || post.media_url}
               alt={post.caption || `Instagram post`}
               width={400}
               height={400}
