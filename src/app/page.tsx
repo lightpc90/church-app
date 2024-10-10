@@ -162,9 +162,9 @@ export default async function Home() {
         <div className="w-[340px] lg:w-[50%] m-auto">
           <div className="w-full lg:w-[60%] py-5 text-start text-[#A11E1E] font-bold text-sm lg:text-xl ">
             <p>Our Recent Instagram Posts</p>
-            <Link href={`/`} className="flex gap-2 items-center">
+            {/* <Link href={`/`} className="flex gap-2 items-center">
               <span>View More</span> <TbSquareRoundedArrowRightFilled />
-            </Link>
+            </Link> */}
           </div>
           <div className="h-full w-full">
             <InstagramFeed />
