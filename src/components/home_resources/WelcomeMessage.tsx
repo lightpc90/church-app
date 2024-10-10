@@ -9,7 +9,7 @@ import { easeIn, easeOut, motion } from "framer-motion";
 
 const WelcomeMessage = () => {
   return (
-    <div className="flex flex-wrap gap-4 lg:gap-10 w-[100vw] overflow-hidden p-[20px] items-center justify-center my-10 ">
+    <div id="intro" className="flex flex-wrap gap-4 lg:gap-10 w-[100vw] overflow-hidden p-[20px] items-center justify-center my-10 ">
      
       <div className="w-full lg:w-[30%]">
         <motion.div

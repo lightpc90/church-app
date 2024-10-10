@@ -29,9 +29,9 @@ const HomeHeaderTitle = () => {
         <Link href={`/#connect`} className="bg-rose-800 w-[150px] lg:w-fit  p-2 lg:py-3 lg:px-4 rounded-md">
           Connect with Us
         </Link>
-        <button className="border w-[150px] lg:w-fit p-2 lg:py-3  lg:px-4 rounded-md">
+        <Link href="#intro" className="border w-[150px] lg:w-fit p-2 lg:py-3 text-center  lg:px-4 rounded-md">
           Learn More
-        </button>
+        </Link>
       </div>
     </div>
   );
