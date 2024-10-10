@@ -19,7 +19,7 @@ const InstagramProfile: React.FC = async () => {
     const data: InstagramAccountInfo = await response.json();
     return (
       <div className="w-full bg-zinc-950 text-white flex flex-col p-4 rounded-md shadow-md mb-2 overflow-hidden relative">
-        <div className="absolute h-[300px] w-[300px] rounded-full top-[-70%] lg:top-[-70%] right-[-50%] lg:right-[-10%] bg-zinc-900 z-[1] " ></div>
+        <div className="absolute h-[300px] w-[300px] rounded-full top-[-70%] lg:top-[-70%] right-[-50%] lg:right-[-10%] bg-zinc-900 z-[1] cycling" ></div>
         <div className="flex gap-2 items-center z-[3]">
           <Image
             src={data.profile_picture_url}

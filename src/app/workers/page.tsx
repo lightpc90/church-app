@@ -7,7 +7,7 @@ import { AiFillHome } from "react-icons/ai";
 
 const Page = () => {
   return (
-    <div className="relative" style={{height: '100dvh'}}>
+    <div className="relative" style={{ height: "100dvh" }}>
       <Image
         src={bg}
         alt=""
@@ -22,12 +22,17 @@ const Page = () => {
           <span>
             <IoMdArrowRoundBack size={25} />
           </span>
-          <span><AiFillHome size={25}/></span>
+          <span>
+            <AiFillHome size={25} />
+          </span>
         </Link>
         <div className="flex flex-col items-center gap-1 z-30">
           <h3 className="text-white">RCCG Beautiful Gate, Lakowe</h3>
           <p className="text-[#EE7575]">Workers&apos; space</p>
-          <Link href={`/workers/create-account`} className="block py-2 px-10 bg-white text-slate-950 font-bold shadow-lg rounded-md z-30">
+          <Link
+            href={`/workers/create-account`}
+            className="block py-2 px-10 bg-white text-slate-950 font-bold shadow-lg rounded-md z-30"
+          >
             Register With Gmail
           </Link>
           <div className="flex gap-2 items-center text-white">

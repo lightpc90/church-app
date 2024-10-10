@@ -111,11 +111,11 @@ export default async function Home() {
         {/* Our Weekly Services */}
         <div className="w-full bg-[#B9C4D4] lg:flex-1 mt-[20px] lg:mt-[0px] lg:h-[800px] relative overflow-hidden">
           <WeeklyServices />
-          <div className="w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] lg:top-[-150px] left-[-50%] lg:left-[-30%] "></div>
+          <div className="w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] lg:top-[-150px] left-[-50%] lg:left-[-30%] cycling"></div>
         </div>
         {/* Our Monthy Services */}
         <div className="bg-[#02271C] w-full lg:h-[800px] lg:flex-1 relative overflow-hidden lg:mt-[200px]">
-          <div className="w-[600px] h-[600px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 "></div>
+          <div className="w-[600px] h-[600px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 cycling"></div>
           <MonthlyServices />
         </div>
       </div>
@@ -125,7 +125,7 @@ export default async function Home() {
         id="connect"
         className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden "
       >
-        <div className="w-[400px] h-[400px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] z-0 "></div>
+        <div className="w-[400px] h-[400px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] z-0 cycling"></div>
         <h2 className="font-bold text-xl z-10">
           Our Live Service and Messages
         </h2>

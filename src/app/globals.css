@@ -11,16 +11,7 @@ html, body{
 }
 
 
-  a[href="https://elfsight.com/instagram-feed-instashow/?utm_source=websites&utm_medium=clients&utm_content=instashow&utm_term=localhost&utm_campaign=free-widget"]{
-    display: none;
-    opacity: 0%;
-    visibility: hidden;
-    background-color: black;
-}
 
-.eapps-instagram-feed-data-status-container{
-  display: none; 
-}
 
 @keyframes slight-slide {
   0% {
@@ -36,6 +27,43 @@ html, body{
 
 .animate-slide {
   animation: slight-slide 20s ease-in-out infinite; /* Adjust speed and loop */
+}
+
+.cycling{
+    animation: rotate 5s linear infinite;
+}
+
+.cycling::after{
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    animation: beaming 5s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+        }
+}
+
+@keyframes beaming {
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+    
 }
 
 @layer base {
