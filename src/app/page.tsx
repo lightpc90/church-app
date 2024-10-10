@@ -167,9 +167,9 @@ export default async function Home() {
             </Link>
           </div>
           <div className="h-full w-full">
-            {/* <InstagramFeed /> */}
+            <InstagramFeed />
           </div>
-          <InstagramPost posts={recentPosts}/>
+          {/* <InstagramPost posts={recentPosts}/> */}
         </div>
       </div>
 
