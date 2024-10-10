@@ -39,7 +39,7 @@ const InstagramFeed = async () => {
               alt={post.caption || `Instagram post`}
               width={400}
               height={400}
-              className="w-full h-auto rounded-md shadow-md"
+              className="w-full h-full rounded-md shadow-md"
             />
           </Link>
         ))}
