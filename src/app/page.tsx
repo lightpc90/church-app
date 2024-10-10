@@ -48,6 +48,7 @@ async function getIGData() {
   const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
   console.log('accesss token: ', accessToken)
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`;
+  console.log(url)
    try {
     const res = await fetch(url);
     console.log("res at page", res)
