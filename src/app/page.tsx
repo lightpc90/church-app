@@ -29,6 +29,7 @@ import InstagramFeed from "@/components/instagramFeed/InstagramFeed";
 import InstagramPost from "@/components/instagramFeed/InstagramPosts";
 
 import { PostType } from "@/components/instagramFeed/InstagramPosts";
+import InstagramProfile from "@/components/instagramFeed/InstagramProfile";
 
 const Items = [
   churchSide.src,
@@ -167,6 +168,7 @@ export default async function Home() {
             </Link> */}
           </div>
           <div className="h-full w-full">
+            <InstagramProfile/>
             <InstagramFeed />
           </div>
           {/* <InstagramPost posts={recentPosts}/> */}
