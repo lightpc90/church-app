@@ -45,31 +45,31 @@ const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 
 // instagram data fetching
-async function getIGData() {
-  const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
-  console.log('accesss token: ', accessToken)
-  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`;
-  console.log(url)
-   try {
-    const res = await fetch(url);
-    console.log("res at page", res)
-    const data = await res.json();
-    console.log("data at page", data)
+// async function getIGData() {
+//   const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
+//   console.log('accesss token: ', accessToken)
+//   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`;
+//   console.log(url)
+//    try {
+//     const res = await fetch(url);
+//     console.log("res at page", res)
+//     const data = await res.json();
+//     console.log("data at page", data)
 
-    if (!res.ok || data?.data.length < 1) {
-      throw new Error("Failed to fetch instagram posts");
-    }
-    // filter only the 9 most recent posts
-    const posts: PostType[] = data.data.slice(0, 9);
-    console.log("instagram data fetched...", posts);
-    return posts;
-  }catch(e){
-    console.log("error at page: ", e)
-  }
-}
+//     if (!res.ok || data?.data.length < 1) {
+//       throw new Error("Failed to fetch instagram posts");
+//     }
+//     // filter only the 9 most recent posts
+//     const posts: PostType[] = data.data.slice(0, 9);
+//     console.log("instagram data fetched...", posts);
+//     return posts;
+//   }catch(e){
+//     console.log("error at page: ", e)
+//   }
+// }
 
 export default async function Home() {
-  const recentPosts = await getIGData()
+  // const recentPosts = await getIGData()
   return (
     <main className="flex flex-col items-center w-[100vw] overflow-x-hidden">
       {/* Banner */}

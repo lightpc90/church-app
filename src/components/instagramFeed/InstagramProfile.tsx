@@ -15,7 +15,7 @@ const InstagramProfile: React.FC = async () => {
 
   // Fetch account information
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {next: {revalidate: 3600}});
     const data: InstagramAccountInfo = await response.json();
     return (
       <div className="w-full bg-zinc-950 text-white flex flex-col p-4 rounded-md shadow-md mb-2 overflow-hidden relative">
