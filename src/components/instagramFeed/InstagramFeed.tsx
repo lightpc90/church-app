@@ -2,22 +2,31 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+type MediaItem = {
+  id: string;
+  media_type: "IMAGE" | "VIDEO";
+  media_url: string;
+  thumbnail_url?: string;
+};
+
 type InstagramPost = {
   id: string;
-  caption: string;
-  media_url: string;
-  thumbnail_url: string;
+  caption?: string;
+  media_url?: string;
+  thumbnail_url?: string;
   permalink: string;
+  media_type: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+  children?: { data: MediaItem[] };
 };
 const InstagramFeed = async () => {
   const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
-  console.log("access token: ", process.env.INSTAGRAM_ACCESS_TOKEN)
-  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`;
+  console.log("access token: ", process.env.INSTAGRAM_ACCESS_TOKEN);
+  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url,media_type&access_token=${accessToken}`;
   try {
     const res = await fetch(url, { next: { revalidate: 10 } });
-    console.log("res ", res)
+    console.log("res ", res);
     const data = await res.json();
-    console.log("data ", data)
+    console.log("data ", data);
 
     if (!res.ok || data?.data.length < 1) {
       throw new Error("Failed to fetch instagram posts");
@@ -25,24 +34,51 @@ const InstagramFeed = async () => {
     // filter only the 9 most recent posts
     const posts: InstagramPost[] = data.data.slice(0, 9);
     console.log("instagram data fetched...", posts);
+    // Helper function to get the media to display
+    const getDisplayMedia = (post: InstagramPost) => {
+      if (post.media_type === "CAROUSEL_ALBUM" && post.children?.data?.length) {
+        // If it's a carousel, use the first item's thumbnail_url or media_url
+        const firstItem = post.children.data[0];
+        if (firstItem.media_type === "VIDEO" && firstItem.thumbnail_url) {
+          return firstItem.thumbnail_url;
+        }
+        return firstItem.media_url;
+      }
+
+      // For single video posts, use the thumbnail_url
+      if (post.media_type === "VIDEO" && post.thumbnail_url) {
+        return post.thumbnail_url;
+      }
+
+      // For image posts, use the media_url
+      if (post.media_type === "IMAGE") {
+        return post.media_url;
+      }
+
+      // Default fallback if no media is found
+      return "";
+    };
     return (
       <div className="grid grid-cols-3 gap-2">
-        {posts.map((post) => (
-          <Link
-            key={post.id}
-            href={post.permalink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src={post.thumbnail_url || post.media_url}
-              alt={post.caption || `Instagram post`}
-              width={400}
-              height={400}
-              className="w-full h-full rounded-md shadow-md"
-            />
-          </Link>
-        ))}
+        {posts.map((post) => {
+          const mediaUrl = getDisplayMedia(post);
+          return (
+            <Link
+              key={post.id}
+              href={post.permalink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={mediaUrl || ""}
+                alt={post.caption || `Instagram post`}
+                width={400}
+                height={400}
+                className="w-full h-full rounded-md shadow-md"
+              />
+            </Link>
+          );
+        })}
       </div>
     );
   } catch (e) {
