@@ -4,14 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body{
+html,
+body {
   box-sizing: border-box;
   width: 100vw;
   overflow-x: hidden;
 }
-
-
-
 
 @keyframes slight-slide {
   0% {
@@ -29,41 +27,65 @@ html, body{
   animation: slight-slide 20s ease-in-out infinite; /* Adjust speed and loop */
 }
 
-.cycling{
-    animation: rotate 5s linear infinite;
+.cycling {
+  animation: rotate 5s linear infinite;
 }
 
-.cycling::after{
-    content: '';
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-    top: 0; 
-    left: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
-    animation: beaming 5s linear infinite;
+.cyclingReverse {
+  animation: reverseRotate 9s linear infinite;
+}
+
+.cycling::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  animation: beaming 5s linear infinite;
+}
+.cyclingReverse::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  animation: beaming 5s linear infinite;
 }
 
 @keyframes rotate {
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-        }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes reverseRotate {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes beaming {
-    0%{
-        filter: hue-rotate(0deg);
-    }
-    100%{
-        filter: hue-rotate(360deg);
-    }
-    
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 
 @layer base {
