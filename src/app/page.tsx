@@ -115,7 +115,7 @@ export default async function Home() {
         </div>
         {/* Our Monthy Services */}
         <div className="bg-[#02271C] w-full lg:h-[800px] lg:flex-1 relative overflow-hidden lg:mt-[200px]">
-          <div className="w-[600px] h-[600px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 cyclingReverse"></div>
+          <div className="w-[600px] h-[600px] lg:w-[900px] lg:h-[900px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 cyclingReverse"></div>
           <MonthlyServices />
         </div>
       </div>
@@ -125,7 +125,7 @@ export default async function Home() {
         id="connect"
         className="bg-[#B1A4A4] py-16 w-full flex flex-col gap-7 items-center relative overflow-hidden "
       >
-        <div className="w-[400px] h-[400px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] z-0 cycling"></div>
+        <div className="w-[400px] h-[400px] lg:w-[1000px] lg:h-[1000px] rounded-full bg-[#A49999] absolute bottom-[-90px] right-[-50%] lg:right-[-20%] z-0 cycling"></div>
         <h2 className="font-bold text-xl z-10">
           Our Live Service and Messages
         </h2>
