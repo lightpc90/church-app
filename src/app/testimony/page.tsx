@@ -10,7 +10,7 @@ const Page = () => {
         <Header imageUrl={TestimonyImage.src} title='Share Your Testimony With Us'/>
         {/* content */}
         <div className='p-5 text-center space-y-2'>
-            <h3 className='font-bold text-xl lg:text-3xl'>The Lord is Good and His mercies Endure forever</h3>
+            <h3 className='font-bold text-xl lg:text-3xl'>The Lord is good and His mercies endure forever</h3>
             <p className='text-blue-950 lg:font-bold lg:text-xl'>Kindly fill the form below to share with us what God has done for you</p>
         </div>
         {/* Testimony Form */}

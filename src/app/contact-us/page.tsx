@@ -11,7 +11,7 @@ const page = () => {
       {/* content */}
       <div className="px-5 py-10">
         <div>
-          <div className="text-center">
+          <div className="text-center text-lg">
             <span className="text-rose-800 font-bold">RCCG Beautiful Gate</span>{" "}
             is home for all. We are glad to have you
           </div>
