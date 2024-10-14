@@ -63,17 +63,24 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videos }) => {
 
       <ul className="space-y-2">
         {videos?.map((video, index) => (
-          <li key={index} className=" bg-[#FDF9F9] p-2 flex gap-2 items-center">
-              <button
-                className="flex gap-2 items-center overflow-clip "
-                onClick={() => handleVideoSelect(video.resourceId.videoId)}
-              >
-                <span>
-                  <BiSolidMoviePlay size={25} />
-                </span>
-                {1 + index}
-                <span className="flex text-start">{video.title}</span>
-              </button>
+          <li
+            key={index}
+            className={`p-2 flex gap-2 items-center${
+              selectedVideoId === video.resourceId.videoId
+                ? `bg-gray-950 text-rose-800 shadow-md rounded-lg`
+                : `bg-[#FDF9F9]`
+            }`}
+          >
+            <button
+              className="flex gap-2 items-center overflow-clip"
+              onClick={() => handleVideoSelect(video.resourceId.videoId)}
+            >
+              <span>
+                <BiSolidMoviePlay size={25} />
+              </span>
+              {1 + index}
+              <span className="flex text-start">{video.title}</span>
+            </button>
           </li>
         ))}
       </ul>
