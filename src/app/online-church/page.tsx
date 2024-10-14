@@ -1,12 +1,60 @@
 import LiveProgram from "@/components/livestream/LiveProgram";
 import Header from "@/components/UILayouts/Header";
-import React from "react";
-import onlineChurch from "../../../public/headers/online-church.png"
+import React, { Suspense } from "react";
+import onlineChurch from "../../../public/headers/online-church.png";
 import { FiSearch } from "react-icons/fi";
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { HiMiniPlayCircle } from "react-icons/hi2";
+import VideoPlayer from "./VideoPlayer";
 
-const page = () => {
+// Define types for the API response
+interface VideoSnippet {
+  title: string;
+  resourceId: {
+    videoId: string;
+  };
+  thumbnails: {
+    default: {
+      url: string;
+    };
+  };
+}
+
+interface YouTubeApiResponse {
+  items: { snippet: VideoSnippet }[];
+  nextPageToken?: string;
+}
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY; // Replace with your actual API key
+const PLAYLIST_ID = "PL3jUwf3qCxnwmTaDwDm3PKC3w5UDaSfIQ"; // Replace with your playlist ID
+const MAX_RESULTS = 50; // Maximum is 50 per request
+
+const playlistVideos = async () => {
+  let url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=${MAX_RESULTS}&playlistId=${PLAYLIST_ID}&key=${API_KEY}`;
+  let videos: VideoSnippet[] = [];
+  let nextPageToken = "";
+  try {
+    do {
+      let response = await fetch(`${url}&pageToken=${nextPageToken}`, {
+        next: { revalidate: 36000 },
+      });
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+      let data: YouTubeApiResponse = await response.json();
+      const fetchedVideos = data.items.map((item) => item.snippet);
+      videos = [...videos, ...fetchedVideos];
+      console.log("videos fetched: ", videos);
+      nextPageToken = data.nextPageToken || "";
+    } while (nextPageToken);
+
+    return videos;
+  } catch (e) {
+    console.log("failed! ", e);
+  }
+};
+
+const page = async () => {
+  const videoMessages = await playlistVideos();
   return (
     <div className="bg-[#D9D9D9] flex flex-col items-center justify-center gap-5 mb-10">
       <Header
@@ -67,44 +115,7 @@ const page = () => {
         {/*  Video Messages */}
         <div id="video" className="flex flex-col items-center gap-3 w-full">
           <h2>Our Video Messages</h2>
-          <div className="flex bg-[#FDF9F9] rounded-full relative overflow-hidden">
-            <input
-              type="text"
-              placeholder="Search Video Messages"
-              className="w-[90%] px-5 py-2 bg-[#FDF9F9] outline-none"
-            />
-            {/* search icon */}
-            <span className="absolute top-[50%] right-2 translate-y-[-50%] ">
-              <FiSearch size={25} />
-            </span>
-          </div>
-          {/* video iFrame */}
-          <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800 flex items-center justify-center">
-            
-          </div>
-          {/* list of Videos */}
-          <div className="w-full">
-            <ul className="space-y-2">
-              <li className=" bg-[#FDF9F9] p-2 flex gap-2 items-center">
-                <span>
-                  <BiSolidMoviePlay size={25} />
-                </span>
-                1
-              </li>
-              <li className=" bg-[#FDF9F9] p-2 flex gap-2 items-center">
-                <span>
-                  <BiSolidMoviePlay size={25} />
-                </span>
-                2
-              </li>
-              <li className=" bg-[#FDF9F9] p-2 flex gap-2 items-center">
-                <span>
-                  <BiSolidMoviePlay size={25} />
-                </span>
-                3
-              </li>
-            </ul>
-          </div>
+          <VideoPlayer videos={videoMessages}/>
         </div>
       </div>
     </div>
