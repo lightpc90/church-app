@@ -921,8 +921,8 @@ export const Events = [
 export const AboutUs={
 title: "About Us",
 body: `
-RCCG, Beautiful Gate Parish, Lakowe. We are a parish of Redeemed Christian Church
-of God, zone 5, Lagos Province 114 Headquarters, located at Lakowe, Lagos. We're a
+RCCG, Beautiful Gate Parish. We are a parish of Redeemed Christian Church
+of God, Lagos Province 114 Headquarters, located at Lakowe, Lagos. We're a
 diverse and welcoming community devoted to faith, fellowship, and love.
 Our vibrant worship services, engaging programmes, and outreach
 initiatives are designed to nurture spiritual growth and foster
