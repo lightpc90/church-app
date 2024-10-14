@@ -16,7 +16,7 @@ interface VideoSnippet {
 }
 
 interface VideoPlayerProps {
-  videos: VideoSnippet[];
+  videos: VideoSnippet[] | undefined;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ videos }) => {
@@ -34,26 +34,26 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videos }) => {
   };
 
   return (
-    <div className="w-full ">
+    <div className="w-full flex flex-col items-center ">
       {/* video frame */}
       {selectedVideoId && (
-        <div>
+        <div className="w-full lg:w-[70%]">
           <iframe
             src={`https://www.youtube.com/embed/${selectedVideoId}`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            className="w-full h-[300px]"
+            className="w-full h-[300px] lg:h-[700px] aspect-video"
           ></iframe>
         </div>
       )}
       {/* Search component */}
-      <div className="flex bg-[#FDF9F9] rounded-full relative overflow-hidden my-4">
+      <div className="flex lg:w-[700px] bg-[#FDF9F9] lg:mt-10 rounded-full relative overflow-hidden my-4">
         <input
           type="text"
           placeholder="Search Video Messages"
-          className="w-[90%] px-5 py-2 bg-[#FDF9F9] outline-none"
+          className="w-[90%] px-5 py-2 lg:py-4 bg-[#FDF9F9] outline-none"
         />
         {/* search icon */}
         <span className="absolute top-[50%] right-2 translate-y-[-50%] ">

@@ -20,19 +20,18 @@ const YoutubeLive = () => {
   }, [apiKey, channelId]);
 
   return (
-    <div className="w-[100%] h-[100%] flex flex-col justify-center"
- 
-    >
+    <div className="w-[100%] h-[100%] flex flex-col items-center">
       {liveVideoId ? (
-        <iframe
-          width="700"
-          height="500"
-          src={`https://www.youtube.com/embed/${liveVideoId}`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Live Video"
-          style={{height: "250px", width: "350px", margin: "0px", padding: "0px"}}
-        ></iframe>
+        <div className="w-full lg:w-[100%]">
+          <iframe
+            src={`https://www.youtube.com/embed/${liveVideoId}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="YouTube Live Video"
+            className="w-full h-[300px] lg:h-[700px] aspect-video"
+            // style={{height: "250px", width: "350px", margin: "0px", padding: "0px"}}
+          ></iframe>
+        </div>
       ) : (
         <div className="flex flex-col items-center text-white justify-center">
           <h3>Youtube</h3>

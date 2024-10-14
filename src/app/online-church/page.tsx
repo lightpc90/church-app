@@ -62,21 +62,21 @@ const page = async () => {
         imageUrl={onlineChurch.src}
       />
       <p className="font-bold text-2xl">Watch Us Live</p>
-      <div className="w-[90vw] h-[250px] lg:w-[60vw] lg:h-[500px] bg-slate-800 flex items-center justify-center">
+      <div className="w-full lg:w-[70%]">
         <LiveProgram />
       </div>
 
       {/* Audio and Video Messages */}
       <div
         id="media"
-        className="flex flex-col items-center justify-center bg-white w-full lg:px-[230px]"
+        className="flex flex-col lg:mt-[60px] items-center justify-center bg-white w-full lg:px-[230px]"
       >
         {/* Audio  Messages */}
         <div
           id="audio"
-          className="flex flex-col items-center gap-3 mb-10 w-full"
+          className="flex flex-col items-center lg:py-10 gap-3 mb-10 w-full"
         >
-          <h2>Our Audio Messages</h2>
+          <h2 className="font-bold lg:text-2xl">Our Audio Messages</h2>
           <div className="flex bg-[#FDF9F9] rounded-full relative overflow-hidden">
             <input
               type="text"
@@ -114,8 +114,8 @@ const page = async () => {
         </div>
         {/*  Video Messages */}
         <div id="video" className="flex flex-col items-center gap-3 w-full">
-          <h2>Our Video Messages</h2>
-          <VideoPlayer videos={videoMessages}/>
+          <h2 className="font-bold lg:text-2xl pt-10 pb-5">Our Video Messages</h2>
+          <VideoPlayer videos={videoMessages} />
         </div>
       </div>
     </div>
