@@ -72,7 +72,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videos }) => {
                   <BiSolidMoviePlay size={25} />
                 </span>
                 {1 + index}
-                <span>{video.title}</span>
+                <span className="flex text-start">{video.title}</span>
               </button>
           </li>
         ))}
