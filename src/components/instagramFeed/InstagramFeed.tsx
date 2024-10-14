@@ -34,6 +34,7 @@ const InstagramFeed = async () => {
     // Helper function to get the media to display
     const getDisplayMedia = (post: InstagramPost) => {
       if (post.media_type === "CAROUSEL_ALBUM" && post.children?.data?.length) {
+        if(post.media_url){return post.media_url}
         // If it's a carousel, use the first item's thumbnail_url or media_url
         const firstItem = post.children.data[0];
         if (firstItem.media_type === "VIDEO" && firstItem.thumbnail_url) {
