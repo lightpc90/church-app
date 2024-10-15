@@ -33,7 +33,7 @@ const YoutubeLive = () => {
           ></iframe>
         </div>
       ) : (
-        <div className="flex flex-col items-center text-white justify-center">
+        <div className="flex flex-col items-center text-white justify-center h-[340px] w-[500px] bg-slate-900">
           <h3>Youtube</h3>
           <p>No live video available at the moment.</p>
         </div>
