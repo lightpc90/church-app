@@ -78,7 +78,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videos }) => {
           <FiSearch size={25} />
         </span>
       </div>
-      <ul className="space-y-2">
+      <ul className="space-y-2 h-[500px] overflow-auto">
         {searchList
           ? searchList.length > 0 &&
             searchList.map((video, index) => (
