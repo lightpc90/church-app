@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
     // Save the form data to the FollowUp table
     const followUp = await prisma.followUp.create({
-      data: { name, email, address },
+      data: { name, email, address }
     });
 
     // Send WhatsApp message using Twilio
