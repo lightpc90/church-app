@@ -10,11 +10,11 @@ const twilioClient = new Twilio(accountSid, authToken);
 
 export async function POST(req: Request) {
   try {
-    const { name, email, address } = await req.json();
+    const { name, phone, email, address } = await req.json();
 
     // Save the form data to the FollowUp table
     const followUp = await prisma.followUp.create({
-      data: { name, email, address }
+      data: { name, phone, email, address }
     });
 
     // Send WhatsApp message using Twilio
@@ -23,6 +23,7 @@ export async function POST(req: Request) {
       to: "whatsapp:+<Your-WhatsApp-Number>", // Replace with your WhatsApp number
       body: `New Follow-up Submission:
       Name: ${name}
+      Phone: ${phone}
       Email: ${email}
       Address: ${address}`,
     });
