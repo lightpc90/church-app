@@ -14,9 +14,16 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  name  String
-  email String @unique
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  email      String   @unique
+  name       String?
+  username   String?  // Clerk can provide a username
+  image      String?  // Clerk profile image URL
+  phone      String?  // Clerk phone number if available
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Add any other fields you might want from Clerk
 }
 
 model FollowUp {
