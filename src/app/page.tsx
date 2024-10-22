@@ -133,7 +133,7 @@ export default async function Home() {
         {/* Watch us live */}
         <div className="text-zinc-950 lg:text-2xl font-bold flex flex-col items-center z-10">
           <h2>Watch Us Live</h2>
-          <div className="w-full flex items-center justify-center">
+          <div className="w-[100%] flex items-center justify-center">
             <LiveProgram />
           </div>
         </div>
