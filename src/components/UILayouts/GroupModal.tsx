@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence, easeOut } from "framer-motion";
 import { useState, FC } from "react";
+import { LuPanelBottomClose } from "react-icons/lu";
 
 type GroupLayoutPropsType = {
   group: {
@@ -38,7 +39,9 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
           >
             <div className="absolute right-4">
 
-            <button onClick={() => setShowModal(false)}>close</button>
+            <button onClick={() => setShowModal(false)}>
+              <LuPanelBottomClose size={25} className=" text-blue-500" />
+            </button>
             </div>
             {/* form */}
             <div className="mt-5 flex flex-col items-center justify-center h-[86%] overflow-auto">
