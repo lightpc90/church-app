@@ -6,10 +6,10 @@ type GroupLayoutPropsType = {
  
   group: {
     name: string;
-    desc: string;
+    desc?: string;
     link: string;
-    action: string;
-    image: string ;
+    action?: string;
+    image?: string ;
   };
 };
 
@@ -19,7 +19,7 @@ const GroupLayout: FC<GroupLayoutPropsType> = ({ group }) => {
   return (
     <div id={id} className="w-full p-3 flex items-center gap-3 shadow-lg bg-white">
       <Image
-        src={group.image}
+        src={group.image || ''}
         width={500}
         height={500}
         alt=""
