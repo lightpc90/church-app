@@ -1,11 +1,17 @@
 import React from "react";
 import Header from "@/components/UILayouts/Header";
-import { NaturalGroups, Ministries } from "@/components/data/Data";
+import { QuickLinks } from "@/components/data/Data";
 import GroupLayout from "@/components/UILayouts/GroupLayout";
 import headerImage from "../../../public/headers/neo-light.jpg";
 
 const Page = () => {
   const title = "Our Natural Groups and Ministries";
+   const naturalGroups = QuickLinks.filter(
+     (link) => link.category === "Natural Groups"
+   );
+   const ministries = QuickLinks.filter(
+     (link) => link.category === "Ministries"
+   );
   return (
     <div className="bg-[#D9D9D9] pb-10 flex flex-col items-center">
       <Header title={title} imageUrl={headerImage.src} />
@@ -17,7 +23,7 @@ const Page = () => {
             Our Natural Groups
           </h2>
           <div className="flex flex-col gap-2 w-full items-center">
-            {NaturalGroups.map((group, i) => (
+            {naturalGroups.map((group, i) => (
               <GroupLayout key={i} group={group} />
             ))}
           </div>
@@ -28,7 +34,7 @@ const Page = () => {
             Our Ministries
           </h2>
           <div className="flex flex-col gap-2 w-full items-center">
-            {Ministries.map((ministry, i) => (
+            {ministries.map((ministry, i) => (
               <GroupLayout key={i} group={ministry} />
             ))}
           </div>

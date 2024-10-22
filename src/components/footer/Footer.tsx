@@ -1,9 +1,7 @@
 import React from "react";
 import logo from "../../../public/rrcg-mylogo.png";
 import Image from "next/image";
-import { url } from "inspector";
 import SocialMedia from "../social-media/SocialMedia";
-import Button from "../customeUI/Button";
 import Link from "next/link";
 import { AboutUs } from "../data/Data";
 import { QuickLinks } from "../data/Data";
