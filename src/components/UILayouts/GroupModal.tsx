@@ -53,10 +53,10 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
               <h2 className="font-semibold mb-5">
                 Groups and Ministries Database Form
               </h2>
-              <h2 className="font-bold text-xl mb-5">
+              <h2 className="font-bold text-xl">
                 {group.name} Registration Form
               </h2>
-              <div className="mt-3 flex flex-col justify-center h-[86%] overflow-auto">
+              <div className="mt-3 py-6 flex flex-col justify-center h-[83%] overflow-auto">
                 <p className="text-blue-900 font-semibold">Parent/Guadian Details Section</p>
                 {/* form */}
                 <div className="space-y-2">
