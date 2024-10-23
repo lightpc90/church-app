@@ -31,7 +31,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
         
         className="fixed inset-0 w-full h-[100vh] z-[100] flex justify-center">
           <div
-            className={`w-[90%] absolute bottom-0 bg-white ring-4 shadow-2xl h-[85vh] p-3`}
+            className={`w-full absolute bottom-0 bg-white ring-4 shadow-2xl h-[85vh] p-3`}
             style={{
               borderTopLeftRadius: "40px",
               borderTopRightRadius: "40px",
