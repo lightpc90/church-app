@@ -14,7 +14,13 @@ type GroupLayoutPropsType = {
   };
 };
 
-const formInitial = { fullname: "", phone: "", email: "", gender: "", dob: Date.now() };
+const formInitial = {
+  fullname: "",
+  phone: "",
+  email: "",
+  gender: "",
+  dob: Date.now(),
+};
 
 const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
   let genderInput;
@@ -63,7 +69,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                   </p>
                 ) : (
                   <p className="text-blue-900 font-semibold">
-                   Kindly fill your details below
+                    Kindly fill your details below
                   </p>
                 )}
                 {/* form */}
@@ -94,6 +100,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                   <div className="flex flex-col gap-1">
                     <label htmlFor="email">Email</label>
                     <input
+                      required
                       type="email"
                       value={formData.email}
                       placeholder="example@gmail.com"
