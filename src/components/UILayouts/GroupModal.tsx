@@ -14,7 +14,7 @@ type GroupLayoutPropsType = {
   };
 };
 
-const formInitial = { fullname: "", phone: "", email: "", gender: "" };
+const formInitial = { fullname: "", phone: "", email: "", gender: "", dob: Date.now() };
 
 const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
   let genderInput;
@@ -152,7 +152,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                       {/* DOB */}
                       <div className="flex gap-4 items-center flex-wrap">
                         <label htmlFor="dob">Date of Birth</label>
-                        <input name="dob" type="date" />
+                        <input name="dob" type="date" value={formData.dob} />
                       </div>
                     </div>
                   )}
