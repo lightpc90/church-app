@@ -57,7 +57,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                 {group.name} Registration Form
               </h2>
               <div className="mt-3 py-6 flex flex-col justify-center h-[83%] overflow-auto">
-                <p className="text-blue-900 font-semibold">Parent/Guadian Details Section</p>
+                {childrenReg && <p className="text-blue-900 font-semibold">Parent/Guadian Details Section</p>}
                 {/* form */}
                 <div className="space-y-2">
                   {/* full name */}
