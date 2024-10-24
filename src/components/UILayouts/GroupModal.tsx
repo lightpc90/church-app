@@ -45,7 +45,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
             className="fixed inset-0 w-full h-[100vh] z-[100] flex justify-center"
           >
             <div
-              className={`w-full absolute bottom-0 bg-white ring-4 shadow-2xl h-[85vh] p-3`}
+              className={`w-full absolute bottom-0 bg-slate-950 text-white ring-4 shadow-2xl h-[85vh] p-3`}
               style={{
                 borderTopLeftRadius: "40px",
                 borderTopRightRadius: "40px",
@@ -82,7 +82,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                       value={formData.fullname}
                       placeholder="John David"
                       required
-                      className="p-2 border-l-4 border-blue-800"
+                      className="p-2 border-l-4 border-blue-800 bg-inherit"
                     />
                   </div>
                   {/* full name */}
@@ -93,7 +93,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                       value={formData.phone}
                       placeholder="1234567890"
                       required
-                      className="p-2 border-l-4 border-blue-800"
+                      className="p-2 border-l-4 border-blue-800 bg-inherit"
                     />
                   </div>
                   {/* email */}
@@ -104,7 +104,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                       type="email"
                       value={formData.email}
                       placeholder="example@gmail.com"
-                      className="p-2 border-l-4 border-blue-800"
+                      className="p-2 border-l-4 border-blue-800 bg-inherit "
                     />
                   </div>
                   {/* gender */}
@@ -142,7 +142,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                           value={formData.fullname}
                           placeholder="John David"
                           required
-                          className="p-2 border-l-4 border-blue-800"
+                          className="p-2 border-l-4 border-blue-800 bg-inherit"
                         />
                       </div>
                       {/* gender */}
@@ -167,7 +167,9 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                       {/* DOB */}
                       <div className="flex gap-4 items-center flex-wrap">
                         <label htmlFor="dob">Date of Birth</label>
-                        <input name="dob" type="date" value={formData.dob} />
+                        <input name="dob" type="date" value={formData.dob}
+                        className="text-slate-900 rounded-md px-2"
+                        />
                       </div>
                     </div>
                   )}
