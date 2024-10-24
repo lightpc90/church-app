@@ -26,8 +26,8 @@ const GroupLayout: FC<GroupLayoutPropsType> = ({ group }) => {
         src={group.image || ""}
         width={500}
         height={500}
-        alt=""
-        className="bg-slate-700 w-[90px] h-[90px]"
+        alt={`${group.name} group image`}
+        className="bg-slate-700 w-[90px] h-[90px] object-cover object-center"
       />
       <div className="">
         <h3 className="text-xl font-bold">{group.name}</h3>

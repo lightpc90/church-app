@@ -6,6 +6,14 @@ import { LiaPrayingHandsSolid } from "react-icons/lia";
 import { GrAnnounce } from "react-icons/gr";
 import pastorImage from "../../../public/default_dp.webp"
 
+// group images
+import children from "../../../public/groups/children.jpg"
+import elders from "../../../public/groups/elders.jpg"
+import men from "../../../public/groups/man-praying.webp"
+import teens from "../../../public/groups/teens.jpg"
+import women from "../../../public/groups/women.jpg"
+import youth from "../../../public/groups/youths.jpg"
+
 export const workersData = [
   {
     _id: 1,
@@ -858,28 +866,28 @@ export const NaturalGroups = [
     desc: "Men and women above the age of 50",
     link: "/",
     action: "Join Group",
-    image: "",
+    image: elders.src,
   },
   {
     name: "Excellent Men",
     desc: "The group for men in the church",
     link: "/",
     action: "Join Group",
-    image: "",
+    image: men.src,
   },
   {
     name: "Good Women",
     desc: "Our Good women group",
     link: "/",
     action: "Join Group",
-    image: "",
+    image: women.src,
   },
   {
     name: "Ablaze Gen.",
     desc: "This is the church youth group, YAYA",
     link: "/",
     action: "Join Group",
-    image: "",
+    image: youth.src,
   },
 ];
 
@@ -889,14 +897,14 @@ export const Ministries = [
     desc: "Teenegers are to register here!",
     link: "/",
     action: "Register",
-    image: "",
+    image: teens.src,
   },
   {
     name: "Children Ministry",
     desc: "Register your child/children here",
     link: "/",
     action: "Register",
-    image: "",
+    image: children,
   },
 ];
 
@@ -959,7 +967,7 @@ export const QuickLinks = [
     link: "/groups-and-ministries/#elders",
     desc: "Men and women above the age of 50",
     action: "Join Group",
-    image: "",
+    image: elders.src,
   },
   {
     category: "Natural Groups",
@@ -967,7 +975,7 @@ export const QuickLinks = [
     link: "/groups-and-ministries/#men",
     desc: "The group for men in the church",
     action: "Join Group",
-    image: "",
+    image: men.src,
   },
   {
     category: "Natural Groups",
@@ -975,7 +983,7 @@ export const QuickLinks = [
     link: "/groups-and-ministries/#women",
     desc: "Our Good women group",
     action: "Join Group",
-    image: "",
+    image: women.src,
   },
   {
     category: "Natural Groups",
@@ -983,7 +991,7 @@ export const QuickLinks = [
     link: "/groups-and-ministries/#youth",
     desc: "This is the church youth group, YAYA",
     action: "Join Group",
-    image: "",
+    image: youth.src,
   },
   {
     category: "Ministries",
@@ -991,7 +999,7 @@ export const QuickLinks = [
     link: "/groups-and-ministries/#teens",
     desc: "Teenegers are to register here!",
     action: "Register",
-    image: "",
+    image: teens.src,
   },
   {
     category: "Ministries",
@@ -999,7 +1007,7 @@ export const QuickLinks = [
     link: "/groups-and-ministries/#children",
     desc: "Register your child/children here",
     action: "Register",
-    image: "",
+    image: children.src,
   },
   {
     category: "Worker",
