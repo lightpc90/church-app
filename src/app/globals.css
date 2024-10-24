@@ -154,20 +154,31 @@ body {
   }
 }
 
-.embla {
-  overflow: hidden;
+/* Global custom scrollbar class */
+.custom-scrollbar {
+  /* Ensure the element overflows so the scrollbar appears */
+  overflow-y: scroll;
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }
 
-.embla__container {
-  display: flex;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-  margin-left: -10px; /* Optional, depending on your layout */
+/* WebKit-based browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
 }
 
-.embla__slide {
-  position: relative;
-  min-width: 100%; /* Full width slides */
-  padding-left: 10px; /* Optional, depending on your layout */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }

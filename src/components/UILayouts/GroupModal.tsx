@@ -45,7 +45,10 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
             className="fixed inset-0 w-full h-[100vh] z-[100] flex justify-center"
           >
             <div
-              className={`w-full absolute bottom-0 bg-slate-950 text-white ring-4 shadow-2xl h-[85vh] p-3`}
+              className={`w-full max-w-[600px] absolute bottom-0 lg:right-[50%] lg:translate-x-[50%] lg:top-[50%] 
+                lg:translate-y-[-50%]  bg-slate-950 text-white 
+                lg:rounded-[40px]
+                ring-4 shadow-2xl h-[85vh] p-3 lg:px-10`}
               style={{
                 borderTopLeftRadius: "40px",
                 borderTopRightRadius: "40px",
@@ -56,13 +59,13 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                   <LuPanelBottomClose size={25} className=" text-blue-500" />
                 </button>
               </div>
-              <h2 className="font-semibold mb-5">
+              <h2 className="font-semibold mb-5 text-center">
                 Groups and Ministries Database Form
               </h2>
-              <h2 className="font-bold text-xl">
+              <h2 className="font-bold text-xl text-center">
                 {group.name} Registration Form
               </h2>
-              <div className="mt-3 py-6 flex flex-col justify-center h-[83%] overflow-auto">
+              <div className="flex flex-col gap-2 justify-center h-[83%] overflow-auto">
                 {childrenReg ? (
                   <p className="text-blue-900 font-semibold">
                     Parent/Guadian Details Section
@@ -73,7 +76,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                   </p>
                 )}
                 {/* form */}
-                <div className="space-y-2">
+                <div className="space-y-4">
                   {/* full name */}
                   <div className="flex flex-col gap-1">
                     <label htmlFor="fullname">Full Name</label>
@@ -175,7 +178,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                   )}
 
                   {/* submit */}
-                  <button className="mt-10 inline-block bg-blue-800 p-2 text-white rounded-md">
+                  <button className="mt-10 inline-block bg-blue-800 hover:bg-blue-700 p-2 text-white rounded-md">
                     Submit
                   </button>
                 </div>
