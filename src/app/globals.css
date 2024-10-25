@@ -9,6 +9,7 @@ body {
   box-sizing: border-box;
   width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 @keyframes slight-slide {
