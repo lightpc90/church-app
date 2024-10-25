@@ -154,31 +154,22 @@ body {
   }
 }
 
-/* Global custom scrollbar class */
-.custom-scrollbar {
-  /* Ensure the element overflows so the scrollbar appears */
-  overflow-y: scroll;
-
-  /* For Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
+/* Glowing effect */
+.glow {
+  animation: glow-animation 2s ease-in-out infinite;
+  transition: opacity 0.5s ease-in-out;
 }
 
-/* WebKit-based browsers (Chrome, Safari, Edge) */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 12px;
+/* Define the glow animation */
+@keyframes glow-animation {
+  0% {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 1)) brightness(2);
+  }
+  100% {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+  }
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 10px;
-  border: 3px solid #f1f1f1;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}

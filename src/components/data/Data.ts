@@ -1,9 +1,7 @@
-import { FaCross, FaMoneyBillTransfer } from "react-icons/fa6";
+
 
 import { DeptsEnum } from "../enums/Enums";
-import { TfiVideoClapper } from "react-icons/tfi";
-import { LiaPrayingHandsSolid } from "react-icons/lia";
-import { GrAnnounce } from "react-icons/gr";
+
 import pastorImage from "../../../public/default_dp.webp"
 
 // group images
@@ -1025,7 +1023,8 @@ export const QuickLinks = [
 
 export const Cards = [
   {
-    icon: FaCross,
+    iconName: 'FaCross',
+    iconFamily: 'Fa6',
     title: "How Can I Be Saved?",
     content: `The most important question you will ever ask that will affect
                 you for eternity`,
@@ -1034,7 +1033,8 @@ export const Cards = [
     bg: `bg-rose-800`,
   },
   {
-    icon: TfiVideoClapper,
+    iconName: 'TfiVideoClapper',
+    iconFamily: 'Tfi',
     title: `Our Online Church and Media`,
     content: ` Hear God's word delivered by our pastors in our sermon
                 archives`,
@@ -1043,7 +1043,8 @@ export const Cards = [
     bg: `bg-slate-900`,
   },
   {
-    icon: LiaPrayingHandsSolid,
+    iconName: 'LiaPrayingHandsSolid',
+    iconFamily: 'Lia',
     title: "Submit a Prayer Request",
     content: `Need Prayer? Submit your requests to pastor to pray with you`,
     linkref: `/prayer-request`,
@@ -1051,7 +1052,8 @@ export const Cards = [
     bg: `bg-green-900`,
   },
   {
-    icon: GrAnnounce,
+    iconName: 'GrAnnounce',
+    iconFamily: 'Gr',
     title: `Share Your Testimonies`,
     content: `Share with us what the Lord has done for you`,
     linkref: `/testimony`,
@@ -1059,7 +1061,8 @@ export const Cards = [
     bg: `bg-purple-900`,
   },
   {
-    icon: FaMoneyBillTransfer,
+    iconName: 'FaMoneyBillTransfer',
+    iconFamily: 'Fa6',
     title: "Giving & Partnership",
     content: `"Give, and it will be given to you. A good measure, pressed
                 down, shaken together and running over, will be poured into your

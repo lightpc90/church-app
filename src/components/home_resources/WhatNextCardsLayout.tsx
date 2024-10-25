@@ -1,29 +1,32 @@
 
-import React, { ReactElement, ReactNode } from 'react'
-import Link from 'next/link';
-import { IconType } from 'react-icons/lib';
+import React from "react";
+import Link from "next/link";
+import { IconType } from "react-icons/lib";
+import CardIcon from "./CardIcon";
 
-type WhatNextCardLayoutType = {
-   cardData: { 
-    icon: IconType;
+export type WhatNextCardLayoutType = {
+  cardData: {
+    iconName: string;
+    iconFamily: string;
     title: string;
     content: string;
     linkref: string;
     linkname: string;
-    bg:string
-}
-}
+    bg: string;
+  };
+};
 
-const WhatNextCardsLayout: React.FC<WhatNextCardLayoutType> = ({cardData}) => {
-    const {icon:Icon} = cardData
+const WhatNextCardsLayout: React.FC<WhatNextCardLayoutType> = ({
+  cardData,
+}) => {
+ 
   return (
     <div
-  
       className={`flex flex-col justify-evenly w-[300px] h-[310px] ${cardData.bg} rounded-2xl shadow-lg p-4 text-white`}
     >
       <div className="flex gap-4 text-2xl items-center">
         {/* title icon */}
-        <Icon size={70} />
+        <CardIcon cardData={cardData} />
         {/* title */}
         <h2 className="font-bold">{cardData.title}</h2>
       </div>
@@ -38,6 +41,6 @@ const WhatNextCardsLayout: React.FC<WhatNextCardLayoutType> = ({cardData}) => {
       </Link>
     </div>
   );
-}
+};
 
-export default WhatNextCardsLayout
+export default WhatNextCardsLayout;
