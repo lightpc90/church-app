@@ -9,7 +9,7 @@ const TestimonyForm = () => {
         <div className="flex flex-col mb-2">
           <label htmlFor="fullName">Full Name</label>
           <input
-            id="fullName"
+            name="fullName"
             type="text"
             placeholder="John Doe"
             className="bg-[#FFFFFF] p-2 rounded-md"
@@ -18,7 +18,7 @@ const TestimonyForm = () => {
         <div className="flex flex-col mb-2">
           <label htmlFor="phone">Phone Number</label>
           <input
-            id="phone"
+            name="phone"
             type="number"
             placeholder="08123456789"
             className="bg-[#FFFFFF] p-2 rounded-md"
@@ -27,17 +27,17 @@ const TestimonyForm = () => {
         <div className="flex flex-col mb-2">
           <label htmlFor="email">Email</label>
           <input
-            id="email"
+            name="email"
             type="email"
             placeholder="example@gmail.com"
             className="bg-[#FFFFFF] p-2 rounded-md"
           />
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="prayer-request">Your Testimony</label>
+          <label htmlFor="testimony">Your Testimony</label>
           <textarea
-            id="prayer-request"
-            placeholder="1, Simpson str. Lakowe phase 2"
+            name="testimony"
+            placeholder="Your testimony here!"
             className="bg-[#FFFFFF] p-2 rounded-md"
           />
         </div>
