@@ -22,7 +22,7 @@ const InstagramFeed = async () => {
   const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url,media_type&access_token=${accessToken}`;
   try {
-    const res = await fetch(url, { next: { revalidate: 3600 } });
+    const res = await fetch(url, { next: { revalidate: 3600 } }); //revalidat every 1 hour
     const data = await res.json();
 
     if (!res.ok || data?.data.length < 1) {
