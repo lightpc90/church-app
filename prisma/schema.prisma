@@ -14,23 +14,127 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  email      String   @unique
-  name       String?
-  username   String?  // Clerk can provide a username
-  image      String?  // Clerk profile image URL
-  phone      String?  // Clerk phone number if available
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  name      String?
+  username  String? // Clerk can provide a username
+  image     String? // Clerk profile image URL
+  phone     String? // Clerk phone number if available
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
-  // Add any other fields you might want from Clerk
+model Worker {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  name      String?
+  username  String?
+  image     String?
+  phone     String?
+  dept      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model FollowUp {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String
-  phone   String
-  email   String
-  address String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  phone     String
+  email     String?
+  address   String
+  createdAt DateTime @default(now())
+}
+
+model HouseFellowship {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  center    String
+  address   String
+  zone      String
+  teacher   String
+  host      String
+  createdAt DateTime @default(now())
+}
+
+model PrayerRequest {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname      String
+  phone         String
+  email         String?
+  prayerRequest String
+  createdAt     DateTime @default(now())
+}
+
+model Testimony {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname  String
+  phone     String
+  email     String?
+  testimony String
+  createdAt DateTime @default(now())
+}
+
+model Elder {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname  String
+  phone     String
+  email     String?
+  gender    String
+  createdAt DateTime @default(now())
+}
+
+model Men {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname  String
+  phone     String
+  email     String?
+  createdAt DateTime @default(now())
+}
+
+model Women {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname  String
+  phone     String
+  email     String?
+  createdAt DateTime @default(now())
+}
+
+model Youth {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname  String
+  phone     String
+  email     String?
+  gender    String
+  createdAt DateTime @default(now())
+}
+
+model Teen {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname  String
+  phone     String
+  email     String?
+  gender    String
+  createdAt DateTime @default(now())
+}
+
+model Child {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname          String
+  gender            String
+  dob               String
+  guardian_fullname String
+  guardian_phone    String
+  guardian_email    String?
+  guardian_gender   String
+  createdAt         DateTime @default(now())
+}
+
+model Event {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  desc      String
+  venue     String
+  datetime  String
+  reglink   String?
+  image     String?
   createdAt DateTime @default(now())
 }

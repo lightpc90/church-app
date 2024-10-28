@@ -30,7 +30,7 @@ const InstagramFeed = async () => {
     }
     // filter only the 9 most recent posts
     const posts: InstagramPost[] = data.data.slice(0, 9);
-    console.log("instagram data fetched...", posts);
+    // console.log("instagram data fetched...", posts);
     // Helper function to get the media to display
     const getDisplayMedia = (post: InstagramPost) => {
       if (post.media_type === "CAROUSEL_ALBUM") {
