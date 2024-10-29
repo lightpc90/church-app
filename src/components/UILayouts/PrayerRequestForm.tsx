@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PageLoading from "../loading/Loading";
+import Loading from "../loading/RequestLoading";
 
 const initForm = { fullname: "", phone: "", email: "", prayerRequest: "" };
 
@@ -92,7 +92,7 @@ const PrayerRequestForm = () => {
       </div>
       {/* loading component */}
     {loading &&  <div className="absolute inset-0 opacity-90 h-full w-full overflow-hidden">
-        <PageLoading />
+        <Loading />
       </div>}
     </div>
   );

@@ -6,12 +6,27 @@
   box-sizing: border-box;
 }
 
+.outer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   background: #042104;
+  animation: animateBg 10s linear infinite;
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   animation: animateBg 10s linear infinite;
 }
 
