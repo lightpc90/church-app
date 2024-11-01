@@ -4,7 +4,20 @@ import HeaderImage from "../../../public/headers/house-fellowship.jpg";
 import { HouseFellowshipCentersData } from "@/components/data/Data";
 import { FiSearch } from "react-icons/fi";
 
-const Page = () => {
+async function getHFC() {
+  try {
+    const response = await fetch(
+      `${process.env.domainUrl}/api/houseFellowshipCenters`
+    );
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    }
+  } catch (e) {console.log("server error: ", e)}
+}
+
+const Page = async () => {
+  const hfc = await getHFC();
   const lakoweZone = HouseFellowshipCentersData.filter(
     (center) => center.zone === "Lakowe Zone"
   );
@@ -14,6 +27,12 @@ const Page = () => {
   const bogijeZone = HouseFellowshipCentersData.filter(
     (center) => center.zone === "Bogije Zone"
   );
+
+  if(hfc?.length > 0 ){
+    const lakowezone = hfc.filter((center)=>center.zone === 'lakowe')
+    const eputuzone = hfc.filter((center)=>center.zone === 'eputu')
+    const bogijezone = hfc.filter((center)=>center.zone === 'bogije')
+  }
   return (
     <div className="bg-[#D9D9D9]">
       <Header title="House Fellowship Centers" imageUrl={HeaderImage.src} />

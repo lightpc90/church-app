@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import Loading from "../loading/RequestLoading";
 
-const initForm = { center: "", hostname: "", hostnumber: "", teachername: "", teachernumber: '', zone: "" };
-
-const HouseFellowshipForm = ({setOpen}) => {
+const initForm = { center: "", host: "", host_phone: "", teacher: "", teacher_phone: '', zone: "" };
+type PropsType = {
+  setOpen: Dispatch<SetStateAction<boolean>>;
+};
+const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
   const [formData, setFormData] = useState(initForm);
   const [loading, setLoading] = useState(false);
   //
@@ -14,7 +16,7 @@ const HouseFellowshipForm = ({setOpen}) => {
     const data = {
     
     };
-    const res = await fetch("/api/prayer-request", {
+    const res = await fetch("/api/houseFellowshipCenters", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -24,6 +26,7 @@ const HouseFellowshipForm = ({setOpen}) => {
     console.log(_res);
     setLoading(false);
     setFormData(initForm);
+    setOpen(false)
   };
   return (
     <div className="flex flex-col items-center gap-3 w-[80%] h-[100%] lg:w-[40%] relative">
@@ -52,9 +55,9 @@ const HouseFellowshipForm = ({setOpen}) => {
             type="text"
             placeholder="John Doe"
             className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.hostname}
+            value={formData.host}
             onChange={(e) =>
-              setFormData({ ...formData, hostname: e.target.value.toString() })
+              setFormData({ ...formData, host: e.target.value.toString() })
             }
           />
         </div>
@@ -65,9 +68,9 @@ const HouseFellowshipForm = ({setOpen}) => {
             type="number"
             placeholder="08012345678"
             className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.hostnumber}
+            value={formData.host_phone}
             onChange={(e) =>
-              setFormData({ ...formData, hostnumber: e.target.value })
+              setFormData({ ...formData, host_phone: e.target.value })
             }
           />
         </div>
@@ -78,9 +81,9 @@ const HouseFellowshipForm = ({setOpen}) => {
             name="teachername"
             placeholder="John Doe"
             className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.teachername}
+            value={formData.teacher}
             onChange={(e) =>
-              setFormData({ ...formData, teachername: e.target.value })
+              setFormData({ ...formData, teacher: e.target.value })
             }
           />
         </div>
@@ -91,9 +94,9 @@ const HouseFellowshipForm = ({setOpen}) => {
             name="teachernumber"
             placeholder="08012345678"
             className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.teachernumber}
+            value={formData.teacher_phone}
             onChange={(e) =>
-              setFormData({ ...formData, teachernumber: e.target.value })
+              setFormData({ ...formData, teacher_phone: e.target.value })
             }
           />
         </div>
