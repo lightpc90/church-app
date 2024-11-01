@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Loading from "../loading/RequestLoading";
 
-const initForm = { centername: "", hostname: "", hostnumber: "", teachername: "", teachernumber: '', zone: "" };
+const initForm = { center: "", hostname: "", hostnumber: "", teachername: "", teachernumber: '', zone: "" };
 
 const HouseFellowshipForm = ({setOpen}) => {
   const [formData, setFormData] = useState(initForm);
@@ -39,9 +39,9 @@ const HouseFellowshipForm = ({setOpen}) => {
             type="text"
             placeholder="Beautiful Gate Center"
             className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.centername}
+            value={formData.center}
             onChange={(e) =>
-              setFormData({ ...formData, centername: e.target.value })
+              setFormData({ ...formData, center: e.target.value })
             }
           />
         </div>

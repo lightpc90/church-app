@@ -46,13 +46,15 @@ model FollowUp {
 }
 
 model HouseFellowship {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  center    String
-  address   String
-  zone      String
-  teacher   String
-  host      String
-  createdAt DateTime @default(now())
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  center        String
+  address       String
+  zone          String
+  teachername   String
+  teachernumber String
+  hostname      String
+  hostnumber    String
+  createdAt     DateTime @default(now())
 }
 
 model PrayerRequest {
