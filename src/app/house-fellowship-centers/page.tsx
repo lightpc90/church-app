@@ -3,6 +3,8 @@ import Header from "@/components/UILayouts/Header";
 import HeaderImage from "../../../public/headers/house-fellowship.jpg";
 import { HouseFellowshipCentersData } from "@/components/data/Data";
 import { FiSearch } from "react-icons/fi";
+import HfcLayout from "./HfcLayout";
+import { initHfcForm } from "@/components/UILayouts/HouseFellowshipForm";
 
 async function getHFC() {
   try {
@@ -17,7 +19,7 @@ async function getHFC() {
 }
 
 const Page = async () => {
-  const hfc = await getHFC();
+  const hfc: typeof initHfcForm[] = await getHFC();
   const lakoweZone = HouseFellowshipCentersData.filter(
     (center) => center.zone === "Lakowe Zone"
   );
@@ -71,22 +73,7 @@ const Page = async () => {
               <h3 className="font-bold text-xl">Lakowe Zone</h3>
               <div>
                 {lakoweZone.map((center, i) => (
-                  <div className="my-2" key={i}>
-                    {/* center */}
-                    <h4 className="font-bold text-rose-800">{`${center.center} Center`}</h4>
-                    {/* host */}
-                    <div>
-                      <label className="font-bold">{`Host: `}</label>
-                      <label>{center.host}</label>||
-                      <label>{center.host_phone}</label>
-                    </div>
-                    {/* teacher */}
-                    <div>
-                      <label className="font-bold">{`Teacher: `}</label>
-                      <label>{center.teacher}</label>||
-                      <label>{center.teacher_phone}</label>
-                    </div>
-                  </div>
+                  <HfcLayout key={i} center={center} />
                 ))}
               </div>
             </div>
@@ -95,22 +82,7 @@ const Page = async () => {
               <h3 className="font-bold text-xl">Eputu Zone</h3>
               <div>
                 {eputuZone.map((center, i) => (
-                  <div className="my-2" key={i}>
-                    {/* center */}
-                    <h4 className="font-bold text-rose-800">{`${center.center} Center`}</h4>
-                    {/* host */}
-                    <div>
-                      <label className="font-bold">{`Host `}</label>
-                      <label>{center.host}</label>||
-                      <label>{center.host_phone}</label>
-                    </div>
-                    {/* teacher */}
-                    <div>
-                      <label className="font-bold">{`Teacher `}</label>
-                      <label>{center.teacher}</label>||
-                      <label>{center.teacher_phone}</label>
-                    </div>
-                  </div>
+                  <HfcLayout key={i} center={center} />
                 ))}
               </div>
             </div>
@@ -119,22 +91,7 @@ const Page = async () => {
               <h3 className="font-bold text-xl">Bogije Zone</h3>
               <div>
                 {bogijeZone.map((center, i) => (
-                  <div className="my-2" key={i}>
-                    {/* center */}
-                    <h4 className="font-bold text-rose-800">{`${center.center} Center`}</h4>
-                    {/* host */}
-                    <div>
-                      <label className="font-bold">{`Host `}</label>
-                      <label>{center.host}</label>||
-                      <label>{center.host_phone}</label>
-                    </div>
-                    {/* teacher */}
-                    <div>
-                      <label className="font-bold">{`Teacher `}</label>
-                      <label>{center.teacher}</label>||
-                      <label>{center.teacher_phone}</label>
-                    </div>
-                  </div>
+                  <HfcLayout key={i} center={center} />
                 ))}
               </div>
             </div>

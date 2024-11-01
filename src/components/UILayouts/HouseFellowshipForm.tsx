@@ -3,12 +3,12 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import Loading from "../loading/RequestLoading";
 
-const initForm = { center: "", host: "", host_phone: "", teacher: "", teacher_phone: '', zone: "" };
+export const initHfcForm = { center: "", host: "", host_phone: "", teacher: "", teacher_phone: '', zone: "" };
 type PropsType = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
-  const [formData, setFormData] = useState(initForm);
+  const [formData, setFormData] = useState(initHfcForm);
   const [loading, setLoading] = useState(false);
   //
   const handleSubmit = async () => {
@@ -25,7 +25,7 @@ const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
     const _res = await res.json();
     console.log(_res);
     setLoading(false);
-    setFormData(initForm);
+    setFormData(initHfcForm);
     setOpen(false)
   };
   return (
