@@ -5,7 +5,7 @@ import Loading from "../loading/RequestLoading";
 
 const initForm = { centername: "", hostname: "", hostnumber: "", teachername: "", teachernumber: '', zone: "" };
 
-const HouseFellowshipForm = () => {
+const HouseFellowshipForm = ({setOpen}) => {
   const [formData, setFormData] = useState(initForm);
   const [loading, setLoading] = useState(false);
   //
@@ -26,7 +26,8 @@ const HouseFellowshipForm = () => {
     setFormData(initForm);
   };
   return (
-    <div className="flex flex-col items-center gap-3 w-[80%] lg:w-[40%] relative">
+    <div className="flex flex-col items-center gap-3 w-[80%] h-[100%] lg:w-[40%] relative">
+      <button onClick={()=>setOpen(false)} className="mb-10 bg-rose-800 text-white p-2 rounded-md self-end" >close</button>
       <h1 className="font-bold text-lg text-white">
         Add House Fellowship Center
       </h1>
