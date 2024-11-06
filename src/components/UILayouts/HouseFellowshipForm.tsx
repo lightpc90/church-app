@@ -54,7 +54,7 @@ const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
     setOpen(false);
   };
   return (
-    <div className="flex flex-col items-center gap-3 w-full bg-slate-950 p-5 lg:p-10 md:w-[40%] lg:w-[40%]  relative">
+    <div className="flex flex-col items-center gap-3 w-full bg-slate-950 rounded-md shadow-lg p-5 lg:p-10 md:w-[40%] lg:w-[40%]  relative">
       <button
         onClick={() => setOpen(false)}
         className="mb-10 bg-rose-800 text-white p-2 rounded-md self-end"
