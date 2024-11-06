@@ -9,9 +9,11 @@ import { ZonesEnum } from "@/components/UILayouts/HouseFellowshipForm";
 import { groupedByZone } from "@/lib/groupedByZone";
 
 async function getHFC() {
+  const url = process.env.baseUrl
+  console.log("url for this environment: ", url)
   try {
     const response = await fetch(
-      `${process.env.baseUrl}/api/houseFellowshipCenters`, {cache: 'no-store'}
+      `${url}/api/houseFellowshipCenters`, {cache: 'no-store'}
     );
     if (response.ok) {
       const data = await response.json();
