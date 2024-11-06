@@ -10,13 +10,13 @@ import { groupedByZone } from "@/lib/groupedByZone";
 
 import { headers } from "next/headers";
 
-async function getHFC(host: string) {
+async function getHFC(Url: string | null) {
   const url = process.env.baseUrl
   console.log("host-url for this environment: ", url)
-  console.log("host for this environment: ", host)
+  console.log("host for this environment: ", Url)
   try {
     const response = await fetch(
-      `${host}/api/houseFellowshipCenters`, {cache: 'no-store'}
+      `${Url}/api/houseFellowshipCenters`, {cache: 'no-store'}
     );
     if (response.ok) {
       const data = await response.json();
@@ -30,8 +30,9 @@ const Page = async () => {
   const headersList = headers()
   const host = headersList.get('host');
   const protocol = headersList.get('x-forwarded-protocol') || 'http'
-  const data = await getHFC(host);
-  const hfc: typeof initHfcForm[] = data.data;
+  console.log('protocol: ', protocol)
+  const data = await getHFC(`${protocol}://${host}`);
+  const hfc: typeof initHfcForm[] = data?.data;
   console.log("hfc: ", hfc)
 
   const groupedByzone = groupedByZone(hfc)
