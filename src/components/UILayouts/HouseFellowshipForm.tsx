@@ -3,34 +3,64 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import Loading from "../loading/RequestLoading";
 
-export const initHfcForm = { center: "", host: "", host_phone: "", teacher: "", teacher_phone: '', zone: "" };
+export const initHfcForm = {
+  center: "",
+  address: "",
+  host: "",
+  host_phone: "",
+  teacher: "",
+  teacher_phone: "",
+  zone: "",
+};
+// create enum for zones
+export enum ZonesEnum {
+  lakowe = "Lakowe",
+  schoolGate = "School Gate",
+  adeba = "Adeba",
+  oribanwa = "Oribanwa",
+  awoyaya = "Awoyaya",
+  ologunfe = "Ologunfe",
+  bogije = "Bogije",
+  kajola = "Kajola",
+  malete = "Malete",
+  eputu = "Eputu",
+  ogunfayo = "Ogunfayo",
+  newRoad = "New Road",
+  abijo = "Abijo GRA",
+  faraPark = "Fara Park",
+  sangotedo = "Sangotedo",
+  lekki = "Lekki",
+}
+
 type PropsType = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
-const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
+const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
   const [formData, setFormData] = useState(initHfcForm);
   const [loading, setLoading] = useState(false);
   //
   const handleSubmit = async () => {
     setLoading(true);
-    const data = {
-    
-    };
+    const data = formData;
     const res = await fetch("/api/houseFellowshipCenters", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error("Failed to create preayer request");
     const _res = await res.json();
     console.log(_res);
     setLoading(false);
     setFormData(initHfcForm);
-    setOpen(false)
+    setOpen(false);
   };
   return (
-    <div className="flex flex-col items-center gap-3 w-[80%] h-[100%] lg:w-[40%] relative">
-      <button onClick={()=>setOpen(false)} className="mb-10 bg-rose-800 text-white p-2 rounded-md self-end" >close</button>
+    <div className="flex flex-col items-center gap-3 w-full bg-slate-950 p-5 lg:p-10 md:w-[40%] lg:w-[40%]  relative">
+      <button
+        onClick={() => setOpen(false)}
+        className="mb-10 bg-rose-800 text-white p-2 rounded-md self-end"
+      >
+        close
+      </button>
       <h1 className="font-bold text-lg text-white">
         Add House Fellowship Center
       </h1>
@@ -38,6 +68,7 @@ const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
         <div className="flex flex-col mb-2">
           <label htmlFor="centername">Center Name</label>
           <input
+            required
             name="centername"
             type="text"
             placeholder="Beautiful Gate Center"
@@ -49,8 +80,24 @@ const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
           />
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="hostname">Host Name</label>
+          <label htmlFor="centerAddress">Center Address</label>
           <input
+            required
+            name="centerAddress"
+            type="text"
+            placeholder="Beautiful Gate, Church Premises"
+            className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
+            value={formData.address}
+            onChange={(e) =>
+              setFormData({ ...formData, address: e.target.value })
+            }
+          />
+        </div>
+        <div className="flex flex-col mb-2">
+          <label htmlFor="hostname">Host Name</label>
+
+          <input
+          required
             name="hostname"
             type="text"
             placeholder="John Doe"
@@ -77,6 +124,7 @@ const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
         <div className="flex flex-col mb-2">
           <label htmlFor="teachername">Teacher Name</label>
           <input
+          required
             type="text"
             name="teachername"
             placeholder="John Doe"
@@ -101,13 +149,27 @@ const HouseFellowshipForm: FC<PropsType> = ({setOpen}) => {
           />
         </div>
         <select
+        required
           onChange={(e) => setFormData({ ...formData, zone: e.target.value })}
           className="text-blue-950 mb-5 p-2 rounded-md"
         >
           <option value="">Choose Zone</option>
-          <option value="lakowe">Lakowe Zone</option>
-          <option value="eputu">Eputu Zone</option>
-          <option value="bogije">Bogije Zone</option>
+          <option value={ZonesEnum.lakowe}>Lakowe Zone</option>
+          <option value={ZonesEnum.schoolGate}>School Gate Zone</option>
+          <option value={ZonesEnum.adeba}>Adeba Zone</option>
+          <option value={ZonesEnum.oribanwa}>Oribanwa Zone</option>
+          <option value={ZonesEnum.awoyaya}>Awoyaya Zone</option>
+          <option value={ZonesEnum.ologunfe}>Ologunfe Zone</option>
+          <option value={ZonesEnum.bogije}>Bogije Zone</option>
+          <option value={ZonesEnum.kajola}>Kajola Zone</option>
+          <option value={ZonesEnum.malete}>Malete Zone</option>
+          <option value={ZonesEnum.eputu}>Eputu Zone</option>
+          <option value={ZonesEnum.ogunfayo}>Ogunfayo Zone</option>
+          <option value={ZonesEnum.newRoad}>New Road Zone</option>
+          <option value={ZonesEnum.abijo}>Abijo GRA Zone</option>
+          <option value={ZonesEnum.faraPark}>Fara Park Zone</option>
+          <option value={ZonesEnum.sangotedo}>Sangotedo Zone</option>
+          <option value={ZonesEnum.lekki}>Lekki Zone</option>
         </select>
         <button
           onClick={handleSubmit}

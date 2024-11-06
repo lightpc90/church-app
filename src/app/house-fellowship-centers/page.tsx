@@ -5,36 +5,30 @@ import { HouseFellowshipCentersData } from "@/components/data/Data";
 import { FiSearch } from "react-icons/fi";
 import HfcLayout from "./HfcLayout";
 import { initHfcForm } from "@/components/UILayouts/HouseFellowshipForm";
+import { ZonesEnum } from "@/components/UILayouts/HouseFellowshipForm";
+import { groupedByZone } from "@/lib/groupedByZone";
 
 async function getHFC() {
   try {
     const response = await fetch(
-      `${process.env.domainUrl}/api/houseFellowshipCenters`
+      `${process.env.baseUrl}/api/houseFellowshipCenters`, {cache: 'no-store'}
     );
     if (response.ok) {
       const data = await response.json();
+      console.log("HFC data ", data)
       return data;
     }
   } catch (e) {console.log("server error: ", e)}
 }
 
 const Page = async () => {
-  const hfc: typeof initHfcForm[] = await getHFC();
-  const lakoweZone = HouseFellowshipCentersData.filter(
-    (center) => center.zone === "Lakowe Zone"
-  );
-  const eputuZone = HouseFellowshipCentersData.filter(
-    (center) => center.zone === "Eputu Zone"
-  );
-  const bogijeZone = HouseFellowshipCentersData.filter(
-    (center) => center.zone === "Bogije Zone"
-  );
+  const data = await getHFC();
+  const hfc: typeof initHfcForm[] = data.data;
+  console.log("hfc: ", hfc)
 
-  if(hfc?.length > 0 ){
-    const lakowezone = hfc.filter((center)=>center.zone === 'lakowe')
-    const eputuzone = hfc.filter((center)=>center.zone === 'eputu')
-    const bogijezone = hfc.filter((center)=>center.zone === 'bogije')
-  }
+  const groupedByzone = groupedByZone(hfc)
+  
+  console.log("zones", groupedByzone)
   return (
     <div className="bg-[#D9D9D9]">
       <Header title="House Fellowship Centers" imageUrl={HeaderImage.src} />
@@ -69,32 +63,18 @@ const Page = async () => {
           </p>
           {/* house fellowship centers */}
           <div className="flex flex-col gap-10 ">
-            <div className="my-5">
-              <h3 className="font-bold text-xl">Lakowe Zone</h3>
-              <div>
-                {lakoweZone.map((center, i) => (
-                  <HfcLayout key={i} center={center} />
-                ))}
+           
+            {Object.keys(groupedByzone)?.map((zone, i) => (
+   
+              <div key={i}>
+                <h3 className="font-bold text-xl">{`${zone} Zone`}</h3>
+                <div>
+                  {groupedByzone[zone]?.map((center, i) => (
+                    <HfcLayout key={i} center={center} />
+                  ))}
+                </div>
               </div>
-            </div>
-            {/* Eputu Zone */}
-            <div>
-              <h3 className="font-bold text-xl">Eputu Zone</h3>
-              <div>
-                {eputuZone.map((center, i) => (
-                  <HfcLayout key={i} center={center} />
-                ))}
-              </div>
-            </div>
-            {/* Bogije */}
-            <div>
-              <h3 className="font-bold text-xl">Bogije Zone</h3>
-              <div>
-                {bogijeZone.map((center, i) => (
-                  <HfcLayout key={i} center={center} />
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

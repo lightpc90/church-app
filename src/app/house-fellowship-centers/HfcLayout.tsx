@@ -13,14 +13,15 @@ const HfcLayout: React.FC<PropsType> = ({center}) => {
       {/* host */}
       <div>
         <label className="font-bold">{`Host: `}</label>
-        <label>{center.host}</label>||
-        <label>{center.host_phone}</label>
+        <label>{center.host}</label> {` || `}
+        <label>{center?.host_phone}</label>
       </div>
       {/* teacher */}
       <div>
         <label className="font-bold">{`Teacher: `}</label>
-        <label>{center.teacher}</label>||
-        <label>{center.teacher_phone}</label>
+        <label>{center.teacher}</label>
+        {` || `}
+        <label>{center?.teacher_phone}</label>
       </div>
     </div>
   );

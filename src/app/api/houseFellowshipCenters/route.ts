@@ -5,7 +5,8 @@ import prisma from "@/lib/prisma";
 export async function GET() {
   try {
     const data = await prisma.houseFellowship.findMany();
-    return NextResponse.json({data, success: true, message: "data data fetched"});
+    console.log("HFC data fetched: ", data)
+    return NextResponse.json({data, success: true, message: "data fetched"});
   } catch (error) {
     return NextResponse.json(
       {sucess: false, error: "Failed to fetch data" },
@@ -16,8 +17,13 @@ export async function GET() {
 
 // create a new HFC endpoint function
 export async function POST(req: Request) {
-  const data = await req.json();
+  
   try {
+    const data = await req.json();
+    if (!data) {
+      throw new Error("Data is empty");
+    }
+    console.log("data post: ", data);
     const created = await prisma.houseFellowship.create({
       data,
     });

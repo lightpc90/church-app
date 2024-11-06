@@ -51,9 +51,9 @@ model HouseFellowship {
   address       String
   zone          String
   teacher       String
-  teacher_phone String
+  teacher_phone String?
   host          String
-  host_phone    String
+  host_phone    String?
   createdAt     DateTime @default(now())
 }
 
