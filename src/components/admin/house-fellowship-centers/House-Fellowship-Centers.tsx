@@ -1,23 +1,35 @@
-"use client"
+"use client";
 
 import Button from "@/components/customeUI/Button";
 import { DataTable } from "@/components/ui/data-table";
 import { HouseFellowshipCentersData } from "@/components/data/Data";
 import { houseFellowshipColumns } from "@/components/ui/houseFellowshipColumns";
-import {useState} from "react";
+import { useState } from "react";
 import HouseFellowshipForm from "@/components/UILayouts/HouseFellowshipForm";
+import { AnimatePresence } from "framer-motion";
 
 const HouseFellowshipCenters = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   return (
     <div className="lg:m-5 relative">
-      <h1 className="text-xlg lg:text-2xl mb-5 font-bold text-blue-800">House Fellowship Centers </h1>
-      <Button onClick={()=>setOpen(true)} className="text-sm lg:text-md">Register a New House Fellowship Center</Button>
-      <DataTable columns={houseFellowshipColumns} data={HouseFellowshipCentersData} />
+      <h1 className="text-xlg lg:text-2xl mb-5 font-bold text-blue-800">
+        House Fellowship Centers{" "}
+      </h1>
+      <Button onClick={() => setOpen(true)} className="text-sm lg:text-md">
+        Register a New House Fellowship Center
+      </Button>
+      <DataTable
+        columns={houseFellowshipColumns}
+        data={HouseFellowshipCentersData}
+      />
       {/* house fellowship form component */}
-      {open && <div className="fixed inset-0 z-50 h-[100%] ml-[15%] w-[80%] lg:w-full flex justify-center py-[20px] text-white">
-        <HouseFellowshipForm setOpen={setOpen} />
-      </div>}
+      <AnimatePresence>
+        {open && (
+          <div className="fixed inset-0 z-50 h-[100%] ml-[15%] w-[80%] lg:w-full flex justify-center py-[20px] text-white">
+            <HouseFellowshipForm setOpen={setOpen} />
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

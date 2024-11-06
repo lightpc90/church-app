@@ -2,6 +2,7 @@
 
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import Loading from "../loading/RequestLoading";
+import { motion, easeOut } from "framer-motion";
 
 export const initHfcForm = {
   center: "",
@@ -54,7 +55,14 @@ const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
     setOpen(false);
   };
   return (
-    <div className="flex flex-col items-center gap-3 w-full bg-slate-950 rounded-md shadow-lg p-5 lg:p-10 md:w-[40%] lg:w-[40%]  relative">
+    <motion.div
+      key="hfcForm"
+      initial={{ y: "100%" }}
+      animate={{ y: 0 }}
+      exit={{ y: "100%" }}
+      transition={{ duration: 0.5, ease: easeOut }}
+      className="flex flex-col items-center gap-3 w-full bg-slate-950 rounded-md shadow-lg p-5 lg:p-10 md:w-[40%] lg:w-[40%]  relative"
+    >
       <button
         onClick={() => setOpen(false)}
         className="mb-10 bg-rose-800 text-white p-2 rounded-md self-end"
@@ -97,7 +105,7 @@ const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
           <label htmlFor="hostname">Host Name</label>
 
           <input
-          required
+            required
             name="hostname"
             type="text"
             placeholder="John Doe"
@@ -124,7 +132,7 @@ const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
         <div className="flex flex-col mb-2">
           <label htmlFor="teachername">Teacher Name</label>
           <input
-          required
+            required
             type="text"
             name="teachername"
             placeholder="John Doe"
@@ -149,7 +157,7 @@ const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
           />
         </div>
         <select
-        required
+          required
           onChange={(e) => setFormData({ ...formData, zone: e.target.value })}
           className="text-blue-950 mb-5 p-2 rounded-md"
         >
@@ -184,7 +192,7 @@ const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
           <Loading />
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
