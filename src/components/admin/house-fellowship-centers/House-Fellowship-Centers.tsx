@@ -15,7 +15,7 @@ const HouseFellowshipCenters = () => {
       <Button onClick={()=>setOpen(true)} className="text-sm lg:text-md">Register a New House Fellowship Center</Button>
       <DataTable columns={houseFellowshipColumns} data={HouseFellowshipCentersData} />
       {/* house fellowship form component */}
-      {open && <div className="fixed inset-0 z-50 h-[100%] ml-[20%] w-full flex justify-center py-[20px] text-white">
+      {open && <div className="fixed inset-0 z-50 h-[100%] ml-[15%] w-[80%] lg:w-full flex justify-center py-[20px] text-white">
         <HouseFellowshipForm setOpen={setOpen} />
       </div>}
     </div>
