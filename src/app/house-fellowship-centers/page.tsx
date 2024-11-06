@@ -8,12 +8,15 @@ import { initHfcForm } from "@/components/UILayouts/HouseFellowshipForm";
 import { ZonesEnum } from "@/components/UILayouts/HouseFellowshipForm";
 import { groupedByZone } from "@/lib/groupedByZone";
 
-async function getHFC() {
+import { headers } from "next/headers";
+
+async function getHFC(host: string) {
   const url = process.env.baseUrl
-  console.log("url for this environment: ", url)
+  console.log("host-url for this environment: ", url)
+  console.log("host for this environment: ", host)
   try {
     const response = await fetch(
-      `${url}/api/houseFellowshipCenters`, {cache: 'no-store'}
+      `${host}/api/houseFellowshipCenters`, {cache: 'no-store'}
     );
     if (response.ok) {
       const data = await response.json();
@@ -24,7 +27,10 @@ async function getHFC() {
 }
 
 const Page = async () => {
-  const data = await getHFC();
+  const headersList = headers()
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-protocol') || 'http'
+  const data = await getHFC(host);
   const hfc: typeof initHfcForm[] = data.data;
   console.log("hfc: ", hfc)
 
