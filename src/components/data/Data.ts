@@ -804,29 +804,29 @@ export const AccountData = {
     {
       type: "Naira Account",
       bank: "Zenith Bank",
-      accountNumber: 1012345665,
-      accountName: "RCCG ctlBg",
+      accountNumber: 1011274046,
+      accountName: "RCCG ctl BG Parish",
     },
     {
       type: "Dom. Account USD",
       bank: "Zenith Bank",
-      accountNumber: 1213367665,
-      accountName: "RCCG ctlBg",
+      accountNumber: 1234567890,
+      accountName: "RCCG ctl BG Parish",
     },
   ],
   welfare: [
     {
       type: "Naira Account",
       bank: "Zenith Bank",
-      accountNumber: 1012345665,
-      accountName: "RCCG ctlBg",
+      accountNumber: 1012025173,
+      accountName: "RCCG ctl BG Parish",
     },
   ],
   building: [
     {
       type: "Naira Account",
       bank: "Zenith Bank",
-      accountNumber: 1012345665,
+      accountNumber: 1011274046,
       accountName: "RCCG ctlBg",
     },
   ],
@@ -834,7 +834,7 @@ export const AccountData = {
     {
       type: "Naira Account",
       bank: "Zenith Bank",
-      accountNumber: 1012345665,
+      accountNumber: 1234567890,
       accountName: "RCCG ctlBg",
     },
   ],
@@ -842,7 +842,7 @@ export const AccountData = {
     {
       type: "Naira Account",
       bank: "Zenith Bank",
-      accountNumber: 1012345665,
+      accountNumber: 1234567890,
       accountName: "RCCG ctlBg",
     },
   ],
