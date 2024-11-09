@@ -59,10 +59,10 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.5, ease: easeOut }}
-            className="bg-zinc-900  pt-[90px] fixed top-0 left-0 w-full h-full z-40"
+            className="bg-zinc-900 md:text-2xl pt-[90px] fixed top-0 left-0 w-full h-full z-40"
           >
             {/* links */}
-            <div className="flex flex-col w-full gap-3 text-white h-[80%] overflow-auto">
+            <div className="flex flex-col w-full gap-3 md:gap-5 text-white h-[80%] overflow-auto">
               <div className="w-full h-[1px] bg-gray-400"></div>
               <Link
                 className="font-bold pl-5 flex gap-2 items-center"
