@@ -151,7 +151,7 @@ export default async function Home() {
           </span>
         </Link>
 
-        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10">
+        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10 md:flex md:flex-col md:w-full md:items-center">
           <p className="text-[#A11E1E] font-bold">Follow us on:</p>
           <SocialMedia />
         </div>
