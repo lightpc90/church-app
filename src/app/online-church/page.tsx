@@ -62,21 +62,21 @@ const page = async () => {
         imageUrl={onlineChurch.src}
       />
       <p className="font-bold text-2xl">Watch Us Live</p>
-      <div className="w-full lg:w-[70%]">
+      <div className="w-full md:w-[70%]">
         <LiveProgram />
       </div>
 
       {/* Audio and Video Messages */}
       <div
         id="media"
-        className="flex flex-col lg:mt-[60px] items-center justify-center bg-white w-full lg:px-[230px]"
+        className="flex flex-col md:mt-[60px] items-center justify-center bg-white w-full lg:px-[230px]"
       >
         {/* Audio  Messages */}
         <div
           id="audio"
-          className="flex flex-col items-center lg:py-10 gap-3 mb-10 w-full"
+          className="flex flex-col items-center md:py-10 gap-3 mb-10 w-full"
         >
-          <h2 className="font-bold lg:text-2xl">Our Audio Messages</h2>
+          <h2 className="font-bold md:text-2xl">Our Audio Messages</h2>
           <div className="flex bg-[#FDF9F9] rounded-full relative overflow-hidden">
             <input
               type="text"
@@ -89,7 +89,7 @@ const page = async () => {
             </span>
           </div>
           {/* list of Audios */}
-          <div className="w-full">
+          <div className="w-full md:w-[70%] lg:w-[60%]">
             <ul className="space-y-2">
               <li className=" bg-[#FDF9F9] p-2 flex gap-2 items-center">
                 <span>
@@ -113,7 +113,7 @@ const page = async () => {
           </div>
         </div>
         {/*  Video Messages */}
-        <div id="video" className="flex flex-col items-center gap-3 w-full">
+        <div id="video" className="flex flex-col md:text-2xl items-center gap-3 w-full md:w-[70%] lg:w-[90%]">
           <h2 className="font-bold lg:text-2xl pt-10 pb-5">Our Video Messages</h2>
           <VideoPlayer videos={videoMessages} />
         </div>
