@@ -29,13 +29,13 @@ const Navbar = () => {
   return (
     <div>
       <div
-        className="fixed top-0 left-0 py-2 px-[20px] 
+        className="fixed top-0 left-0 py-2 px-[20px] md:px-[50px] 
       lg:px-[100px] bg-zinc-900 opacity-80 text-white 
       flex items-center justify-between z-50 w-[100vw] overflow-hidden"
       >
         <Logo />
         <Links />
-        <div className="flex gap-3 items-center ">
+        <div className="flex gap-3 md:gap-6 md:text-xl font-bold items-center ">
           {/* authentication */}
           <header>
             <SignedOut>
