@@ -140,7 +140,7 @@ export default async function Home() {
         {/* Explore media */}
         <Link
           href={`/online-church/#media`}
-          className="text-[#A11E1E] lg:w-[60%] font-bold pl-5 lg:p-0 pr-10 flex gap-4 items-center z-10 lg:text-3xl"
+          className="text-[#A11E1E] md:text-2xl lg:w-[60%] font-bold pl-5 lg:p-0 pr-10 flex gap-4 items-center z-10 lg:text-3xl"
         >
           <span>
             <BsCollectionPlayFill size={30} />
@@ -151,18 +151,18 @@ export default async function Home() {
           </span>
         </Link>
 
-        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10 md:flex md:flex-col md:w-full md:items-center">
+        <div className="w-full lg:w-[60%] text-start pl-5 lg:p-0 z-10 md:flex md:flex-col md:w-full md:items-center md:text-2xl">
           <p className="text-[#A11E1E] font-bold">Follow us on:</p>
           <SocialMedia />
         </div>
       </div>
 
       {/* Instagram Posts */}
-      <div className="w-full flex flex-col py-6 gap-3 items-center bg-[#D9D9D9]">
+      <div className="w-full md:text-2xl flex flex-col py-6 gap-3 items-center bg-[#D9D9D9]">
         {/* Post Container */}
-        <div className="w-[340px] lg:w-[50%] m-auto">
+        <div className="w-[340px] md:w-[80%] lg:w-[50%] m-auto">
           <div className="w-full lg:w-[60%] py-5 text-start text-[#A11E1E] font-bold text-sm lg:text-xl ">
-            <p>Our Recent Instagram Posts</p>
+            <p className="md:text-2xl">Our Recent Instagram Posts</p>
             {/* <Link href={`/`} className="flex gap-2 items-center">
               <span>View More</span> <TbSquareRoundedArrowRightFilled />
             </Link> */}
