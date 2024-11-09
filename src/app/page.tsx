@@ -182,7 +182,7 @@ export default async function Home() {
           <p>Get Direction on Map</p>
         </div>
         {/* Google Map */}
-        <div className="h-[600px] lg:h-[800px] lg:w-[60%] bg-slate-700">
+        <div className="h-[600px] lg:h-[800px] md:w-[90%] lg:w-[60%] bg-slate-700">
           <MapComponent />
         </div>
       </div>
