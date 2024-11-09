@@ -10,7 +10,7 @@ const Page = () => {
     <div className="bg-[#D9D9D9] pb-10 flex flex-col items-center">
       <Header title={title} imageUrl={headerImage.src} />
       {/* Content */}
-      <div className="p-5 mt-5 lg:w-[50%] flex flex-col text-center justify-center">
+      <div className="p-5 mt-5 md:w-[70%] lg:w-[50%] flex flex-col text-center justify-center">
         <h2 className="font-bold text-xl md:text-2xl">{HowCanIBeSavedData.title}</h2>
         <p className="py-3 md:text-xl">{HowCanIBeSavedData.body}</p>
         <p className='font-bold text-center text-blue-950 mt-10 md:text-lg'>
@@ -19,7 +19,7 @@ const Page = () => {
         </p>
       </div>
       {/* follow-up form */}
-      <div className='w-full flex justify-center'>
+      <div className='w-full flex justify-center md:w-[70%]'>
         <NewConvertForm />
       </div>
     </div>
