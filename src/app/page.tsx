@@ -107,9 +107,9 @@ export default async function Home() {
         </div>
       </div>
       {/* Services */}
-      <div className="flex flex-wrap lg:items-center lg:justify-center lg:mb-10">
+      <div className="flex flex-wrap lg:items-center lg:justify-center lg:mb-10 lg:w-[1400px]">
         {/* Our Weekly Services */}
-        <div className="w-full bg-[#B9C4D4] lg:flex-1 mt-[20px] lg:mt-[0px] lg:h-[800px] relative overflow-hidden">
+        <div className="w-full bg-[#B9C4D4] lg:flex-1 mt-[20px] lg:mt-[0px] lg:h-[800px] relative overflow-hidden lg:flex lg:justify-center">
           <WeeklyServices />
           <div className="w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] lg:top-[-150px] left-[-50%] lg:left-[-30%] cycling"></div>
         </div>

@@ -16,7 +16,7 @@ async function getHFC(Url: string | null) {
   console.log("host for this environment: ", Url)
   try {
     const response = await fetch(
-      `${Url}/api/houseFellowshipCenters`, {cache: 'no-store'}
+      `${Url}/api/houseFellowshipCenters`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -32,6 +32,7 @@ const Page = async () => {
   const protocol = headersList.get('x-forwarded-protocol') || 'http'
   console.log('protocol: ', protocol)
   const data = await getHFC(`${protocol}://${host}`);
+  console.log("data: ", data)
   const hfc: typeof initHfcForm[] = data?.data;
   console.log("hfc: ", hfc)
 
@@ -73,7 +74,7 @@ const Page = async () => {
           {/* house fellowship centers */}
           <div className="flex flex-col gap-10 ">
            
-            {Object.keys(groupedByzone)?.map((zone, i) => (
+            {groupedByzone && Object.keys(groupedByzone)?.map((zone, i) => (
    
               <div key={i}>
                 <h3 className="font-bold text-xl">{`${zone} Zone`}</h3>

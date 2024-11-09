@@ -2,7 +2,7 @@
 import { initHfcForm } from "@/components/UILayouts/HouseFellowshipForm";
 
 export const groupedByZone = (data: typeof initHfcForm[]) => {
-  return data.reduce((acc, hfc) => {
+  return data?.reduce((acc, hfc) => {
     const { zone } = hfc;
     if (!acc[zone]) {
       acc[zone] = [];

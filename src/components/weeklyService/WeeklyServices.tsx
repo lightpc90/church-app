@@ -6,15 +6,15 @@ import faithClinic from "../../../public/faith clinic.png"
 
 const WeeklyServices = () => {
   return (
-    <div className="py-10 text-zinc-950 font-bold flex flex-col gap-5 items-center z-30">
+    <div className="py-10 text-zinc-950 font-bold flex flex-col gap-5 items-center justify-center lg:w-full z-30">
       <div className="text-center z-30">
         <h4 className={`text-sm text-slate-500`}>Worship With Us</h4>
         <h2 className="text-xl">Our Weekly Services</h2>
       </div>
-      <div className="flex flex-wrap w-full lg:w-[80%] gap-5 items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:w-[85%] lg:w-[95%] gap-3 md:gap-1 items-center justify-center">
         {/* sunday service */}
         <div
-          className={`bg-slate-600 text-white w-[330px] lg:w-[600px] h-[500px] lg:h-[400px] z-30 relative`}
+          className={`bg-slate-600 md:col-span-1 text-white w-[330px] lg:w-[300px] h-[500px] lg:h-[400px] z-30 relative`}
         >
           <Image
             src={`/guitar.jpg`}
@@ -57,49 +57,50 @@ const WeeklyServices = () => {
             </div>
           </div>
         </div>
-        {/* Tuesday service */}
-        <div
-          className={`bg-slate-600 text-white w-[330px] lg:w-[300px] h-[200px] z-30 relative`}
-        >
-          <Image
-            src={diggingDeep.src}
-            alt=""
-            height={500}
-            width={400}
-            loading="eager"
-            className="object-cover object-center h-full w-full"
-          />
-          <div
-            className={`bg-slate-900 absolute flex flex-col justify-between top-0 left-0 w-[50%] h-full opacity-70 p-2`}
-          >
-            <h3>TUESDAY</h3>
-            <div>
-              <p>Digging Deep</p>
-              <p className="text-slate-400 text-sm">6pm-7pm</p>
-              <p></p>
+        {/* Tuesday and Thursday Card */}
+        <div className="md:col-span-1 grid grid-cols-1 gap-4 w-[330px] lg:w-[300px]">
+          {/* Tuesday service */}
+          <div className={`bg-slate-600 text-white h-[200px] z-30 relative`}>
+            <Image
+              src={diggingDeep.src}
+              alt=""
+              height={500}
+              width={400}
+              loading="eager"
+              className="object-cover object-center h-full w-full"
+            />
+            <div
+              className={`bg-slate-900 absolute flex flex-col justify-between top-0 left-0 w-[50%] h-full opacity-70 p-2`}
+            >
+              <h3>TUESDAY</h3>
+              <div>
+                <p>Digging Deep</p>
+                <p className="text-slate-400 text-sm">6pm-7pm</p>
+                <p></p>
+              </div>
             </div>
           </div>
-        </div>
-        {/* Thursday service */}
-        <div
-          className={`bg-slate-600 text-white w-[330px] lg:w-[300px] h-[200px] z-30 relative`}
-        >
-          <Image
-            src={faithClinic.src}
-            alt=""
-            height={500}
-            width={400}
-            loading="eager"
-            className="object-cover object-center h-full w-full"
-          />
+          {/* Thursday service */}
           <div
-            className={`bg-slate-900 absolute flex flex-col justify-between top-0 left-0 w-[50%] h-full opacity-70 p-2`}
+            className={`bg-slate-600 text-white h-[200px] z-30 relative`}
           >
-            <h3>THURSDAY</h3>
-            <div>
-              <p>Faith Clinic</p>
-              <p className="text-slate-400 text-sm">6pm-7pm</p>
-              <p></p>
+            <Image
+              src={faithClinic.src}
+              alt=""
+              height={500}
+              width={400}
+              loading="eager"
+              className="object-cover object-center h-full w-full"
+            />
+            <div
+              className={`bg-slate-900 absolute flex flex-col justify-between top-0 left-0 w-[50%] h-full opacity-70 p-2`}
+            >
+              <h3>THURSDAY</h3>
+              <div>
+                <p>Faith Clinic</p>
+                <p className="text-slate-400 text-sm">6pm-7pm</p>
+                <p></p>
+              </div>
             </div>
           </div>
         </div>
