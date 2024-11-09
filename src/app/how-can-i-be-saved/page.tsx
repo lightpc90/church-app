@@ -11,9 +11,9 @@ const Page = () => {
       <Header title={title} imageUrl={headerImage.src} />
       {/* Content */}
       <div className="p-5 mt-5 lg:w-[50%] flex flex-col text-center justify-center">
-        <h2 className="font-bold text-xl lg:text-2xl">{HowCanIBeSavedData.title}</h2>
-        <p className="py-3 lg:text-xl">{HowCanIBeSavedData.body}</p>
-        <p className='font-bold text-center text-blue-950 mt-10 lg:text-lg'>
+        <h2 className="font-bold text-xl md:text-2xl">{HowCanIBeSavedData.title}</h2>
+        <p className="py-3 md:text-xl">{HowCanIBeSavedData.body}</p>
+        <p className='font-bold text-center text-blue-950 mt-10 md:text-lg'>
           Kindly fill the form bellow so that Our Follow-Up team can reach out
           to you
         </p>
