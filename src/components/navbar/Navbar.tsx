@@ -31,7 +31,7 @@ const Navbar = () => {
       <div
         className="fixed top-0 left-0 py-2 px-[20px] md:px-[50px] 
       lg:px-[100px] bg-zinc-900 opacity-80 text-white 
-      flex items-center justify-between z-50 w-[100vw] overflow-hidden"
+      flex items-center justify-between z-50 w-[100vw]"
       >
         <Logo />
         <Links />
