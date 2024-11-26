@@ -17,7 +17,7 @@ const buttonLinks = [
   { name: "How Can I Be Saved?", link: "/how-can-i-be-saved" },
   { name: "Prayer Request", link: "/prayer-request" },
   { name: "Share Testimony", link: "/testimony" },
-  { name: "Workers", link: "/how-can-i-be-saved" },
+  { name: "Workers", link: "/workers" },
   { name: "About Us", link: "/about-us" },
   { name: "House Fellowship Centers", link: "/house-fellowship-centers" },
   { name: "Natural Groups and Ministries", link: "/groups-and-ministries" },

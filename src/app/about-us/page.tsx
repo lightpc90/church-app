@@ -39,10 +39,13 @@ const page = () => {
       {/* about us */}
       <div className="py-10 px-5 flex flex-col items-center">
         <div className="lg:w-[700px] mb-10">
-          <h2 className="font-bold text-lg mb-3 text-center w-full">
+          <h2 className="font-bold text-xl mb-3 text-center w-full">
             {AboutUs.title}
           </h2>
+          <p className="text-lg">
+
           {AboutUs.body}
+          </p>
         </div>
 
         {/* pastors */}
