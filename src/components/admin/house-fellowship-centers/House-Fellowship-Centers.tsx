@@ -2,7 +2,6 @@
 
 import Button from "@/components/customeUI/Button";
 import { DataTable } from "@/components/ui/data-table";
-import { HouseFellowshipCentersData } from "@/components/data/Data";
 import { houseFellowshipColumns } from "@/components/ui/houseFellowshipColumns";
 import { useState, useEffect } from "react";
 import HouseFellowshipForm from "@/components/UILayouts/HouseFellowshipForm";

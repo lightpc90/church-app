@@ -22,11 +22,16 @@ const PrayerRequestForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error("Failed to create preayer request");
+    if (!res.ok) {
+      console.log("Failed to create prayer request")
+      alert("Failed to send prayer request! Try again")
+      return
+    };
     const _res = await res.json();
     console.log(_res);
     setLoading(false);
     setFormData(initForm)
+    alert("Request sent successfully");
   };
   return (
     <div className="flex flex-col items-center gap-3 w-[80%] lg:w-[40%] relative">
@@ -85,13 +90,14 @@ const PrayerRequestForm = () => {
         </div>
         <button
           onClick={handleSubmit}
+          disabled={loading}
           className="bg-blue-950 hover:bg-blue-800 p-2 text-white rounded-md w-full my-2"
         >
           Pray With Me
         </button>
       </div>
       {/* loading component */}
-    {loading &&  <div className="absolute inset-0 opacity-90 h-full w-full overflow-hidden">
+      {loading && <div className="absolute inset-0 opacity-90 h-full w-full overflow-hidden">
         <Loading />
       </div>}
     </div>
