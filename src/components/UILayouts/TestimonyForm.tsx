@@ -13,7 +13,7 @@ const formInit = {
 const TestimonyForm = () => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState(formInit);
-  const handleSubmit = async () => { 
+  const handleSubmit = async () => {
     setLoading(true);
     try {
       const response = await fetch('/api/testimony', {

@@ -74,6 +74,14 @@ model Testimony {
   testimony String
   createdAt DateTime @default(now())
 }
+model Enquiry {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullname  String
+  phone     String
+  email     String?
+  enquiry   String
+  createdAt DateTime @default(now())
+}
 
 model Elder {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
