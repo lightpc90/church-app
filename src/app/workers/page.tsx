@@ -50,7 +50,7 @@ const Page = () => {
       <div className='absolute bottom-[1px] left-[10px]'>
         {show && <div className='p-3 bg-blue-950 rounded-md absolute bottom-[100%] left-[5px] shadow-md w-fit'>
           <div className='text-white font-bold p-2'>Settings</div>
-          <Link href={`/`} className='text-white hover:text-blue-600 font-bold p-2 flex items-center gap-2'><span><SiHomebridge size={25} /></span><span className='text-sm'>Home</span></Link>
+          <Link href={`/`} onClick={() => setShow(false)} className='text-white hover:text-blue-600 font-bold p-2 flex items-center gap-2'><span><SiHomebridge size={25} /></span><span className='text-sm'>Home</span></Link>
           <button className='text-white hover:text-blue-600 font-bold p-2 flex items-center gap-2 w-fit'><span><FaRegEdit size={25} /></span><span className='text-sm'>Edit Profile</span></button>
           <button className='text-white hover:text-blue-600 font-bold p-2 flex items-center gap-2'><span><RiLogoutCircleLine size={25} /></span><span className='text-sm'>LogOut</span></button>
         </div>}
