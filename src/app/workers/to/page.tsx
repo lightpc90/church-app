@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import bg from "../../../public/churchFront1.png";
+import bg from "../../../../public/churchFront1.png";
 import Image from "next/image";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { AiFillHome } from "react-icons/ai";
