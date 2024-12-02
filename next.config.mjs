@@ -1,22 +1,22 @@
 /** @type {import('next').NextConfig} */
 
-import withPWAInit from "@ducanh2912/next-pwa";
+// import withPWAInit from "@ducanh2912/next-pwa";
 
-const withPWA = withPWAInit({
-  dest: "public",
-  disable: true, //process.env.NODE_ENV === "development",
-  register: true,
-  scope: "/app",
-  sw: "sw.js",
-  runtimeCaching: {
-    options:{
-      cacheableResponse: {
-        statuses: [200, 302],
-      },
-    }
-  }
+// const withPWA = withPWAInit({
+//   dest: "public",
+//   disable: true, //process.env.NODE_ENV === "development",
+//   register: true,
+//   scope: "/app",
+//   sw: "sw.js",
+//   runtimeCaching: {
+//     options:{
+//       cacheableResponse: {
+//         statuses: [200, 302],
+//       },
+//     }
+//   }
   
-});
+// });
 
 
 const nextConfig = {
@@ -42,4 +42,5 @@ const nextConfig = {
   },
 };
 
-export default withPWA(nextConfig);;
+export default nextConfig
+// export default withPWA(nextConfig);;
