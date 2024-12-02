@@ -3,6 +3,7 @@ import {
 } from "@clerk/nextjs";
 
 import type { Metadata, Viewport } from "next";
+import Head from "next/head";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/Layout";
@@ -48,6 +49,20 @@ export const metadata: Metadata = {
       template: APP_TITLE_TEMPLATE,
     },
     description: APP_DESCRIPTION,
+    creator: "@_lightpc_",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
