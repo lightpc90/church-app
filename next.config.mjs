@@ -4,7 +4,7 @@ import withPWAInit from "@ducanh2912/next-pwa";
 
 const withPWA = withPWAInit({
   dest: "public",
-  disable: false, //process.env.NODE_ENV === "development",
+  disable: true, //process.env.NODE_ENV === "development",
   register: true,
   scope: "/app",
   sw: "sw.js",
