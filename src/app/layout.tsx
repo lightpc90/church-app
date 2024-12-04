@@ -41,6 +41,8 @@ export const metadata: Metadata = {
     },
     description: APP_DESCRIPTION,
     creator: "@_lightpc_",
+    images: ["/icons/icon192x192.png"],
+    site: "https://beautiful-gate.vercel.app/",
   },
   robots: {
     index: true,
