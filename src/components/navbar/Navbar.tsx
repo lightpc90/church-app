@@ -34,7 +34,10 @@ const Navbar = () => {
       flex items-center justify-between z-50 w-[100vw]"
       >
         <Logo />
+        {/* Links component shows only on large screens */}
+        <div className="hidden lg:flex gap-5">
         <Links />
+        </div>
         <div className="flex gap-3 md:gap-6 md:text-xl font-bold items-center ">
           {/* authentication */}
           <header>
@@ -45,16 +48,17 @@ const Navbar = () => {
               <UserButton />
             </SignedIn>
           </header>
+          {/* mobile links shows only on small screens */}
           <div className="lg:hidden">
             <MobileNavbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
         </div>
       </div>
       {/* mobile links */}
-      <AnimatePresence>
+      {/* <AnimatePresence> */}
         {menuOpen && (
           <motion.div
-            key="mobbileNav"
+            key="mobileNav"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
@@ -178,7 +182,7 @@ const Navbar = () => {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
     </div>
   );
 };

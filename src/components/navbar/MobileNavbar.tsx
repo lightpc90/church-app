@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Dispatch, SetStateAction, useState } from "react";
 import { GrMenu } from "react-icons/gr";
 import { HiMenuAlt3 } from "react-icons/hi";
