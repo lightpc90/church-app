@@ -22,18 +22,18 @@ const Footer = () => {
       {/* Church Name*/}
       <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
         <div
-          className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
+          className="w-[50px] h-[50px] lg:w-[120px] lg:h-[120px]
          rounded-full bg-cover bg-center bg- relative overflow-hidden"
         >
           <Image
-            src={logo.src}
-            // placeholder="blur"
-            // blurDataURL={logo.blurDataURL}
-            width={1000}
-            height={1000}
+            src='/logo/rccg_logo.png'
+            placeholder="blur"
+            blurDataURL={logo.blurDataURL}
+            width={800}
+            height={800}
             priority
             alt="logo"
-            className="absolute bg-cover object-cover"
+            className="w-full h-full bg-cover object-cover"
           />
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
