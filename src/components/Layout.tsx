@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 
 const ConditionalLayout = ({children}:{children: React.ReactNode}) => {
     const noNavAndFooterRoutes = [
-      "/admin", "/worker", "/workers", 
+      "/admin", "/workers/to", 
       "/workers/create-account", "/workers/login"
     ];
     const pathname = usePathname();
