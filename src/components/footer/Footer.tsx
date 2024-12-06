@@ -25,7 +25,7 @@ const Footer = () => {
           className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
          rounded-full bg-cover bg-center bg- relative overflow-hidden"
         >
-          <Image
+          {/* <Image
             src={logo.src}
             placeholder="blur"
             blurDataURL={logo.blurDataURL}
@@ -34,7 +34,7 @@ const Footer = () => {
             priority
             alt="logo"
             className="absolute bg-cover object-cover"
-          />
+          /> */}
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
       </div>
