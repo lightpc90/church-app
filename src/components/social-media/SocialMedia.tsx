@@ -13,7 +13,7 @@ const SocialMedia = () => {
         href={`https://www.instagram.com/${username}/`}
         target="_blank"
         rel="noopener noreferrer"
-        className=" "
+       
       >
         <AiFillInstagram size={30} />
       </Link>
@@ -21,7 +21,7 @@ const SocialMedia = () => {
         href={`https://www.facebook.com/rccgbglagos`}
         target="_blank"
         rel="noopener noreferrer"
-        className=" "
+     
       >
         <SiFacebook size={30} />
       </Link>
@@ -29,7 +29,7 @@ const SocialMedia = () => {
         href={`https://www.youtube.com/@rccgbgplagos`}
         target="_blank"
         rel="noopener noreferrer"
-        className=""
+      
       >
         <TbBrandYoutubeFilled size={30} />
       </Link>
