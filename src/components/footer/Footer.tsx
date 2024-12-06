@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="mt-auto bg-blue-950 w-full text-white p-5 lg:p-10">
       {/* Church Name*/}
-      <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
+      {/* <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
         <div
           className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
          rounded-full bg-cover bg-center bg- relative overflow-hidden"
@@ -37,7 +37,7 @@ const Footer = () => {
           />
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
-      </div>
+      </div> */}
       {/* About Us */}
       <div className="lg:w-[30%] mb-10">
         <h2 className="font-bold text-lg mb-3">{AboutUs.title}</h2>
