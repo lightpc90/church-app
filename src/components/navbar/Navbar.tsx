@@ -37,22 +37,22 @@ const Navbar = () => {
         {/* Links component shows only on large screens */}
 
         <Links />
-      </div>
-      <div className="flex gap-3 md:gap-6 md:text-xl font-bold items-center ">
-        {/* authentication */}
-        <header>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </header>
-        {/* mobile links shows only on small screens */}
-        <div className="lg:hidden">
-          <MobileNavbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        </div>
 
+        <div className="flex gap-3 md:gap-6 md:text-xl font-bold items-center ">
+          {/* authentication */}
+          <header>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
+          {/* mobile links shows only on small screens */}
+          <div className="lg:hidden">
+            <MobileNavbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          </div>
+        </div>
       </div>
       {/* mobile links */}
       {/* <AnimatePresence> */}
