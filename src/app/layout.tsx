@@ -63,7 +63,7 @@ export const metadata: Metadata = {
       should_fallback: true,
     },
   },
- 
+
 };
 
 export const viewport: Viewport = {
@@ -79,10 +79,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${inter.className} min-h-screen overflow-x-hidden `}>
-          <ServiceWorkerRegisterer/>
           <ThemeProvider>
             <ConditionalLayout>
-            {children}
+              <ServiceWorkerRegisterer />
+              {children}
             </ConditionalLayout>
           </ThemeProvider>
         </body>
