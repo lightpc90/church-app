@@ -38,7 +38,7 @@ const Links = () => {
     return () => clearTimeout(timeout); // Cleanup timeout
   }, [isHovered]);
   return (
-    <div className=''>
+    <div className='hidden lg:flex gap-5'>
       {Navs.map((navlink, i) => (
         <Link key={i} href={navlink.link} className='font-bold hover:text-rose-600'>{navlink.name}</Link>
       ))}
