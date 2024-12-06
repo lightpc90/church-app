@@ -6,7 +6,7 @@ import Link from "next/link";
 import { AboutUs } from "../data/Data";
 import { QuickLinks } from "../data/Data";
 import ContactInfo from "../contactInfo/ContactInfo";
-import ScrollLink from "./ScrollLink";
+// import ScrollLink from "./ScrollLink";
 
 const Footer = () => {
   const quicklinks = QuickLinks.filter((link) => link.category === "Quicklink");
@@ -22,18 +22,18 @@ const Footer = () => {
       {/* Church Name*/}
       <div className="lg:w-[30%] mb-[90px] flex items-center gap-2">
         <div
-          className="w-[60px] h-[60px] lg:w-[120px] lg:h-[120px]
+          className="w-[50px] h-[50px] lg:w-[120px] lg:h-[120px]
          rounded-full bg-cover bg-center bg- relative overflow-hidden"
         >
           <Image
-            src={logo.src}
+            src='/logo/rccg_logo.png'
             placeholder="blur"
             blurDataURL={logo.blurDataURL}
-            width={1000}
-            height={1000}
+            width={800}
+            height={800}
             priority
             alt="logo"
-            className="absolute bg-cover object-cover"
+            className="w-full h-full bg-cover object-cover"
           />
         </div>
         <h2 className="font-bold lg:text-lg">RCCG BEAUTIFUL GATE, LAKOWE</h2>
@@ -82,14 +82,16 @@ const Footer = () => {
           <h2 className="font-bold text-lg mb-3 text-blue-300">Quick Links</h2>
           <div className="flex flex-col">
             {quicklinks.map((link, i) => (
-              <ScrollLink
+              <Link
+              // <ScrollLink
                 href={link.link}
                 key={i}
                 className="my-1 hover:text
-            blue-700"
+                blue-700"
               >
                 {link.name}
-              </ScrollLink>
+                {/* </ScrollLink> */}
+              </Link>
             ))}
           </div>
           <h2 className="font-bold text-lg my-3 text-blue-300">
@@ -113,9 +115,14 @@ const Footer = () => {
           <h2 className="font-bold text-lg my-3 text-blue-300">Workers</h2>
           <div className="flex flex-col">
             {workerlinks.map((workerlink, i) => (
-              <ScrollLink key={i} href={workerlink.link}>
+              <Link
+                // <ScrollLink
+                key={i}
+                href={workerlink.link}
+              >
                 {workerlink.name}
-              </ScrollLink>
+                {/* </ScrollLink> */}
+              </Link>
             ))}
           </div>
         </div>

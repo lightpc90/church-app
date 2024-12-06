@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/Layout";
 import { ThemeProvider } from "@/components/context-providers/theme-provider";
+// import ServiceWorkerRegisterer from "@/components/clearSWcache/clearSWcache";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -63,19 +64,6 @@ export const metadata: Metadata = {
     },
   },
 
-  robots: {
-    index: false,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: true,
-      follow: false,
-      noimageindex: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 export const viewport: Viewport = {
@@ -92,7 +80,10 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.className} min-h-screen overflow-x-hidden `}>
           <ThemeProvider>
-            <ConditionalLayout>{children}</ConditionalLayout>
+            <ConditionalLayout>
+              {/* <ServiceWorkerRegisterer /> */}
+              {children}
+            </ConditionalLayout>
           </ThemeProvider>
         </body>
       </html>
