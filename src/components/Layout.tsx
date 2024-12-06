@@ -7,17 +7,17 @@ import { usePathname } from 'next/navigation'
 
 const ConditionalLayout = ({children}:{children: React.ReactNode}) => {
     const noNavAndFooterRoutes = [
-      "/admin", "/workers/to", 
+      "/admin", "/workers/to", "workers" ,
       "/workers/create-account", "/workers/login"
     ];
     const pathname = usePathname();
     console.log("pathname: ", pathname);
-    const isNoNavAndFooterRoute = !noNavAndFooterRoutes.includes(pathname);
+    const isNavAndFooterRoute = !noNavAndFooterRoutes.includes(pathname);
   return (
     <div className=''>
-        {isNoNavAndFooterRoute &&  <Navbar/>}
+        {/* {isNavAndFooterRoute &&  <Navbar/>} */}
         {children}
-       {isNoNavAndFooterRoute && <Footer/>}
+       {isNavAndFooterRoute && <Footer/>}
     </div>
   )
 }
