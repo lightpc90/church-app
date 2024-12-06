@@ -18,6 +18,13 @@ const ServiceWorkerUnregisterer = () => {
         else{
             console.log("Service Worker not found.");
         }
+        // clear all caches in the browser
+        caches.keys().then((cacheNames) => {
+            console.log("clearing all the caches in the browser...");
+            cacheNames.forEach((cacheName) => {
+                caches.delete(cacheName);
+            });
+        });
     }, []);
 
     return null;
