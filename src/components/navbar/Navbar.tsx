@@ -8,7 +8,7 @@ import MobileNavbar from "./MobileNavbar";
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-import { easeOut, motion, AnimatePresence } from "framer-motion";
+// import { easeOut, motion, AnimatePresence } from "framer-motion";
 
 import { AiFillHome } from "react-icons/ai";
 import { AiFillSafetyCertificate } from "react-icons/ai";
@@ -57,12 +57,12 @@ const Navbar = () => {
       {/* mobile links */}
       {/* <AnimatePresence> */}
       {menuOpen && (
-        <motion.div
-          key="mobileNav"
-          initial={{ x: "-100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "-100%" }}
-          transition={{ duration: 0.5, ease: easeOut }}
+        <div
+          // key="mobileNav"
+          // initial={{ x: "-100%" }}
+          // animate={{ x: 0 }}
+          // exit={{ x: "-100%" }}
+          // transition={{ duration: 0.5, ease: easeOut }}
           className="bg-zinc-900 md:text-2xl pt-[90px] fixed top-0 left-0 w-full h-full z-40"
         >
           {/* links */}
@@ -180,7 +180,7 @@ const Navbar = () => {
           <div className="text-white text-center w-full pl-5 pt-5">
             <SocialMedia />
           </div>
-        </motion.div>
+        </div>
       )}
       {/* </AnimatePresence> */}
     </div>
