@@ -15,9 +15,9 @@ const ConditionalLayout = ({children}:{children: React.ReactNode}) => {
     const isNavAndFooterRoute = !noNavAndFooterRoutes.includes(pathname);
   return (
     <div className=''>
-        {/* {isNavAndFooterRoute &&  <Navbar/>} */}
+        {isNavAndFooterRoute &&  <Navbar/>}
         {children}
-       {isNavAndFooterRoute && <Footer/>}
+       {/* {isNavAndFooterRoute && <Footer/>} */}
     </div>
   )
 }
