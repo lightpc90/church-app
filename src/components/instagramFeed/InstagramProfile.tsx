@@ -12,13 +12,19 @@ interface InstagramAccountInfo {
 
 
 const InstagramProfile: React.FC = async () => {
-  const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN; // Replace with your valid access token
-  const url = `https://graph.instagram.com/me?fields=id,username,profile_picture_url,followers_count,follows_count&access_token=${accessToken}`;
+  const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN; 
+  const url = `https://graph.facebook.com/me?fields=id,username,profile_picture_url,followers_count,follows_count&access_token=${accessToken}`;
 
   // Fetch account information
   try {
-    const response = await fetch(url, {next: {revalidate: 3600}});
+    const response = await fetch(url, { next: { revalidate: 3600 } });
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Failed to fetch:", response.status, errorText);
+      throw new Error("Failed to fetch Instagram account info");
+    }
     const profileData = await response.json();
+    console.log("profile data objects: ", profileData)
     return (
       <div className="w-full bg-zinc-950 text-white flex flex-col p-4 rounded-md shadow-md mb-2 overflow-hidden relative">
         <div className="absolute h-[300px] w-[300px] rounded-full top-[-70%] lg:top-[-70%] right-[-50%] lg:right-[-10%] bg-zinc-900 z-[1] cyclingReverse"></div>
@@ -30,7 +36,7 @@ const InstagramProfile: React.FC = async () => {
             width={200}
             style={{ borderRadius: "50%", width: "40px", height: "40px" }}
           />
-          <h2>{profileData.username}</h2>
+          <h2>{profileData?.username}</h2>
         </div>
         <div className="flex gap-4 items-center my-3 z-[3]">
           <p>
