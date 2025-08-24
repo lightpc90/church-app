@@ -114,8 +114,8 @@ export default async function Home() {
           <div className="w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] z-10 rounded-full bg-[#9CBACA] absolute top-[-90px] lg:top-[-150px] left-[-50%] lg:left-[-30%] cycling"></div>
         </div>
         {/* Our Monthy Services */}
-        <div className="bg-[#02271C] w-full lg:h-[800px] lg:flex-1 relative overflow-hidden lg:mt-[200px]">
-          <div className="w-[600px] h-[600px] lg:w-[900px] lg:h-[900px] rounded-full bg-[#022C13] absolute top-[-90px] right-[-80%] z-0 cyclingReverse"></div>
+        <div className="bg-gray-900 w-full lg:h-[800px] lg:flex-1 relative overflow-hidden lg:mt-[200px]">
+          <div className="w-[600px] h-[600px] lg:w-[900px] lg:h-[900px] rounded-full bg-gra-700 absolute top-[-90px] right-[-80%] z-0 cyclingReverse"></div>
           <MonthlyServices />
         </div>
       </div>

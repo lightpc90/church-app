@@ -1,67 +1,38 @@
-'use client'
-
-import { useState } from 'react'
-import { FiSettings } from "react-icons/fi";
-import { FaRegEdit } from "react-icons/fa";
-import { SiHomebridge } from "react-icons/si";
-import { RiLogoutCircleLine } from "react-icons/ri";
-import { RxAvatar } from "react-icons/rx";
-import Link from 'next/link';
-
-const Page = () => {
-  const [show, setShow] = useState(false)
+const UserProfile = ()=>{
   return (
-    <div className='h-[100dvh] w-[100vw] overflow-hidden bg-gradient-to-tr from-blue-300 via-blue-200 to-rose-300'>
-      <div className='h-[60px] w-full text-white bg-blue-950 p-2 flex items-center justify-center'> This page is still being developed</div>
-      <div className=' bg-blue-300 text-lg font-bold p-4 flex items-center justify-between'>
-        <span>
-
-          Workers Dashboard
-        </span>
-        <Link href={`/`} className='text-blue-950 hover:text-blue-800 font-bold p-2 flex items-center gap-2'><span><SiHomebridge size={25} /></span><span className='text-sm'>Home</span></Link>
-      </div>
-      <div className='p-4 space-y-2'>
-        {/* dp */}
-        <div>
-          <div className='h-[90px] w-[90px] rounded-full bg-blue-950 flex items-center justify-center'>
-            <RxAvatar size={80} className='text-white' />
-          </div>
-          <p className='font-bold text-lg py-2'>Hi, John</p>
+    <div className="h-screen flex-col w-full p-4 max-w-[1200px]">
+      {/* profile picture and name */}
+      <section className="flex gap-2 items-center justify-between">
+        <div>Back</div>
+        <h3>My Profile</h3>
+        <div>Settings</div>
+      </section>
+      <section className="flex items-center gap-4 mt-12 inline-block">
+        <div className="h-[80px] w-[80px] rounded-full bg-gray-800">
+          
         </div>
-        <Link href={`/workers/mark-attendance`} className='bg-blue-950 hover:bg-blue-800 text-white p-3 rounded-md'>Mark attendance</Link>
-      </div>
-      <div className='p-4 space-y-2 max-w-[600px]'>
-        <div className='bg-gray-200 p-3 rounded-md ring-1 shadow-md ring-blue-800'><span>Full Name:</span> <span className='font-bold'>John Doe</span></div>
-        <div className='bg-gray-200 p-3 rounded-md ring-1 shadow-md ring-blue-800'><span>Primary Dept:</span> <span className='font-bold'>Media and Technical</span></div>
-        <div className='bg-gray-200 p-3 rounded-md ring-1 shadow-md ring-blue-800'><span>Phone Number:</span> <span className='font-bold'>08123456789</span></div>
-        <div className='bg-gray-200 p-3 rounded-md ring-1 shadow-md ring-blue-800'><span>Email:</span> <span className='font-bold'>john.doe@me.com</span></div>
-      </div>
-      {/* divider */}
-      <div className='h-[5px] w-[50%] bg-blue-950 max-w-[300px]' ></div>
-      {/* secondary info */}
-      <div className='p-4 space-y-2 max-w-[600px]'>
-        <div className='bg-gray-200 p-3 rounded-md ring-1 shadow-md ring-blue-800'><span>House Fellowship:</span> <span className='font-bold'></span></div>
-        <div className='bg-gray-200 p-3 rounded-md ring-1 shadow-md ring-blue-800'><span>Residential Address</span> <span className='font-bold'></span></div>
-        <div className='bg-gray-200 p-3 rounded-md ring-1 shadow-md ring-blue-800'><span>Secondary Depts:</span> <span className='font-bold'></span></div>
-      </div>
-      {/* divider */}
-      <div className='h-[5px] w-[50%] max-w-[300px] bg-blue-950' ></div>
-      {/* settings */}
-      <div className='absolute bottom-[1px] left-[10px]'>
-        {show && <div className='p-3 bg-blue-950 rounded-md absolute bottom-[100%] left-[5px] shadow-md w-fit'>
-          <div className='text-white font-bold p-2'>Settings</div>
-          <Link href={`/`} onClick={() => setShow(false)} className='text-white hover:text-blue-600 font-bold p-2 flex items-center gap-2'><span><SiHomebridge size={25} /></span><span className='text-sm'>Home</span></Link>
-          <button className='text-white hover:text-blue-600 font-bold p-2 flex items-center gap-2 w-fit'><span><FaRegEdit size={25} /></span><span className='text-sm'>Edit Profile</span></button>
-          <button className='text-white hover:text-blue-600 font-bold p-2 flex items-center gap-2'><span><RiLogoutCircleLine size={25} /></span><span className='text-sm'>LogOut</span></button>
-        </div>}
-        <div onClick={() => setShow(!show)} className='flex items-center justify-center h-[40px] w-[40px] bg-blue-950 hover:bg-blue-800 m-4 rounded-full  shadow-md'>
-          <span className='text-white'>
-            <FiSettings size={25} />
-          </span>
+        <div className="flex flex-col ">
+          <h1 className="text-xl font-bold">John Doe</h1>
+          <span>johndoe@gmail.com</span>
+        <button className="text-xs text-white mt-2 w-fit bg-sky-700 p-1 rounded-md">Edit Profile</button>
         </div>
-      </div>
+      </section>
+      {/* basic info */}
+      <h3 className="mt-12 mb-3 text-xs text-sky-500">Basic Info</h3>
+      <section className="text-sm inline-block text-gray-500 gap-2 flex flex-col">
+        <div>Phone: <span className="text-gray-800">+234 904 6470</span></div>
+        <div>Gender: <span className="text-gray-800">Female</span></div>
+        <div>DOB: <span className="text-gray-800">17th, Oct</span></div>
+      </section>
+      <div className="w-full h-[1px] bg-gray-500 mt-6"/>
+      {/* Extended info */}
+      <h3 className="mt-6 mb-3 text-xs text-sky-500">Extended Info</h3>
+      <section className="text-sm text-gray-500 flex flex-col gap-2">
+        <div>Dept: <span className="text-gray-800">Media & Tech.</span></div>
+        <div>House Fellowship: <span className="text-gray-800">Glory Center</span></div>
+        <div>House Address: <span className="text-gray-800">1, David Ave. Lakowe</span></div>
+      </section>
     </div>
   )
 }
-
-export default Page
+export default UserProfile
