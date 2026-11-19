@@ -1,120 +1,95 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Card from "@/components/customeUI/Card";
-import CustomBarChart from "@/components/customeUI/BarChartRechart";
+import { useMemo, useState } from "react";
+import { AdminPanel, StatCard } from "../AdminCard";
 import {
   deptData,
   attendanceData,
   bottomCardsData,
 } from "@/components/data/Data";
-import { attendanceInitData } from "@/components/initData/initData";
 import { GeneralAttedanceData } from "@/components/data/Data";
 import { BarChartUI } from "@/components/customeUI/BarChart";
 
 const Overview = () => {
   const [deptSelected, setDeptSelected] = useState("");
 
-  const [data, setData] =
-    useState<typeof GeneralAttedanceData>(GeneralAttedanceData);
+  const handleSelectedDept = (dept: string) =>
+    deptData.find((eachDept) => eachDept.dept === dept)?.total;
 
-  const handleSelectedDept = (dept: string) => {
-    const filteredDept = deptData.find((eachDept) => eachDept.dept === dept);
-    return filteredDept?.total;
-  };
-
-  const getAttendance = () => {
-    console.log("running getAttendance...");
-    const deptAttendance = attendanceData.map((eachAttendance) => {
-      console.log("eachAtt: ", eachAttendance[deptSelected]);
-      return {
-        attendance: eachAttendance[deptSelected].attendance,
-        name: eachAttendance[deptSelected].date,
-        dept: eachAttendance[deptSelected].dept,
-      };
-    });
-    setData(deptAttendance);
-  };
-
-  useEffect(() => {
-    if (deptSelected) {
-      console.log("selected dept: ", deptSelected);
-      getAttendance();
-    }
-  }, [deptSelected]);
+  // Derived from the selected department; no effect/state round-trip needed.
+  const data = useMemo(
+    () =>
+      deptSelected
+        ? attendanceData.map((eachAttendance) => ({
+            attendance: eachAttendance[deptSelected].attendance,
+            name: eachAttendance[deptSelected].date,
+            dept: eachAttendance[deptSelected].dept,
+          }))
+        : GeneralAttedanceData,
+    [deptSelected]
+  );
 
   return (
-    <div className="lg:px-10">
-      {/* Title */}
-      <p className="text-2xl font-bold p-2 text-blue-800 ">Overview</p>
-      {/* Cards container */}
-      <div className="flex flex-wrap gap-2 lg:gap-4">
-        <Card
-          title="234"
-          subtitle="Total number of Workers"
-          className="flex-1 bg-blue-100 text-blue-800 border-l-4 border-blue-800 shadow-lg"
-        >
-          123Men, 104Women
-        </Card>
-        <div className="flex flex-wrap gap-1 lg:gap-5">
-          {deptData.map((dept, i) => (
-            <Card
-              key={i}
-              title={dept.total}
-              subtitle={dept.dept}
-              rounded="md"
-              className="text-sm lg:text-md font-seminbold shadow-lg flex-grow-1 basis-[140px] "
-            >
-              {`${dept.male}Men, ${dept.female}Women`}
-            </Card>
-          ))}
-        </div>
+    <div className="space-y-8">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <StatCard accent value="234" label="Total workers" detail="123 men · 104 women" />
+        {bottomCardsData.slice(0, 3).map((card) => (
+          <StatCard key={card.subtititle} value={card.title} label={card.subtititle} />
+        ))}
       </div>
-      {/* workers attendance stat */}
-      <div className="flex flex-wrap mt-10 w-full gap-2 ">
-        <div className="flex flex-col flex-2 bg-blue-50 overflow-hidden justify-center items-center py-5 px-3 rounded-lg shadow-lg gap-3 border-l-4 border-blue-800">
-          <div className="flex flex-wrap items-start w-full ">
+
+      <div className="grid gap-6 xl:grid-cols-3">
+        <AdminPanel className="xl:col-span-2">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="font-display text-xl font-medium text-ink">Attendance</h2>
+              <p className="text-sm text-stone">
+                {deptSelected
+                  ? `${handleSelectedDept(deptSelected)} members in ${deptSelected}`
+                  : "General attendance, last 5 Sundays"}
+              </p>
+            </div>
+            <label className="sr-only" htmlFor="dept-filter">
+              Department
+            </label>
             <select
+              id="dept-filter"
               value={deptSelected}
               onChange={(e) => setDeptSelected(e.target.value)}
+              className="h-10 rounded-full border border-line bg-white px-4 text-sm text-ink"
             >
-              <option value={""}>Choose Dept</option>
-              {deptData.map((dept, i) => (
-                <option value={dept.dept} key={i}>
+              <option value="">All departments</option>
+              {deptData.map((dept) => (
+                <option value={dept.dept} key={dept.dept}>
                   {dept.dept}
                 </option>
               ))}
             </select>
-            <div className="ml-5 mb-10">
-              {deptSelected && (
-                <p className="font-bold text-blue-800">{`Total Number of  ${handleSelectedDept(
-                  deptSelected
-                )} members`}</p>
-              )}
-            </div>
           </div>
-          <div className="flex  justify-end items-end">
-            <BarChartUI data={data} />
-          </div>
-        </div>
-        <div className="flex-1 bg-white shadow-lg rounded-lg p-3 border-r-4 border-blue-800">
-          <p className="text-blue-800 font-bold">Reserved For Children Stat</p>
-        </div>
+          <BarChartUI data={data} />
+        </AdminPanel>
+
+        <AdminPanel>
+          <h2 className="font-display text-xl font-medium text-ink">Departments</h2>
+          <ul className="mt-4 divide-y divide-line">
+            {deptData.map((dept) => (
+              <li key={dept.dept} className="flex items-center justify-between gap-3 py-3">
+                <div>
+                  <p className="font-medium text-ink">{dept.dept}</p>
+                  <p className="text-xs text-stone">
+                    {dept.male} men · {dept.female} women
+                  </p>
+                </div>
+                <span className="font-display text-2xl text-ink tabular-nums">{dept.total}</span>
+              </li>
+            ))}
+          </ul>
+        </AdminPanel>
       </div>
-      {/* Cards for remaining links */}
-      <div className="flex flex-wrap mt-5 gap-4">
-        {bottomCardsData.map((bottomInfo, i) => (
-          <Card
-            key={i}
-            shadow="xl"
-            title={bottomInfo.title}
-            subtitle={bottomInfo.subtititle}
-            className="ring-2 ring-blue-800 bg-blue-50 flex-grow-1 basis-[130px]"
-          >
-            {""}
-          </Card>
-        ))}
-      </div>
+
+      <p className="text-sm text-stone">
+        Figures on this page are sample data until attendance tracking is connected.
+      </p>
     </div>
   );
 };

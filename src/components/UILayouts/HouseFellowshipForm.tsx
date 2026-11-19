@@ -1,8 +1,13 @@
 "use client";
 
-import { Dispatch, FC, SetStateAction, useState } from "react";
-import Loading from "../loading/RequestLoading";
+import { Dispatch, FC, SetStateAction } from "react";
+import { useFormSubmit } from "../forms/useFormSubmit";
+import { FieldError, FormMessage } from "../forms/FormBits";
 import { motion, easeOut } from "framer-motion";
+import { Loader2, X } from "lucide-react";
+import { fieldClass, labelClass } from "../forms/fields";
+import { buttonVariants } from "../site/primitives";
+import { cn } from "@/lib/utils";
 
 export const initHfcForm = {
   center: "",
@@ -35,163 +40,94 @@ export enum ZonesEnum {
 
 type PropsType = {
   setOpen: Dispatch<SetStateAction<boolean>>;
+  onCreated?: () => void;
 };
-const HouseFellowshipForm: FC<PropsType> = ({ setOpen }) => {
-  const [formData, setFormData] = useState(initHfcForm);
-  const [loading, setLoading] = useState(false);
-  //
-  const handleSubmit = async () => {
-    setLoading(true);
-    const data = formData;
-    const res = await fetch("/api/houseFellowshipCenters", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    const _res = await res.json();
-    console.log(_res);
-    setLoading(false);
-    setFormData(initHfcForm);
-    setOpen(false);
-  };
+
+const HouseFellowshipForm: FC<PropsType> = ({ setOpen, onCreated }) => {
+  const { bind, onSubmit, status, error, fieldErrors } = useFormSubmit(
+    "/api/houseFellowshipCenters",
+    initHfcForm,
+    { onSuccess: onCreated }
+  );
+  const submitting = status === "submitting";
+
   return (
     <motion.div
-      key="hfcForm"
-      initial={{ y: "100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: "100%" }}
-      transition={{ duration: 0.5, ease: easeOut }}
-      className="flex flex-col items-center gap-3 w-full bg-slate-950 rounded-md shadow-lg p-5 lg:p-10 md:w-[40%] lg:w-[40%]  relative"
+      className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="hfc-form-title"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
-      <button
-        onClick={() => setOpen(false)}
-        className="mb-10 bg-rose-800 text-white p-2 rounded-md self-end"
+      <button type="button" aria-label="Close" className="absolute inset-0 bg-ink/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
+      <motion.form
+        onSubmit={onSubmit}
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 40, opacity: 0 }}
+        transition={{ duration: 0.35, ease: easeOut }}
+        className="relative flex max-h-[92svh] w-full max-w-2xl flex-col overflow-hidden rounded-t-[2rem] bg-ivory shadow-lift sm:rounded-[2rem]"
       >
-        close
-      </button>
-      <h1 className="font-bold text-lg text-white">
-        Add House Fellowship Center
-      </h1>
-      <div className="w-full">
-        <div className="flex flex-col mb-2">
-          <label htmlFor="centername">Center Name</label>
-          <input
-            required
-            name="centername"
-            type="text"
-            placeholder="Beautiful Gate Center"
-            className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.center}
-            onChange={(e) =>
-              setFormData({ ...formData, center: e.target.value })
-            }
-          />
+        <div className="flex items-center justify-between border-b border-line px-6 py-5 sm:px-8">
+          <h2 id="hfc-form-title" className="font-display text-2xl font-medium text-ink">Add house fellowship center</h2>
+          <button type="button" aria-label="Close" onClick={() => setOpen(false)} className="inline-flex size-10 items-center justify-center rounded-full bg-ink/5 text-ink hover:bg-ink/10">
+            <X className="size-5" aria-hidden />
+          </button>
         </div>
-        <div className="flex flex-col mb-2">
-          <label htmlFor="centerAddress">Center Address</label>
-          <input
-            required
-            name="centerAddress"
-            type="text"
-            placeholder="Beautiful Gate, Church Premises"
-            className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.address}
-            onChange={(e) =>
-              setFormData({ ...formData, address: e.target.value })
-            }
-          />
+        <div className="grid gap-5 overflow-y-auto px-6 py-6 sm:grid-cols-2 sm:px-8">
+          <div className="sm:col-span-2">
+            <label htmlFor="center" className={labelClass}>Center Name</label>
+            <input {...bind("center")} type="text" placeholder="Beautiful Gate Center" className={fieldClass} required />
+            <FieldError messages={fieldErrors.center} />
+          </div>
+          <div className="sm:col-span-2">
+            <label htmlFor="address" className={labelClass}>Center Address</label>
+            <input {...bind("address")} type="text" placeholder="Beautiful Gate, Church Premises" className={fieldClass} required />
+            <FieldError messages={fieldErrors.address} />
+          </div>
+          <div>
+            <label htmlFor="host" className={labelClass}>Host Name</label>
+            <input {...bind("host")} type="text" placeholder="John Doe" className={fieldClass} required />
+            <FieldError messages={fieldErrors.host} />
+          </div>
+          <div>
+            <label htmlFor="host_phone" className={labelClass}>Host Number</label>
+            <input {...bind("host_phone")} type="tel" inputMode="tel" placeholder="08012345678" className={fieldClass} />
+            <FieldError messages={fieldErrors.host_phone} />
+          </div>
+          <div>
+            <label htmlFor="teacher" className={labelClass}>Teacher Name</label>
+            <input {...bind("teacher")} type="text" placeholder="John Doe" className={fieldClass} required />
+            <FieldError messages={fieldErrors.teacher} />
+          </div>
+          <div>
+            <label htmlFor="teacher_phone" className={labelClass}>Teacher Number</label>
+            <input {...bind("teacher_phone")} type="tel" inputMode="tel" placeholder="08012345678" className={fieldClass} />
+            <FieldError messages={fieldErrors.teacher_phone} />
+          </div>
+          <div className="sm:col-span-2">
+            <label htmlFor="zone" className={labelClass}>Zone</label>
+            <select {...bind("zone")} required className={fieldClass}>
+              <option value="">Choose zone</option>
+              {Object.values(ZonesEnum).map((zone) => (
+                <option key={zone} value={zone}>
+                  {zone} Zone
+                </option>
+              ))}
+            </select>
+            <FieldError messages={fieldErrors.zone} />
+          </div>
+          <div className="space-y-4 sm:col-span-2">
+            <FormMessage status={status} error={error} successText="Center added." />
+            <button type="submit" disabled={submitting} className={cn(buttonVariants({ size: "lg" }), "w-full")}>
+              {submitting && <Loader2 className="animate-spin" aria-hidden />}
+              {submitting ? "Saving…" : "Add center"}
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col mb-2">
-          <label htmlFor="hostname">Host Name</label>
-
-          <input
-            required
-            name="hostname"
-            type="text"
-            placeholder="John Doe"
-            className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.host}
-            onChange={(e) =>
-              setFormData({ ...formData, host: e.target.value.toString() })
-            }
-          />
-        </div>
-        <div className="flex flex-col mb-2">
-          <label htmlFor="hostnumber">Host Number</label>
-          <input
-            name="hostnumber"
-            type="number"
-            placeholder="08012345678"
-            className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.host_phone}
-            onChange={(e) =>
-              setFormData({ ...formData, host_phone: e.target.value })
-            }
-          />
-        </div>
-        <div className="flex flex-col mb-2">
-          <label htmlFor="teachername">Teacher Name</label>
-          <input
-            required
-            type="text"
-            name="teachername"
-            placeholder="John Doe"
-            className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.teacher}
-            onChange={(e) =>
-              setFormData({ ...formData, teacher: e.target.value })
-            }
-          />
-        </div>
-        <div className="flex flex-col mb-2">
-          <label htmlFor="teachernumber">Teacher Number</label>
-          <input
-            type="number"
-            name="teachernumber"
-            placeholder="08012345678"
-            className="bg-[#FFFFFF] p-2 rounded-md text-blue-950"
-            value={formData.teacher_phone}
-            onChange={(e) =>
-              setFormData({ ...formData, teacher_phone: e.target.value })
-            }
-          />
-        </div>
-        <select
-          required
-          onChange={(e) => setFormData({ ...formData, zone: e.target.value })}
-          className="text-blue-950 mb-5 p-2 rounded-md"
-        >
-          <option value="">Choose Zone</option>
-          <option value={ZonesEnum.lakowe}>Lakowe Zone</option>
-          <option value={ZonesEnum.schoolGate}>School Gate Zone</option>
-          <option value={ZonesEnum.adeba}>Adeba Zone</option>
-          <option value={ZonesEnum.oribanwa}>Oribanwa Zone</option>
-          <option value={ZonesEnum.awoyaya}>Awoyaya Zone</option>
-          <option value={ZonesEnum.ologunfe}>Ologunfe Zone</option>
-          <option value={ZonesEnum.bogije}>Bogije Zone</option>
-          <option value={ZonesEnum.kajola}>Kajola Zone</option>
-          <option value={ZonesEnum.malete}>Malete Zone</option>
-          <option value={ZonesEnum.eputu}>Eputu Zone</option>
-          <option value={ZonesEnum.ogunfayo}>Ogunfayo Zone</option>
-          <option value={ZonesEnum.newRoad}>New Road Zone</option>
-          <option value={ZonesEnum.abijo}>Abijo GRA Zone</option>
-          <option value={ZonesEnum.faraPark}>Fara Park Zone</option>
-          <option value={ZonesEnum.sangotedo}>Sangotedo Zone</option>
-          <option value={ZonesEnum.lekki}>Lekki Zone</option>
-        </select>
-        <button
-          onClick={handleSubmit}
-          className="bg-blue-950 hover:bg-blue-800 p-2 text-white rounded-md w-full my-2"
-        >
-          Add House Fellowship
-        </button>
-      </div>
-      {/* loading component */}
-      {loading && (
-        <div className="absolute inset-0 opacity-90 h-full w-full overflow-hidden">
-          <Loading />
-        </div>
-      )}
+      </motion.form>
     </motion.div>
   );
 };

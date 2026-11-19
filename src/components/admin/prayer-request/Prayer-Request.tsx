@@ -1,15 +1,14 @@
-import { DataTable } from '@/components/ui/data-table'
-import React from 'react'
-import { PrayerRequestData } from '@/components/data/Data'
-import { prayerRequestColumns } from '@/components/ui/prayerRequestColumns'
+import { DataTable } from "@/components/ui/data-table";
+import { PrayerRequestData } from "@/components/data/Data";
+import { prayerRequestColumns } from "@/components/ui/prayerRequestColumns";
+import { AdminPanel, AdminSection } from "../AdminCard";
 
-const PrayerRequest = () => {
-  return (
-    <div className=' lg:m-10'>
-       <h1 className="text-2xl font-bold text-blue-800 mb-5">Prayer Requests</h1>
+const PrayerRequest = () => (
+  <AdminSection title="Prayer requests" description="Requests submitted for the prayer team.">
+    <AdminPanel>
       <DataTable columns={prayerRequestColumns} data={PrayerRequestData} />
-    </div>
-  )
-}
+    </AdminPanel>
+  </AdminSection>
+);
 
-export default PrayerRequest
+export default PrayerRequest;

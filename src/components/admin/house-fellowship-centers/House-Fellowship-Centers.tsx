@@ -1,53 +1,84 @@
 "use client";
 
-import Button from "@/components/customeUI/Button";
+import { Plus } from "lucide-react";
+import { Button } from "@/components/site/primitives";
+import { AdminPanel, AdminSection } from "../AdminCard";
 import { DataTable } from "@/components/ui/data-table";
 import { houseFellowshipColumns } from "@/components/ui/houseFellowshipColumns";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import HouseFellowshipForm from "@/components/UILayouts/HouseFellowshipForm";
 import { AnimatePresence } from "framer-motion";
+import type { HouseFellowshipType } from "@/components/types/types";
 
-const HouseFellowshipCenters = async () => {
+const HouseFellowshipCenters = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([])
+  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<HouseFellowshipType[]>([]);
+
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch("/api/houseFellowshipCenters", { cache: "no-store" });
+      const body = await response.json().catch(() => null);
+      if (!response.ok || !body?.success) {
+        throw new Error(body?.error ?? "Failed to load house fellowship centers");
+      }
+      setData(body.data);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to load house fellowship centers");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("api/houseFellowshipCenters");
-      if(!response.ok){
-        throw new Error("Failed to fetch data: server error")
-      }
-      const _res = await response.json()
-      if(!_res.success){
-        throw new Error(_res.error)}
-      const data = _res.data
-      setData(data) 
-      setLoading(false)
-    }
-    fetchData()
-  }, [])
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- initial data load
+    fetchData();
+  }, [fetchData]);
+
   return (
-    <div className="lg:m-5 relative">
-      <h1 className="text-xlg lg:text-2xl mb-5 font-bold text-blue-800">
-        House Fellowship Centers{" "}
-      </h1>
-      <Button onClick={() => setOpen(true)} className="text-sm lg:text-md">
-        Register a New House Fellowship Center
-      </Button>
-      <DataTable
-        columns={houseFellowshipColumns}
-        data={data}
-      />
-      {/* house fellowship form component */}
+    <AdminSection
+      title="House fellowship centers"
+      description="Centers listed on the public House Fellowships page."
+      action={
+        <Button onClick={() => setOpen(true)}>
+          <Plus aria-hidden /> Add center
+        </Button>
+      }
+    >
+      {error && (
+        <p role="alert" className="rounded-2xl bg-red-50 p-4 text-red-900">
+          {error}{" "}
+          <button type="button" className="font-semibold underline" onClick={fetchData}>
+            Retry
+          </button>
+        </p>
+      )}
+      <AdminPanel>
+        {loading ? (
+          <div className="space-y-3" aria-busy="true">
+            {[0, 1, 2, 3].map((i) => (
+              <div key={i} className="h-10 animate-pulse rounded-xl bg-sand" />
+            ))}
+          </div>
+        ) : (
+          <DataTable columns={houseFellowshipColumns} data={data} />
+        )}
+      </AdminPanel>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 z-50 h-[100%] ml-[15%] w-[80%] lg:w-full flex justify-center py-[20px] text-white">
-            <HouseFellowshipForm setOpen={setOpen} />
-          </div>
+          <HouseFellowshipForm
+            setOpen={setOpen}
+            onCreated={() => {
+              setOpen(false);
+              fetchData();
+            }}
+          />
         )}
       </AnimatePresence>
-    </div>
+    </AdminSection>
   );
 };
 

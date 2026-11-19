@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { DeptsEnum, TabParamsEnum } from "../enums/Enums";
 
 export type WorkerType = {
@@ -40,12 +39,13 @@ export type FollowUpType = {
   };
 
   export type HouseFellowshipType = {
-    _id: number;
+    id: string;
     center: string;
+    zone: string;
     host: string;
-    host_phone: string;
+    host_phone?: string | null;
     teacher: string;
-    teacher_phone: string;
+    teacher_phone?: string | null;
     address: string;
   };
 

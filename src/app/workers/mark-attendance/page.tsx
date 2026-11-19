@@ -1,9 +1,7 @@
-import React from 'react'
+import { ComingSoon } from "@/components/workers/WorkersShell";
 
-const Page = () => {
-  return (
-    <div>Attendance Page</div>
-  )
+export const metadata = { title: "Mark Attendance" };
+
+export default function Page() {
+  return <ComingSoon title="Mark attendance" description="Soon you'll be able to check in for services and departmental meetings right here." />;
 }
-
-export default Page

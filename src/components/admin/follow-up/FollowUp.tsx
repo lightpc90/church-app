@@ -1,19 +1,14 @@
-import Button from "@/components/customeUI/Button";
 import { DataTable } from "@/components/ui/data-table";
-import React from "react";
 import { FollowUpData } from "@/components/data/Data";
 import { followUpColumns } from "@/components/ui/followUpColums";
-import { workersData } from "@/components/data/Data";
+import { AdminPanel, AdminSection } from "../AdminCard";
 
-
-const FollowUp = () => {
-  return (
-    <div className="lg:m-10">
-      <h1 className="text-2xl font-bold text-blue-800 mb-5" >Follow Up List</h1>
-      <Button>Add New</Button>
+const FollowUp = () => (
+  <AdminSection title="Follow up" description="New converts and first-timers to reach out to.">
+    <AdminPanel>
       <DataTable columns={followUpColumns} data={FollowUpData} />
-    </div>
-  );
-};
+    </AdminPanel>
+  </AdminSection>
+);
 
 export default FollowUp;

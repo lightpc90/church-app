@@ -16,4 +16,5 @@ export enum TabParamsEnum {
   TESTIMONIES = "testimonies",
   PRAYER_REQUESTS = "prayer-requests",
   HOUSE_FELLOWSHIP = "house-fellowship-centers",
+  SETTINGS = "settings",
 }

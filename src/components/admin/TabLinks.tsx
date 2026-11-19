@@ -1,115 +1,86 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
-// import { useSearchParams } from "next/navigation";
-import { RiDashboard3Line } from "react-icons/ri";
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { GiShadowFollower } from "react-icons/gi";
-import { GrAnnounce } from "react-icons/gr";
-import { FaPrayingHands } from "react-icons/fa";
-import { BiBuildingHouse } from "react-icons/bi";
-import { MdOutlineSettings } from "react-icons/md";
-import { BiLogOutCircle } from "react-icons/bi";
-import { SiHomebridge } from "react-icons/si";
+import { SignOutButton } from "@clerk/nextjs";
+import {
+  LayoutDashboard,
+  BriefcaseBusiness,
+  UserRoundPlus,
+  Megaphone,
+  HandHeart,
+  House,
+  Settings,
+  LogOut,
+  Globe,
+} from "lucide-react";
 import { TabParamsEnum } from "../enums/Enums";
-import { AdminTabsType } from "../types/types";
+import { cn } from "@/lib/utils";
 
-const AdminTabs = [
-  {
-    name: "Overview",
-    param: TabParamsEnum.OVERVIEW,
-    icon: <RiDashboard3Line size={30} />,
-  },
-  {
-    name: "Workers",
-    param: TabParamsEnum.WORKERS,
-    icon: <MdOutlineWorkOutline size={30} />,
-  },
-  {
-    name: "Follow Up",
-    param: TabParamsEnum.FOLLOW_UP,
-    icon: <GiShadowFollower size={30} />,
-  },
-  {
-    name: "Testimonies",
-    param: TabParamsEnum.TESTIMONIES,
-    icon: <GrAnnounce size={30} />,
-  },
-  {
-    name: "Prayer Requests",
-    param: TabParamsEnum.PRAYER_REQUESTS,
-    icon: <FaPrayingHands size={30} />,
-  },
-  {
-    name: "House Fellowship Centers",
-    param: TabParamsEnum.HOUSE_FELLOWSHIP,
-    icon: <BiBuildingHouse size={30} />,
-  },
+export const AdminTabs = [
+  { name: "Overview", param: TabParamsEnum.OVERVIEW, Icon: LayoutDashboard },
+  { name: "Workers", param: TabParamsEnum.WORKERS, Icon: BriefcaseBusiness },
+  { name: "Follow Up", param: TabParamsEnum.FOLLOW_UP, Icon: UserRoundPlus },
+  { name: "Testimonies", param: TabParamsEnum.TESTIMONIES, Icon: Megaphone },
+  { name: "Prayer Requests", param: TabParamsEnum.PRAYER_REQUESTS, Icon: HandHeart },
+  { name: "House Fellowships", param: TabParamsEnum.HOUSE_FELLOWSHIP, Icon: House },
 ];
 
-type menuT = { menu: string | null };
+const itemClass = (active: boolean) =>
+  cn(
+    "flex items-center justify-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium transition-colors lg:justify-start",
+    active ? "bg-gold text-ink" : "text-white/65 hover:bg-white/10 hover:text-white"
+  );
 
-const TabLinks = ({ menu }: menuT) => {
-  return (
-    <div className="flex flex-col lg:gap-3 items-center h-full z-40">
-      {AdminTabs.map((tab, i) => (
+const TabLinks = ({ menu }: { menu: string | null }) => (
+  <aside className="fixed inset-y-0 left-0 z-30 flex w-20 flex-col bg-ink px-3 py-5 lg:w-72 lg:px-5">
+    <Link href="/admin" className="mb-8 flex items-center justify-center gap-3 lg:justify-start lg:px-2">
+      <span className="relative size-10 shrink-0 overflow-hidden rounded-full bg-white">
+        <Image src="/images/logo-512.png" alt="" fill sizes="40px" className="scale-[1.35] object-contain" />
+      </span>
+      <span className="hidden leading-tight lg:block">
+        <span className="block font-display text-lg text-white">Beautiful Gate</span>
+        <span className="block text-[0.68rem] font-semibold tracking-[0.2em] text-white/50 uppercase">Admin</span>
+      </span>
+    </Link>
+
+    <nav aria-label="Admin" className="flex flex-1 flex-col gap-1">
+      {AdminTabs.map(({ name, param, Icon }) => (
         <Link
-          href={`/admin?menu=${tab.param}`}
-          key={i}
-          className={`p-1 lg:p-2  lg:text-lg  transition-transform transform hover:scale-110 lg:w-full rounded-md lg:rounded-2xl flex my-3 lg:my-0 justify-center ${
-            menu === tab.param
-              ? "bg-blue-900 shadow-lg text-white border "
-              : "bg-blue-900 shadow-lg "
-          }`}
+          key={param}
+          href={`/admin?menu=${param}`}
+          aria-current={menu === param ? "page" : undefined}
+          title={name}
+          className={itemClass(menu === param)}
         >
-          <span className="flex lg:gap-2 items-center">
-            <span>{tab.icon}</span>
-            <p className="hidden md:flex">{tab.name}</p>
-          </span>
+          <Icon className="size-5 shrink-0" aria-hidden />
+          <span className="hidden lg:inline">{name}</span>
         </Link>
       ))}
-      {/* HOME, SETTINGS AND LOGOUT BUTTON */}
-      <div className="flex flex-col items-center lg:items-start lg:w-full gap-2 mt-auto mb-2">
-        {/* Home button */}
-        <Link
-          href={`/`}
-          className={`flex lg:gap-2 p-2 transition-transform transform hover:scale-110 rounded-2xl 
-            justify-center items-center 
-            `}
-        >
-          <span>
-            <SiHomebridge size={30} />
-          </span>
-          <span className="hidden lg:flex">Home</span>
-        </Link>
-        {/* Setting Button */}
-        <Link
-          href={`/admin?menu=settings`}
-          className={`p-2 lg:gap-2 transition-transform transform hover:scale-110 rounded-2xl flex justify-center ${
-            menu === "settings"
-              ? "bg-blue-900 shadow-lg text-white border "
-              : "bg-zinc-800 shadow-lg "
-          }`}
-        >
-          <span>
-            <MdOutlineSettings size={30} />
-          </span>
-          <span className="hidden lg:flex">Settings</span>
-        </Link>
-        {/* Logout button */}
-        <Link
-          href={`/logout`}
-          className="flex lg:gap-2 p-2 transition-transform transform hover:scale-110 rounded-2xl justify-center items-center bg-rose-800 shadow-lg"
-        >
-          <span>
-            <BiLogOutCircle size={30} />
-          </span>
-          <span className="hidden lg:flex">Log Out</span>
-        </Link>
-      </div>
+    </nav>
+
+    <div className="flex flex-col gap-1 border-t border-white/10 pt-4">
+      <Link href="/" title="View website" className={itemClass(false)}>
+        <Globe className="size-5 shrink-0" aria-hidden />
+        <span className="hidden lg:inline">View website</span>
+      </Link>
+      <Link
+        href={`/admin?menu=${TabParamsEnum.SETTINGS}`}
+        title="Settings"
+        aria-current={menu === TabParamsEnum.SETTINGS ? "page" : undefined}
+        className={itemClass(menu === TabParamsEnum.SETTINGS)}
+      >
+        <Settings className="size-5 shrink-0" aria-hidden />
+        <span className="hidden lg:inline">Settings</span>
+      </Link>
+      <SignOutButton redirectUrl="/">
+        <button type="button" title="Log out" className={cn(itemClass(false), "w-full hover:bg-ember/20 hover:text-white")}>
+          <LogOut className="size-5 shrink-0" aria-hidden />
+          <span className="hidden lg:inline">Log out</span>
+        </button>
+      </SignOutButton>
     </div>
-  );
-};
+  </aside>
+);
 
 export default TabLinks;

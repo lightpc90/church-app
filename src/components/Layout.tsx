@@ -1,26 +1,25 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Navbar from './navbar/Navbar'
-import Footer from './footer/Footer'
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
+import Navbar from "./navbar/Navbar";
+import Footer from "./footer/Footer";
 
-const ConditionalLayout = ({children}:{children: React.ReactNode}) => {
-    const noNavAndFooterRoutes = [
-      "admin", "workers",
-    ];
-    const pathname = usePathname();
-    console.log("pathname: ", pathname);
-    const isNavAndFooterRoute = !noNavAndFooterRoutes.includes(pathname);
+// Top-level route segments that render their own chrome (no public navbar/footer).
+const NO_CHROME_SEGMENTS = new Set(["admin"]);
 
-    console.log("will contain nav: ", isNavAndFooterRoute)
+const ConditionalLayout = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname() ?? "/";
+  const showChrome = !NO_CHROME_SEGMENTS.has(pathname.split("/")[1] ?? "");
+
+  if (!showChrome) return <>{children}</>;
+
   return (
-    <div className=''>
-        {isNavAndFooterRoute &&  <Navbar/>}
-        {children}
-       {isNavAndFooterRoute && <Footer/>}
-    </div>
-  )
-}
+    <>
+      <Navbar />
+      <main id="main">{children}</main>
+      <Footer />
+    </>
+  );
+};
 
-export default ConditionalLayout
+export default ConditionalLayout;

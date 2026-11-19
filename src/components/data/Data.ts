@@ -2,7 +2,6 @@
 
 import { DeptsEnum } from "../enums/Enums";
 
-import pastorImage from "../../../public/default_dp.webp"
 
 // group images
 import children from "../../../public/groups/children.jpg"
@@ -779,7 +778,7 @@ export const ChurchWelcomeParagraph = {
   title: "Welcome to RCCG, Beautiful Gate Parish, Lakowe, Lagos",
   description: "Lagos Province 114 Headquarters. ",
   paragraph:
-    "We are a vibrant community dedicated to the Word, worship, and prayer. We are united in love and committed to creating an environment where everyone are welcome. Whether you're joining us for the first time or have been part of our family, we invite you to grow in faith, connect in fellowship, and experience the transforming power of God's presence.",
+    "We are a vibrant community dedicated to the Word, worship, and prayer. We are united in love and committed to creating an environment where everyone is welcome. Whether you're joining us for the first time or have been part of our family, we invite you to grow in faith, connect in fellowship, and experience the transforming power of God's presence.",
 };
 
 export const HowCanIBeSavedData = {
@@ -855,7 +854,6 @@ export const PrayerRequestPageIntro = {
   body: `Life can be overwhelming. In those moments, you need a team to be on your side, to cheer you back hope, to hold your hand and lead you to The One who always stands ready to  listen. No matter what you're facing, we'd love to pray with you!`,
 };
 
-export const TermsAndPrivacyFooter = `By using rccgbeautifulgate website, you agree to the Terms and Privacy Policy`;
 
 
 export const NaturalGroups = [
@@ -892,7 +890,7 @@ export const NaturalGroups = [
 export const Ministries = [
   {
     name: "Teens Ministry",
-    desc: "Teenegers are to register here!",
+    desc: "Teenagers can register here",
     link: "/",
     action: "Register",
     image: teens.src,
@@ -906,22 +904,6 @@ export const Ministries = [
   },
 ];
 
-export const Events = [
-  {
-    name: "Praise to Praise",
-    location: "Church Auditorium",
-    dateAndTime: "2024-11-14T18:00",
-    regLink: "/",
-    image: "",
-  },
-  {
-    name: "Teens Conference",
-    location: "Church Auditorium",
-    dateAndTime: "2024-02-14T108:00",
-    regLink: "/",
-    image: "",
-  },
-];
 
 
 export const AboutUs={
@@ -995,7 +977,7 @@ export const QuickLinks = [
     category: "Ministries",
     name: "Teens Ministry",
     link: "/groups-and-ministries/#teens",
-    desc: "Teenegers are to register here!",
+    desc: "Teenagers can register here",
     action: "Register",
     image: teens.src,
   },
@@ -1074,16 +1056,3 @@ export const Cards = [
   },
 ];
 
-const pastorate = [
-  { name: "Pastor Egra Akpofure (PICP)", image: pastorImage.src, rank: 1 },
-  {
-    name: "Pastor Deji Adeniyi (APICP)",
-    image: pastorImage.src,
-    rank: 2
-  },
-  {
-    name: "Pastor Oluseye Opasanya",
-    image: pastorImage.src,
-    rank: 3
-  },
-];
