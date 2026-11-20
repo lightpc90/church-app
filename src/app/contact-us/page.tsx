@@ -1,43 +1,57 @@
-import React from "react";
-import Header from "@/components/UILayouts/Header";
-import headerImage from "../../../public/Ch1.jpg";
-import MapComponent from "@/components/map/GoogleMap";
+import { Navigation } from "lucide-react";
+import PageHero from "@/components/site/PageHero";
+import FormSplit from "@/components/site/FormSplit";
+import { Container, SectionHeading } from "@/components/site/primitives";
 import EnquiryForm from "@/components/UILayouts/EnquiryForm";
+import ContactInfo from "@/components/contactInfo/ContactInfo";
+import SocialMedia from "@/components/social-media/SocialMedia";
+import MapComponent from "@/components/map/GoogleMap";
+import { directionsUrl } from "@/lib/site";
+import headerImage from "../../../public/headers/contact-us.jpg";
 
-const page = () => {
-  return (
-    <div className="bg-[#D9D9D9]">
-      <Header title="Contact Us" imageUrl={headerImage.src} />
-      {/* content */}
-      <div className="px-5 py-10">
-        <div>
-          <div className="text-center text-lg">
-            <span className="text-rose-800 font-bold">RCCG Beautiful Gate</span>{" "}
-            is home for all. We are glad to have you
-          </div>
-        </div>
-        {/* map */}
-        <div className=" my-5 flex flex-col w-full items-center">
-          <p className="text-slate-600">Locate us on map</p>
-          <h3 className="font-bold">Get Direction</h3>
-          <div className="h-[600px] lg:h-[800px] lg:w-[60%] bg-slate-700 ">
-            <MapComponent />
-          </div>
-        </div>
-        {/* enquiry form */}
-        <div className="">
-          <div className="text-center my-3 text-rose-800">
-            <h4>For Enquiry</h4>
-            <h3>Kindly fill the form below</h3>
-          </div>
-          <div className="w-full flex justify-center">
-
-          <EnquiryForm />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+export const metadata = {
+  title: "Contact Us",
+  description: "Get in touch with RCCG Beautiful Gate Parish, Lakowe, or find directions to the church.",
 };
 
-export default page;
+export default function Page() {
+  return (
+    <>
+      <PageHero
+        image={headerImage}
+        eyebrow="Contact us"
+        title="We'd love to hear from you"
+        description="RCCG Beautiful Gate is home for all. Send us a message, give us a call, or come and visit."
+      />
+      <FormSplit
+        formTitle="Send us a message"
+        formDescription="We usually respond within a couple of days."
+        intro={
+          <>
+            <SectionHeading eyebrow="Get in touch" title="Visit, call or write" />
+            <ContactInfo className="mt-10 text-base" />
+            <a
+              href={directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 font-semibold text-royal hover:underline"
+            >
+              <Navigation className="size-4" aria-hidden /> Get directions
+            </a>
+            <div className="mt-10">
+              <p className="text-sm font-semibold text-stone">Follow us</p>
+              <SocialMedia className="mt-3 text-ink" showHandle />
+            </div>
+          </>
+        }
+      >
+        <EnquiryForm />
+      </FormSplit>
+      <Container className="pb-24">
+        <div className="h-[28rem] overflow-hidden rounded-[2rem] border border-line bg-sand shadow-soft">
+          <MapComponent />
+        </div>
+      </Container>
+    </>
+  );
+}

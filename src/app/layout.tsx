@@ -1,90 +1,69 @@
-import {
-  ClerkProvider,
-} from "@clerk/nextjs";
-
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
-import Head from "next/head";
-import { Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/Layout";
-import { ThemeProvider } from "@/components/context-providers/theme-provider";
-// import ServiceWorkerRegisterer from "@/components/clearSWcache/clearSWcache";
+import { site } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["SOFT", "opsz"],
+});
 
-const APP_NAME = "RCCG Beautiful Gate Progressive Web App"
-const APP_DEFAULT_TITLE = "Beautiful Gate Parish"
-const APP_TITLE_TEMPLATE = "%s - Progressive Web App"
-const APP_DESCRIPTION = "A Progressive Web App for RCCG Beautiful Gate"
-const siteURL = "https://beautiful-gate.vercel.app/"
+const DESCRIPTION =
+  "RCCG Beautiful Gate Parish, Lakowe: Lagos Province 114 Headquarters. A vibrant community devoted to the Word, worship and prayer. All are welcome.";
 
 export const metadata: Metadata = {
-  applicationName: APP_NAME,
-  title: {
-    default: APP_DEFAULT_TITLE,
-    template: APP_TITLE_TEMPLATE
-  },
-  description: APP_DESCRIPTION,
-
+  metadataBase: new URL(site.url),
+  applicationName: site.fullName,
+  title: { default: `${site.fullName} · Lakowe, Lagos`, template: `%s · ${site.name}` },
+  description: DESCRIPTION,
   openGraph: {
-    title: {
-      default: APP_DEFAULT_TITLE,
-      template: APP_TITLE_TEMPLATE,
-    },
-    description: APP_DESCRIPTION,
-    url: siteURL,
-    siteName: APP_NAME,
-    images: ["/icons/icon192x192.png"],
+    title: { default: site.fullName, template: `%s · ${site.name}` },
+    description: DESCRIPTION,
+    url: site.url,
+    siteName: site.fullName,
+    images: ["/images/church-front.jpg"],
     type: "website",
+    locale: "en_NG",
   },
   twitter: {
-    card: "summary",
-    title: {
-      default: APP_DEFAULT_TITLE,
-      template: APP_TITLE_TEMPLATE,
-    },
-    description: APP_DESCRIPTION,
-    creator: "@_lightpc_",
-    images: ["/icons/icon192x192.png"],
-    site: siteURL,
+    card: "summary_large_image",
+    title: site.fullName,
+    description: DESCRIPTION,
+    images: ["/images/church-front.jpg"],
   },
-  category: 'church',
-  appLinks: {
-    // ios: {
-    //   url: 'https://nextjs.org/ios',
-    //   app_store_id: 'app_store_id',
-    // },
-    // android: {
-    //   package: 'com.example.android/package',
-    //   app_name: 'app_name_android',
-    // },
-    web: {
-      url: siteURL,
-      should_fallback: true,
-    },
-  },
-
+  icons: { icon: "/icons/icon192x192.png", apple: "/icons/icon192x192.png" },
+  category: "church",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
+  themeColor: "#0f1633",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${inter.className} min-h-screen overflow-x-hidden `}>
-          <ThemeProvider>
-            <ConditionalLayout>
-              {/* <ServiceWorkerRegisterer /> */}
-              {children}
-            </ConditionalLayout>
-          </ThemeProvider>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: "#0f1633",
+          borderRadius: "0.75rem",
+          fontFamily: "var(--font-inter), system-ui, sans-serif",
+        },
+      }}
+    >
+      <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${fraunces.variable}`}>
+        <body className="min-h-dvh">
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-ink focus:shadow-lift"
+          >
+            Skip to content
+          </a>
+          <ConditionalLayout>{children}</ConditionalLayout>
         </body>
       </html>
     </ClerkProvider>

@@ -1,75 +1,9 @@
-// app/api/users/[id]/route.ts
-import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { itemHandlers } from "@/lib/api";
+import { schemas } from "@/lib/validation";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const { id } = params;
+const handlers = itemHandlers(prisma.followUp, schemas.followUp, { read: "admin" });
 
-    const data = await prisma.followUp.findUnique({
-      where: { id },
-    });
-
-    if (!data) {
-      return NextResponse.json({ error: "data not found", success: false }, { status: 404 });
-    }
-
-    return NextResponse.json({data, success: true, message: "data created"});
-  } catch (e) {
-    console.log("server error: ", e);
-    return NextResponse.json({
-      success: true,
-      message: "data fetching failed",
-    });
-  }
-}
-
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const { id } = params;
-    const data = await request.json();
-
-    const updated = await prisma.followUp.update({
-      where: { id },
-      data
-    });
-
-    return NextResponse.json({data: updated, success: true, message: "data updated"});
-  } catch (e) {
-    console.log("server error: ", e);
-    return NextResponse.json({
-      success: true,
-      message: "data update failed",
-    });
-  }
-}
-
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const { id } = params;
-
-    await prisma.followUp.delete({
-      where: { id },
-    });
-
-    return NextResponse.json({
-      success: true,
-      message: "data deleted successfully",
-    });
-  } catch (e) {
-    console.log("server error: ", e);
-    return NextResponse.json({
-      success: false,
-      error: "data deletion failed",
-    });
-  }
-}
+export const GET = handlers.GET;
+export const PUT = handlers.PUT;
+export const DELETE = handlers.DELETE;

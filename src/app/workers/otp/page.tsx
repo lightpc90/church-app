@@ -1,9 +1,6 @@
-import React from 'react'
+import { redirect } from "next/navigation";
 
-const Page = () => {
-  return (
-    <div>OT page</div>
-  )
+// Verification codes are handled by Clerk's sign-in flow.
+export default function Page() {
+  redirect("/workers/login");
 }
-
-export default Page

@@ -1,13 +1,5 @@
-// utils/groupByZone.ts
-import { initHfcForm } from "@/components/UILayouts/HouseFellowshipForm";
-
-export const groupedByZone = (data: typeof initHfcForm[]) => {
-  return data?.reduce((acc, hfc) => {
-    const { zone } = hfc;
-    if (!acc[zone]) {
-      acc[zone] = [];
-    }
-    acc[zone].push(hfc);
+export const groupedByZone = <T extends { zone: string }>(data: T[] | undefined | null) =>
+  (data ?? []).reduce<Record<string, T[]>>((acc, item) => {
+    (acc[item.zone] ??= []).push(item);
     return acc;
-  }, {} as Record<string, typeof initHfcForm[]>);
-};
+  }, {});

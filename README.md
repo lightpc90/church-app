@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RCCG Beautiful Gate Parish — website
 
-## Getting Started
+Next.js 16 (App Router) · React 19 · Clerk auth · Prisma 6 + MongoDB · Tailwind CSS 4.
 
-First, run the development server:
+Design tokens (colours, fonts, radii) live in `src/app/globals.css`; church details, service times and navigation live in `src/lib/site.ts`; shared UI primitives are in `src/components/site/`.
+
+## Getting started
+
+Requires Node.js 20.9 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Dev server |
+| `npm run build` | `prisma generate` + production build |
+| `npm run lint` | ESLint (flat config, `eslint.config.mjs`) |
+| `npm run typecheck` | TypeScript, no emit |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Environment variables
 
-## Learn More
+Create `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `DATABASE_URL` | yes | MongoDB connection string (Prisma) |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | yes | Clerk |
+| `CLERK_SECRET_KEY` | yes | Clerk |
+| `ADMIN_EMAILS` | for admin | Comma-separated emails allowed into `/admin` and admin APIs |
+| `NEXT_PUBLIC_API_KEY` | yes | Google Maps (browser). Also used for YouTube if `YOUTUBE_API_KEY` is unset |
+| `YOUTUBE_API_KEY` | recommended | Server-only YouTube Data API key (keeps it out of the browser bundle) |
+| `INSTAGRAM_ACCESS_TOKEN` | optional | Instagram feed on the home page |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Admin access
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Signing in is not enough to reach `/admin`, since anyone can create an account from the navbar.
+A user is an admin when **either**:
 
-## Deploy on Vercel
+- their Clerk user has `publicMetadata.role = "admin"` (Clerk dashboard → Users → Metadata), or
+- one of their verified email addresses is listed in `ADMIN_EMAILS`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API access rules
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+All model routes share one implementation (`src/lib/api.ts`) with Zod validation (`src/lib/validation.ts`).
+
+| Routes | Read (GET) | Create (POST) | Update / delete |
+| --- | --- | --- | --- |
+| prayer-request, testimony, enquiry, followUps, naturalGroups/*, ministries/* | admin | public | admin |
+| events, houseFellowshipCenters | public | admin | admin |
+| workers, users | admin | admin | admin |
+
+## Admin dashboard
+
+`/admin` (admins only) reads straight from the database:
+
+- **Overview**: totals, new this week, submissions per week, latest activity
+- **Prayer Requests, Testimonies, Follow Up, Messages**: everything submitted through the website forms
+- **Registrations**: natural groups and ministries (children shown with their guardian)
+- **House Fellowships**: add and remove centers shown on the public page
+- **Workers**
+
+Every table supports search, sorting, CSV export (opens in Excel), reading the full message, and
+call / WhatsApp / email / delete actions per row. Deletes go through the admin-only API.

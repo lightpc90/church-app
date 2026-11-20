@@ -1,18 +1,10 @@
-import React from 'react'
-import Image from "next/image"
-import emptyEvent from "../../../public/empty-event.png"
+import { CalendarX2 } from "lucide-react";
 
-type EmptyEventPropsType={
-    text?:string
-}
+const EmptyEvent = ({ text }: { text?: string }) => (
+  <div className="flex flex-col items-center gap-3 rounded-3xl border border-dashed border-line bg-white/60 px-6 py-14 text-center">
+    <CalendarX2 className="size-8 text-stone" aria-hidden />
+    <p className="text-stone">{text}</p>
+  </div>
+);
 
-const EmptyEvent: React.FC<EmptyEventPropsType> = ({text}) => {
-  return (
-    <div className="text-center">
-      <p className="text-[#EE7575]">{text}</p>
-      <Image src={emptyEvent} alt="" width={200} className="" />
-    </div>
-  );
-}
-
-export default EmptyEvent
+export default EmptyEvent;

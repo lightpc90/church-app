@@ -1,39 +1,45 @@
-import Header from "@/components/UILayouts/Header";
-import React from "react";
+import PageHero from "@/components/site/PageHero";
+import FormSplit, { Assurances } from "@/components/site/FormSplit";
+import { SectionHeading } from "@/components/site/primitives";
 import PrayerRequestForm from "@/components/UILayouts/PrayerRequestForm";
-import { PrayerRequestPageIntro } from "@/components/data/Data";
-import prayerImage from "../../../public/headers/prayer-request.png";
+import prayerImage from "../../../public/headers/testimony.jpg";
 
-const Page = () => {
-  return (
-    <div className="bg-[#D9D9D9] flex flex-col w-full items-center">
-      <Header
-        imageUrl={prayerImage.src}
-        title={PrayerRequestPageIntro.headerTitle}
-      />
-      {/* content body */}
-      <div className="lg:w-[70%] flex flex-col items-center">
-        <div className="p-5 lg:w-[50%] flex flex-col items-center">
-          <h3 className="font-bold text-xl lg:text-3xl text-center">
-            {PrayerRequestPageIntro.title}
-          </h3>
-          <p className="lg:text-xl mb-5 text-center text-blue-950">
-            {PrayerRequestPageIntro.description}
-          </p>
-          <p className="lg:text-lg">{PrayerRequestPageIntro.body}</p>
-          <p className="py-10 text-blue-950 lg:text-lg lg:font-bold lg:w-[70%] text-center">
-            Kinldy fill the form below to submit your prayer request so that we
-            can pray with you
-          </p>
-        </div>
-        {/* Prayer request form */}
-
-        <div className="w-full flex justify-center">
-          <PrayerRequestForm />
-        </div>
-      </div>
-    </div>
-  );
+export const metadata = {
+  title: "Prayer Request",
+  description: "Share your prayer request with RCCG Beautiful Gate. Our pastors and prayer team would love to pray with you.",
 };
 
-export default Page;
+export default function Page() {
+  return (
+    <>
+      <PageHero
+        image={prayerImage}
+        eyebrow="Prayer request"
+        title="Let's pray with you"
+        description="It's what we've been called to do. Whatever you're facing, you don't have to face it alone."
+      />
+      <FormSplit
+        formTitle="Share your request"
+        formDescription="Your request is kept confidential and shared only with our pastoral and prayer team."
+        intro={
+          <>
+            <SectionHeading
+              eyebrow="You're not alone"
+              title="A team on your side"
+              description="Life can be overwhelming. In those moments you need people beside you to cheer you on in hope, hold your hand and lead you to the One who always stands ready to listen."
+            />
+            <Assurances
+              items={[
+                { title: "Share what's on your heart", body: "As much or as little as you're comfortable with." },
+                { title: "We pray with you", body: "Our pastors and prayer team bring your request before God." },
+                { title: "We follow up", body: "If you'd like, someone will reach out to encourage you." },
+              ]}
+            />
+          </>
+        }
+      >
+        <PrayerRequestForm />
+      </FormSplit>
+    </>
+  );
+}

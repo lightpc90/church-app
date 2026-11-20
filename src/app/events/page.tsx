@@ -1,38 +1,96 @@
-import React from "react";
-import Header from "@/components/UILayouts/Header";
-import headerImage from "../../../public/headers/event.png";
-import { Events } from "@/components/data/Data";
-import EventLayout from "@/components/UILayouts/EventLayout";
+import PageHero from "@/components/site/PageHero";
+import { Container, Section, SectionHeading } from "@/components/site/primitives";
+import headerImage from "../../../public/fullChoir.jpg";
+import EventLayout, { type EventView } from "@/components/UILayouts/EventLayout";
 import EmptyEvent from "@/components/UILayouts/EmptyEvent";
+import prisma from "@/lib/prisma";
+import { parseEventDate } from "@/lib/events";
 
-const Page = () => {
-  const title = "Events";
+export const metadata = {
+  title: "Events",
+  description: "Upcoming conferences, special services and gatherings at RCCG Beautiful Gate Parish.",
+};
+export const dynamic = "force-dynamic";
+
+const PAST_EVENTS_SHOWN = 10;
+
+async function getEvents() {
+  try {
+    const rows = await prisma.event.findMany();
+    const events: EventView[] = rows.flatMap((e) => {
+      const date = parseEventDate(e.datetime);
+      return date ? [{ ...e, date }] : [];
+    });
+    const now = Date.now();
+    return {
+      upcoming: events
+        .filter((e) => e.date.getTime() >= now)
+        .sort((a, b) => a.date.getTime() - b.date.getTime()),
+      past: events
+        .filter((e) => e.date.getTime() < now)
+        .sort((a, b) => b.date.getTime() - a.date.getTime())
+        .slice(0, PAST_EVENTS_SHOWN),
+    };
+  } catch (e) {
+    console.error("[events] failed to load events:", e);
+    return null;
+  }
+}
+
+function EventList({
+  title,
+  eyebrow,
+  events,
+  past,
+  emptyText,
+}: {
+  title: string;
+  eyebrow: string;
+  events: EventView[];
+  past?: boolean;
+  emptyText: string;
+}) {
   return (
-    <div className="bg-[#D9D9D9] pb-10 flex flex-col items-center ">
-      <Header title={title} imageUrl={headerImage.src} />
-      {/* Content */}
-      <div className="w-full lg:w-[600px] flex flex-col gap-5 lg:gap-[100px]">
-        <div className="p-5 my-5 flex flex-col gap-3 items-center">
-          <h2 className="font-bold text-xl">Upcoming Events</h2>
-          <div className="w-full flex flex-col gap-2 lg:gap-6 items-center">
-            {Events.map((event, index) => (
-              <EventLayout key={index} event={event} />
-            ))}
-          </div>
-        </div>
-        {/* past events */}
-        <div className="p-5 my-5 flex flex-col gap-3 items-center">
-          <h2 className="font-bold text-xl">Past Events</h2>
-          <div>
-            {/* empty event */}
-            <div>
-              <EmptyEvent text={"No Past Event"} />
-            </div>
-          </div>
-        </div>
+    <div>
+      <SectionHeading eyebrow={eyebrow} title={title} />
+      <div className="mt-10 grid gap-6">
+        {events.length ? (
+          events.map((event) => <EventLayout key={event.id} event={event} past={past} />)
+        ) : (
+          <EmptyEvent text={emptyText} />
+        )}
       </div>
     </div>
   );
-};
+}
 
-export default Page;
+export default async function Page() {
+  const events = await getEvents();
+
+  return (
+    <>
+      <PageHero
+        image={headerImage}
+        eyebrow="Events"
+        title="What's happening at Beautiful Gate"
+        description="Conferences, special services and gatherings for the whole church family. Come, and bring someone along."
+      />
+      <Section>
+        <Container className="max-w-5xl space-y-24">
+          {events === null ? (
+            <p role="alert" className="rounded-3xl bg-red-50 p-6 text-red-900">
+              We couldn&apos;t load events right now. Please try again later.
+            </p>
+          ) : (
+            <>
+              <EventList eyebrow="Coming up" title="Upcoming events" events={events.upcoming} emptyText="No upcoming events yet. Check back soon!" />
+              {events.past.length > 0 && (
+                <EventList eyebrow="Look back" title="Past events" events={events.past} past emptyText="No past events" />
+              )}
+            </>
+          )}
+        </Container>
+      </Section>
+    </>
+  );
+}
