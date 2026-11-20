@@ -53,3 +53,16 @@ All model routes share one implementation (`src/lib/api.ts`) with Zod validation
 | prayer-request, testimony, enquiry, followUps, naturalGroups/*, ministries/* | admin | public | admin |
 | events, houseFellowshipCenters | public | admin | admin |
 | workers, users | admin | admin | admin |
+
+## Admin dashboard
+
+`/admin` (admins only) reads straight from the database:
+
+- **Overview**: totals, new this week, submissions per week, latest activity
+- **Prayer Requests, Testimonies, Follow Up, Messages**: everything submitted through the website forms
+- **Registrations**: natural groups and ministries (children shown with their guardian)
+- **House Fellowships**: add and remove centers shown on the public page
+- **Workers**
+
+Every table supports search, sorting, CSV export (opens in Excel), reading the full message, and
+call / WhatsApp / email / delete actions per row. Deletes go through the admin-only API.

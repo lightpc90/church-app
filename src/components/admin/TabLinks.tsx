@@ -3,28 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SignOutButton } from "@clerk/nextjs";
-import {
-  LayoutDashboard,
-  BriefcaseBusiness,
-  UserRoundPlus,
-  Megaphone,
-  HandHeart,
-  House,
-  Settings,
-  LogOut,
-  Globe,
-} from "lucide-react";
+import { Settings, LogOut, Globe } from "lucide-react";
+import { AdminTabs } from "./tabs-config";
 import { TabParamsEnum } from "../enums/Enums";
 import { cn } from "@/lib/utils";
 
-export const AdminTabs = [
-  { name: "Overview", param: TabParamsEnum.OVERVIEW, Icon: LayoutDashboard },
-  { name: "Workers", param: TabParamsEnum.WORKERS, Icon: BriefcaseBusiness },
-  { name: "Follow Up", param: TabParamsEnum.FOLLOW_UP, Icon: UserRoundPlus },
-  { name: "Testimonies", param: TabParamsEnum.TESTIMONIES, Icon: Megaphone },
-  { name: "Prayer Requests", param: TabParamsEnum.PRAYER_REQUESTS, Icon: HandHeart },
-  { name: "House Fellowships", param: TabParamsEnum.HOUSE_FELLOWSHIP, Icon: House },
-];
 
 const itemClass = (active: boolean) =>
   cn(
