@@ -154,3 +154,37 @@ model Event {
   image     String?
   createdAt DateTime @default(now())
 }
+
+// Dashboard access. Managed by super admins on the Team tab; matched against the signed-in
+// user's verified Clerk emails. Role values: see src/lib/roles.ts.
+model TeamMember {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique // stored lowercase
+  name      String?
+  role      String
+  dept      String? // HODs: limits the Workers list to this department
+  addedBy   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Single row (key = "default"), edited by super admins on the Notifications tab.
+model NotificationSettings {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  key             String    @unique @default("default")
+  whatsappEnabled Boolean   @default(false)
+  emailEnabled    Boolean   @default(false)
+  prayerWhatsapp  String? // number that gets new prayer requests on WhatsApp
+  convertWhatsapp String? // number that gets new converts on WhatsApp
+  // CallMeBot (free) API keys, one per receiving number; never sent to the browser
+  prayerWhatsappKey  String?
+  convertWhatsappKey String?
+  // Prayer text goes through a third party on WhatsApp, so it's opt-in
+  prayerTextOnWhatsapp Boolean @default(false)
+  prayerEmails    String[]
+  convertEmails   String[]
+  lastError       String?
+  lastErrorAt     DateTime?
+  updatedBy       String?
+  updatedAt       DateTime  @updatedAt
+}

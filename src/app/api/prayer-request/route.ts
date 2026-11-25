@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
 import { collectionHandlers } from "@/lib/api";
 import { schemas } from "@/lib/validation";
+import { notifyPrayerRequest } from "@/lib/notify";
 
 const handlers = collectionHandlers(prisma.prayerRequest, schemas.prayerRequest, {
-  read: "admin",
-  create: "public",
+  resource: "prayerRequests",
+  publicCreate: true,
+  onCreate: notifyPrayerRequest,
 });
 
 export const GET = handlers.GET;
