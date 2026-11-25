@@ -24,6 +24,11 @@ export type Policy = {
   scope?: (staff: StaffMember) => Record<string, unknown> | undefined;
   /** Runs after the response is sent, e.g. notifications */
   onCreate?: (record: unknown) => Promise<unknown>;
+  /**
+   * Public forms that collect sensitive data (faith, children) must send `consent: true`, from the
+   * form's consent checkbox. Not stored: a record only exists if consent was given.
+   */
+  requireConsent?: boolean;
 };
 
 // Minimal structural type covering the Prisma delegate methods we use.
@@ -57,14 +62,15 @@ export async function authorize(
   return { staff };
 }
 
-export async function parseBody<S extends z.ZodType>(
-  req: Request,
-  schema: S,
-  partial = false
-): Promise<{ data: z.infer<S>; error?: never } | { data?: never; error: NextResponse }> {
+type Parsed<S extends z.ZodType> = { data: z.infer<S>; error?: never } | { data?: never; error: NextResponse };
+
+export async function parseBody<S extends z.ZodType>(req: Request, schema: S, partial = false): Promise<Parsed<S>> {
   const raw = await req.json().catch(() => undefined);
   if (raw === undefined) return { error: fail(400, "Request body must be valid JSON") };
+  return validate(raw, schema, partial);
+}
 
+function validate<S extends z.ZodType>(raw: unknown, schema: S, partial = false): Parsed<S> {
   const effective: z.ZodType = partial && schema instanceof z.ZodObject ? schema.partial() : schema;
   const parsed = effective.safeParse(raw);
   if (!parsed.success) {
@@ -103,7 +109,16 @@ export function collectionHandlers(model: Delegate, schema: z.ZodType, policy: P
       const { denied } = await authorize("manage", policy.resource);
       if (denied) return denied;
     }
-    const body = await parseBody(req, schema);
+    const raw = await req.json().catch(() => undefined);
+    if (raw === undefined) return fail(400, "Request body must be valid JSON");
+    if (policy.requireConsent) {
+      const consent = (raw as { consent?: unknown } | null)?.consent;
+      if (consent !== true && consent !== "true") {
+        return fail(422, "Validation failed", { consent: ["Please tick the box to agree before sending."] });
+      }
+    }
+    // Unknown keys (including `consent`) are stripped by the schema.
+    const body = validate(raw, schema);
     if (body.error) return body.error;
     try {
       const data = await model.create({ data: body.data as never });

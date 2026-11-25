@@ -33,3 +33,54 @@ export function FormMessage({
   }
   return null;
 }
+
+/**
+ * Required "I agree" box for forms that collect sensitive data (faith, children). The API rejects
+ * the submission without it. The value travels as "true" in the JSON body.
+ */
+export function ConsentCheckbox({
+  checked,
+  onChange,
+  errors,
+  children,
+}: {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+  errors?: string[];
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-line bg-white/70 p-4 text-sm leading-relaxed text-ink has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-royal">
+        <input
+          type="checkbox"
+          name="consent"
+          checked={checked}
+          onChange={(e) => onChange(e.target.checked)}
+          required
+          aria-invalid={errors?.length ? true : undefined}
+          className="mt-0.5 size-5 shrink-0 accent-ink"
+        />
+        <span>
+          {children}{" "}
+          <a href="/privacy" target="_blank" className="font-semibold text-royal underline-offset-2 hover:underline">
+            Privacy policy
+          </a>
+        </span>
+      </label>
+      <FieldError messages={errors} />
+    </div>
+  );
+}
+
+/** One-line notice for forms without a consent box. */
+export function PrivacyNote({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs leading-relaxed text-stone">
+      {children}{" "}
+      <a href="/privacy" target="_blank" className="font-semibold text-royal underline-offset-2 hover:underline">
+        Privacy policy
+      </a>
+    </p>
+  );
+}

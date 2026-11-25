@@ -7,6 +7,8 @@ export enum TabParamsEnum {
   REGISTRATIONS = "registrations",
   HOUSE_FELLOWSHIP = "house-fellowship-centers",
   WORKERS = "workers",
+  ATTENDANCE = "attendance",
   TEAM = "team",
   NOTIFICATIONS = "notifications",
+  INTEGRATIONS = "integrations",
 }

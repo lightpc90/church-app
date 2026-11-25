@@ -6,6 +6,7 @@ import { notifyNewConvert } from "@/lib/notify";
 const handlers = collectionHandlers(prisma.followUp, schemas.followUp, {
   resource: "followUps",
   publicCreate: true,
+  requireConsent: true,
   onCreate: notifyNewConvert,
 });
 

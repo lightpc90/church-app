@@ -38,6 +38,13 @@ const nextConfig = {
         hostname: "**.fbcdn.net", // Facebook CDNs may also serve images
         pathname: "/**",
       },
+      {
+        // YouTube thumbnails, served through our image optimiser so visitors' browsers don't
+        // contact Google before they've agreed to load videos
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/vi/**",
+      },
     ],
   },
 };

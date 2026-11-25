@@ -375,3 +375,81 @@ export function RowActions({
     </>
   );
 }
+
+/* ───────────── worker approval ───────────── */
+
+const workerTone = {
+  pending: "bg-gold-soft text-ink",
+  approved: "bg-emerald-50 text-emerald-800",
+  inactive: "bg-sand text-stone",
+} as const;
+
+/**
+ * Worker status with approve / deactivate / reactivate. PATCH `/api/workers/${id}`; the server
+ * limits HODs to their own department.
+ */
+export function WorkerStatusCell({
+  id,
+  status,
+  approvedBy,
+}: {
+  id: string;
+  status: "pending" | "approved" | "inactive";
+  approvedBy?: string | null;
+}) {
+  const router = useRouter();
+  const canHandle = useCan()("handle", "workers");
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isRefreshing, startTransition] = useTransition();
+  const busy = saving || isRefreshing;
+
+  async function setStatus(next: "approved" | "inactive" | "pending") {
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/workers/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: next }),
+      });
+      const body = await res.json().catch(() => null);
+      if (!res.ok || !body?.success) throw new Error(body?.error ?? "Couldn't save");
+      startTransition(() => router.refresh());
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Couldn't save");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  const small =
+    "inline-flex h-8 items-center gap-1.5 rounded-full border border-line bg-white px-3 text-xs font-semibold whitespace-nowrap text-ink transition hover:border-royal hover:text-royal disabled:opacity-60";
+
+  return (
+    <div className="min-w-[9rem]">
+      <span className={cn("inline-flex rounded-full px-2.5 py-1 text-xs font-semibold capitalize", workerTone[status])}>{status}</span>
+      {status === "approved" && approvedBy && <p className="mt-1 text-xs text-stone">by {approvedBy}</p>}
+      {canHandle && (
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {status !== "approved" && (
+            <button type="button" disabled={busy} onClick={() => setStatus("approved")} className={small}>
+              {busy ? <Loader2 className="size-3.5 animate-spin" aria-hidden /> : <Check className="size-3.5" aria-hidden />}
+              {status === "inactive" ? "Reactivate" : "Approve"}
+            </button>
+          )}
+          {status !== "inactive" && (
+            <button type="button" disabled={busy} onClick={() => setStatus("inactive")} className={cn(small, "text-stone")}>
+              {status === "pending" ? "Decline" : "Deactivate"}
+            </button>
+          )}
+        </div>
+      )}
+      {error && (
+        <p role="alert" className="mt-1 text-xs text-ember">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}

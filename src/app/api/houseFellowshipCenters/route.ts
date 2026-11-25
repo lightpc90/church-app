@@ -4,7 +4,6 @@ import { schemas } from "@/lib/validation";
 
 const handlers = collectionHandlers(prisma.houseFellowship, schemas.houseFellowship, {
   resource: "houseFellowships",
-  publicRead: true,
 });
 
 export const GET = handlers.GET;

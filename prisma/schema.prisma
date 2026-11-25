@@ -25,24 +25,66 @@ model User {
 }
 
 model Worker {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  // Set when a worker registers themselves on /workers (their Clerk account). Uniqueness is
+  // enforced in code: MongoDB unique indexes reject more than one record without the field.
+  clerkUserId  String?
+  // Optional: workers can sign up with a phone number only.
+  email        String?
+  name         String?
+  username     String?
+  image        String?
+  phone        String?
+  dept         String
+  gender       String?
+  birthday     String? // "MM-DD", for birthday wishes; no year
+  area         String? // where they live, e.g. "Ajah", to help with house fellowship zones
+  servingSince Int? // year they started serving
+  // "pending" until an admin or their HOD approves; "inactive" when they stop serving.
+  // Older records without a status count as approved.
+  status       String?
+  approvedBy   String?
+  approvedAt   DateTime?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  attendance   Attendance[]
+
+  @@index([clerkUserId])
+  @@index([email])
+}
+
+// One record per worker per Sunday. Only the distance from church and the GPS accuracy are
+// stored, never the worker's coordinates.
+model Attendance {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  name      String?
-  username  String?
-  image     String?
-  phone     String?
-  dept      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  workerId  String   @db.ObjectId
+  worker    Worker   @relation(fields: [workerId], references: [id], onDelete: Cascade)
+  date      String // service date in Lagos time, "YYYY-MM-DD"
+  dept      String // department at the time, for reports
+  distanceM Int
+  accuracyM Int
+  markedAt  DateTime @default(now())
+
+  @@unique([workerId, date])
+  @@index([date])
+}
+
+// Small key/value store for integration tokens that renew themselves (e.g. Instagram).
+model IntegrationToken {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  key       String    @unique
+  value     String
+  expiresAt DateTime?
+  updatedAt DateTime  @updatedAt
 }
 
 model FollowUp {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   phone     String
   email     String?
   address   String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   handledAt DateTime? // set when a team member marks it handled
   handledBy String?
 }
@@ -60,12 +102,12 @@ model HouseFellowship {
 }
 
 model PrayerRequest {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   fullname      String
   phone         String
   email         String?
   prayerRequest String
-  createdAt     DateTime @default(now())
+  createdAt     DateTime  @default(now())
   handledAt     DateTime? // set when a team member marks it handled
   handledBy     String?
 }
@@ -78,13 +120,14 @@ model Testimony {
   testimony String
   createdAt DateTime @default(now())
 }
+
 model Enquiry {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
   fullname  String
   phone     String
   email     String?
   enquiry   String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   handledAt DateTime? // set when a team member marks it handled
   handledBy String?
 }
@@ -170,21 +213,21 @@ model TeamMember {
 
 // Single row (key = "default"), edited by super admins on the Notifications tab.
 model NotificationSettings {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  key             String    @unique @default("default")
-  whatsappEnabled Boolean   @default(false)
-  emailEnabled    Boolean   @default(false)
-  prayerWhatsapp  String? // number that gets new prayer requests on WhatsApp
-  convertWhatsapp String? // number that gets new converts on WhatsApp
+  id                   String    @id @default(auto()) @map("_id") @db.ObjectId
+  key                  String    @unique @default("default")
+  whatsappEnabled      Boolean   @default(false)
+  emailEnabled         Boolean   @default(false)
+  prayerWhatsapp       String? // number that gets new prayer requests on WhatsApp
+  convertWhatsapp      String? // number that gets new converts on WhatsApp
   // CallMeBot (free) API keys, one per receiving number; never sent to the browser
-  prayerWhatsappKey  String?
-  convertWhatsappKey String?
+  prayerWhatsappKey    String?
+  convertWhatsappKey   String?
   // Prayer text goes through a third party on WhatsApp, so it's opt-in
-  prayerTextOnWhatsapp Boolean @default(false)
-  prayerEmails    String[]
-  convertEmails   String[]
-  lastError       String?
-  lastErrorAt     DateTime?
-  updatedBy       String?
-  updatedAt       DateTime  @updatedAt
+  prayerTextOnWhatsapp Boolean   @default(false)
+  prayerEmails         String[]
+  convertEmails        String[]
+  lastError            String?
+  lastErrorAt          DateTime?
+  updatedBy            String?
+  updatedAt            DateTime  @updatedAt
 }

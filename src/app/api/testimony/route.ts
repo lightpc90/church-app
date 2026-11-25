@@ -5,6 +5,7 @@ import { schemas } from "@/lib/validation";
 const handlers = collectionHandlers(prisma.testimony, schemas.testimony, {
   resource: "testimonies",
   publicCreate: true,
+  requireConsent: true,
 });
 
 export const GET = handlers.GET;

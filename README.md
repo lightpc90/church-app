@@ -37,6 +37,7 @@ Copy `.env.example` to `.env` (gitignored) and fill it in:
 | `NOTIFY_EMAIL_FROM` | for email alerts | Sender, e.g. `RCCG Beautiful Gate <alerts@mail.your-domain>`. Before the domain is verified: `… <onboarding@resend.dev>` (only delivers to the Resend account's own email) |
 | `NOTIFY_PRAYER_EMAILS`, `NOTIFY_CONVERT_EMAILS` | optional | Default recipients (comma separated); a list saved on the Notifications tab replaces them |
 | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WHATSAPP_FROM` | optional | Paid WhatsApp fallback. Free WhatsApp (CallMeBot) needs no server setup |
+| `CRON_SECRET` | for Instagram | Random string; Vercel Cron sends it to `/api/cron/instagram-refresh` |
 | `TWILIO_PRAYER_TEMPLATE_SID`, `TWILIO_CONVERT_TEMPLATE_SID` | optional | Meta-approved Twilio templates (`{{1}}` name, `{{2}}` phone, `{{3}}` request/address) |
 | `NEXT_PUBLIC_API_KEY` | yes | Google Maps (browser). Also used for YouTube if `YOUTUBE_API_KEY` is unset |
 | `YOUTUBE_API_KEY` | recommended | Server-only YouTube Data API key (keeps it out of the browser bundle) |
@@ -75,6 +76,41 @@ after the form response (Next `after()`), so a slow provider never slows down th
   once. Network errors, 429s (honouring `retry-after`) and 5xx are retried up to 4 times with backoff;
   other 4xx errors and quota errors aren't. Sent email IDs are logged as `[email] sent <id>`.
 - Failures show as a banner on the Notifications tab; "Send test" buttons check each channel.
+
+## Workers and Sunday attendance
+
+- `/workers` routes people: signed out → sign in / create account (Clerk: email, Google, or phone if
+  enabled); signed in but not registered → `/workers/register`; registered → `/workers/dashboard`.
+- Registration (`PUT /api/workers/me`): name, phone, department, gender, optional birthday/area/serving
+  since. Email comes from the Clerk account. New workers are **pending** until an admin, or the HOD of
+  that department, approves them (Workers tab). Changing department needs re-approval. An earlier
+  admin-created worker record with the same verified email is linked automatically.
+- Attendance (`/workers/attendance`, `POST /api/workers/attendance`): approved workers only, **Sundays
+  6:30–8:00 AM Lagos time**, within **100 m** of `site.coordinates`, GPS accuracy ≤ 100 m. Opening the
+  page during the window checks in automatically. One record per worker per Sunday; only the distance
+  and accuracy are stored, not coordinates. Rules live in `src/lib/attendance-rules.ts`.
+- Dashboard **Attendance** tab: per Sunday, present / no check-in, by department, last 12 Sundays, CSV.
+  HODs see their department only. Departments are listed in `src/lib/departments.ts`.
+- Limitation: a determined person can fake their phone's location; HODs should sanity-check.
+
+## Instagram feed
+
+Uses the Instagram API with Instagram Login (`graph.instagram.com`). `INSTAGRAM_ACCESS_TOKEN` is the
+starting long-lived token; a weekly Vercel Cron job (`vercel.json` → `/api/cron/instagram-refresh`,
+protected by `CRON_SECRET`) renews it and stores it in the `IntegrationToken` collection, so it no
+longer expires after 60 days. Changing the env token replaces the stored one.
+Super admins can paste a new token on the dashboard's **Integrations** tab (checked with Instagram, stored,
+never shown again) and renew it on demand.
+
+## Privacy and cookies
+
+- `/privacy` and `/cookies` (linked in the footer, with a **Cookie settings** button).
+- First-visit consent banner (`src/components/consent/`): **Essential** (Clerk sign-in, the `bg_consent`
+  cookie, 6 months) is always on; **Videos and maps** (YouTube, Google Maps) is opt-in. Until then,
+  embeds show a placeholder with "play once" / "always allow". There are no analytics or ad cookies:
+  if you add any, add a consent category, update `/cookies` and bump `VERSION` in `ConsentProvider`.
+- Forms that collect faith or children's data have a required consent checkbox, also enforced by the
+  API (`requireConsent` in `src/lib/api.ts`); the contact form shows a short privacy note instead.
 
 ## API access rules
 

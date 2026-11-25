@@ -14,7 +14,7 @@ import { connectNav, primaryNav } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 // Routes whose top is light (no dark photo hero), so the bar starts solid.
-const LIGHT_TOP_PREFIXES = ["/workers"];
+const LIGHT_TOP_PREFIXES = ["/workers", "/privacy", "/cookies"];
 
 const isActive = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname.startsWith(href);

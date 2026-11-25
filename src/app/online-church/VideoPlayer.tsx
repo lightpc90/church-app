@@ -6,6 +6,7 @@ import { Play, Search } from "lucide-react";
 import type { PlaylistVideo } from "@/lib/youtube";
 import { fieldClass } from "@/components/forms/fields";
 import { cn } from "@/lib/utils";
+import YouTubeEmbed from "@/components/consent/YouTubeEmbed";
 
 const dateFmt = new Intl.DateTimeFormat("en-NG", { day: "numeric", month: "short", year: "numeric" });
 
@@ -33,15 +34,7 @@ const VideoPlayer = ({ videos }: { videos: PlaylistVideo[] }) => {
       <div className="lg:col-span-8">
         {selected && (
           <div className="overflow-hidden rounded-[2rem] bg-ink p-2 shadow-lift sm:p-3">
-            <iframe
-              key={selected.videoId}
-              src={`https://www.youtube-nocookie.com/embed/${selected.videoId}`}
-              title={selected.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="aspect-video w-full rounded-[1.5rem] bg-black"
-            />
+            <YouTubeEmbed videoId={selected.videoId} title={selected.title} />
           </div>
         )}
         {selected && (
@@ -86,7 +79,7 @@ const VideoPlayer = ({ videos }: { videos: PlaylistVideo[] }) => {
                   >
                     <span className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-xl bg-sand">
                       {video.thumbnail && (
-                        <Image src={video.thumbnail} alt="" fill sizes="112px" unoptimized className="object-cover" />
+                        <Image src={video.thumbnail} alt="" fill sizes="112px" className="object-cover" />
                       )}
                       <span className="absolute inset-0 flex items-center justify-center bg-ink/20">
                         <Play className="size-5 fill-white text-white" aria-hidden />
