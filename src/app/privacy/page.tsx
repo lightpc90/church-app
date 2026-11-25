@@ -14,7 +14,7 @@ const UPDATED = "25 November 2026";
 const contents = [
   { id: "who-we-are", label: "Who we are" },
   { id: "what-we-collect", label: "What we collect and why" },
-  { id: "sensitive", label: "Faith and children's information" },
+  { id: "sensitive", label: "Faith, location and children's information" },
   { id: "who-sees-it", label: "Who can see your information" },
   { id: "providers", label: "Service providers" },
   { id: "transfers", label: "Information stored outside Nigeria" },
@@ -109,10 +109,31 @@ export default function PrivacyPage() {
             </tr>
             <tr>
               <td>
-                <strong>Church staff and workers</strong>
+                <strong>Church staff</strong>
               </td>
-              <td>Name, email and profile picture from your sign-in account, your role and department</td>
-              <td>To let authorised people sign in to the church dashboard and workers&apos; area</td>
+              <td>Name, email and profile picture from your sign-in account, and your dashboard role</td>
+              <td>To let authorised people sign in to the church dashboard</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Workers&apos; registration</strong>
+              </td>
+              <td>
+                Name, phone, email or phone from your sign-in account, department, gender, and optionally your birthday
+                (day and month), the area you live in and the year you started serving
+              </td>
+              <td>To organise the workforce, approve you into your department and keep in touch</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Workers&apos; Sunday attendance</strong>
+              </td>
+              <td>
+                The date and time you checked in, how far from the church you were and how precise your phone&apos;s
+                location was. We use your location only at the moment you check in, to confirm you&apos;re within
+                100 m of the church, and <strong>we don&apos;t store your location</strong>
+              </td>
+              <td>To record who served each Sunday</td>
             </tr>
             <tr>
               <td>
@@ -131,7 +152,7 @@ export default function PrivacyPage() {
         dashboard and keeping the site secure. We never sell your information or use it for advertising.
       </p>
 
-      <h2 id="sensitive">3. Faith and children&apos;s information</h2>
+      <h2 id="sensitive">3. Faith, location and children&apos;s information</h2>
       <p>
         Prayer requests, testimonies and decisions to follow Christ say something about your religious beliefs. The
         law treats this as <strong>sensitive personal data</strong>, so we ask for your explicit consent before you
@@ -148,13 +169,17 @@ export default function PrivacyPage() {
         <li>
           <strong>Authorised church staff only</strong>, each seeing only what their role needs. Prayer requests,
           testimonies, new converts and messages are seen by pastors and administrators. Heads of department see
-          group registrations and the workers in their own department.
+          group registrations, and the workers and attendance of their own department.
         </li>
         <li>
           <strong>Alerts:</strong> when a prayer request or new convert comes in, designated members of the pastoral
           team may receive an email or WhatsApp alert so they can respond quickly. WhatsApp alerts contain your name,
           phone number and a link to the dashboard, not your prayer request itself, unless the church has chosen to
           include it.
+        </li>
+        <li>
+          House fellowship hosts&apos; names, phone numbers and addresses aren&apos;t published on the website;
+          the church shares a center&apos;s details only with people who ask to join it.
         </li>
         <li>
           We don&apos;t publish your prayer request, testimony or details on the website, and we won&apos;t share
@@ -213,6 +238,9 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Staff and worker accounts:</strong> while you serve in that role.
+        </li>
+        <li>
+          <strong>Workers&apos; attendance:</strong> up to 2 years.
         </li>
         <li>
           <strong>Server logs:</strong> for a short period set by our hosting provider.

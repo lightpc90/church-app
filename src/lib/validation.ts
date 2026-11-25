@@ -121,3 +121,32 @@ export const memberSchema = z.object({
 });
 
 export const memberUpdateSchema = memberSchema.omit({ email: true }).partial();
+
+/** Workers' self-registration on /workers. Email comes from the signed-in account, never the form. */
+export const workerSelfSchema = z
+  .object({
+    name: text(120),
+    phone,
+    dept: text(80),
+    deptOther: z.string().trim().max(80).optional(),
+    gender: z.enum(["male", "female"], "Select a gender"),
+    birthday: z
+      .union([z.string().regex(/^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/, "Choose a valid day and month"), z.literal("")])
+      .optional()
+      .transform((v) => v || null),
+    area: z.string().trim().max(80).optional().transform((v) => v || null),
+    servingSince: z
+      .union([z.coerce.number().int().min(1952).max(new Date().getFullYear()), z.literal("")])
+      .optional()
+      .transform((v) => (v === "" || v === undefined ? null : v)),
+  })
+  .transform(({ deptOther, ...w }) => ({ ...w, dept: w.dept === "Other" && deptOther ? deptOther : w.dept }))
+  .refine((w) => w.dept !== "Other", { message: "Tell us which department", path: ["deptOther"] });
+
+export const attendanceMarkSchema = z.object({
+  lat: z.number().min(-90).max(90),
+  lng: z.number().min(-180).max(180),
+  accuracy: z.number().min(0).max(100_000),
+});
+
+export const workerStatusSchema = z.object({ status: z.enum(["approved", "pending", "inactive"]) });

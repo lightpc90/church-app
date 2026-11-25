@@ -12,6 +12,8 @@ import {
   ClipboardList,
   UsersRound,
   BellRing,
+  CalendarCheck,
+  Plug,
 } from "lucide-react";
 import { TabParamsEnum } from "../enums/Enums";
 import type { Resource } from "@/lib/roles";
@@ -26,6 +28,8 @@ export const AdminTabs: { name: string; param: TabParamsEnum; Icon: typeof Layou
   { name: "Registrations", param: TabParamsEnum.REGISTRATIONS, Icon: ClipboardList, resource: "registrations" },
   { name: "House Fellowships", param: TabParamsEnum.HOUSE_FELLOWSHIP, Icon: House, resource: "houseFellowships" },
   { name: "Workers", param: TabParamsEnum.WORKERS, Icon: BriefcaseBusiness, resource: "workers" },
+  { name: "Attendance", param: TabParamsEnum.ATTENDANCE, Icon: CalendarCheck, resource: "attendance" },
   { name: "Team & Roles", param: TabParamsEnum.TEAM, Icon: UsersRound, resource: "team", superAdmin: true },
   { name: "Notifications", param: TabParamsEnum.NOTIFICATIONS, Icon: BellRing, resource: "notifications", superAdmin: true },
+  { name: "Integrations", param: TabParamsEnum.INTEGRATIONS, Icon: Plug, resource: "integrations", superAdmin: true },
 ];

@@ -2,6 +2,7 @@ import "server-only";
 import prisma from "./prisma";
 import type { StaffMember } from "./auth";
 import { workerScope } from "./scopes";
+import { recentSundays } from "./attendance-rules";
 
 const newestFirst = { orderBy: { createdAt: "desc" as const } };
 
@@ -169,5 +170,81 @@ export async function getOverview() {
         .values(),
     ].sort((a, b) => b.count - a.count),
     registrations: registrationGroups.map((g, i) => ({ key: g.key, label: g.label, count: registrationCounts[i] })),
+  };
+}
+
+/* ───────────── workers' attendance ───────────── */
+
+const approvedWorker = { OR: [{ status: "approved" }, { status: null }, { status: { isSet: false } }] };
+
+export type AttendanceRow = {
+  id: string;
+  name: string;
+  dept: string;
+  phone: string | null;
+  email: string | null;
+  present: boolean;
+  markedAt: Date | null;
+  distanceM: number | null;
+};
+
+/** One Sunday's attendance (default: the latest), limited to the HOD's department for HODs. */
+export async function loadAttendance(staff: StaffMember, requested?: string) {
+  const sundays = recentSundays(12);
+  const date = requested && sundays.includes(requested) ? requested : sundays[0];
+  const scope = workerScope(staff);
+
+  const [workers, records, trend] = await Promise.all([
+    prisma.worker.findMany({
+      where: { AND: [approvedWorker, scope ?? {}] },
+      select: { id: true, name: true, email: true, phone: true, dept: true },
+    }),
+    prisma.attendance.findMany({
+      where: { date, ...(scope ? { worker: scope } : {}) },
+      include: { worker: { select: { name: true, email: true, phone: true } } },
+    }),
+    prisma.attendance.groupBy({
+      by: ["date"],
+      where: { date: { in: sundays }, ...(scope ? { dept: scope.dept } : {}) },
+      _count: { _all: true },
+    }),
+  ]);
+
+  const present = new Set(records.map((r) => r.workerId));
+  const rows: AttendanceRow[] = [
+    ...records.map((r) => ({
+      id: r.workerId,
+      name: r.worker.name ?? r.worker.email ?? "-",
+      dept: r.dept,
+      phone: r.worker.phone,
+      email: r.worker.email,
+      present: true,
+      markedAt: r.markedAt,
+      distanceM: r.distanceM,
+    })),
+    ...workers
+      .filter((w) => !present.has(w.id))
+      .map((w) => ({ id: w.id, name: w.name ?? w.email ?? "-", dept: w.dept, phone: w.phone, email: w.email, present: false, markedAt: null, distanceM: null })),
+  ];
+
+  const depts = new Map<string, { dept: string; present: number; total: number }>();
+  for (const r of rows) {
+    const key = r.dept.trim().toLowerCase();
+    const d = depts.get(key) ?? { dept: r.dept.trim(), present: 0, total: 0 };
+    d.total++;
+    if (r.present) d.present++;
+    depts.set(key, d);
+  }
+  const counts = new Map(trend.map((t) => [t.date, t._count._all]));
+
+  return {
+    date,
+    sundays,
+    rows,
+    presentCount: records.length,
+    expected: rows.length,
+    byDept: [...depts.values()].sort((a, b) => b.total - a.total),
+    trend: sundays.slice().reverse().map((d) => ({ date: d, count: counts.get(d) ?? 0 })),
+    scopedDept: scope ? staff.dept : null,
   };
 }

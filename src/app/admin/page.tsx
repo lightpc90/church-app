@@ -2,10 +2,11 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { getStaff, envRoles, type StaffMember } from "@/lib/auth";
-import { adminQueries, getOpenCounts, getOverview } from "@/lib/admin-data";
+import { adminQueries, getOpenCounts, getOverview, loadAttendance } from "@/lib/admin-data";
 import { getNotificationSettings, providerStatus, publicSettings } from "@/lib/notify";
 import { can } from "@/lib/roles";
 import prisma from "@/lib/prisma";
+import { workerScope } from "@/lib/scopes";
 import TabLinks, { type TabBadges } from "@/components/admin/TabLinks";
 import { AdminTabs } from "@/components/admin/tabs-config";
 import { AdminPanel, AdminSection } from "@/components/admin/AdminCard";
@@ -14,6 +15,9 @@ import { TabParamsEnum } from "@/components/enums/Enums";
 import Overview from "@/components/admin/tabs/Overview";
 import Registrations, { loadRegistrations } from "@/components/admin/tabs/Registrations";
 import HouseFellowshipManager from "@/components/admin/tabs/HouseFellowshipManager";
+import AttendanceReport from "@/components/admin/tabs/AttendanceReport";
+import IntegrationsPanel from "@/components/admin/tabs/IntegrationsPanel";
+import { instagramStatus } from "@/lib/instagram";
 import TeamManager from "@/components/admin/tabs/TeamManager";
 import NotificationSettingsForm from "@/components/admin/tabs/NotificationSettingsForm";
 import {
@@ -36,12 +40,14 @@ const descriptions: Partial<Record<TabParamsEnum, string>> = {
   [TabParamsEnum.ENQUIRIES]: "Messages from the contact form.",
   [TabParamsEnum.REGISTRATIONS]: "Sign-ups for natural groups and ministries.",
   [TabParamsEnum.HOUSE_FELLOWSHIP]: "Centers listed on the public House Fellowships page.",
-  [TabParamsEnum.WORKERS]: "Members serving across departments.",
+  [TabParamsEnum.WORKERS]: "Members serving across departments. New registrations from the Workers' portal need approval.",
+  [TabParamsEnum.ATTENDANCE]: "Sunday check-ins from the Workers' portal (6:30 to 8:00 AM, within 100 m of the church).",
   [TabParamsEnum.TEAM]: "Who can sign in to this dashboard, and what each person can see and do.",
+  [TabParamsEnum.INTEGRATIONS]: "Connections to other services, like the Instagram feed on the home page.",
   [TabParamsEnum.NOTIFICATIONS]: "Alert the team on WhatsApp or email when a prayer request or new convert comes in.",
 };
 
-async function renderTab(menu: TabParamsEnum, staff: StaffMember, group?: string): Promise<ReactNode> {
+async function renderTab(menu: TabParamsEnum, staff: StaffMember, group?: string, date?: string): Promise<ReactNode> {
   switch (menu) {
     case TabParamsEnum.PRAYER_REQUESTS:
       return <PrayerRequestsTable data={await adminQueries.prayerRequests()} />;
@@ -57,6 +63,8 @@ async function renderTab(menu: TabParamsEnum, staff: StaffMember, group?: string
       return <HouseFellowshipManager data={await adminQueries.houseFellowships()} />;
     case TabParamsEnum.WORKERS:
       return <WorkersTable data={await adminQueries.workers(staff)} />;
+    case TabParamsEnum.ATTENDANCE:
+      return <AttendanceReport data={await loadAttendance(staff, date)} />;
     case TabParamsEnum.TEAM:
       return (
         <TeamManager
@@ -65,6 +73,8 @@ async function renderTab(menu: TabParamsEnum, staff: StaffMember, group?: string
           currentEmail={staff.email}
         />
       );
+    case TabParamsEnum.INTEGRATIONS:
+      return <IntegrationsPanel instagram={await instagramStatus()} />;
     case TabParamsEnum.NOTIFICATIONS:
       return <NotificationSettingsForm settings={publicSettings(await getNotificationSettings())} providers={providerStatus()} />;
     default:
@@ -90,7 +100,7 @@ function Gate({ title, children }: { title: string; children: ReactNode }) {
 export default async function AdminDashboard({
   searchParams,
 }: {
-  searchParams: Promise<{ menu?: string; group?: string }>;
+  searchParams: Promise<{ menu?: string; group?: string; date?: string }>;
 }) {
   const staff = await getStaff();
   if (staff.status !== "ok") {
@@ -102,7 +112,7 @@ export default async function AdminDashboard({
     );
   }
 
-  const { menu: requested, group } = await searchParams;
+  const { menu: requested, group, date } = await searchParams;
   const visibleTabs = AdminTabs.filter((t) => can(staff.role, "view", t.resource));
   const requestedTab = AdminTabs.find((t) => t.param === requested);
   const allowed = requestedTab && can(staff.role, "view", requestedTab.resource);
@@ -117,6 +127,12 @@ export default async function AdminDashboard({
       if (can(staff.role, "view", "enquiries")) b[TabParamsEnum.ENQUIRIES] = c.enquiries;
       return b;
     })
+    .then(async (b) => {
+      if (can(staff.role, "handle", "workers")) {
+        b[TabParamsEnum.WORKERS] = await prisma.worker.count({ where: { status: "pending", ...workerScope(staff) } });
+      }
+      return b;
+    })
     .catch(() => ({}));
 
   let content: ReactNode;
@@ -128,7 +144,7 @@ export default async function AdminDashboard({
     );
   } else {
     try {
-      content = await renderTab(tab.param, staff, group);
+      content = await renderTab(tab.param, staff, group, date);
     } catch (e) {
       console.error(`[admin] failed to load "${tab.param}":`, e);
       content = (

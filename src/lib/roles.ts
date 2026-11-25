@@ -12,10 +12,10 @@ export const roleLabels: Record<Role, string> = {
 };
 
 export const roleDescriptions: Record<Role, string> = {
-  superadmin: "Everything, plus managing the team and notifications.",
+  superadmin: "Everything, plus managing the team, notifications and integrations.",
   admin: "Everything on the dashboard, including deleting records. Can't manage the team or notifications.",
-  pastor: "Sees prayer requests, testimonies, follow-ups, messages, registrations and workers, and can mark them handled. Can't delete.",
-  hod: "Sees registrations and the workers in their own department.",
+  pastor: "Sees prayer requests, testimonies, follow-ups, messages, registrations, workers and attendance, and can mark them handled. Can't delete.",
+  hod: "Sees registrations and the workers in their own department, approves their workers and sees their attendance.",
 };
 
 export const isRole = (v: unknown): v is Role => typeof v === "string" && (ROLES as readonly string[]).includes(v);
@@ -34,10 +34,12 @@ export type Resource =
   | "registrations"
   | "houseFellowships"
   | "workers"
+  | "attendance"
   | "events"
   | "users"
   | "team"
-  | "notifications";
+  | "notifications"
+  | "integrations";
 
 /** view: read · handle: mark handled / reopen · manage: create, edit, delete */
 export type Action = "view" | "handle" | "manage";
@@ -56,10 +58,12 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     registrations: ALL,
     houseFellowships: ALL,
     workers: ALL,
+    attendance: ALL,
     events: ALL,
     users: ALL,
     team: ALL,
     notifications: ALL,
+    integrations: ALL,
   },
   admin: {
     overview: VIEW,
@@ -70,6 +74,7 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     registrations: ALL,
     houseFellowships: ALL,
     workers: ALL,
+    attendance: ALL,
     events: ALL,
     users: ALL,
   },
@@ -82,11 +87,14 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     registrations: VIEW,
     houseFellowships: VIEW,
     workers: VIEW,
+    attendance: VIEW,
   },
   hod: {
     overview: VIEW,
     registrations: VIEW,
-    workers: VIEW,
+    // "handle" = approve or deactivate workers, limited to their own department (scopes.ts)
+    workers: PASTORAL,
+    attendance: VIEW,
   },
 };
 
