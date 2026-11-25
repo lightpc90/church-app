@@ -4,6 +4,7 @@ import SocialMedia from "../social-media/SocialMedia";
 import ContactInfo from "../contactInfo/ContactInfo";
 import { Container } from "../site/primitives";
 import { footerNav, site, weeklyServices } from "@/lib/site";
+import { CookieSettingsButton } from "../consent/ConsentBanner";
 
 const columns = [
   { title: "Explore", links: footerNav.explore },
@@ -70,7 +71,15 @@ const Footer = () => {
           <p>
             © {year} {site.fullName}. All rights reserved.
           </p>
-          <p>{site.tagline}</p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link href="/privacy" className="transition-colors hover:text-white">
+              Privacy policy
+            </Link>
+            <Link href="/cookies" className="transition-colors hover:text-white">
+              Cookie policy
+            </Link>
+            <CookieSettingsButton className="transition-colors hover:text-white" />
+          </nav>
         </div>
       </Container>
     </footer>

@@ -12,6 +12,7 @@ const NewConvertForm = () => (
     endpoint="/api/followUps"
     fields={fields}
     submitLabel="Connect with a pastor"
+    consent="I agree that RCCG Beautiful Gate may keep these details so someone from the church can contact me and help me grow in my new faith."
     successText="Welcome to the family! Someone from our follow-up team will reach out to you soon."
   />
 );

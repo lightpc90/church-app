@@ -12,6 +12,7 @@ const EnquiryForm = () => (
     endpoint="/api/enquiry"
     fields={fields}
     submitLabel="Send message"
+    privacyNote="We'll only use your details to reply to your message."
     successText="Thank you. We've received your message and will get back to you soon."
   />
 );

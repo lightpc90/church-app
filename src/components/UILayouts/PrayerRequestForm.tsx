@@ -12,6 +12,7 @@ const PrayerRequestForm = () => (
     endpoint="/api/prayer-request"
     fields={fields}
     submitLabel="Send prayer request"
+    consent="I agree that RCCG Beautiful Gate may keep my prayer request and contact details so the pastoral and prayer team can pray for me and get in touch."
     successText="Thank you. Your request has been received, and our prayer team is praying with you."
   />
 );

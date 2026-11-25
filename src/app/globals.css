@@ -165,6 +165,41 @@
   .prose-church {
     @apply space-y-5 text-lg leading-relaxed text-stone;
   }
+  /* Policy pages (privacy, cookies) */
+  .prose-legal {
+    @apply leading-relaxed text-stone;
+  }
+  .prose-legal h2 {
+    @apply mt-14 scroll-mt-28 font-display text-2xl font-medium text-ink sm:text-3xl;
+  }
+  .prose-legal h3 {
+    @apply mt-8 font-semibold text-ink;
+  }
+  .prose-legal p,
+  .prose-legal ul {
+    @apply mt-4;
+  }
+  .prose-legal ul {
+    @apply list-disc space-y-2 pl-6 marker:text-gold;
+  }
+  .prose-legal strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-legal a {
+    @apply font-semibold text-royal underline-offset-2 hover:underline;
+  }
+  .prose-legal table {
+    @apply mt-5 w-full border-collapse text-left text-sm;
+  }
+  .prose-legal th {
+    @apply border-b border-line bg-sand/60 px-3 py-2.5 text-xs font-semibold tracking-wider text-ink uppercase;
+  }
+  .prose-legal td {
+    @apply border-b border-line px-3 py-3 align-top;
+  }
+  .prose-legal code {
+    @apply rounded bg-sand px-1.5 py-0.5 text-[0.85em] break-all text-ink;
+  }
 }
 
 /* Scroll-driven reveal (progressive enhancement: visible by default). */

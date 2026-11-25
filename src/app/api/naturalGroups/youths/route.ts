@@ -5,6 +5,7 @@ import { schemas } from "@/lib/validation";
 const handlers = collectionHandlers(prisma.youth, schemas.youth, {
   resource: "registrations",
   publicCreate: true,
+  requireConsent: true,
 });
 
 export const GET = handlers.GET;

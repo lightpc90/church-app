@@ -2,7 +2,7 @@
 
 import { Loader2, Send } from "lucide-react";
 import { useFormSubmit } from "./useFormSubmit";
-import { FieldError, FormMessage } from "./FormBits";
+import { ConsentCheckbox, FieldError, FormMessage, PrivacyNote } from "./FormBits";
 import { fieldClass, labelClass } from "./fields";
 import { buttonVariants } from "../site/primitives";
 import { cn } from "@/lib/utils";
@@ -24,16 +24,25 @@ export default function SiteForm({
   fields,
   submitLabel,
   successText,
+  consent,
+  privacyNote,
   className,
 }: {
   endpoint: string;
   fields: FieldDef[];
   submitLabel: string;
   successText: string;
+  /** Text of a required consent checkbox (sensitive forms). The API must have `requireConsent`. */
+  consent?: string;
+  /** Short notice shown instead, for forms without a consent box. */
+  privacyNote?: string;
   className?: string;
 }) {
-  const initial = Object.fromEntries(fields.map((f) => [f.name, ""])) as Record<string, string>;
-  const { bind, onSubmit, status, error, fieldErrors } = useFormSubmit(endpoint, initial);
+  const initial = Object.fromEntries([...fields.map((f) => [f.name, ""]), ...(consent ? [["consent", ""]] : [])]) as Record<
+    string,
+    string
+  >;
+  const { values, setValues, bind, onSubmit, status, error, fieldErrors } = useFormSubmit(endpoint, initial);
   const submitting = status === "submitting";
 
   return (
@@ -62,6 +71,17 @@ export default function SiteForm({
         );
       })}
       <div className="space-y-4 sm:col-span-2">
+        {consent ? (
+          <ConsentCheckbox
+            checked={values.consent === "true"}
+            onChange={(c) => setValues((v) => ({ ...v, consent: c ? "true" : "" }))}
+            errors={fieldErrors.consent}
+          >
+            {consent}
+          </ConsentCheckbox>
+        ) : (
+          privacyNote && <PrivacyNote>{privacyNote}</PrivacyNote>
+        )}
         <FormMessage status={status} error={error} successText={successText} />
         <button type="submit" disabled={submitting} className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}>
           {submitting ? <Loader2 className="animate-spin" aria-hidden /> : <Send aria-hidden />}

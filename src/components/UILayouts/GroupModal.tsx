@@ -7,7 +7,7 @@ import { fieldClass, labelClass } from "../forms/fields";
 import { buttonVariants } from "../site/primitives";
 import { cn } from "@/lib/utils";
 import { useFormSubmit } from "../forms/useFormSubmit";
-import { FieldError, FormMessage } from "../forms/FormBits";
+import { ConsentCheckbox, FieldError, FormMessage } from "../forms/FormBits";
 
 type GroupLayoutPropsType = {
   group: {
@@ -19,7 +19,7 @@ type GroupLayoutPropsType = {
   };
 };
 
-type GroupConfig = { endpoint: string; askGender: boolean; isChildren?: boolean };
+type GroupConfig = { endpoint: string; askGender: boolean; isChildren?: boolean; minors?: boolean };
 
 // Maps each group/ministry (by display name in Data.ts) to its registration API.
 const GROUP_CONFIG: Record<string, GroupConfig> = {
@@ -27,7 +27,7 @@ const GROUP_CONFIG: Record<string, GroupConfig> = {
   "Excellent Men": { endpoint: "/api/naturalGroups/men", askGender: false },
   "Good Women": { endpoint: "/api/naturalGroups/women", askGender: false },
   "Ablaze Youth": { endpoint: "/api/naturalGroups/youths", askGender: true },
-  "Teens Ministry": { endpoint: "/api/ministries/teens", askGender: true },
+  "Teens Ministry": { endpoint: "/api/ministries/teens", askGender: true, minors: true },
   "Children Ministry": { endpoint: "/api/ministries/children", askGender: true, isChildren: true },
 };
 
@@ -81,10 +81,10 @@ function SubmitButton({ submitting }: { submitting: boolean }) {
   );
 }
 
-function MemberForm({ config }: { config: GroupConfig }) {
+function MemberForm({ config, groupName }: { config: GroupConfig; groupName: string }) {
   const initial = config.askGender
-    ? { fullname: "", phone: "", email: "", gender: "" }
-    : { fullname: "", phone: "", email: "" };
+    ? { fullname: "", phone: "", email: "", gender: "", consent: "" }
+    : { fullname: "", phone: "", email: "", consent: "" };
   const { values, setValues, bind, onSubmit, status, error, fieldErrors } = useFormSubmit(
     config.endpoint,
     initial as Record<string, string>
@@ -115,6 +115,15 @@ function MemberForm({ config }: { config: GroupConfig }) {
           errors={fieldErrors.gender}
         />
       )}
+      <ConsentCheckbox
+        checked={values.consent === "true"}
+        onChange={(c) => setValues((v) => ({ ...v, consent: c ? "true" : "" }))}
+        errors={fieldErrors.consent}
+      >
+        I agree that RCCG Beautiful Gate may keep these details to register me with {groupName} and contact me about
+        its activities.
+        {config.minors && " If I'm under 18, a parent or guardian agrees to this too."}
+      </ConsentCheckbox>
       <FormMessage status={status} error={error} successText={SUCCESS} />
       <SubmitButton submitting={status === "submitting"} />
     </form>
@@ -132,6 +141,7 @@ function ChildForm({ config }: { config: GroupConfig }) {
       fullname: "",
       gender: "",
       dob: "",
+      consent: "",
     }
   );
 
@@ -184,6 +194,14 @@ function ChildForm({ config }: { config: GroupConfig }) {
         />
         <FieldError messages={fieldErrors.dob} />
       </div>
+      <ConsentCheckbox
+        checked={values.consent === "true"}
+        onChange={(c) => setValues((v) => ({ ...v, consent: c ? "true" : "" }))}
+        errors={fieldErrors.consent}
+      >
+        I&apos;m this child&apos;s parent or guardian, and I agree that RCCG Beautiful Gate may keep these details to
+        register them with the Children Ministry and contact me.
+      </ConsentCheckbox>
       <FormMessage status={status} error={error} successText={SUCCESS} />
       <SubmitButton submitting={status === "submitting"} />
     </form>
@@ -247,7 +265,7 @@ const GroupModal: FC<GroupLayoutPropsType> = ({ group }) => {
                 </button>
               </div>
               <div className="overflow-y-auto px-6 py-6 sm:px-8">
-                {config.isChildren ? <ChildForm config={config} /> : <MemberForm config={config} />}
+                {config.isChildren ? <ChildForm config={config} /> : <MemberForm config={config} groupName={group.name} />}
               </div>
             </motion.div>
           </motion.div>

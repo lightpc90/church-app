@@ -76,6 +76,16 @@ after the form response (Next `after()`), so a slow provider never slows down th
   other 4xx errors and quota errors aren't. Sent email IDs are logged as `[email] sent <id>`.
 - Failures show as a banner on the Notifications tab; "Send test" buttons check each channel.
 
+## Privacy and cookies
+
+- `/privacy` and `/cookies` (linked in the footer, with a **Cookie settings** button).
+- First-visit consent banner (`src/components/consent/`): **Essential** (Clerk sign-in, the `bg_consent`
+  cookie, 6 months) is always on; **Videos and maps** (YouTube, Google Maps) is opt-in. Until then,
+  embeds show a placeholder with "play once" / "always allow". There are no analytics or ad cookies:
+  if you add any, add a consent category, update `/cookies` and bump `VERSION` in `ConsentProvider`.
+- Forms that collect faith or children's data have a required consent checkbox, also enforced by the
+  API (`requireConsent` in `src/lib/api.ts`); the contact form shows a short privacy note instead.
+
 ## API access rules
 
 All model routes share one implementation (`src/lib/api.ts`) with Zod validation (`src/lib/validation.ts`).

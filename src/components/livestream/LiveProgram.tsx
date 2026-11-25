@@ -1,4 +1,5 @@
 import { getFeaturedVideo } from "@/lib/youtube";
+import YouTubeEmbed from "@/components/consent/YouTubeEmbed";
 
 const LiveProgram = async () => {
   const video = await getFeaturedVideo();
@@ -24,15 +25,7 @@ const LiveProgram = async () => {
           "Latest service"
         )}
       </p>
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/${video.videoId}`}
-        title={video.title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        loading="lazy"
-        className="aspect-video w-full rounded-[1.5rem] bg-black"
-      />
+      <YouTubeEmbed videoId={video.videoId} title={video.title} lazy />
     </div>
   );
 };

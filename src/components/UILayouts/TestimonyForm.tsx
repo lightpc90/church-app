@@ -12,6 +12,7 @@ const TestimonyForm = () => (
     endpoint="/api/testimony"
     fields={fields}
     submitLabel="Share testimony"
+    consent="I agree that RCCG Beautiful Gate may keep my testimony and contact details and contact me about it."
     successText="Thank you for sharing your testimony! God is good."
   />
 );
