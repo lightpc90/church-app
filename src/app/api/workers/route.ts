@@ -1,10 +1,11 @@
 import prisma from "@/lib/prisma";
 import { collectionHandlers } from "@/lib/api";
 import { schemas } from "@/lib/validation";
+import { workerScope } from "@/lib/scopes";
 
 const handlers = collectionHandlers(prisma.worker, schemas.worker, {
-  read: "admin",
-  create: "admin",
+  resource: "workers",
+  scope: workerScope,
 });
 
 export const GET = handlers.GET;

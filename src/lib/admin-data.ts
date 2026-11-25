@@ -1,5 +1,7 @@
 import "server-only";
 import prisma from "./prisma";
+import type { StaffMember } from "./auth";
+import { workerScope } from "./scopes";
 
 const newestFirst = { orderBy: { createdAt: "desc" as const } };
 
@@ -8,9 +10,25 @@ export const adminQueries = {
   testimonies: () => prisma.testimony.findMany(newestFirst),
   enquiries: () => prisma.enquiry.findMany(newestFirst),
   followUps: () => prisma.followUp.findMany(newestFirst),
-  workers: () => prisma.worker.findMany({ orderBy: { name: "asc" } }),
+  workers: (staff: StaffMember) => prisma.worker.findMany({ where: workerScope(staff), orderBy: { name: "asc" } }),
   houseFellowships: () => prisma.houseFellowship.findMany({ orderBy: [{ zone: "asc" }, { center: "asc" }] }),
 };
+
+// Records created before the handled fields existed have no `handledAt` key at all, which
+// Prisma's `null` filter doesn't match on MongoDB, hence the `isSet` branch.
+const unhandled = { OR: [{ handledAt: null }, { handledAt: { isSet: false } }] };
+
+/** Items still waiting for someone on the team. Shown on the overview and as sidebar badges. */
+export async function getOpenCounts() {
+  const [prayers, followUps, enquiries] = await Promise.all([
+    prisma.prayerRequest.count({ where: unhandled }),
+    prisma.followUp.count({ where: unhandled }),
+    prisma.enquiry.count({ where: unhandled }),
+  ]);
+  return { prayers, followUps, enquiries };
+}
+
+export type OpenCounts = Awaited<ReturnType<typeof getOpenCounts>>;
 
 /** Natural groups and ministries, in sidebar order. `key` is the ?group= URL value. */
 export const registrationGroups = [
@@ -46,6 +64,7 @@ export type WeeklyPoint = {
 export type ActivityItem = {
   id: string;
   kind: "Prayer request" | "Testimony" | "New convert" | "Message";
+  resource: "prayerRequests" | "testimonies" | "followUps" | "enquiries";
   name: string;
   preview: string;
   createdAt: Date;
@@ -67,6 +86,7 @@ export async function getOverview() {
     [latestPrayers, latestTestimonies, latestFollowUps, latestEnquiries],
     workersByDept,
     registrationCounts,
+    open,
   ] = await Promise.all([
     Promise.all([
       prisma.prayerRequest.count(),
@@ -95,6 +115,7 @@ export async function getOverview() {
     ]),
     prisma.worker.groupBy({ by: ["dept"], _count: { _all: true } }),
     Promise.all(registrationGroups.map((g) => g.count())),
+    getOpenCounts(),
   ]);
 
   const [prayers, testimonies, followUps, enquiries, houseFellowships, workers] = counts;
@@ -117,16 +138,17 @@ export async function getOverview() {
   bucket(enquiryDates, "enquiry");
 
   const activity: ActivityItem[] = [
-    ...latestPrayers.map((r) => ({ id: r.id, kind: "Prayer request" as const, name: r.fullname, preview: r.prayerRequest, createdAt: r.createdAt, href: "/admin?menu=prayer-requests" })),
-    ...latestTestimonies.map((r) => ({ id: r.id, kind: "Testimony" as const, name: r.fullname, preview: r.testimony, createdAt: r.createdAt, href: "/admin?menu=testimonies" })),
-    ...latestFollowUps.map((r) => ({ id: r.id, kind: "New convert" as const, name: r.name, preview: r.address, createdAt: r.createdAt, href: "/admin?menu=follow-up" })),
-    ...latestEnquiries.map((r) => ({ id: r.id, kind: "Message" as const, name: r.fullname, preview: r.enquiry, createdAt: r.createdAt, href: "/admin?menu=enquiries" })),
+    ...latestPrayers.map((r) => ({ id: r.id, kind: "Prayer request" as const, resource: "prayerRequests" as const, name: r.fullname, preview: r.prayerRequest, createdAt: r.createdAt, href: "/admin?menu=prayer-requests" })),
+    ...latestTestimonies.map((r) => ({ id: r.id, kind: "Testimony" as const, resource: "testimonies" as const, name: r.fullname, preview: r.testimony, createdAt: r.createdAt, href: "/admin?menu=testimonies" })),
+    ...latestFollowUps.map((r) => ({ id: r.id, kind: "New convert" as const, resource: "followUps" as const, name: r.name, preview: r.address, createdAt: r.createdAt, href: "/admin?menu=follow-up" })),
+    ...latestEnquiries.map((r) => ({ id: r.id, kind: "Message" as const, resource: "enquiries" as const, name: r.fullname, preview: r.enquiry, createdAt: r.createdAt, href: "/admin?menu=enquiries" })),
   ]
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-    .slice(0, 6);
+    .slice(0, 20);
 
   return {
     totals: { prayers, testimonies, followUps, enquiries, houseFellowships, workers },
+    open,
     newThisWeek: {
       prayers: newThisWeek[0],
       testimonies: newThisWeek[1],
@@ -135,9 +157,17 @@ export async function getOverview() {
     },
     weekly,
     activity,
-    workersByDept: workersByDept
-      .map((d) => ({ dept: d.dept, count: d._count._all }))
-      .sort((a, b) => b.count - a.count),
+    // Department is free text: merge "Choir" and "choir".
+    workersByDept: [
+      ...workersByDept
+        .reduce((m, d) => {
+          const key = d.dept.trim().toLowerCase();
+          const prev = m.get(key);
+          m.set(key, { dept: prev?.dept ?? d.dept.trim(), count: (prev?.count ?? 0) + d._count._all });
+          return m;
+        }, new Map<string, { dept: string; count: number }>())
+        .values(),
+    ].sort((a, b) => b.count - a.count),
     registrations: registrationGroups.map((g, i) => ({ key: g.key, label: g.label, count: registrationCounts[i] })),
   };
 }

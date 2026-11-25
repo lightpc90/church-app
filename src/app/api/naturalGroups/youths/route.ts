@@ -3,8 +3,8 @@ import { collectionHandlers } from "@/lib/api";
 import { schemas } from "@/lib/validation";
 
 const handlers = collectionHandlers(prisma.youth, schemas.youth, {
-  read: "admin",
-  create: "public",
+  resource: "registrations",
+  publicCreate: true,
 });
 
 export const GET = handlers.GET;

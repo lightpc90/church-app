@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { itemHandlers } from "@/lib/api";
 import { schemas } from "@/lib/validation";
 
-const handlers = itemHandlers(prisma.women, schemas.women, { read: "admin" });
+const handlers = itemHandlers(prisma.women, schemas.women, { resource: "registrations" });
 
 export const GET = handlers.GET;
 export const PUT = handlers.PUT;

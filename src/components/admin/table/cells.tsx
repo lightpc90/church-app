@@ -3,8 +3,23 @@
 import { useEffect, useRef, useState, useTransition, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import * as Dropdown from "@radix-ui/react-dropdown-menu";
-import { Copy, Loader2, Mail, MessageCircle, MoreHorizontal, Phone, Trash2, X } from "lucide-react";
+import {
+  Check,
+  CircleDot,
+  Copy,
+  Loader2,
+  Mail,
+  MessageCircle,
+  MoreHorizontal,
+  Phone,
+  Trash2,
+  Undo2,
+  X,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+import { resourceForEndpoint } from "@/lib/roles";
+import { whatsappNumber } from "@/lib/phone";
+import { useCan } from "../StaffContext";
 
 /* ───────────── formatting ───────────── */
 
@@ -19,14 +34,6 @@ const dateTimeFmt = new Intl.DateTimeFormat("en-NG", {
 });
 
 export const formatDateTime = (d: Date | string) => dateTimeFmt.format(new Date(d));
-
-/** wa.me needs the international number without "+": 0812… → 234812… */
-export function whatsappNumber(phone: string) {
-  const digits = phone.replace(/\D/g, "");
-  if (digits.startsWith("234")) return digits;
-  if (digits.startsWith("0") && digits.length === 11) return `234${digits.slice(1)}`;
-  return digits;
-}
 
 /* ───────────── cells ───────────── */
 
@@ -69,7 +76,11 @@ export function MessageCell({ title, text, meta }: { title: string; text: string
       <div className="max-w-md min-w-[14rem]">
         <p className="line-clamp-2 text-ink">{text}</p>
         {text.length > 120 && (
-          <button type="button" onClick={() => setOpen(true)} className="mt-1 text-xs font-semibold text-royal hover:underline">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="mt-1 text-xs font-semibold text-royal hover:underline"
+          >
             Read full
           </button>
         )}
@@ -79,6 +90,102 @@ export function MessageCell({ title, text, meta }: { title: string; text: string
         <p className="leading-relaxed whitespace-pre-wrap text-ink">{text}</p>
       </Dialog>
     </>
+  );
+}
+
+/**
+ * Open / handled status with a one-click toggle. Calls PATCH `${endpoint}/${id}`; the server
+ * records who and when.
+ */
+export function HandledCell({
+  id,
+  endpoint,
+  handledAt,
+  handledBy,
+}: {
+  id: string;
+  endpoint: string;
+  handledAt?: Date | string | null;
+  handledBy?: string | null;
+}) {
+  const router = useRouter();
+  const canHandle = useCan()("handle", resourceForEndpoint(endpoint));
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isRefreshing, startTransition] = useTransition();
+  const busy = saving || isRefreshing;
+
+  async function toggle(handled: boolean) {
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch(`${endpoint}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ handled }),
+      });
+      const body = await res.json().catch(() => null);
+      if (!res.ok || !body?.success) throw new Error(body?.error ?? "Couldn't save");
+      startTransition(() => router.refresh());
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Couldn't save");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  const spinner = <Loader2 className="size-3.5 animate-spin" aria-hidden />;
+
+  return (
+    <div className="min-w-[9rem]">
+      {handledAt ? (
+        <>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold whitespace-nowrap text-emerald-800">
+            <Check className="size-3.5" aria-hidden /> Handled
+          </span>
+          <p className="mt-1 text-xs text-stone">
+            {handledBy && (
+              <>
+                by {handledBy}
+                <br />
+              </>
+            )}
+            {formatDateTime(handledAt)}
+          </p>
+          {canHandle && (
+            <button
+              type="button"
+              onClick={() => toggle(false)}
+              disabled={busy}
+              className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-stone hover:text-ink disabled:opacity-60"
+            >
+              {busy ? spinner : <Undo2 className="size-3.5" aria-hidden />} Reopen
+            </button>
+          )}
+        </>
+      ) : (
+        <>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-soft px-2.5 py-1 text-xs font-semibold whitespace-nowrap text-ink">
+            <CircleDot className="size-3.5 text-gold" aria-hidden /> Open
+          </span>
+          {canHandle && (
+            <button
+              type="button"
+              onClick={() => toggle(true)}
+              disabled={busy}
+              className="mt-2 flex h-8 items-center gap-1.5 rounded-full border border-line bg-white px-3 text-xs font-semibold whitespace-nowrap text-ink transition hover:border-royal hover:text-royal disabled:opacity-60"
+            >
+              {busy ? spinner : <Check className="size-3.5" aria-hidden />} Mark handled
+            </button>
+          )}
+        </>
+      )}
+      {error && (
+        <p role="alert" className="mt-1 text-xs text-ember">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -153,6 +260,7 @@ export function RowActions({
   email?: string | null;
 }) {
   const router = useRouter();
+  const canDelete = useCan()("manage", resourceForEndpoint(endpoint));
   const [confirming, setConfirming] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -214,10 +322,17 @@ export function RowActions({
                 </a>
               </Dropdown.Item>
             )}
-            {(phone || email) && <Dropdown.Separator className="my-1 h-px bg-line" />}
-            <Dropdown.Item className={cn(itemClass, "text-ember data-[highlighted]:bg-red-50")} onSelect={() => setConfirming(true)}>
-              <Trash2 className="size-4" aria-hidden /> Delete
-            </Dropdown.Item>
+            {canDelete && (
+              <>
+                {(phone || email) && <Dropdown.Separator className="my-1 h-px bg-line" />}
+                <Dropdown.Item
+                  className={cn(itemClass, "text-ember data-[highlighted]:bg-red-50")}
+                  onSelect={() => setConfirming(true)}
+                >
+                  <Trash2 className="size-4" aria-hidden /> Delete
+                </Dropdown.Item>
+              </>
+            )}
           </Dropdown.Content>
         </Dropdown.Portal>
       </Dropdown.Root>

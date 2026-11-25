@@ -3,8 +3,8 @@ import { collectionHandlers } from "@/lib/api";
 import { schemas } from "@/lib/validation";
 
 const handlers = collectionHandlers(prisma.testimony, schemas.testimony, {
-  read: "admin",
-  create: "public",
+  resource: "testimonies",
+  publicCreate: true,
 });
 
 export const GET = handlers.GET;

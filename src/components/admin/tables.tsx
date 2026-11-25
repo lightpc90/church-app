@@ -15,8 +15,8 @@ import type {
   Worker,
   Youth,
 } from "@prisma/client";
-import { DataTable, type CsvColumn } from "./table/DataTable";
-import { DateCell, MessageCell, PersonCell, PhoneCell, RowActions, formatDateTime } from "./table/cells";
+import { DataTable, type CsvColumn, type TableView } from "./table/DataTable";
+import { DateCell, HandledCell, MessageCell, PersonCell, PhoneCell, RowActions, formatDateTime } from "./table/cells";
 
 // Columns are typed per model; the shared DataTable takes ColumnDef<T, unknown>.
 type Cols<T> = ColumnDef<T, unknown>[];
@@ -33,9 +33,41 @@ const createdCsv = <T extends { createdAt: Date }>(): CsvColumn<T> => ({
   value: (r) => formatDateTime(r.createdAt),
 });
 
+/* ───────────── open / handled (prayer requests, follow-ups, messages) ───────────── */
+
+type Trackable = { id: string; createdAt: Date; handledAt: Date | null; handledBy: string | null };
+
+const statusColumn = <T extends Trackable>(endpoint: string): ColumnDef<T, unknown> => ({
+  id: "status",
+  header: "Status",
+  accessorFn: (r) => (r.handledAt ? `handled ${r.handledBy ?? ""}` : "open"),
+  sortingFn: (a, b) => Number(!!a.original.handledAt) - Number(!!b.original.handledAt),
+  cell: ({ row }) => (
+    <HandledCell
+      id={row.original.id}
+      endpoint={endpoint}
+      handledAt={row.original.handledAt}
+      handledBy={row.original.handledBy}
+    />
+  ),
+});
+
+const statusViews = <T extends Trackable>(): TableView<T>[] => [
+  { key: "open", label: "Open", filter: (r) => !r.handledAt, emptyText: "All caught up. Everything here has been handled." },
+  { key: "handled", label: "Handled", filter: (r) => !!r.handledAt, emptyText: "Nothing has been marked as handled yet." },
+  { key: "all", label: "All" },
+];
+
+const statusCsv = <T extends Trackable>(): CsvColumn<T>[] => [
+  { label: "Status", value: (r) => (r.handledAt ? "Handled" : "Open") },
+  { label: "Handled by", value: (r) => r.handledBy },
+  { label: "Handled at", value: (r) => (r.handledAt ? formatDateTime(r.handledAt) : "") },
+];
+
 /* ───────────── prayer requests ───────────── */
 
 const prayerColumns: Cols<PrayerRequest> = [
+  statusColumn("/api/prayer-request"),
   createdAtColumn(),
   {
     accessorKey: "fullname",
@@ -74,6 +106,7 @@ export function PrayerRequestsTable({ data }: { data: PrayerRequest[] }) {
     <DataTable
       columns={prayerColumns}
       data={data}
+      views={statusViews()}
       searchPlaceholder="Search prayer requests"
       emptyText="No prayer requests yet. They'll appear here as soon as someone submits the form."
       csv={{
@@ -84,6 +117,7 @@ export function PrayerRequestsTable({ data }: { data: PrayerRequest[] }) {
           { label: "Phone", value: (r) => r.phone },
           { label: "Email", value: (r) => r.email },
           { label: "Request", value: (r) => r.prayerRequest },
+          ...statusCsv(),
         ],
       }}
     />
@@ -150,6 +184,7 @@ export function TestimoniesTable({ data }: { data: Testimony[] }) {
 /* ───────────── enquiries ───────────── */
 
 const enquiryColumns: Cols<Enquiry> = [
+  statusColumn("/api/enquiry"),
   createdAtColumn(),
   {
     accessorKey: "fullname",
@@ -188,6 +223,7 @@ export function EnquiriesTable({ data }: { data: Enquiry[] }) {
     <DataTable
       columns={enquiryColumns}
       data={data}
+      views={statusViews()}
       searchPlaceholder="Search messages"
       emptyText="No messages from the contact form yet."
       csv={{
@@ -198,6 +234,7 @@ export function EnquiriesTable({ data }: { data: Enquiry[] }) {
           { label: "Phone", value: (r) => r.phone },
           { label: "Email", value: (r) => r.email },
           { label: "Message", value: (r) => r.enquiry },
+          ...statusCsv(),
         ],
       }}
     />
@@ -207,6 +244,7 @@ export function EnquiriesTable({ data }: { data: Enquiry[] }) {
 /* ───────────── follow up (new converts) ───────────── */
 
 const followUpColumns: Cols<FollowUp> = [
+  statusColumn("/api/followUps"),
   createdAtColumn(),
   {
     accessorKey: "name",
@@ -239,6 +277,7 @@ export function FollowUpTable({ data }: { data: FollowUp[] }) {
     <DataTable
       columns={followUpColumns}
       data={data}
+      views={statusViews()}
       searchPlaceholder="Search by name, phone or address"
       emptyText="No one on the follow-up list yet. New converts from “How can I be saved?” appear here."
       csv={{
@@ -249,6 +288,7 @@ export function FollowUpTable({ data }: { data: FollowUp[] }) {
           { label: "Phone", value: (r) => r.phone },
           { label: "Email", value: (r) => r.email },
           { label: "Address", value: (r) => r.address },
+          ...statusCsv(),
         ],
       }}
     />

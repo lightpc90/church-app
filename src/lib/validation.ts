@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ROLES } from "./roles";
 
 const text = (max = 200) => z.string().trim().min(1, "Required").max(max);
 
@@ -103,3 +104,20 @@ export const schemas = {
 
 export type SchemaName = keyof typeof schemas;
 export type FormInput<K extends SchemaName> = z.input<(typeof schemas)[K]>;
+
+/** Team & Roles tab: a dashboard user. Empty name/dept mean "not set"; omitted means "unchanged". */
+const optionalText = z
+  .string()
+  .trim()
+  .max(120)
+  .optional()
+  .transform((v) => (v === undefined ? undefined : v || null));
+
+export const memberSchema = z.object({
+  email: z.string().trim().toLowerCase().max(200).pipe(z.email("Enter a valid email")),
+  name: optionalText,
+  role: z.enum(ROLES, "Choose a role"),
+  dept: optionalText,
+});
+
+export const memberUpdateSchema = memberSchema.omit({ email: true }).partial();
