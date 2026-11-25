@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { getAdminStatus } from "@/lib/auth";
-import { adminQueries, getOverview } from "@/lib/admin-data";
-import TabLinks from "@/components/admin/TabLinks";
+import { adminQueries, getOpenCounts, getOverview } from "@/lib/admin-data";
+import TabLinks, { type TabBadges } from "@/components/admin/TabLinks";
 import { AdminTabs } from "@/components/admin/tabs-config";
 import { AdminPanel, AdminSection } from "@/components/admin/AdminCard";
 import { TabParamsEnum } from "@/components/enums/Enums";
@@ -82,6 +82,15 @@ export default async function AdminDashboard({
   const tab = AdminTabs.find((t) => t.param === menu);
   const title = tab?.name ?? (menu === TabParamsEnum.SETTINGS ? "Settings" : "Overview");
 
+  // Sidebar badges are a nicety: if they fail, the tab content's own error handling still shows.
+  const badgesPromise: Promise<TabBadges> = getOpenCounts()
+    .then((c) => ({
+      [TabParamsEnum.PRAYER_REQUESTS]: c.prayers,
+      [TabParamsEnum.FOLLOW_UP]: c.followUps,
+      [TabParamsEnum.ENQUIRIES]: c.enquiries,
+    }))
+    .catch(() => ({}));
+
   let content: ReactNode;
   try {
     content = await renderTab(menu, group);
@@ -97,9 +106,11 @@ export default async function AdminDashboard({
     );
   }
 
+  const badges = await badgesPromise;
+
   return (
     <div className="min-h-dvh bg-ivory">
-      <TabLinks menu={tab || menu === TabParamsEnum.SETTINGS ? menu : TabParamsEnum.OVERVIEW} />
+      <TabLinks menu={tab || menu === TabParamsEnum.SETTINGS ? menu : TabParamsEnum.OVERVIEW} badges={badges} />
       <div className="pl-20 lg:pl-72">
         <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-line bg-ivory/85 px-5 backdrop-blur-xl sm:px-8">
           <p className="text-xs font-semibold tracking-[0.2em] text-gold uppercase">Admin dashboard</p>

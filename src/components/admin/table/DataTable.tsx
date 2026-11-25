@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   type ColumnDef,
   type SortingState,
@@ -13,6 +13,15 @@ import {
 } from "@tanstack/react-table";
 import { ArrowDown, ArrowUp, ArrowUpDown, ChevronLeft, ChevronRight, Download, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+/** A preset filter shown as a segmented control above the table, e.g. Open / Handled / All. */
+export type TableView<T> = {
+  key: string;
+  label: string;
+  filter?: (row: T) => boolean;
+  /** Shown when this view is empty but the table has other records. */
+  emptyText?: string;
+};
 
 export type CsvColumn<T> = { label: string; value: (row: T) => string | number | null | undefined | Date };
 
@@ -41,6 +50,7 @@ export function DataTable<TData>({
   emptyText = "Nothing here yet.",
   csv,
   toolbar,
+  views,
 }: {
   columns: ColumnDef<TData, unknown>[];
   data: TData[];
@@ -48,14 +58,20 @@ export function DataTable<TData>({
   emptyText?: string;
   csv?: { filename: string; columns: CsvColumn<TData>[] };
   toolbar?: React.ReactNode;
+  /** First view is the default. */
+  views?: TableView<TData>[];
 }) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
+  const [viewKey, setViewKey] = useState(views?.[0]?.key);
+  const view = views?.find((v) => v.key === viewKey);
+  const viewData = useMemo(() => (view?.filter ? data.filter(view.filter) : data), [data, view]);
 
   // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table is not compiler-memoizable
   const table = useReactTable({
-    data,
+    data: viewData,
     columns,
+    autoResetPageIndex: true,
     state: { sorting, globalFilter },
     onSortingChange: setSorting,
     onGlobalFilterChange: setGlobalFilter,
@@ -73,6 +89,29 @@ export function DataTable<TData>({
 
   return (
     <div className="space-y-4">
+      {views && views.length > 1 && (
+        <div role="group" aria-label="Show" className="inline-flex rounded-full border border-line bg-white p-1">
+          {views.map((v) => {
+            const count = v.filter ? data.filter(v.filter).length : data.length;
+            const active = v.key === viewKey;
+            return (
+              <button
+                key={v.key}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setViewKey(v.key)}
+                className={cn(
+                  "inline-flex h-8 items-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors",
+                  active ? "bg-ink text-white" : "text-stone hover:text-ink"
+                )}
+              >
+                {v.label}
+                <span className={cn("tabular-nums", active ? "text-white/70" : "text-stone/70")}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative min-w-[14rem] flex-1 sm:max-w-sm">
           <Search className="pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-stone" aria-hidden />
@@ -157,7 +196,11 @@ export function DataTable<TData>({
             ) : (
               <tr>
                 <td colSpan={columns.length} className="px-4 py-16 text-center text-stone">
-                  {globalFilter ? `No records match “${globalFilter}”.` : emptyText}
+                  {globalFilter
+                    ? `No records match “${globalFilter}”.`
+                    : data.length && view?.emptyText
+                      ? view.emptyText
+                      : emptyText}
                 </td>
               </tr>
             )}

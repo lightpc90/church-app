@@ -43,6 +43,8 @@ model FollowUp {
   email     String?
   address   String
   createdAt DateTime @default(now())
+  handledAt DateTime? // set when a team member marks it handled
+  handledBy String?
 }
 
 model HouseFellowship {
@@ -64,6 +66,8 @@ model PrayerRequest {
   email         String?
   prayerRequest String
   createdAt     DateTime @default(now())
+  handledAt     DateTime? // set when a team member marks it handled
+  handledBy     String?
 }
 
 model Testimony {
@@ -81,6 +85,8 @@ model Enquiry {
   email     String?
   enquiry   String
   createdAt DateTime @default(now())
+  handledAt DateTime? // set when a team member marks it handled
+  handledBy String?
 }
 
 model Elder {

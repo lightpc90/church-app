@@ -10,14 +10,21 @@ export type AdminStatus = "admin" | "forbidden" | "unauthenticated";
  *
  * Being signed in alone is NOT enough: anyone can create a Clerk account from the navbar.
  */
-export async function getAdminStatus(): Promise<AdminStatus> {
+export async function getAdmin(): Promise<{ status: AdminStatus; name?: string }> {
   const { userId } = await auth();
-  if (!userId) return "unauthenticated";
+  if (!userId) return { status: "unauthenticated" };
 
   const user = await currentUser();
-  if (!user) return "unauthenticated";
+  if (!user) return { status: "unauthenticated" };
 
-  if (user.publicMetadata?.role === "admin") return "admin";
+  // Shown in the dashboard as "handled by …".
+  const name =
+    [user.firstName, user.lastName].filter(Boolean).join(" ") ||
+    user.username ||
+    user.primaryEmailAddress?.emailAddress ||
+    "An admin";
+
+  if (user.publicMetadata?.role === "admin") return { status: "admin", name };
 
   const allowlist = (process.env.ADMIN_EMAILS ?? "")
     .split(",")
@@ -30,5 +37,9 @@ export async function getAdminStatus(): Promise<AdminStatus> {
       allowlist.includes(e.emailAddress.toLowerCase())
   );
 
-  return isAllowlisted ? "admin" : "forbidden";
+  return isAllowlisted ? { status: "admin", name } : { status: "forbidden" };
+}
+
+export async function getAdminStatus(): Promise<AdminStatus> {
+  return (await getAdmin()).status;
 }

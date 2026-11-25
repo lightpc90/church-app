@@ -2,7 +2,7 @@ import "server-only";
 import { NextResponse } from "next/server";
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
-import { getAdminStatus } from "./auth";
+import { getAdmin } from "./auth";
 
 /**
  * Shared CRUD route-handler factory.
@@ -43,7 +43,7 @@ const fail = (status: number, error: string, details?: unknown) =>
 
 async function authorize(access: Access) {
   if (access === "public") return null;
-  const status = await getAdminStatus();
+  const { status } = await getAdmin();
   if (status === "unauthenticated") return fail(401, "Sign in required");
   if (status === "forbidden") return fail(403, "Admin access required");
   return null;
@@ -147,4 +147,43 @@ export function itemHandlers(model: Delegate, schema: z.ZodType, policy: Pick<Po
   }
 
   return { GET, PUT, DELETE };
+}
+
+type HandledDelegate = {
+  update(args: {
+    where: { id: string };
+    data: { handledAt: Date | null; handledBy: string | null };
+  }): Promise<unknown>;
+};
+
+const handledBody = z.object({ handled: z.boolean() });
+
+/**
+ * PATCH /api/…/[id] with `{ "handled": true | false }`: marks a prayer request, follow-up or
+ * message as dealt with (or re-opens it). Who and when are taken from the session, never the body.
+ */
+export function handledHandler(model: HandledDelegate) {
+  return async function PATCH(req: Request, ctx: IdContext) {
+    const admin = await getAdmin();
+    if (admin.status === "unauthenticated") return fail(401, "Sign in required");
+    if (admin.status === "forbidden") return fail(403, "Admin access required");
+
+    const { id } = await ctx.params;
+    if (!OBJECT_ID.test(id)) return fail(404, "Not found");
+    const body = await parseBody(req, handledBody);
+    if (body.error) return body.error;
+    const { handled } = body.data as z.infer<typeof handledBody>;
+
+    try {
+      const data = await model.update({
+        where: { id },
+        data: handled
+          ? { handledAt: new Date(), handledBy: admin.name ?? "An admin" }
+          : { handledAt: null, handledBy: null },
+      });
+      return json({ success: true, data });
+    } catch (e) {
+      return isNotFound(e) ? fail(404, "Not found") : serverError("update record", e);
+    }
+  };
 }

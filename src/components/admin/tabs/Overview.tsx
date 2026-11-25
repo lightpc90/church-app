@@ -15,6 +15,7 @@ function ago(date: Date) {
 }
 
 const thisWeek = (n: number) => (n ? `+${n} in the last 7 days` : "None in the last 7 days");
+const ofTotal = (total: number, n: number) => `${total} in total · ${n ? `+${n} this week` : "none new this week"}`;
 
 export default function Overview({ data: o }: { data: Awaited<ReturnType<typeof getOverview>> }) {
   const totalRegistrations = o.registrations.reduce((n, r) => n + r.count, 0);
@@ -23,16 +24,16 @@ export default function Overview({ data: o }: { data: Awaited<ReturnType<typeof 
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Link href={`/admin?menu=${TabParamsEnum.PRAYER_REQUESTS}`}>
-          <StatCard accent value={o.totals.prayers} label="Prayer requests" detail={thisWeek(o.newThisWeek.prayers)} />
+          <StatCard accent value={o.open.prayers} label="Prayer requests to pray over" detail={ofTotal(o.totals.prayers, o.newThisWeek.prayers)} />
         </Link>
         <Link href={`/admin?menu=${TabParamsEnum.FOLLOW_UP}`}>
-          <StatCard value={o.totals.followUps} label="New converts to follow up" detail={thisWeek(o.newThisWeek.followUps)} />
+          <StatCard value={o.open.followUps} label="New converts to follow up" detail={ofTotal(o.totals.followUps, o.newThisWeek.followUps)} />
         </Link>
         <Link href={`/admin?menu=${TabParamsEnum.TESTIMONIES}`}>
           <StatCard value={o.totals.testimonies} label="Testimonies" detail={thisWeek(o.newThisWeek.testimonies)} />
         </Link>
         <Link href={`/admin?menu=${TabParamsEnum.ENQUIRIES}`}>
-          <StatCard value={o.totals.enquiries} label="Contact messages" detail={thisWeek(o.newThisWeek.enquiries)} />
+          <StatCard value={o.open.enquiries} label="Messages to answer" detail={ofTotal(o.totals.enquiries, o.newThisWeek.enquiries)} />
         </Link>
       </div>
 

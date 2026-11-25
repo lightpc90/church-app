@@ -12,6 +12,22 @@ export const adminQueries = {
   houseFellowships: () => prisma.houseFellowship.findMany({ orderBy: [{ zone: "asc" }, { center: "asc" }] }),
 };
 
+// Records created before the handled fields existed have no `handledAt` key at all, which
+// Prisma's `null` filter doesn't match on MongoDB, hence the `isSet` branch.
+const unhandled = { OR: [{ handledAt: null }, { handledAt: { isSet: false } }] };
+
+/** Items still waiting for someone on the team. Shown on the overview and as sidebar badges. */
+export async function getOpenCounts() {
+  const [prayers, followUps, enquiries] = await Promise.all([
+    prisma.prayerRequest.count({ where: unhandled }),
+    prisma.followUp.count({ where: unhandled }),
+    prisma.enquiry.count({ where: unhandled }),
+  ]);
+  return { prayers, followUps, enquiries };
+}
+
+export type OpenCounts = Awaited<ReturnType<typeof getOpenCounts>>;
+
 /** Natural groups and ministries, in sidebar order. `key` is the ?group= URL value. */
 export const registrationGroups = [
   { key: "elders", label: "Elders", endpoint: "/api/naturalGroups/elders", withGender: true, load: () => prisma.elder.findMany(newestFirst), count: () => prisma.elder.count() },
@@ -67,6 +83,7 @@ export async function getOverview() {
     [latestPrayers, latestTestimonies, latestFollowUps, latestEnquiries],
     workersByDept,
     registrationCounts,
+    open,
   ] = await Promise.all([
     Promise.all([
       prisma.prayerRequest.count(),
@@ -95,6 +112,7 @@ export async function getOverview() {
     ]),
     prisma.worker.groupBy({ by: ["dept"], _count: { _all: true } }),
     Promise.all(registrationGroups.map((g) => g.count())),
+    getOpenCounts(),
   ]);
 
   const [prayers, testimonies, followUps, enquiries, houseFellowships, workers] = counts;
@@ -127,6 +145,7 @@ export async function getOverview() {
 
   return {
     totals: { prayers, testimonies, followUps, enquiries, houseFellowships, workers },
+    open,
     newThisWeek: {
       prayers: newThisWeek[0],
       testimonies: newThisWeek[1],
