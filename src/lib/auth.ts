@@ -3,6 +3,7 @@ import { cache } from "react";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import prisma from "./prisma";
 import { highestRole, isRole, type Role } from "./roles";
+import { canonicalDept } from "./departments";
 
 export type StaffMember = {
   status: "ok";
@@ -68,7 +69,8 @@ export const getStaff = cache(async (): Promise<Staff> => {
   if (!role) return { status: "forbidden" };
   const winner = candidates.find((c) => c.role === role)!;
   // A department set on the Team tab applies even when the role came from elsewhere.
-  const dept = candidates.find((c) => c.dept)?.dept ?? null;
+  const rawDept = candidates.find((c) => c.dept)?.dept;
+  const dept = rawDept ? canonicalDept(rawDept) : null;
 
   const name =
     [user.firstName, user.lastName].filter(Boolean).join(" ") || user.username || winner.email;

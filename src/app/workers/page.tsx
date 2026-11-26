@@ -9,7 +9,7 @@ export const metadata = { title: "Workers' Portal" };
 export const dynamic = "force-dynamic";
 
 const steps = [
-  { icon: <Users />, title: "Create your account", body: "Sign up with your email, Google account or phone number." },
+  { icon: <Users />, title: "Create your account", body: "Sign up with your email address or Google account." },
   { icon: <ShieldCheck />, title: "Register your department", body: "A short form. Your HOD or an admin approves it." },
   { icon: <CalendarCheck />, title: "Mark attendance", body: `Check in on your phone at church, ${windowLabel}.` },
 ];

@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import { OBJECT_ID, authorize, fail, itemHandlers, json, parseBody, serverError, type IdContext } from "@/lib/api";
 import { schemas, workerStatusSchema } from "@/lib/validation";
+import { sameDept } from "@/lib/departments";
 import { workerScope } from "@/lib/scopes";
 
 const handlers = itemHandlers(prisma.worker, schemas.worker, { resource: "workers",
@@ -22,8 +23,7 @@ export async function PATCH(req: Request, ctx: IdContext) {
   const worker = await prisma.worker.findUnique({ where: { id } });
   if (!worker) return fail(404, "Not found");
   if (staff.role === "hod") {
-    const sameDept = !!staff.dept && staff.dept.trim().toLowerCase() === worker.dept.trim().toLowerCase();
-    if (!sameDept) return fail(403, "You can only approve workers in your own department.");
+    if (!staff.dept || !sameDept(staff.dept, worker.dept)) return fail(403, "You can only approve workers in your own department.");
   }
 
   const { status } = body.data;

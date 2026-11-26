@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import WorkersShell from "@/components/workers/WorkersShell";
 import WorkerProfileForm from "@/components/workers/WorkerProfileForm";
 import { getCurrentWorker } from "@/lib/workers";
+import { canonicalDept } from "@/lib/departments";
 
 export const metadata = { title: "Workers' Registration" };
 export const dynamic = "force-dynamic";
@@ -28,7 +29,7 @@ export default async function Page() {
         initial={{
           name: w?.name ?? me.name,
           phone: w?.phone ?? me.phone ?? "",
-          dept: w?.dept ?? "",
+          dept: w?.dept ? canonicalDept(w.dept) : "",
           gender: w?.gender ?? "",
           birthday: w?.birthday ?? "",
           area: w?.area ?? "",

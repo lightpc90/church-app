@@ -8,6 +8,7 @@ import prisma from "@/lib/prisma";
 import { getCurrentWorker, workerStatus } from "@/lib/workers";
 import { attendanceWindow, recentSundays, windowLabel } from "@/lib/attendance-rules";
 import { cn } from "@/lib/utils";
+import { canonicalDept } from "@/lib/departments";
 
 export const metadata = { title: "Workers' Dashboard" };
 export const dynamic = "force-dynamic";
@@ -53,7 +54,7 @@ export default async function Page() {
         <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           <div>
             <dt className="text-stone">Department</dt>
-            <dd className="font-semibold text-ink">{w.dept}</dd>
+            <dd className="font-semibold text-ink">{canonicalDept(w.dept)}</dd>
           </div>
           <div>
             <dt className="text-stone">Phone</dt>
