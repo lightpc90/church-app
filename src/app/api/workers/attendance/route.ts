@@ -5,6 +5,7 @@ import { fail, json, serverError } from "@/lib/api";
 import { getCurrentWorker, workerStatus } from "@/lib/workers";
 import { attendanceMarkSchema } from "@/lib/validation";
 import { ATTENDANCE, attendanceWindow, distanceM, windowLabel } from "@/lib/attendance-rules";
+import { canonicalDept } from "@/lib/departments";
 
 // Sunday check-in. Every rule is enforced here on the server: approved worker, Sunday 6:30-8:00
 // Lagos time, within 100 m of the church. Only the distance is stored, not the coordinates.
@@ -67,7 +68,7 @@ export async function POST(req: Request) {
 
   try {
     const record = await prisma.attendance.create({
-      data: { workerId: worker.id, date: window.dateKey, dept: worker.dept, distanceM: distance, accuracyM: Math.round(accuracy) },
+      data: { workerId: worker.id, date: window.dateKey, dept: canonicalDept(worker.dept), distanceM: distance, accuracyM: Math.round(accuracy) },
       select: { date: true, markedAt: true, distanceM: true },
     });
     return json({ success: true, data: record }, 201);

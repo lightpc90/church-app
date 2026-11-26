@@ -16,6 +16,7 @@ import type {
   Youth,
 } from "@prisma/client";
 import type { AttendanceRow } from "@/lib/admin-data";
+import { canonicalDept } from "@/lib/departments";
 import { DataTable, type CsvColumn, type TableView } from "./table/DataTable";
 import { DateCell, HandledCell, MessageCell, PersonCell, PhoneCell, RowActions, WorkerStatusCell, formatDateTime } from "./table/cells";
 
@@ -319,11 +320,12 @@ const workerColumns: Cols<Worker> = [
     ),
   },
   {
-    accessorKey: "dept",
+    id: "dept",
+    accessorFn: (w) => canonicalDept(w.dept),
     header: "Department",
     cell: ({ row }) => (
       <span className="inline-flex rounded-full bg-gold-soft px-3 py-1 text-xs font-semibold whitespace-nowrap text-ink">
-        {row.original.dept}
+        {canonicalDept(row.original.dept)}
       </span>
     ),
   },
@@ -362,7 +364,7 @@ export function WorkersTable({ data }: { data: Worker[] }) {
           { label: "Name", value: (r) => r.name },
           { label: "Email", value: (r) => r.email },
           { label: "Phone", value: (r) => r.phone },
-          { label: "Department", value: (r) => r.dept },
+          { label: "Department", value: (r) => canonicalDept(r.dept) },
           { label: "Status", value: (r) => statusOf(r) },
           { label: "Gender", value: (r) => r.gender },
           { label: "Birthday (MM-DD)", value: (r) => r.birthday },

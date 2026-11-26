@@ -3,6 +3,7 @@ import prisma from "./prisma";
 import type { StaffMember } from "./auth";
 import { workerScope } from "./scopes";
 import { recentSundays } from "./attendance-rules";
+import { canonicalDept } from "./departments";
 
 const newestFirst = { orderBy: { createdAt: "desc" as const } };
 
@@ -162,9 +163,10 @@ export async function getOverview() {
     workersByDept: [
       ...workersByDept
         .reduce((m, d) => {
-          const key = d.dept.trim().toLowerCase();
+          const name = canonicalDept(d.dept);
+          const key = name.toLowerCase();
           const prev = m.get(key);
-          m.set(key, { dept: prev?.dept ?? d.dept.trim(), count: (prev?.count ?? 0) + d._count._all });
+          m.set(key, { dept: prev?.dept ?? name, count: (prev?.count ?? 0) + d._count._all });
           return m;
         }, new Map<string, { dept: string; count: number }>())
         .values(),
@@ -205,7 +207,7 @@ export async function loadAttendance(staff: StaffMember, requested?: string) {
     }),
     prisma.attendance.groupBy({
       by: ["date"],
-      where: { date: { in: sundays }, ...(scope ? { dept: scope.dept } : {}) },
+      where: { date: { in: sundays }, ...(scope ?? {}) },
       _count: { _all: true },
     }),
   ]);
@@ -215,7 +217,7 @@ export async function loadAttendance(staff: StaffMember, requested?: string) {
     ...records.map((r) => ({
       id: r.workerId,
       name: r.worker.name ?? r.worker.email ?? "-",
-      dept: r.dept,
+      dept: canonicalDept(r.dept),
       phone: r.worker.phone,
       email: r.worker.email,
       present: true,
@@ -224,7 +226,7 @@ export async function loadAttendance(staff: StaffMember, requested?: string) {
     })),
     ...workers
       .filter((w) => !present.has(w.id))
-      .map((w) => ({ id: w.id, name: w.name ?? w.email ?? "-", dept: w.dept, phone: w.phone, email: w.email, present: false, markedAt: null, distanceM: null })),
+      .map((w) => ({ id: w.id, name: w.name ?? w.email ?? "-", dept: canonicalDept(w.dept), phone: w.phone, email: w.email, present: false, markedAt: null, distanceM: null })),
   ];
 
   const depts = new Map<string, { dept: string; present: number; total: number }>();

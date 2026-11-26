@@ -119,7 +119,7 @@ export default function PrivacyPage() {
                 <strong>Workers&apos; registration</strong>
               </td>
               <td>
-                Name, phone, email or phone from your sign-in account, department, gender, and optionally your birthday
+                Name, phone number, the email address from your sign-in account, department, gender, and optionally your birthday
                 (day and month), the area you live in and the year you started serving
               </td>
               <td>To organise the workforce, approve you into your department and keep in touch</td>

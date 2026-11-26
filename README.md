@@ -79,8 +79,10 @@ after the form response (Next `after()`), so a slow provider never slows down th
 
 ## Workers and Sunday attendance
 
-- `/workers` routes people: signed out → sign in / create account (Clerk: email, Google, or phone if
-  enabled); signed in but not registered → `/workers/register`; registered → `/workers/dashboard`.
+- `/workers` routes people: signed out → sign in / create account (Clerk: **email or Google**; phone
+  sign-in is deliberately off, since Clerk charges for SMS in production; workers give their phone number
+  on the registration form instead); signed in but not registered → `/workers/register`; registered →
+  `/workers/dashboard`.
 - Registration (`PUT /api/workers/me`): name, phone, department, gender, optional birthday/area/serving
   since. Email comes from the Clerk account. New workers are **pending** until an admin, or the HOD of
   that department, approves them (Workers tab). Changing department needs re-approval. An earlier
@@ -89,6 +91,9 @@ after the form response (Next `after()`), so a slow provider never slows down th
   6:30–8:00 AM Lagos time**, within **100 m** of `site.coordinates`, GPS accuracy ≤ 100 m. Opening the
   page during the window checks in automatically. One record per worker per Sunday; only the distance
   and accuracy are stored, not coordinates. Rules live in `src/lib/attendance-rules.ts`.
+- Departments: `src/lib/departments.ts`. To merge departments, add the old names to `DEPARTMENT_ALIASES`;
+  stored records keep their name and are mapped everywhere (HOD scope, approvals, reports), so no data
+  migration is needed. Media and Technical / Sound are merged into **Media/Technical**.
 - Dashboard **Attendance** tab: per Sunday, present / no check-in, by department, last 12 Sundays, CSV.
   HODs see their department only. Departments are listed in `src/lib/departments.ts`.
 - Limitation: a determined person can fake their phone's location; HODs should sanity-check.

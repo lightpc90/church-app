@@ -3,6 +3,7 @@ import { fail, json, serverError } from "@/lib/api";
 import { getCurrentWorker, workerStatus } from "@/lib/workers";
 import { workerSelfSchema } from "@/lib/validation";
 import { z } from "zod";
+import { canonicalDept, sameDept } from "@/lib/departments";
 
 // The signed-in person's own worker profile. Anyone with an account can register; new
 // registrations stay "pending" until an admin or their HOD approves them.
@@ -24,12 +25,12 @@ export async function PUT(req: Request) {
   }
   const parsed = workerSelfSchema.safeParse(raw);
   if (!parsed.success) return fail(422, "Validation failed", z.flattenError(parsed.error).fieldErrors);
-  const data = parsed.data;
+  const data = { ...parsed.data, dept: canonicalDept(parsed.data.dept) };
 
   try {
     if (me.worker) {
       // Moving department needs the new HOD's approval.
-      const movedDept = me.worker.dept.trim().toLowerCase() !== data.dept.trim().toLowerCase();
+      const movedDept = !sameDept(me.worker.dept, data.dept);
       const reapprove = movedDept && workerStatus(me.worker) === "approved";
       const worker = await prisma.worker.update({
         where: { id: me.worker.id },
