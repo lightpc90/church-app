@@ -345,11 +345,12 @@ const workerColumns: Cols<Worker> = [
   },
 ];
 
-export function WorkersTable({ data }: { data: Worker[] }) {
+export function WorkersTable({ data, toolbar }: { data: Worker[]; toolbar?: React.ReactNode }) {
   return (
     <DataTable
       columns={workerColumns}
       data={data}
+      toolbar={toolbar}
       searchPlaceholder="Search by name, email or department"
       emptyText="No workers registered yet. Workers register themselves on the Workers' portal."
       views={[
@@ -656,6 +657,60 @@ export function AttendanceTable({ data, date }: { data: AttendanceRow[]; date: s
           { label: "Distance from church (m)", value: (r) => r.distanceM },
           { label: "Phone", value: (r) => r.phone },
           { label: "Email", value: (r) => r.email },
+        ],
+      }}
+    />
+  );
+}
+
+/* ───────────── children's attendance (past days) ───────────── */
+
+type ChildAttendanceRow = {
+  id: string;
+  markedAt: Date;
+  markedBy: string | null;
+  fullname: string;
+  gender: string;
+  dob: string;
+  guardian_fullname: string;
+  guardian_phone: string;
+};
+
+const childAttendanceColumns: Cols<ChildAttendanceRow> = [
+  { accessorKey: "fullname", header: "Child", cell: ({ row }) => <span className="font-semibold text-ink">{row.original.fullname}</span> },
+  { accessorKey: "guardian_fullname", header: "Parent / guardian" },
+  { accessorKey: "guardian_phone", header: "Phone", enableSorting: false, cell: ({ row }) => <PhoneCell phone={row.original.guardian_phone} /> },
+  {
+    id: "markedAt",
+    header: "Checked in",
+    accessorFn: (r) => r.markedAt.getTime(),
+    cell: ({ row }) => (
+      <span className="text-ink tabular-nums">
+        {timeOnly.format(row.original.markedAt)}
+        {row.original.markedBy && <span className="ml-2 text-xs text-stone">by {row.original.markedBy}</span>}
+      </span>
+    ),
+  },
+];
+
+export function ChildAttendanceTable({ data, date }: { data: ChildAttendanceRow[]; date: string }) {
+  return (
+    <DataTable
+      columns={childAttendanceColumns}
+      data={data}
+      searchPlaceholder="Search children or parents"
+      emptyText="No children were checked in on this day."
+      csv={{
+        filename: `children-attendance-${date}`,
+        columns: [
+          { label: "Date", value: () => date },
+          { label: "Child", value: (r) => r.fullname },
+          { label: "Gender", value: (r) => r.gender },
+          { label: "Date of birth", value: (r) => r.dob },
+          { label: "Parent / guardian", value: (r) => r.guardian_fullname },
+          { label: "Phone", value: (r) => r.guardian_phone },
+          { label: "Checked in", value: (r) => timeOnly.format(r.markedAt) },
+          { label: "Marked by", value: (r) => r.markedBy },
         ],
       }}
     />

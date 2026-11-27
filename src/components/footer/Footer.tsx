@@ -5,6 +5,7 @@ import ContactInfo from "../contactInfo/ContactInfo";
 import { Container } from "../site/primitives";
 import { footerNav, site, weeklyServices } from "@/lib/site";
 import { CookieSettingsButton } from "../consent/ConsentBanner";
+import InstallAppButton from "../pwa/InstallAppButton";
 
 const columns = [
   { title: "Explore", links: footerNav.explore },
@@ -79,6 +80,7 @@ const Footer = () => {
               Cookie policy
             </Link>
             <CookieSettingsButton className="transition-colors hover:text-white" />
+            <InstallAppButton className="font-semibold text-gold transition-colors hover:text-white" />
           </nav>
         </div>
       </Container>

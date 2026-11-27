@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
-import { Show, SignInButton, UserButton } from "@clerk/nextjs";
+import { Show, SignInButton } from "@clerk/nextjs";
+import AccountButton from "./AccountButton";
 import * as Dropdown from "@radix-ui/react-dropdown-menu";
 import Logo from "./Logo";
 import SocialMedia from "../social-media/SocialMedia";
@@ -14,7 +15,7 @@ import { connectNav, primaryNav } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 // Routes whose top is light (no dark photo hero), so the bar starts solid.
-const LIGHT_TOP_PREFIXES = ["/workers", "/privacy", "/cookies"];
+const LIGHT_TOP_PREFIXES = ["/workers", "/privacy", "/cookies", "/offline"];
 
 const isActive = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -126,7 +127,7 @@ export default function Navbar() {
                 </SignInButton>
               </Show>
               <Show when="signed-in">
-                <UserButton />
+                <AccountButton />
               </Show>
             </div>
             <ButtonLink href="/online-giving" variant="gold" size="sm" className="hidden sm:inline-flex">
@@ -210,7 +211,7 @@ export default function Navbar() {
                     </SignInButton>
                   </Show>
                   <Show when="signed-in">
-                    <UserButton />
+                    <AccountButton />
                   </Show>
                 </div>
                 <SocialMedia className="mt-8 text-white/70" />

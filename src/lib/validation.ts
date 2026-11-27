@@ -150,3 +150,30 @@ export const attendanceMarkSchema = z.object({
 });
 
 export const workerStatusSchema = z.object({ status: z.enum(["approved", "pending", "inactive"]) });
+
+/** A worker added by an admin, HOD or the workers' desk (people without email). */
+export const workerAddSchema = z
+  .object({
+    name: text(120),
+    phone,
+    email: optionalEmail,
+    dept: text(80),
+    deptOther: z.string().trim().max(80).optional(),
+    gender: z.enum(["male", "female"], "Select a gender"),
+    area: z.string().trim().max(80).optional().transform((v) => v || null),
+  })
+  .transform(({ deptOther, ...w }) => ({ ...w, dept: w.dept === "Other" && deptOther ? deptOther : w.dept }))
+  .refine((w) => w.dept !== "Other", { message: "Tell us which department", path: ["deptOther"] });
+
+const objectId = z.string().regex(/^[a-f0-9]{24}$/i, "Invalid id");
+/** When a desk device was offline, it sends the time the check-in actually happened. */
+const markedAt = z.iso.datetime({ offset: true }).optional();
+
+export const deskWorkerMarkSchema = z.object({ workerId: objectId, markedAt });
+export const deskChildMarkSchema = z.object({ childId: objectId, markedAt });
+export const deskUndoSchema = z.object({ id: objectId, date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) });
+
+/** A child registered at the children's desk, with the parent or guardian present. */
+export const childDeskSchema = schemas.child.extend({
+  guardianAgreed: z.literal(true, "Confirm the parent or guardian agreed"),
+});

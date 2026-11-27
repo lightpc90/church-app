@@ -98,6 +98,37 @@ after the form response (Next `after()`), so a slow provider never slows down th
   HODs see their department only. Departments are listed in `src/lib/departments.ts`.
 - Limitation: a determined person can fake their phone's location; HODs should sanity-check.
 
+## Desks (workers and children)
+
+- Roles **Workers' desk** and **Children's desk** (Team & Roles) see only their desk tab. Admins, super
+  admins and pastors can use both desks.
+- **Workers' desk**: search, one-tap check-in for approved workers (same Sunday 6:30–8:00 window as self
+  check-in, no location check, recorded as `method: "desk"` with `markedBy`), same-day undo of desk
+  check-ins, and "Register new worker" by phone. Workers can also be added by phone on the Workers tab
+  (admins; HODs for their own department). Phone numbers are de-duplicated in any format; a worker who
+  later signs up with the same phone is linked to the record and goes back to pending.
+- **Children's desk**: search, check-in (any day, one per child per Lagos date), same-day undo, register a
+  child (guardian must be present and agree), and earlier days with CSV export.
+- **Offline**: if the connection drops, check-ins are queued on the device (`localStorage`
+  `bg_desk_queue_v1`, ids and times only) and sent automatically when it returns, with the original time
+  (accepted if within the last 24 hours and no more than 10 minutes ahead of the server clock).
+
+## Events
+
+Admins create, edit and delete events on the dashboard's **Events** tab (name, description, venue, date and
+time in Lagos time, optional registration and image links). The public `/events` page lists them.
+
+## Installable app (PWA) and offline
+
+- `src/app/manifest.ts` (installable, standalone, church colours and icons) and `public/sw.js`, registered
+  in production by `src/components/pwa/ServiceWorker.tsx`. "Install app" appears in the footer when the
+  browser supports it.
+- Public pages are network-first and cached as visited; build files cache-first; images
+  stale-while-revalidate (80 max). `/admin`, `/workers`, `/api` and sign-in are never cached. Offline,
+  unvisited or private pages redirect to `/offline?from=…` (service times, contact, and a "Try again" that
+  returns to the page wanted). The offline page's own files are precached at install. Bump `VERSION` in
+  `sw.js` to clear old caches.
+
 ## Instagram feed
 
 Uses the Instagram API with Instagram Login (`graph.instagram.com`). `INSTAGRAM_ACCESS_TOKEN` is the

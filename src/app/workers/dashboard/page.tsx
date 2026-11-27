@@ -9,6 +9,9 @@ import { getCurrentWorker, workerStatus } from "@/lib/workers";
 import { attendanceWindow, recentSundays, windowLabel } from "@/lib/attendance-rules";
 import { cn } from "@/lib/utils";
 import { canonicalDept } from "@/lib/departments";
+import { getStaff } from "@/lib/auth";
+import { roleLabels } from "@/lib/roles";
+import { LayoutDashboard } from "lucide-react";
 
 export const metadata = { title: "Workers' Dashboard" };
 export const dynamic = "force-dynamic";
@@ -23,7 +26,7 @@ const statusCopy = {
 } as const;
 
 export default async function Page() {
-  const me = await getCurrentWorker();
+  const [me, staff] = await Promise.all([getCurrentWorker(), getStaff()]);
   if (!me.signedIn) redirect("/workers");
   if (!me.worker) redirect("/workers/register");
   const w = me.worker;
@@ -113,6 +116,19 @@ export default async function Page() {
             })}
         </ul>
       </div>
+
+      {staff.status === "ok" && (
+        <Link
+          href="/admin"
+          className="mt-6 flex items-center gap-3 rounded-2xl border border-line bg-white p-4 text-ink shadow-soft transition hover:shadow-lift"
+        >
+          <LayoutDashboard className="size-5 text-royal" aria-hidden />
+          <span className="flex-1">
+            <span className="block font-semibold">Admin dashboard</span>
+            <span className="block text-sm text-stone">You&apos;re signed in as {roleLabels[staff.role]}.</span>
+          </span>
+        </Link>
+      )}
 
       <SignOutButton redirectUrl="/workers">
         <button type="button" className="mt-8 text-sm font-semibold text-stone hover:text-ink">

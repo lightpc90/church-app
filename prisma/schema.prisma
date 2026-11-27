@@ -61,8 +61,10 @@ model Attendance {
   worker    Worker   @relation(fields: [workerId], references: [id], onDelete: Cascade)
   date      String // service date in Lagos time, "YYYY-MM-DD"
   dept      String // department at the time, for reports
-  distanceM Int
-  accuracyM Int
+  distanceM Int? // self check-in only
+  accuracyM Int? // self check-in only
+  method    String? // "self" (phone, location checked) or "desk" (marked by desk staff); missing = self
+  markedBy  String? // desk staff name
   markedAt  DateTime @default(now())
 
   @@unique([workerId, date])
@@ -176,7 +178,7 @@ model Teen {
 }
 
 model Child {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  id                String            @id @default(auto()) @map("_id") @db.ObjectId
   fullname          String
   gender            String
   dob               String
@@ -184,7 +186,8 @@ model Child {
   guardian_phone    String
   guardian_email    String?
   guardian_gender   String
-  createdAt         DateTime @default(now())
+  createdAt         DateTime          @default(now())
+  attendance        ChildAttendance[]
 }
 
 model Event {
@@ -230,4 +233,17 @@ model NotificationSettings {
   lastErrorAt          DateTime?
   updatedBy            String?
   updatedAt            DateTime  @updatedAt
+}
+
+// Children's check-in, marked by the children's desk. One record per child per day (Lagos date).
+model ChildAttendance {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  childId  String   @db.ObjectId
+  child    Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+  date     String // "YYYY-MM-DD", Lagos
+  markedBy String?
+  markedAt DateTime @default(now())
+
+  @@unique([childId, date])
+  @@index([date])
 }

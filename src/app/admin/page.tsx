@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { getStaff, envRoles, type StaffMember } from "@/lib/auth";
-import { adminQueries, getOpenCounts, getOverview, loadAttendance } from "@/lib/admin-data";
+import { adminQueries, getOpenCounts, getOverview, loadAttendance, loadChildrenDesk, loadWorkerDesk } from "@/lib/admin-data";
 import { getNotificationSettings, providerStatus, publicSettings } from "@/lib/notify";
 import { can } from "@/lib/roles";
 import prisma from "@/lib/prisma";
@@ -17,6 +17,10 @@ import Registrations, { loadRegistrations } from "@/components/admin/tabs/Regist
 import HouseFellowshipManager from "@/components/admin/tabs/HouseFellowshipManager";
 import AttendanceReport from "@/components/admin/tabs/AttendanceReport";
 import IntegrationsPanel from "@/components/admin/tabs/IntegrationsPanel";
+import WorkersManager from "@/components/admin/tabs/WorkersManager";
+import ChildrenDeskTab from "@/components/admin/tabs/ChildrenDeskTab";
+import WorkerDesk from "@/components/desk/WorkerDesk";
+import EventsManager from "@/components/admin/tabs/EventsManager";
 import { instagramStatus } from "@/lib/instagram";
 import TeamManager from "@/components/admin/tabs/TeamManager";
 import NotificationSettingsForm from "@/components/admin/tabs/NotificationSettingsForm";
@@ -25,7 +29,6 @@ import {
   FollowUpTable,
   PrayerRequestsTable,
   TestimoniesTable,
-  WorkersTable,
 } from "@/components/admin/tables";
 
 export const metadata = { title: "Admin Dashboard", robots: { index: false } };
@@ -41,6 +44,9 @@ const descriptions: Partial<Record<TabParamsEnum, string>> = {
   [TabParamsEnum.REGISTRATIONS]: "Sign-ups for natural groups and ministries.",
   [TabParamsEnum.HOUSE_FELLOWSHIP]: "Centers listed on the public House Fellowships page.",
   [TabParamsEnum.WORKERS]: "Members serving across departments. New registrations from the Workers' portal need approval.",
+  [TabParamsEnum.WORKER_DESK]: "Check in workers who can't do it on their own phone, and register new workers. Works through network drops.",
+  [TabParamsEnum.CHILDREN_DESK]: "Check children in, and register new children with their parent or guardian present.",
+  [TabParamsEnum.EVENTS]: "Events shown on the public Events page.",
   [TabParamsEnum.ATTENDANCE]: "Sunday check-ins from the Workers' portal (6:30 to 8:00 AM, within 100 m of the church).",
   [TabParamsEnum.TEAM]: "Who can sign in to this dashboard, and what each person can see and do.",
   [TabParamsEnum.INTEGRATIONS]: "Connections to other services, like the Instagram feed on the home page.",
@@ -62,7 +68,19 @@ async function renderTab(menu: TabParamsEnum, staff: StaffMember, group?: string
     case TabParamsEnum.HOUSE_FELLOWSHIP:
       return <HouseFellowshipManager data={await adminQueries.houseFellowships()} />;
     case TabParamsEnum.WORKERS:
-      return <WorkersTable data={await adminQueries.workers(staff)} />;
+      return (
+        <WorkersManager
+          data={await adminQueries.workers(staff)}
+          canAdd={can(staff.role, "manage", "workers") || (staff.role === "hod" && !!staff.dept)}
+          defaultDept={staff.role === "hod" ? staff.dept : null}
+        />
+      );
+    case TabParamsEnum.WORKER_DESK:
+      return <WorkerDesk {...await loadWorkerDesk()} defaultDept={null} />;
+    case TabParamsEnum.CHILDREN_DESK:
+      return <ChildrenDeskTab data={await loadChildrenDesk(date)} />;
+    case TabParamsEnum.EVENTS:
+      return <EventsManager events={await prisma.event.findMany({ orderBy: { createdAt: "desc" } })} now={Date.now()} />;
     case TabParamsEnum.ATTENDANCE:
       return <AttendanceReport data={await loadAttendance(staff, date)} />;
     case TabParamsEnum.TEAM:
