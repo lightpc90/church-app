@@ -16,6 +16,7 @@ const contents = [
   { id: "what", label: "What cookies are" },
   { id: "essential", label: "Essential cookies" },
   { id: "media", label: "Videos and maps" },
+  { id: "offline", label: "Saved for offline use" },
   { id: "not-used", label: "What we don't use" },
   { id: "choices", label: "Changing your choice" },
 ];
@@ -128,13 +129,26 @@ export default function CookiesPage() {
         isn&apos;t contacted until you choose to play.
       </p>
 
-      <h2 id="not-used">4. What we don&apos;t use</h2>
+      <h2 id="offline">4. Saved for offline use</h2>
+      <p>
+        The site can be installed as an app and works partly offline. To do that, your browser keeps copies of the
+        public pages you&apos;ve visited, images and the site&apos;s own files (a &quot;service worker&quot; cache). No
+        personal information is kept there: the dashboard, the workers&apos; area and form submissions are never
+        stored. You can clear it at any time in your browser&apos;s site settings.
+      </p>
+      <p>
+        On church desk devices, check-ins made while the connection is down are kept in the browser&apos;s local
+        storage (<code>bg_desk_queue_v1</code>: only record numbers and times, no names) until they&apos;re sent, which
+        happens automatically once the device is back online.
+      </p>
+
+      <h2 id="not-used">5. What we don&apos;t use</h2>
       <p>
         No advertising cookies, no tracking across other websites, and no analytics cookies. If that ever changes,
         we&apos;ll update this page and ask for your consent first.
       </p>
 
-      <h2 id="choices">5. Changing your choice</h2>
+      <h2 id="choices">6. Changing your choice</h2>
       <p>
         Use the <strong>Cookie settings</strong> button above or the link at the bottom of every page. If you switch
         videos and maps off, they stop loading straight away. Cookies Google already set stay until they expire or

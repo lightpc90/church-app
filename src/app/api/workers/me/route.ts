@@ -4,6 +4,7 @@ import { getCurrentWorker, workerStatus } from "@/lib/workers";
 import { workerSelfSchema } from "@/lib/validation";
 import { z } from "zod";
 import { canonicalDept, sameDept } from "@/lib/departments";
+import { findWorkerByPhone } from "@/lib/desk";
 
 // The signed-in person's own worker profile. Anyone with an account can register; new
 // registrations stay "pending" until an admin or their HOD approves them.
@@ -37,6 +38,16 @@ export async function PUT(req: Request) {
         data: { ...data, ...(reapprove ? { status: "pending", approvedBy: null, approvedAt: null } : {}) },
       });
       return json({ success: true, data: { ...worker, status: workerStatus(worker) }, reapproval: reapprove });
+    }
+    // Registered earlier at the desk or by an admin (by phone, no account)? Link that record instead
+    // of creating a duplicate. It goes back to "pending" so typing someone else's number gains nothing.
+    const byPhone = await findWorkerByPhone(data.phone);
+    if (byPhone && !byPhone.clerkUserId) {
+      const worker = await prisma.worker.update({
+        where: { id: byPhone.id },
+        data: { ...data, clerkUserId: me.userId, email: me.email, image: me.image, status: "pending", approvedBy: null, approvedAt: null },
+      });
+      return json({ success: true, data: { ...worker, status: workerStatus(worker) }, linked: true });
     }
     const worker = await prisma.worker.create({
       data: { ...data, clerkUserId: me.userId, email: me.email, image: me.image, status: "pending" },

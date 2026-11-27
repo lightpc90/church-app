@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/Layout";
+import ServiceWorker from "@/components/pwa/ServiceWorker";
 import { site } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
   },
   icons: { icon: "/icons/icon192x192.png", apple: "/icons/icon192x192.png" },
   category: "church",
+  appleWebApp: { capable: true, title: "Beautiful Gate", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
@@ -64,6 +66,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             Skip to content
           </a>
           <ConditionalLayout>{children}</ConditionalLayout>
+          <ServiceWorker />
         </body>
       </html>
     </ClerkProvider>

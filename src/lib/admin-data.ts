@@ -2,7 +2,7 @@ import "server-only";
 import prisma from "./prisma";
 import type { StaffMember } from "./auth";
 import { workerScope } from "./scopes";
-import { recentSundays } from "./attendance-rules";
+import { attendanceWindow, lagosParts, recentSundays } from "./attendance-rules";
 import { canonicalDept } from "./departments";
 
 const newestFirst = { orderBy: { createdAt: "desc" as const } };
@@ -248,5 +248,64 @@ export async function loadAttendance(staff: StaffMember, requested?: string) {
     byDept: [...depts.values()].sort((a, b) => b.total - a.total),
     trend: sundays.slice().reverse().map((d) => ({ date: d, count: counts.get(d) ?? 0 })),
     scopedDept: scope ? staff.dept : null,
+  };
+}
+
+/* ───────────── desks ───────────── */
+
+const dayLabel = (dateKey: string) =>
+  new Intl.DateTimeFormat("en-NG", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(dateKey));
+
+/** Workers' desk: approved workers and today's check-ins. */
+export async function loadWorkerDesk() {
+  const window = attendanceWindow();
+  const [workers, marks] = await Promise.all([
+    prisma.worker.findMany({ where: approvedWorker, select: { id: true, name: true, phone: true, dept: true } }),
+    prisma.attendance.findMany({ where: { date: window.dateKey }, select: { workerId: true, markedAt: true, method: true } }),
+  ]);
+  const windowNote = window.open
+    ? "Check-in open until 8:00 AM"
+    : window.reason === "too-early"
+      ? "Check-in opens at 6:30 AM"
+      : window.reason === "closed"
+        ? "Check-in closed at 8:00 AM"
+        : "Check-in opens Sunday, 6:30 AM";
+  return {
+    dateKey: window.dateKey,
+    dateLabel: dayLabel(window.dateKey),
+    windowOpen: window.open,
+    windowNote,
+    workers: workers.map((w) => ({ ...w, dept: canonicalDept(w.dept) })),
+    marks: marks.map((m) => ({ workerId: m.workerId, markedAt: m.markedAt.toISOString(), method: m.method ?? "self" })),
+  };
+}
+
+/** Children's desk: every registered child, today's check-ins, and recent days. */
+export async function loadChildrenDesk(requested?: string) {
+  const today = lagosParts().dateKey;
+  const [children, marks, history] = await Promise.all([
+    prisma.child.findMany({ select: { id: true, fullname: true, gender: true, dob: true, guardian_fullname: true, guardian_phone: true } }),
+    prisma.childAttendance.findMany({ where: { date: today }, select: { childId: true, markedAt: true } }),
+    prisma.childAttendance.groupBy({ by: ["date"], _count: { _all: true }, orderBy: { date: "desc" }, take: 12 }),
+  ]);
+  const date = requested && requested !== today && /^\d{4}-\d{2}-\d{2}$/.test(requested) ? requested : null;
+  const past = date
+    ? await prisma.childAttendance.findMany({
+        where: { date },
+        include: { child: { select: { fullname: true, gender: true, dob: true, guardian_fullname: true, guardian_phone: true } } },
+        orderBy: { markedAt: "asc" },
+      })
+    : null;
+  return {
+    today,
+    todayLabel: dayLabel(today),
+    children,
+    marks: marks.map((m) => ({ childId: m.childId, markedAt: m.markedAt.toISOString() })),
+    history: history.map((h) => ({ date: h.date, label: dayLabel(h.date), count: h._count._all })),
+    past: past && {
+      date,
+      label: dayLabel(date!),
+      rows: past.map((p) => ({ id: p.id, markedAt: p.markedAt, markedBy: p.markedBy, ...p.child })),
+    },
   };
 }

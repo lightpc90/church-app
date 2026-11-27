@@ -1,7 +1,7 @@
 // Who can do what in the admin dashboard. Pure module: used by server code (API checks,
 // page rendering) and client components (hiding buttons). Server checks are the real gate.
 
-export const ROLES = ["superadmin", "admin", "pastor", "hod"] as const;
+export const ROLES = ["superadmin", "admin", "pastor", "hod", "workerDesk", "childrenDesk"] as const;
 export type Role = (typeof ROLES)[number];
 
 export const roleLabels: Record<Role, string> = {
@@ -9,6 +9,8 @@ export const roleLabels: Record<Role, string> = {
   admin: "Admin",
   pastor: "Pastor",
   hod: "Head of department",
+  workerDesk: "Workers' desk",
+  childrenDesk: "Children's desk",
 };
 
 export const roleDescriptions: Record<Role, string> = {
@@ -16,6 +18,8 @@ export const roleDescriptions: Record<Role, string> = {
   admin: "Everything on the dashboard, including deleting records. Can't manage the team or notifications.",
   pastor: "Sees prayer requests, testimonies, follow-ups, messages, registrations, workers and attendance, and can mark them handled. Can't delete.",
   hod: "Sees registrations and the workers in their own department, approves their workers and sees their attendance.",
+  workerDesk: "Only the Workers' desk: checks in workers who can't do it themselves, and registers new workers.",
+  childrenDesk: "Only the Children's desk: checks children in, and registers new children.",
 };
 
 export const isRole = (v: unknown): v is Role => typeof v === "string" && (ROLES as readonly string[]).includes(v);
@@ -35,6 +39,8 @@ export type Resource =
   | "houseFellowships"
   | "workers"
   | "attendance"
+  | "deskWorkers"
+  | "deskChildren"
   | "events"
   | "users"
   | "team"
@@ -59,6 +65,8 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     houseFellowships: ALL,
     workers: ALL,
     attendance: ALL,
+    deskWorkers: ALL,
+    deskChildren: ALL,
     events: ALL,
     users: ALL,
     team: ALL,
@@ -75,6 +83,8 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     houseFellowships: ALL,
     workers: ALL,
     attendance: ALL,
+    deskWorkers: ALL,
+    deskChildren: ALL,
     events: ALL,
     users: ALL,
   },
@@ -88,6 +98,8 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     houseFellowships: VIEW,
     workers: VIEW,
     attendance: VIEW,
+    deskWorkers: PASTORAL,
+    deskChildren: PASTORAL,
   },
   hod: {
     overview: VIEW,
@@ -95,6 +107,13 @@ const permissions: Record<Role, Partial<Record<Resource, Action[]>>> = {
     // "handle" = approve or deactivate workers, limited to their own department (scopes.ts)
     workers: PASTORAL,
     attendance: VIEW,
+  },
+  // Desk roles see only their desk: no overview, no other records.
+  workerDesk: {
+    deskWorkers: PASTORAL,
+  },
+  childrenDesk: {
+    deskChildren: PASTORAL,
   },
 };
 

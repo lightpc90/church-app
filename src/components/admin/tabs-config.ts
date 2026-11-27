@@ -14,6 +14,9 @@ import {
   BellRing,
   CalendarCheck,
   Plug,
+  CalendarDays,
+  UserCheck,
+  Baby,
 } from "lucide-react";
 import { TabParamsEnum } from "../enums/Enums";
 import type { Resource } from "@/lib/roles";
@@ -26,9 +29,12 @@ export const AdminTabs: { name: string; param: TabParamsEnum; Icon: typeof Layou
   { name: "Follow Up", param: TabParamsEnum.FOLLOW_UP, Icon: UserRoundPlus, resource: "followUps" },
   { name: "Messages", param: TabParamsEnum.ENQUIRIES, Icon: Inbox, resource: "enquiries" },
   { name: "Registrations", param: TabParamsEnum.REGISTRATIONS, Icon: ClipboardList, resource: "registrations" },
+  { name: "Events", param: TabParamsEnum.EVENTS, Icon: CalendarDays, resource: "events" },
   { name: "House Fellowships", param: TabParamsEnum.HOUSE_FELLOWSHIP, Icon: House, resource: "houseFellowships" },
   { name: "Workers", param: TabParamsEnum.WORKERS, Icon: BriefcaseBusiness, resource: "workers" },
   { name: "Attendance", param: TabParamsEnum.ATTENDANCE, Icon: CalendarCheck, resource: "attendance" },
+  { name: "Workers' desk", param: TabParamsEnum.WORKER_DESK, Icon: UserCheck, resource: "deskWorkers" },
+  { name: "Children's desk", param: TabParamsEnum.CHILDREN_DESK, Icon: Baby, resource: "deskChildren" },
   { name: "Team & Roles", param: TabParamsEnum.TEAM, Icon: UsersRound, resource: "team", superAdmin: true },
   { name: "Notifications", param: TabParamsEnum.NOTIFICATIONS, Icon: BellRing, resource: "notifications", superAdmin: true },
   { name: "Integrations", param: TabParamsEnum.INTEGRATIONS, Icon: Plug, resource: "integrations", superAdmin: true },

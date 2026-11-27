@@ -137,6 +137,26 @@ export default function PrivacyPage() {
             </tr>
             <tr>
               <td>
+                <strong>Workers&apos; desk</strong>
+              </td>
+              <td>
+                For workers without email or a smartphone, desk staff can register them (name, phone, department,
+                gender) and check them in. We record that the check-in was made at the desk and by whom
+              </td>
+              <td>So everyone can serve and be counted, with or without a smartphone</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Children&apos;s check-in</strong>
+              </td>
+              <td>
+                The child&apos;s details as for Children Ministry sign-up (registered at the desk only with a parent or
+                guardian present and agreeing), plus the date and time they were checked in and who checked them in
+              </td>
+              <td>To know which children are in our care, and to keep attendance records</td>
+            </tr>
+            <tr>
+              <td>
                 <strong>Everyone</strong>
               </td>
               <td>Technical information such as your IP address, browser and the pages you visit, kept in server logs</td>
@@ -240,7 +260,7 @@ export default function PrivacyPage() {
           <strong>Staff and worker accounts:</strong> while you serve in that role.
         </li>
         <li>
-          <strong>Workers&apos; attendance:</strong> up to 2 years.
+          <strong>Workers&apos; and children&apos;s attendance:</strong> up to 2 years.
         </li>
         <li>
           <strong>Server logs:</strong> for a short period set by our hosting provider.

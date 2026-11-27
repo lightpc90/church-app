@@ -17,6 +17,8 @@ const roleTone: Record<Role, string> = {
   admin: "bg-royal/10 text-royal",
   pastor: "bg-gold-soft text-ink",
   hod: "bg-emerald-50 text-emerald-800",
+  workerDesk: "bg-sand text-ink",
+  childrenDesk: "bg-sky-50 text-sky-800",
 };
 
 function RoleBadge({ role }: { role: string }) {
@@ -250,7 +252,7 @@ export default function TeamManager({
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {ROLES.map((r) => (
           <div key={r} className="rounded-3xl border border-line bg-white p-5">
             <RoleBadge role={r} />
